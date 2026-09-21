@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sejarah XII - Bank Soal</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at top left,#fef3c7 0,transparent 30%),
+        radial-gradient(circle at top right,#ffedd5 0,transparent 28%),
+        #f8fafc;
+    color:#172033;
+}
+
+/* HEADER */
+.header{
+    background:linear-gradient(135deg,#92400e,#b45309,#d97706);
+    color:white;
+    padding:38px 18px 50px;
+    border-radius:0 0 38px 38px;
+    box-shadow:0 12px 35px rgba(146,64,14,.25);
+}
+
+.header-content{
+    max-width:900px;
+    margin:auto;
+}
+
+.topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:28px;
+}
+
+.back{
+    text-decoration:none;
+    color:white;
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.2);
+    padding:10px 15px;
+    border-radius:12px;
+    font-size:14px;
+    backdrop-filter:blur(10px);
+}
+
+.badge{
+    background:rgba(255,255,255,.15);
+    padding:9px 13px;
+    border-radius:12px;
+    font-size:13px;
+}
+
+.header h1{
+    font-size:clamp(30px,6vw,45px);
+    margin-bottom:10px;
+}
+
+.header p{
+    color:#fef3c7;
+    line-height:1.6;
+    font-size:15px;
+}
+
+/* MAIN */
+.container{
+    max-width:900px;
+    margin:-25px auto 50px;
+    padding:0 16px;
+    position:relative;
+}
+
+/* PROGRESS */
+.progress-card{
+    background:white;
+    border-radius:20px;
+    padding:18px 20px;
+    box-shadow:0 10px 30px rgba(15,23,42,.09);
+    margin-bottom:20px;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.progress-bar{
+    height:9px;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#b45309,#f59e0b);
+    transition:.3s;
+}
+
+/* QUESTION */
+.question-card{
+    background:white;
+    border:1px solid #e5e7eb;
+    border-radius:25px;
+    padding:25px;
+    margin-bottom:18px;
+    box-shadow:0 7px 22px rgba(15,23,42,.06);
+}
+
+.question-number{
+    display:inline-block;
+    background:#fef3c7;
+    color:#92400e;
+    padding:7px 12px;
+    border-radius:10px;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.question{
+    font-size:17px;
+    line-height:1.65;
+    font-weight:600;
+    margin-bottom:18px;
+}
+
+.multi-info{
+    display:inline-block;
+    background:#fff7ed;
+    color:#c2410c;
+    border:1px solid #fed7aa;
+    padding:7px 11px;
+    border-radius:9px;
+    font-size:12px;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+/* OPTIONS */
+.options{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.option{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:14px;
+    border:2px solid #e5e7eb;
+    border-radius:14px;
+    cursor:pointer;
+    transition:.2s;
+    background:#fff;
+}
+
+.option:hover{
+    border-color:#f59e0b;
+    background:#fffbeb;
+}
+
+.option input{
+    margin-top:4px;
+    width:17px;
+    height:17px;
+    accent-color:#d97706;
+    flex-shrink:0;
+}
+
+.option-text{
+    font-size:14px;
+    line-height:1.5;
+}
+
+.option.correct{
+    border-color:#16a34a;
+    background:#f0fdf4;
+}
+
+.option.wrong{
+    border-color:#dc2626;
+    background:#fef2f2;
+}
+
+/* EXPLANATION */
+.explanation{
+    display:none;
+    margin-top:17px;
+    padding:15px;
+    border-radius:14px;
+    background:#f8fafc;
+    border-left:4px solid #d97706;
+    line-height:1.6;
+    font-size:14px;
+}
+
+.explanation.show{
+    display:block;
+}
+
+/* BUTTON */
+.submit-area{
+    text-align:center;
+    margin-top:28px;
+}
+
+.submit{
+    border:none;
+    background:linear-gradient(135deg,#92400e,#d97706);
+    color:white;
+    padding:16px 35px;
+    border-radius:15px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(180,83,9,.25);
+    transition:.2s;
+}
+
+.submit:hover{
+    transform:translateY(-2px);
+}
+
+.submit:active{
+    transform:scale(.97);
+}
+
+/* RESULT */
+.result{
+    display:none;
+    background:white;
+    border-radius:27px;
+    padding:30px 22px;
+    text-align:center;
+    margin-top:25px;
+    box-shadow:0 12px 35px rgba(15,23,42,.1);
+}
+
+.result.show{
+    display:block;
+}
+
+.result-icon{
+    font-size:55px;
+    margin-bottom:12px;
+}
+
+.result h2{
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.score{
+    font-size:48px;
+    font-weight:800;
+    color:#b45309;
+    margin:15px 0;
+}
+
+.result p{
+    color:#64748b;
+    margin-bottom:20px;
+}
+
+.retry{
+    border:none;
+    background:#fef3c7;
+    color:#92400e;
+    padding:13px 22px;
+    border-radius:12px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    color:#94a3b8;
+    font-size:13px;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+    .header{
+        padding:28px 16px 45px;
+        border-radius:0 0 30px 30px;
+    }
+
+    .topbar{
+        margin-bottom:23px;
+    }
+
+    .header h1{
+        font-size:32px;
+    }
+
+    .question-card{
+        padding:20px 16px;
+        border-radius:20px;
+    }
+
+    .question{
+        font-size:16px;
+    }
+
+    .option{
+        padding:12px;
+    }
+
+    .option-text{
+        font-size:13.5px;
+    }
+
+    .submit{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-content">
+
+        <div class="topbar">
+            <a href="index.html" class="back">← Halaman Utama</a>
+            <div class="badge">📜 Sejarah XII</div>
+        </div>
+
+        <h1>Sejarah Indonesia</h1>
+
+        <p>
+            Latihan soal Sejarah XII tentang masa awal kemerdekaan
+            dan perjuangan mempertahankan kemerdekaan Indonesia.
+        </p>
+
+    </div>
+</header>
+
+
+<main class="container">
+
+    <div class="progress-card">
+        <div class="progress-info">
+            <span id="progressText">Soal 0 dari 25</span>
+            <span id="progressPercent">0%</span>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
+
+
+    <form id="quizForm">
+
+        <!-- 1 -->
+        <div class="question-card" data-q="1">
+            <div class="question-number">Soal 1</div>
+
+            <div class="question">
+                Setelah Jepang menyerah kepada Sekutu, para tokoh nasional segera mengambil langkah strategis.
+                Kapan tepatnya sidang pertama Panitia Persiapan Kemerdekaan Indonesia (PPKI) dilaksanakan?
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q1" value="A"><span class="option-text">A. 16 Agustus 1945</span></label>
+                <label class="option"><input type="radio" name="q1" value="B"><span class="option-text">B. 17 Agustus 1945</span></label>
+                <label class="option"><input type="radio" name="q1" value="C"><span class="option-text">C. 18 Agustus 1945</span></label>
+                <label class="option"><input type="radio" name="q1" value="D"><span class="option-text">D. 19 Agustus 1945</span></label>
+                <label class="option"><input type="radio" name="q1" value="E"><span class="option-text">E. 20 Agustus 1945</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: C. 18 Agustus 1945.</b><br>
+                Sidang pertama PPKI dilaksanakan sehari setelah Proklamasi Kemerdekaan.
+            </div>
+        </div>
+
+
+        <!-- 2 -->
+        <div class="question-card" data-q="2">
+            <div class="question-number">Soal 2</div>
+
+            <div class="question">
+                Salah satu hasil terpenting dari sidang pertama PPKI pada 18 Agustus 1945 adalah pengesahan
+                konstitusi negara. Konstitusi apa yang disahkan pada hari tersebut?
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q2" value="A"><span class="option-text">A. Undang-Undang Dasar Sementara 1950</span></label>
+                <label class="option"><input type="radio" name="q2" value="B"><span class="option-text">B. Undang-Undang Dasar Republik Indonesia Serikat</span></label>
+                <label class="option"><input type="radio" name="q2" value="C"><span class="option-text">C. Piagam Jakarta</span></label>
+                <label class="option"><input type="radio" name="q2" value="D"><span class="option-text">D. Undang-Undang Dasar 1945</span></label>
+                <label class="option"><input type="radio" name="q2" value="E"><span class="option-text">E. Undang-Undang Dasar RIS</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: D. Undang-Undang Dasar 1945.</b><br>
+                PPKI mengesahkan UUD 1945 pada sidang tanggal 18 Agustus 1945.
+            </div>
+        </div>
+
+
+        <!-- 3 -->
+        <div class="question-card" data-q="3">
+            <div class="question-number">Soal 3</div>
+
+            <div class="question">
+                Pada sidang PPKI kedua, 19 Agustus 1945, dibentuklah sejumlah kementerian untuk menjalankan
+                roda pemerintahan. Berapakah jumlah kementerian yang dibentuk pada sidang tersebut?
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q3" value="A"><span class="option-text">A. 10 kementerian</span></label>
+                <label class="option"><input type="radio" name="q3" value="B"><span class="option-text">B. 12 kementerian</span></label>
+                <label class="option"><input type="radio" name="q3" value="C"><span class="option-text">C. 15 kementerian</span></label>
+                <label class="option"><input type="radio" name="q3" value="D"><span class="option-text">D. 16 kementerian</span></label>
+                <label class="option"><input type="radio" name="q3" value="E"><span class="option-text">E. 18 kementerian</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: C. 15 kementerian.</b><br>
+                Soal sumber menetapkan pilihan 15 kementerian sebagai jawaban.
+            </div>
+        </div>
+
+
+        <!-- 4 -->
+        <div class="question-card" data-q="4">
+            <div class="question-number">Soal 4</div>
+
+            <div class="question">
+                PPKI adalah badan yang dibentuk untuk melanjutkan tugas Badan Penyelidik Usaha-usaha
+                Persiapan Kemerdekaan Indonesia (BPUPKI). Siapakah ketua PPKI?
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q4" value="A"><span class="option-text">A. Mohammad Hatta</span></label>
+                <label class="option"><input type="radio" name="q4" value="B"><span class="option-text">B. Radjiman Wedyodiningrat</span></label>
+                <label class="option"><input type="radio" name="q4" value="C"><span class="option-text">C. Soepomo</span></label>
+                <label class="option"><input type="radio" name="q4" value="D"><span class="option-text">D. Ahmad Soebardjo</span></label>
+                <label class="option"><input type="radio" name="q4" value="E"><span class="option-text">E. Soekarno</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: E. Soekarno.</b><br>
+                Soekarno menjabat sebagai ketua PPKI dan Mohammad Hatta sebagai wakil ketua.
+            </div>
+        </div>
+
+
+        <!-- 5 -->
+        <div class="question-card" data-q="5">
+            <div class="question-number">Soal 5</div>
+
+            <div class="question">
+                Pada sidang PPKI tanggal 18 Agustus 1945, Soekarno dan Mohammad Hatta dipilih sebagai
+                presiden dan wakil presiden. Apa alasan utama mereka dipilih?
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q5" value="A"><span class="option-text">A. Mereka adalah pemimpin partai politik terbesar saat itu.</span></label>
+                <label class="option"><input type="radio" name="q5" value="B"><span class="option-text">B. Mereka diamanatkan oleh Jepang untuk memimpin Indonesia.</span></label>
+                <label class="option"><input type="radio" name="q5" value="C"><span class="option-text">C. Mereka adalah tokoh yang paling berpengaruh dan memimpin gerakan kemerdekaan.</span></label>
+                <label class="option"><input type="radio" name="q5" value="D"><span class="option-text">D. Mereka dipilih melalui pemilihan umum pertama.</span></label>
+                <label class="option"><input type="radio" name="q5" value="E"><span class="option-text">E. Mereka adalah anggota tertua dalam PPKI.</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: C.</b><br>
+                Dalam konteks soal, alasan yang diberikan adalah pengaruh dan peran keduanya
+                dalam gerakan kemerdekaan.
+            </div>
+        </div>
+
+
+        <!-- 6 -->
+        <div class="question-card" data-q="6">
+            <div class="question-number">Soal 6</div>
+
+            <div class="question">
+                Sidang PPKI ketiga pada 22 Agustus 1945 menghasilkan tiga keputusan penting.
+                Salah satunya adalah pembentukan sebuah komite nasional. Komite nasional apa yang dibentuk?
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q6" value="A"><span class="option-text">A. Komite Nasional Indonesia Pusat (KNIP)</span></label>
+                <label class="option"><input type="radio" name="q6" value="B"><span class="option-text">B. Komite Nasional Indonesia Daerah (KNID)</span></label>
+                <label class="option"><input type="radio" name="q6" value="C"><span class="option-text">C. Dewan Perwakilan Rakyat (DPR)</span></label>
+                <label class="option"><input type="radio" name="q6" value="D"><span class="option-text">D. Majelis Permusyawaratan Rakyat (MPR)</span></label>
+                <label class="option"><input type="radio" name="q6" value="E"><span class="option-text">E. Komite Nasional Pemuda Indonesia (KNPI)</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: A. KNIP.</b><br>
+                Keputusan sidang PPKI ketiga mencakup pembentukan Komite Nasional.
+            </div>
+        </div>
+
+
+        <!-- 7 -->
+        <div class="question-card" data-q="7">
+            <div class="question-number">Soal 7</div>
+
+            <div class="question">
+                Selain membentuk KNIP, sidang PPKI ketiga juga memutuskan pembentukan badan keamanan.
+                Badan keamanan apa yang dibentuk pada sidang tersebut?
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q7" value="A"><span class="option-text">A. Tentara Keamanan Rakyat (TKR)</span></label>
+                <label class="option"><input type="radio" name="q7" value="B"><span class="option-text">B. Badan Keamanan Rakyat (BKR)</span></label>
+                <label class="option"><input type="radio" name="q7" value="C"><span class="option-text">C. Tentara Republik Indonesia (TRI)</span></label>
+                <label class="option"><input type="radio" name="q7" value="D"><span class="option-text">D. Angkatan Bersenjata Republik Indonesia (ABRI)</span></label>
+                <label class="option"><input type="radio" name="q7" value="E"><span class="option-text">E. Tentara Nasional Indonesia (TNI)</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: B. BKR.</b><br>
+                Badan Keamanan Rakyat dibentuk dalam rangka menjaga keamanan pada awal kemerdekaan.
+            </div>
+        </div>
+
+
+        <!-- 8 -->
+        <div class="question-card" data-q="8">
+            <div class="question-number">Soal 8</div>
+
+            <div class="question">
+                Mengapa PPKI dibubarkan pada 29 Agustus 1945, hanya beberapa hari setelah dibentuk?
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q8" value="A"><span class="option-text">A. Karena tugasnya sudah selesai, yaitu membentuk lembaga-lembaga pemerintahan awal.</span></label>
+                <label class="option"><input type="radio" name="q8" value="B"><span class="option-text">B. Karena PPKI tidak mampu menjalankan tugasnya dengan baik.</span></label>
+                <label class="option"><input type="radio" name="q8" value="C"><span class="option-text">C. Karena adanya tekanan dari pihak Sekutu.</span></label>
+                <label class="option"><input type="radio" name="q8" value="D"><span class="option-text">D. Karena para anggotanya mengundurkan diri.</span></label>
+                <label class="option"><input type="radio" name="q8" value="E"><span class="option-text">E. Karena terjadi konflik internal antara Soekarno dan Hatta.</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: A.</b><br>
+                PPKI menyelesaikan tugas-tugas awal pembentukan perangkat negara.
+            </div>
+        </div>
+
+
+        <!-- 9 -->
+        <div class="question-card" data-q="9">
+            <div class="question-number">Soal 9</div>
+
+            <div class="question">
+                Pasca-kemerdekaan, dikeluarkan Maklumat X yang mengubah fungsi KNIP dari badan pembantu
+                presiden menjadi badan legislatif. Kapan Maklumat X ini dikeluarkan?
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q9" value="A"><span class="option-text">A. 3 November 1945</span></label>
+                <label class="option"><input type="radio" name="q9" value="B"><span class="option-text">B. 5 Oktober 1945</span></label>
+                <label class="option"><input type="radio" name="q9" value="C"><span class="option-text">C. 16 Oktober 1945</span></label>
+                <label class="option"><input type="radio" name="q9" value="D"><span class="option-text">D. 14 November 1945</span></label>
+                <label class="option"><input type="radio" name="q9" value="E"><span class="option-text">E. 31 Januari 1946</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: C. 16 Oktober 1945.</b><br>
+                Maklumat Wakil Presiden No. X dikeluarkan pada 16 Oktober 1945.
+            </div>
+        </div>
+
+
+        <!-- 10 -->
+        <div class="question-card" data-q="10">
+            <div class="question-number">Soal 10</div>
+
+            <div class="question">
+                Perubahan sistem pemerintahan dari presidensial menjadi parlementer ditandai dengan
+                pembentukan kabinet baru yang dipimpin oleh seorang perdana menteri.
+                Siapakah perdana menteri pertama Indonesia?
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q10" value="A"><span class="option-text">A. Soekarno</span></label>
+                <label class="option"><input type="radio" name="q10" value="B"><span class="option-text">B. Mohammad Hatta</span></label>
+                <label class="option"><input type="radio" name="q10" value="C"><span class="option-text">C. Sutan Sjahrir</span></label>
+                <label class="option"><input type="radio" name="q10" value="D"><span class="option-text">D. Amir Sjarifuddin</span></label>
+                <label class="option"><input type="radio" name="q10" value="E"><span class="option-text">E. Mohammad Natsir</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: C. Sutan Sjahrir.</b><br>
+                Sutan Sjahrir memimpin kabinet parlementer pertama.
+            </div>
+        </div>
+
+
+        <!-- 11 -->
+        <div class="question-card" data-q="11">
+            <div class="question-number">Soal 11</div>
+
+            <div class="question">
+                Setelah Proklamasi Kemerdekaan, Sekutu datang kembali ke Indonesia.
+                Pihak yang membonceng kedatangan Sekutu dengan tujuan mengembalikan kekuasaannya di Indonesia adalah...
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q11" value="A"><span class="option-text">A. Inggris</span></label>
+                <label class="option"><input type="radio" name="q11" value="B"><span class="option-text">B. Belanda (NICA)</span></label>
+                <label class="option"><input type="radio" name="q11" value="C"><span class="option-text">C. Amerika Serikat</span></label>
+                <label class="option"><input type="radio" name="q11" value="D"><span class="option-text">D. Australia</span></label>
+                <label class="option"><input type="radio" name="q11" value="E"><span class="option-text">E. Jepang</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: B. Belanda (NICA).</b><br>
+                NICA ikut hadir bersama kedatangan Sekutu dengan tujuan memulihkan kekuasaan Belanda.
+            </div>
+        </div>
+
+
+        <!-- 12 -->
+        <div class="question-card" data-q="12">
+            <div class="question-number">Soal 12</div>
+
+            <div class="question">
+                Peristiwa perobekan bendera Belanda (merah-putih-biru) menjadi bendera Indonesia
+                (merah-putih) terjadi di Hotel Yamato, Surabaya, pada 19 September 1945.
+                Peristiwa ini memicu terjadinya...
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q12" value="A"><span class="option-text">A. Peristiwa Bandung Lautan Api</span></label>
+                <label class="option"><input type="radio" name="q12" value="B"><span class="option-text">B. Pertempuran Ambarawa</span></label>
+                <label class="option"><input type="radio" name="q12" value="C"><span class="option-text">C. Pertempuran Surabaya</span></label>
+                <label class="option"><input type="radio" name="q12" value="D"><span class="option-text">D. Pertempuran Lima Hari di Semarang</span></label>
+                <label class="option"><input type="radio" name="q12" value="E"><span class="option-text">E. Agresi Militer Belanda I</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: C. Pertempuran Surabaya.</b><br>
+                Ketegangan di Surabaya berkembang menjadi pertempuran besar pada November 1945.
+            </div>
+        </div>
+
+
+        <!-- 13 -->
+        <div class="question-card" data-q="13">
+            <div class="question-number">Soal 13</div>
+
+            <div class="question">
+                Peristiwa Rapat Raksasa yang diselenggarakan di Lapangan IKADA pada 19 September 1945
+                merupakan wujud dukungan rakyat Indonesia terhadap...
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q13" value="A"><span class="option-text">A. Kedatangan Sekutu di Jakarta</span></label>
+                <label class="option"><input type="radio" name="q13" value="B"><span class="option-text">B. Proklamasi Kemerdekaan</span></label>
+                <label class="option"><input type="radio" name="q13" value="C"><span class="option-text">C. Pembentukan kabinet pertama</span></label>
+                <label class="option"><input type="radio" name="q13" value="D"><span class="option-text">D. Perundingan dengan Belanda</span></label>
+                <label class="option"><input type="radio" name="q13" value="E"><span class="option-text">E. Gerakan pemuda radikal</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: B. Proklamasi Kemerdekaan.</b><br>
+                Rapat tersebut menunjukkan dukungan rakyat terhadap kemerdekaan dan pemerintahan Republik.
+            </div>
+        </div>
+
+
+        <!-- 14 -->
+        <div class="question-card" data-q="14">
+            <div class="question-number">Soal 14</div>
+
+            <div class="question">
+                Perjanjian Linggarjati yang ditandatangani pada 15 November 1946 memberikan pengakuan
+                secara de facto oleh Belanda atas wilayah Republik Indonesia yang meliputi...
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q14" value="A"><span class="option-text">A. Seluruh wilayah Indonesia</span></label>
+                <label class="option"><input type="radio" name="q14" value="B"><span class="option-text">B. Sumatra dan Jawa</span></label>
+                <label class="option"><input type="radio" name="q14" value="C"><span class="option-text">C. Jawa dan Madura</span></label>
+                <label class="option"><input type="radio" name="q14" value="D"><span class="option-text">D. Sumatra, Jawa, dan Madura</span></label>
+                <label class="option"><input type="radio" name="q14" value="E"><span class="option-text">E. Jawa, Bali, dan Lombok</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: D. Sumatra, Jawa, dan Madura.</b><br>
+                Dalam Linggarjati, Belanda mengakui secara de facto wilayah Republik Indonesia atas Jawa,
+                Madura, dan Sumatra.
+            </div>
+        </div>
+
+
+        <!-- 15 -->
+        <div class="question-card" data-q="15">
+            <div class="question-number">Soal 15</div>
+
+            <div class="question">
+                Pertempuran Ambarawa yang dipimpin oleh Kolonel Soedirman adalah salah satu pertempuran
+                heroik yang berhasil mengusir pasukan Sekutu dari wilayah Ambarawa. Pertempuran ini terjadi pada...
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q15" value="A"><span class="option-text">A. 10 November 1945</span></label>
+                <label class="option"><input type="radio" name="q15" value="B"><span class="option-text">B. 20 Oktober 1945</span></label>
+                <label class="option"><input type="radio" name="q15" value="C"><span class="option-text">C. 15 Desember 1945</span></label>
+                <label class="option"><input type="radio" name="q15" value="D"><span class="option-text">D. 29 Oktober 1945</span></label>
+                <label class="option"><input type="radio" name="q15" value="E"><span class="option-text">E. 18 Januari 1946</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: C. 15 Desember 1945.</b><br>
+                15 Desember diperingati sebagai hari berakhirnya Pertempuran Ambarawa.
+            </div>
+        </div>
+
+
+        <!-- 16 -->
+        <div class="question-card" data-q="16">
+            <div class="question-number">Soal 16</div>
+
+            <div class="question">
+                Latar belakang terjadinya Agresi Militer Belanda I adalah...
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q16" value="A"><span class="option-text">A. Penolakan Belanda atas Perjanjian Linggarjati</span></label>
+                <label class="option"><input type="radio" name="q16" value="B"><span class="option-text">B. Kekalahan Belanda dalam Perang Dunia II</span></label>
+                <label class="option"><input type="radio" name="q16" value="C"><span class="option-text">C. Serangan tiba-tiba oleh pasukan Jepang</span></label>
+                <label class="option"><input type="radio" name="q16" value="D"><span class="option-text">D. Penolakan Indonesia atas Perjanjian Renville</span></label>
+                <label class="option"><input type="radio" name="q16" value="E"><span class="option-text">E. Kedatangan pasukan Sekutu yang memicu ketegangan</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: A.</b><br>
+                Agresi Militer Belanda I berkaitan dengan perselisihan mengenai pelaksanaan Perjanjian Linggarjati.
+            </div>
+        </div>
+
+
+        <!-- 17 -->
+        <div class="question-card" data-q="17">
+            <div class="question-number">Soal 17</div>
+
+            <div class="question">
+                Perundingan yang diselenggarakan di atas kapal perang Angkatan Laut Amerika Serikat,
+                USS Renville, bertujuan untuk menyelesaikan konflik antara Indonesia dan Belanda.
+                Perundingan ini menghasilkan perjanjian yang bernama...
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q17" value="A"><span class="option-text">A. Perjanjian Linggarjati</span></label>
+                <label class="option"><input type="radio" name="q17" value="B"><span class="option-text">B. Perjanjian Renville</span></label>
+                <label class="option"><input type="radio" name="q17" value="C"><span class="option-text">C. Perjanjian Roem-Royen</span></label>
+                <label class="option"><input type="radio" name="q17" value="D"><span class="option-text">D. Konferensi Meja Bundar</span></label>
+                <label class="option"><input type="radio" name="q17" value="E"><span class="option-text">E. Perjanjian Malino</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: B. Perjanjian Renville.</b><br>
+                Perundingan berlangsung di atas USS Renville dan menghasilkan Perjanjian Renville.
+            </div>
+        </div>
+
+
+        <!-- 18 -->
+        <div class="question-card" data-q="18">
+            <div class="question-number">Soal 18</div>
+
+            <div class="question">
+                Salah satu keputusan penting dalam Perjanjian Renville yang sangat merugikan pihak Indonesia adalah...
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q18" value="A"><span class="option-text">A. Belanda mengakui kedaulatan RI atas seluruh wilayah Indonesia</span></label>
+                <label class="option"><input type="radio" name="q18" value="B"><span class="option-text">B. Wilayah RI hanya diakui meliputi Sumatra dan Jawa</span></label>
+                <label class="option"><input type="radio" name="q18" value="C"><span class="option-text">C. Pembentukan negara boneka di wilayah yang dikuasai Belanda</span></label>
+                <label class="option"><input type="radio" name="q18" value="D"><span class="option-text">D. Penarikan pasukan Belanda dari wilayah RI</span></label>
+                <label class="option"><input type="radio" name="q18" value="E"><span class="option-text">E. Penarikan pasukan TNI dari wilayah-wilayah yang diduduki Belanda</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: E.</b><br>
+                Salah satu ketentuan Renville adalah penarikan pasukan RI dari daerah-daerah di belakang garis Van Mook.
+            </div>
+        </div>
+
+
+        <!-- 19 -->
+        <div class="question-card" data-q="19">
+            <div class="question-number">Soal 19</div>
+
+            <div class="question">
+                Agresi Militer Belanda II yang dimulai pada 19 Desember 1948 berhasil menduduki ibu kota
+                Yogyakarta dan menangkap para pemimpin Republik Indonesia, termasuk Soekarno dan Hatta.
+                Peristiwa ini memicu lahirnya...
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q19" value="A"><span class="option-text">A. Perjanjian Roem-Royen</span></label>
+                <label class="option"><input type="radio" name="q19" value="B"><span class="option-text">B. Pemerintahan Darurat Republik Indonesia (PDRI)</span></label>
+                <label class="option"><input type="radio" name="q19" value="C"><span class="option-text">C. Serangan Umum 1 Maret 1949</span></label>
+                <label class="option"><input type="radio" name="q19" value="D"><span class="option-text">D. Pertempuran Lima Hari</span></label>
+                <label class="option"><input type="radio" name="q19" value="E"><span class="option-text">E. Konferensi Meja Bundar</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: B. PDRI.</b><br>
+                PDRI dibentuk untuk menjaga keberlangsungan pemerintahan Republik ketika pemimpin di Yogyakarta ditangkap.
+            </div>
+        </div>
+
+
+        <!-- 20 -->
+        <div class="question-card" data-q="20">
+            <div class="question-number">Soal 20</div>
+
+            <div class="question">
+                Serangan Umum 1 Maret 1949 adalah serangan balasan yang dilancarkan oleh TNI dan pejuang
+                Indonesia untuk merebut kembali kota Yogyakarta. Tujuan utama serangan ini adalah...
+            </div>
+
+            <div class="options">
+                <label class="option"><input type="radio" name="q20" value="A"><span class="option-text">A. Mempersiapkan Konferensi Meja Bundar</span></label>
+                <label class="option"><input type="radio" name="q20" value="B"><span class="option-text">B. Membalas dendam atas kekalahan di Agresi Militer I</span></label>
+                <label class="option"><input type="radio" name="q20" value="C"><span class="option-text">C. Menunjukkan kepada dunia internasional bahwa RI masih ada</span></label>
+                <label class="option"><input type="radio" name="q20" value="D"><span class="option-text">D. Menghancurkan seluruh kekuatan militer Belanda</span></label>
+                <label class="option"><input type="radio" name="q20" value="E"><span class="option-text">E. Membebaskan Soekarno dan Hatta dari tawanan Belanda</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: C.</b><br>
+                Serangan ini memiliki tujuan militer sekaligus menunjukkan kepada dunia bahwa Republik dan TNI masih ada.
+            </div>
+        </div>
+
+
+        <!-- 21 -->
+        <div class="question-card" data-q="21">
+            <div class="question-number">Soal 21</div>
+
+            <div class="question">
+                Perjanjian Renville dianggap sangat merugikan bagi pihak Republik Indonesia karena adanya
+                poin-poin yang tidak adil. Poin-poin tersebut meliputi...
+            </div>
+
+            <div class="multi-info">☑ PILIH 2 JAWABAN</div>
+
+            <div class="options">
+                <label class="option"><input type="checkbox" name="q21" value="A"><span class="option-text">A. Pengakuan Belanda atas kedaulatan RI hanya di Jawa dan Madura.</span></label>
+                <label class="option"><input type="checkbox" name="q21" value="B"><span class="option-text">B. Belanda diizinkan membentuk negara-negara bagian federal di wilayah yang dikuasai Belanda.</span></label>
+                <label class="option"><input type="checkbox" name="q21" value="C"><span class="option-text">C. Pasukan TNI harus ditarik mundur dari wilayah-wilayah yang diduduki Belanda.</span></label>
+                <label class="option"><input type="checkbox" name="q21" value="D"><span class="option-text">D. Pembentukan Uni Indonesia-Belanda yang dipimpin Ratu Belanda.</span></label>
+                <label class="option"><input type="checkbox" name="q21" value="E"><span class="option-text">E. Penghentian Agresi Militer Belanda I secara total.</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: B dan C.</b><br>
+                Keduanya berkaitan dengan konsekuensi politik dan militer yang merugikan Republik.
+            </div>
+        </div>
+
+
+        <!-- 22 -->
+        <div class="question-card" data-q="22">
+            <div class="question-number">Soal 22</div>
+
+            <div class="question">
+                Serangan Umum 1 Maret 1949 memiliki beberapa tujuan strategis yang ingin dicapai,
+                baik secara militer maupun diplomasi. Tujuan-tujuan tersebut antara lain...
+            </div>
+
+            <div class="multi-info">☑ PILIH 3 JAWABAN</div>
+
+            <div class="options">
+                <label class="option"><input type="checkbox" name="q22" value="A"><span class="option-text">A. Menguasai kembali ibu kota Yogyakarta dari tangan Belanda secara permanen.</span></label>
+                <label class="option"><input type="checkbox" name="q22" value="B"><span class="option-text">B. Menunjukkan kepada dunia internasional bahwa TNI dan pemerintahan RI masih eksis.</span></label>
+                <label class="option"><input type="checkbox" name="q22" value="C"><span class="option-text">C. Mematahkan propaganda Belanda yang menyatakan bahwa TNI telah hancur.</span></label>
+                <label class="option"><input type="checkbox" name="q22" value="D"><span class="option-text">D. Mempersiapkan Konferensi Meja Bundar (KMB) di Den Haag.</span></label>
+                <label class="option"><input type="checkbox" name="q22" value="E"><span class="option-text">E. Menarik simpati dan dukungan dari PBB terhadap perjuangan Indonesia.</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: B, C, dan E.</b><br>
+                Ketiganya sesuai dengan tujuan strategis serangan untuk menunjukkan eksistensi Republik,
+                membantah propaganda Belanda, dan memperkuat dukungan internasional.
+            </div>
+        </div>
+
+
+        <!-- 23 -->
+        <div class="question-card" data-q="23">
+            <div class="question-number">Soal 23</div>
+
+            <div class="question">
+                Pertempuran Ambarawa dan Serangan Umum 1 Maret 1949 memiliki beberapa kesamaan strategis
+                dalam perjuangan mempertahankan kemerdekaan. Kesamaan tersebut meliputi...
+            </div>
+
+            <div class="multi-info">☑ PILIH 2 JAWABAN</div>
+
+            <div class="options">
+                <label class="option"><input type="checkbox" name="q23" value="A"><span class="option-text">A. Keduanya berhasil mengusir pasukan Belanda dari wilayah yang dikuasai.</span></label>
+                <label class="option"><input type="checkbox" name="q23" value="B"><span class="option-text">B. Keduanya menunjukkan kemampuan militer dan semangat juang bangsa Indonesia.</span></label>
+                <label class="option"><input type="checkbox" name="q23" value="C"><span class="option-text">C. Keduanya merupakan bagian dari upaya untuk mempertahankan kedaulatan negara.</span></label>
+                <label class="option"><input type="checkbox" name="q23" value="D"><span class="option-text">D. Keduanya dipimpin langsung oleh Kolonel Soedirman sebagai komandan utama.</span></label>
+                <label class="option"><input type="checkbox" name="q23" value="E"><span class="option-text">E. Keduanya terjadi sebelum Agresi Militer Belanda I.</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: B dan C.</b><br>
+                Kedua peristiwa sama-sama menunjukkan perjuangan dan kemampuan militer Indonesia
+                dalam mempertahankan kemerdekaan.
+            </div>
+        </div>
+
+
+        <!-- 24 -->
+        <div class="question-card" data-q="24">
+            <div class="question-number">Soal 24</div>
+
+            <div class="question">
+                Perhatikan perbedaan antara Pertempuran Surabaya dan Serangan Umum 1 Maret 1949.
+                Perbedaan-perbedaan yang paling signifikan antara kedua peristiwa tersebut adalah...
+            </div>
+
+            <div class="multi-info">☑ PILIH 4 JAWABAN</div>
+
+            <div class="options">
+                <label class="option"><input type="checkbox" name="q24" value="A"><span class="option-text">A. Pertempuran Surabaya lebih bersifat spontan, sementara Serangan Umum 1 Maret merupakan serangan terencana.</span></label>
+                <label class="option"><input type="checkbox" name="q24" value="B"><span class="option-text">B. Pertempuran Surabaya dipimpin oleh tokoh militer, sementara Serangan Umum 1 Maret didominasi oleh pergerakan rakyat.</span></label>
+                <label class="option"><input type="checkbox" name="q24" value="C"><span class="option-text">C. Serangan Umum 1 Maret memiliki tujuan utama diplomasi, sedangkan Pertempuran Surabaya murni perlawanan bersenjata.</span></label>
+                <label class="option"><input type="checkbox" name="q24" value="D"><span class="option-text">D. Pertempuran Surabaya terjadi di awal revolusi, sementara Serangan Umum 1 Maret terjadi di periode akhir revolusi.</span></label>
+                <label class="option"><input type="checkbox" name="q24" value="E"><span class="option-text">E. Pertempuran Surabaya dipicu oleh insiden perobekan bendera, sementara Serangan Umum 1 Maret dipicu oleh ditawannya para pemimpin RI.</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: A, C, D, dan E.</b><br>
+                Keempat pilihan tersebut menggambarkan perbedaan waktu, karakter perjuangan,
+                tujuan strategis, dan konteks kedua peristiwa.
+            </div>
+        </div>
+
+
+        <!-- 25 -->
+        <div class="question-card" data-q="25">
+            <div class="question-number">Soal 25</div>
+
+            <div class="question">
+                Agresi Militer Belanda II memiliki beberapa dampak penting terhadap perjuangan
+                kemerdekaan Indonesia. Dampak-dampak tersebut adalah...
+            </div>
+
+            <div class="multi-info">☑ PILIH 3 JAWABAN</div>
+
+            <div class="options">
+                <label class="option"><input type="checkbox" name="q25" value="A"><span class="option-text">A. Ibu kota RI, Yogyakarta, berhasil diduduki oleh pasukan Belanda.</span></label>
+                <label class="option"><input type="checkbox" name="q25" value="B"><span class="option-text">B. Soekarno dan Hatta berhasil melarikan diri ke luar negeri.</span></label>
+                <label class="option"><input type="checkbox" name="q25" value="C"><span class="option-text">C. Terbentuknya Pemerintahan Darurat Republik Indonesia (PDRI).</span></label>
+                <label class="option"><input type="checkbox" name="q25" value="D"><span class="option-text">D. Perjuangan diplomasi Indonesia mendapat dukungan kuat dari negara-negara Asia-Afrika.</span></label>
+                <label class="option"><input type="checkbox" name="q25" value="E"><span class="option-text">E. Belanda menghentikan Agresi Militer dan kembali ke meja perundingan.</span></label>
+            </div>
+
+            <div class="explanation">
+                <b>Jawaban: A, C, dan D.</b><br>
+                Agresi Militer Belanda II menyebabkan Yogyakarta diduduki, para pemimpin RI ditangkap,
+                dan PDRI dibentuk. Peristiwa tersebut juga memengaruhi dukungan internasional terhadap Indonesia.
+            </div>
+        </div>
+
+
+        <div class="submit-area">
+            <button type="button" class="submit" onclick="checkAnswers()">
+                ✓ Periksa Jawaban
+            </button>
+        </div>
+
+    </form>
+
+
+    <div class="result" id="result">
+
+        <div class="result-icon" id="resultIcon">🏆</div>
+
+        <h2>Hasil Latihan</h2>
+
+        <div class="score" id="score">0/25</div>
+
+        <p id="resultText"></p>
+
+        <button class="retry" onclick="location.reload()">
+            ↻ Kerjakan Lagi
+        </button>
+
+    </div>
+
+</main>
+
+
+<footer>
+    © 2026 • Bank Soal Sejarah XII
+</footer>
+
+
+<script>
+
+/*
+==================================================
+KUNCI JAWABAN
+1-20 = pilihan tunggal
+21-25 = pilihan ganda/multi-jawaban
+==================================================
+*/
+
+const answerKey = {
+
+    1:["C"],
+    2:["D"],
+    3:["C"],
+    4:["E"],
+    5:["C"],
+    6:["A"],
+    7:["B"],
+    8:["A"],
+    9:["C"],
+    10:["C"],
+    11:["B"],
+    12:["C"],
+    13:["B"],
+    14:["D"],
+    15:["C"],
+    16:["A"],
+    17:["B"],
+    18:["E"],
+    19:["B"],
+    20:["C"],
+
+    21:["B","C"],
+    22:["B","C","E"],
+    23:["B","C"],
+    24:["A","C","D","E"],
+    25:["A","C","D"]
+};
+
+
+/*
+==================================================
+CEK JAWABAN
+==================================================
+*/
+
+function checkAnswers(){
+
+    let score = 0;
+    let answered = 0;
+
+    for(let q = 1; q <= 25; q++){
+
+        const card = document.querySelector(
+            `.question-card[data-q="${q}"]`
+        );
+
+        const inputs = card.querySelectorAll(
+            `input[name="q${q}"]`
+        );
+
+        const selected = [];
+
+        inputs.forEach(input => {
+
+            if(input.checked){
+                selected.push(input.value);
+                answered++;
+            }
+
+        });
+
+        const correct = answerKey[q];
+
+        /*
+        Bersihkan status sebelumnya
+        */
+        inputs.forEach(input => {
+
+            const label = input.closest(".option");
+
+            label.classList.remove(
+                "correct",
+                "wrong"
+            );
+
+        });
+
+
+        /*
+        Tandai jawaban
+        */
+        inputs.forEach(input => {
+
+            const label = input.closest(".option");
+
+            if(correct.includes(input.value)){
+
+                label.classList.add("correct");
+
+            }
+
+            if(
+                input.checked &&
+                !correct.includes(input.value)
+            ){
+
+                label.classList.add("wrong");
+
+            }
+
+        });
+
+
+        /*
+        Cek apakah seluruh jawaban
+        sama persis dengan kunci
+        */
+
+        const sortedSelected = [...selected].sort();
+        const sortedCorrect = [...correct].sort();
+
+        const sameLength =
+            sortedSelected.length === sortedCorrect.length;
+
+        const sameValues =
+            sortedSelected.every(
+                (value,index) =>
+                value === sortedCorrect[index]
+            );
+
+        if(
+            sameLength &&
+            sameValues
+        ){
+            score++;
+        }
+
+
+        /*
+        Tampilkan pembahasan
+        */
+
+        const explanation =
+            card.querySelector(".explanation");
+
+        explanation.classList.add("show");
+    }
+
+
+    /*
+    HASIL
+    */
+
+    const result =
+        document.getElementById("result");
+
+    const scoreElement =
+        document.getElementById("score");
+
+    const resultText =
+        document.getElementById("resultText");
+
+    const resultIcon =
+        document.getElementById("resultIcon");
+
+
+    scoreElement.textContent =
+        score + "/25";
+
+
+    const percentage =
+        Math.round((score / 25) * 100);
+
+
+    if(percentage >= 90){
+
+        resultIcon.textContent = "🏆";
+
+        resultText.textContent =
+            "Luar biasa! Penguasaan materi kamu sangat baik.";
+
+    }
+    else if(percentage >= 75){
+
+        resultIcon.textContent = "🎉";
+
+        resultText.textContent =
+            "Bagus! Tinggal tingkatkan beberapa bagian lagi.";
+
+    }
+    else if(percentage >= 60){
+
+        resultIcon.textContent = "📚";
+
+        resultText.textContent =
+            "Cukup baik. Coba pelajari kembali materi yang masih salah.";
+
+    }
+    else{
+
+        resultIcon.textContent = "💪";
+
+        resultText.textContent =
+            "Tetap semangat. Pelajari pembahasannya lalu coba lagi.";
+
+    }
+
+
+    result.classList.add("show");
+
+
+    /*
+    Scroll ke hasil
+    */
+
+    setTimeout(() => {
+
+        result.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+    },100);
+
+
+    /*
+    Disable tombol setelah diperiksa
+    */
+
+    document.querySelector(".submit").disabled = true;
+
+    document.querySelector(".submit").style.opacity = ".6";
+    document.querySelector(".submit").style.cursor = "default";
+
+
+    /*
+    Disable input agar jawaban tidak berubah
+    */
+
+    document
+        .querySelectorAll("#quizForm input")
+        .forEach(input => {
+            input.disabled = true;
+        });
+
+
+    /*
+    Update progress menjadi selesai
+    */
+
+    document.getElementById("progressText")
+        .textContent = "Selesai • 25 dari 25";
+
+    document.getElementById("progressPercent")
+        .textContent = "100%";
+
+    document.getElementById("progressFill")
+        .style.width = "100%";
+}
+
+
+/*
+==================================================
+PROGRESS SAAT MENGERJAKAN
+==================================================
+*/
+
+function updateProgress(){
+
+    let answeredQuestions = 0;
+
+    for(let q = 1; q <= 25; q++){
+
+        const inputs =
+            document.querySelectorAll(
+                `input[name="q${q}"]`
+            );
+
+        let answered = false;
+
+        inputs.forEach(input => {
+
+            if(input.checked){
+                answered = true;
+            }
+
+        });
+
+        if(answered){
+            answeredQuestions++;
+        }
+    }
+
+
+    const percent =
+        Math.round(
+            (answeredQuestions / 25) * 100
+        );
+
+
+    document.getElementById("progressText")
+        .textContent =
+        `Soal ${answeredQuestions} dari 25`;
+
+    document.getElementById("progressPercent")
+        .textContent =
+        percent + "%";
+
+    document.getElementById("progressFill")
+        .style.width =
+        percent + "%";
+}
+
+
+document
+    .querySelectorAll("#quizForm input")
+    .forEach(input => {
+
+        input.addEventListener(
+            "change",
+            updateProgress
+        );
+
+    });
+
+</script>
+
+</body>
+</html>
