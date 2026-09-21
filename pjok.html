@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Quiz PJOK — 50 Soal</title>
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#eef2ff,#f0fdf4);
+color:#172033
+}
+header{
+background:linear-gradient(135deg,#2563eb,#16a34a);
+color:white;text-align:center;padding:32px 15px 45px
+}
+header h1{margin:0;font-size:30px}
+header p{margin:9px 0 0;opacity:.9}
+.container{width:min(900px,94%);margin:-20px auto 40px}
+.top{
+background:white;padding:18px;border-radius:18px;
+box-shadow:0 8px 25px #0001;margin-bottom:16px
+}
+.row{display:flex;justify-content:space-between;align-items:center}
+.badge{
+background:#dbeafe;color:#1d4ed8;padding:7px 12px;
+border-radius:20px;font-weight:bold;font-size:13px
+}
+.progress{height:9px;background:#e5e7eb;border-radius:20px;margin-top:14px;overflow:hidden}
+.bar{height:100%;width:0;background:linear-gradient(90deg,#2563eb,#16a34a);transition:.3s}
+.card{
+background:white;border-radius:18px;padding:20px;margin:14px 0;
+box-shadow:0 5px 20px #0000000d;border:2px solid transparent
+}
+.card.empty{border-color:#f59e0b}
+.num{color:#2563eb;font-weight:bold;font-size:13px}
+.tag{
+display:inline-block;background:#f3f4f6;padding:5px 9px;
+border-radius:7px;font-size:11px;margin-left:6px;color:#4b5563
+}
+.q{font-size:17px;font-weight:bold;line-height:1.55;margin:13px 0}
+.option{
+display:block;padding:12px;margin:8px 0;border:1px solid #e5e7eb;
+border-radius:11px;cursor:pointer;line-height:1.4
+}
+.option:hover{background:#f8fafc}
+.option input{accent-color:#2563eb;margin-right:8px}
+.correct{background:#dcfce7!important;border-color:#22c55e!important;color:#166534}
+.wrong{background:#fee2e2!important;border-color:#ef4444!important;color:#991b1b}
+.explain{
+display:none;background:#f8fafc;border-left:4px solid #2563eb;
+padding:11px;margin-top:12px;border-radius:8px;font-size:14px;line-height:1.5
+}
+.submit{
+width:100%;padding:17px;border:0;border-radius:14px;
+background:linear-gradient(135deg,#2563eb,#16a34a);
+color:white;font-size:17px;font-weight:bold;cursor:pointer;margin-top:8px
+}
+#result{
+display:none;background:white;border-radius:20px;padding:23px;
+margin-top:18px;box-shadow:0 8px 25px #0002
+}
+.circle{
+width:135px;height:135px;border-radius:50%;
+background:linear-gradient(135deg,#2563eb,#16a34a);
+color:white;margin:15px auto;display:flex;
+flex-direction:column;align-items:center;justify-content:center
+}
+.circle b{font-size:38px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{background:#f8fafc;text-align:center;padding:14px;border-radius:12px}
+.stat b{display:block;font-size:23px}
+.green{color:#16a34a}.red{color:#dc2626}.yellow{color:#f59e0b}
+.review{margin-top:25px}
+.review div{padding:11px 0;border-bottom:1px solid #eee}
+.restart{
+width:100%;padding:14px;margin-top:20px;border:0;border-radius:12px;
+background:#172033;color:white;font-weight:bold
+}
+@media(max-width:600px){
+header h1{font-size:23px}.card{padding:16px}.q{font-size:16px}
+.stats{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🏐 🏀 ⚽ Quiz PJOK</h1>
+<p>50 Soal • Bola Voli, Basket, Sepak Bola, Kesehatan & Kebugaran</p>
+</header>
+
+<div class="container">
+
+<div class="top">
+<div class="row">
+<span class="badge">50 SOAL</span>
+<b>⏱️ <span id="timer">60:00</span></b>
+</div>
+<div style="margin-top:10px;color:#667085;font-size:14px">
+Terjawab <b id="answered">0</b> / 50
+</div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+</div>
+
+<form id="quiz">
+
+<!-- 1-10 VOLI -->
+
+<div class="card">
+<span class="num">SOAL 01</span><span class="tag">Bola Voli</span>
+<div class="q">Berapakah tinggi net bola voli untuk putra?</div>
+<label class="option"><input type="radio" name="q1" value="A">A. 2,24 m</label>
+<label class="option"><input type="radio" name="q1" value="B">B. 2,30 m</label>
+<label class="option"><input type="radio" name="q1" value="C">C. 2,43 m</label>
+<label class="option"><input type="radio" name="q1" value="D">D. 2,50 m</label>
+<label class="option"><input type="radio" name="q1" value="E">E. 2,55 m</label>
+<div class="explain"><b>Jawaban: C.</b> Tinggi net putra adalah 2,43 meter.</div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 02</span><span class="tag">Bola Voli</span>
+<div class="q">Berapakah tinggi net bola voli untuk putri?</div>
+<label class="option"><input type="radio" name="q2" value="A">A. 2,10 m</label>
+<label class="option"><input type="radio" name="q2" value="B">B. 2,20 m</label>
+<label class="option"><input type="radio" name="q2" value="C">C. 2,24 m</label>
+<label class="option"><input type="radio" name="q2" value="D">D. 2,30 m</label>
+<label class="option"><input type="radio" name="q2" value="E">E. 2,43 m</label>
+<div class="explain"><b>Jawaban: C.</b> Tinggi net putri adalah 2,24 meter.</div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 03</span><span class="tag">Bola Voli</span>
+<div class="q">Organisasi bola voli internasional adalah...</div>
+<label class="option"><input type="radio" name="q3" value="A">A. FIFA</label>
+<label class="option"><input type="radio" name="q3" value="B">B. FIBA</label>
+<label class="option"><input type="radio" name="q3" value="C">C. FIVB</label>
+<label class="option"><input type="radio" name="q3" value="D">D. PBSI</label>
+<label class="option"><input type="radio" name="q3" value="E">E. PSSI</label>
+<div class="explain"><b>Jawaban: C.</b> FIVB adalah federasi internasional bola voli.</div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 04</span><span class="tag">Bola Voli</span>
+<div class="q">Teknik memukul bola dengan kedua lengan bagian bawah disebut...</div>
+<label class="option"><input type="radio" name="q4" value="A">A. Passing bawah</label>
+<label class="option"><input type="radio" name="q4" value="B">B. Passing atas</label>
+<label class="option"><input type="radio" name="q4" value="C">C. Smash</label>
+<label class="option"><input type="radio" name="q4" value="D">D. Block</label>
+<label class="option"><input type="radio" name="q4" value="E">E. Servis</label>
+<div class="explain"><b>Jawaban: A.</b> Passing bawah menggunakan bagian lengan bawah.</div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 05</span><span class="tag">Bola Voli</span>
+<div class="q">Pukulan keras dan menukik ke daerah lawan disebut...</div>
+<label class="option"><input type="radio" name="q5" value="A">A. Passing</label>
+<label class="option"><input type="radio" name="q5" value="B">B. Smash</label>
+<label class="option"><input type="radio" name="q5" value="C">C. Block</label>
+<label class="option"><input type="radio" name="q5" value="D">D. Toss</label>
+<label class="option"><input type="radio" name="q5" value="E">E. Dig</label>
+<div class="explain"><b>Jawaban: B.</b> Smash merupakan serangan keras dan menukik.</div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 06</span><span class="tag">Bola Voli</span>
+<div class="q">Dalam permainan bola voli, satu regu maksimal memainkan bola sebanyak ... sentuhan sebelum mengembalikannya ke lawan.</div>
+<label class="option"><input type="radio" name="q6" value="A">A. 1</label>
+<label class="option"><input type="radio" name="q6" value="B">B. 2</label>
+<label class="option"><input type="radio" name="q6" value="C">C. 3</label>
+<label class="option"><input type="radio" name="q6" value="D">D. 4</label>
+<label class="option"><input type="radio" name="q6" value="E">E. 5</label>
+<div class="explain"><b>Jawaban: C.</b> Sebuah regu memiliki maksimal tiga sentuhan untuk mengembalikan bola.</div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 07</span><span class="tag">Bola Voli</span>
+<div class="q">Rotasi pemain dilakukan ketika...</div>
+<label class="option"><input type="radio" name="q7" value="A">A. Tim melakukan smash</label>
+<label class="option"><input type="radio" name="q7" value="B">B. Tim memperoleh hak servis dari lawan</label>
+<label class="option"><input type="radio" name="q7" value="C">C. Bola keluar setiap saat</label>
+<label class="option"><input type="radio" name="q7" value="D">D. Pemain melakukan block</label>
+<label class="option"><input type="radio" name="q7" value="E">E. Wasit meniup peluit akhir</label>
+<div class="explain"><b>Jawaban: B.</b> Rotasi terjadi ketika tim penerima servis memenangkan reli dan memperoleh hak servis.</div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 08</span><span class="tag">Sejarah Voli</span>
+<div class="q">Permainan bola voli diciptakan oleh...</div>
+<label class="option"><input type="radio" name="q8" value="A">A. James Naismith</label>
+<label class="option"><input type="radio" name="q8" value="B">B. William G. Morgan</label>
+<label class="option"><input type="radio" name="q8" value="C">C. Jules Rimet</label>
+<label class="option"><input type="radio" name="q8" value="D">D. Pierre de Coubertin</label>
+<label class="option"><input type="radio" name="q8" value="E">E. Walter Camp</label>
+<div class="explain"><b>Jawaban: B.</b> William G. Morgan menciptakan permainan yang kemudian dikenal sebagai bola voli.</div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 09</span><span class="tag">Sejarah Voli</span>
+<div class="q">Nama awal permainan bola voli adalah...</div>
+<label class="option"><input type="radio" name="q9" value="A">A. Basketball</label>
+<label class="option"><input type="radio" name="q9" value="B">B. Mintonette</label>
+<label class="option"><input type="radio" name="q9" value="C">C. Handball</label>
+<label class="option"><input type="radio" name="q9" value="D">D. Netball</label>
+<label class="option"><input type="radio" name="q9" value="E">E. Volleyball</label>
+<div class="explain"><b>Jawaban: B.</b> Nama awal permainan ciptaan Morgan adalah Mintonette.</div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 10</span><span class="tag">Bola Voli</span>
+<div class="q">Teknik menghadang serangan lawan di dekat net disebut...</div>
+<label class="option"><input type="radio" name="q10" value="A">A. Passing</label>
+<label class="option"><input type="radio" name="q10" value="B">B. Servis</label>
+<label class="option"><input type="radio" name="q10" value="C">C. Block</label>
+<label class="option"><input type="radio" name="q10" value="D">D. Toss</label>
+<label class="option"><input type="radio" name="q10" value="E">E. Dribble</label>
+<div class="explain"><b>Jawaban: C.</b> Block digunakan untuk membendung serangan lawan.</div>
+</div>
+
+<!-- 11-20 BASKET -->
+
+<div class="card">
+<span class="num">SOAL 11</span><span class="tag">Basket</span>
+<div class="q">Siapa pencipta permainan bola basket?</div>
+<label class="option"><input type="radio" name="q11" value="A">A. William G. Morgan</label>
+<label class="option"><input type="radio" name="q11" value="B">B. James Naismith</label>
+<label class="option"><input type="radio" name="q11" value="C">C. Jules Rimet</label>
+<label class="option"><input type="radio" name="q11" value="D">D. Thomas Arnold</label>
+<label class="option"><input type="radio" name="q11" value="E">E. Michael Jordan</label>
+<div class="explain"><b>Jawaban: B.</b> James Naismith menciptakan bola basket pada 1891.</div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 12</span><span class="tag">Sejarah Basket</span>
+<div class="q">Bola basket pertama kali diciptakan di negara...</div>
+<label class="option"><input type="radio" name="q12" value="A">A. Inggris</label>
+<label class="option"><input type="radio" name="q12" value="B">B. Brasil</label>
+<label class="option"><input type="radio" name="q12" value="C">C. Amerika Serikat</label>
+<label class="option"><input type="radio" name="q12" value="D">D. Kanada</label>
+<label class="option"><input type="radio" name="q12" value="E">E. Prancis</label>
+<div class="explain"><b>Jawaban: C.</b> Basket diciptakan di Springfield, Massachusetts, Amerika Serikat.</div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 13</span><span class="tag">Basket</span>
+<div class="q">Gerakan membawa bola dengan cara memantulkannya ke lantai disebut...</div>
+<label class="option"><input type="radio" name="q13" value="A">A. Passing</label>
+<label class="option"><input type="radio" name="q13" value="B">B. Shooting</label>
+<label class="option"><input type="radio" name="q13" value="C">C. Dribbling</label>
+<label class="option"><input type="radio" name="q13" value="D">D. Blocking</label>
+<label class="option"><input type="radio" name="q13" value="E">E. Rebound</label>
+<div class="explain"><b>Jawaban: C.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 14</span><span class="tag">Basket</span>
+<div class="q">Operan bola dari depan dada menggunakan dua tangan disebut...</div>
+<label class="option"><input type="radio" name="q14" value="A">A. Chest pass</label>
+<label class="option"><input type="radio" name="q14" value="B">B. Bounce pass</label>
+<label class="option"><input type="radio" name="q14" value="C">C. Overhead pass</label>
+<label class="option"><input type="radio" name="q14" value="D">D. Baseball pass</label>
+<label class="option"><input type="radio" name="q14" value="E">E. Hook pass</label>
+<div class="explain"><b>Jawaban: A.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 15</span><span class="tag">Basket</span>
+<div class="q">Tembakan yang dilakukan sambil melangkah mendekati ring disebut...</div>
+<label class="option"><input type="radio" name="q15" value="A">A. Lay-up</label>
+<label class="option"><input type="radio" name="q15" value="B">B. Chest pass</label>
+<label class="option"><input type="radio" name="q15" value="C">C. Pivot</label>
+<label class="option"><input type="radio" name="q15" value="D">D. Rebound</label>
+<label class="option"><input type="radio" name="q15" value="E">E. Dribble</label>
+<div class="explain"><b>Jawaban: A.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 16</span><span class="tag">Basket</span>
+<div class="q">Gerakan berputar dengan satu kaki sebagai poros disebut...</div>
+<label class="option"><input type="radio" name="q16" value="A">A. Shooting</label>
+<label class="option"><input type="radio" name="q16" value="B">B. Pivot</label>
+<label class="option"><input type="radio" name="q16" value="C">C. Dribble</label>
+<label class="option"><input type="radio" name="q16" value="D">D. Passing</label>
+<label class="option"><input type="radio" name="q16" value="E">E. Rebound</label>
+<div class="explain"><b>Jawaban: B.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 17</span><span class="tag">Basket</span>
+<div class="q">Strategi pertahanan dengan setiap pemain bertanggung jawab menjaga area tertentu disebut...</div>
+<label class="option"><input type="radio" name="q17" value="A">A. Man to man</label>
+<label class="option"><input type="radio" name="q17" value="B">B. Zone defense</label>
+<label class="option"><input type="radio" name="q17" value="C">C. Fast break</label>
+<label class="option"><input type="radio" name="q17" value="D">D. Give and go</label>
+<label class="option"><input type="radio" name="q17" value="E">E. Pick and roll</label>
+<div class="explain"><b>Jawaban: B.</b> Zone defense membagi tanggung jawab berdasarkan wilayah.</div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 18</span><span class="tag">Basket</span>
+<div class="q">Strategi menyerang dengan segera membawa bola ke depan setelah mendapatkan penguasaan bola disebut...</div>
+<label class="option"><input type="radio" name="q18" value="A">A. Zone defense</label>
+<label class="option"><input type="radio" name="q18" value="B">B. Fast break</label>
+<label class="option"><input type="radio" name="q18" value="C">C. Man marking</label>
+<label class="option"><input type="radio" name="q18" value="D">D. Full press</label>
+<label class="option"><input type="radio" name="q18" value="E">E. Blocking</label>
+<div class="explain"><b>Jawaban: B.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 19</span><span class="tag">Basket</span>
+<div class="q">Pelanggaran karena pemain membawa bola sambil berjalan tanpa melakukan dribble disebut...</div>
+<label class="option"><input type="radio" name="q19" value="A">A. Traveling</label>
+<label class="option"><input type="radio" name="q19" value="B">B. Charging</label>
+<label class="option"><input type="radio" name="q19" value="C">C. Blocking</label>
+<label class="option"><input type="radio" name="q19" value="D">D. Rebound</label>
+<label class="option"><input type="radio" name="q19" value="E">E. Screening</label>
+<div class="explain"><b>Jawaban: A.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 20</span><span class="tag">Basket</span>
+<div class="q">Tujuan utama shooting adalah...</div>
+<label class="option"><input type="radio" name="q20" value="A">A. Menguasai tengah lapangan</label>
+<label class="option"><input type="radio" name="q20" value="B">B. Mengoper bola</label>
+<label class="option"><input type="radio" name="q20" value="C">C. Memasukkan bola ke ring</label>
+<label class="option"><input type="radio" name="q20" value="D">D. Menghentikan waktu</label>
+<label class="option"><input type="radio" name="q20" value="E">E. Menggiring bola</label>
+<div class="explain"><b>Jawaban: C.</b></div>
+</div>
+
+<!-- 21-30 SEPAK BOLA -->
+
+<div class="card">
+<span class="num">SOAL 21</span><span class="tag">Sepak Bola</span>
+<div class="q">Organisasi sepak bola internasional adalah...</div>
+<label class="option"><input type="radio" name="q21" value="A">A. FIBA</label>
+<label class="option"><input type="radio" name="q21" value="B">B. FIFA</label>
+<label class="option"><input type="radio" name="q21" value="C">C. FIVB</label>
+<label class="option"><input type="radio" name="q21" value="D">D. IOC</label>
+<label class="option"><input type="radio" name="q21" value="E">E. PBSI</label>
+<div class="explain"><b>Jawaban: B.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 22</span><span class="tag">Sejarah Sepak Bola</span>
+<div class="q">Organisasi sepak bola dunia FIFA didirikan pada tahun...</div>
+<label class="option"><input type="radio" name="q22" value="A">A. 1891</label>
+<label class="option"><input type="radio" name="q22" value="B">B. 1904</label>
+<label class="option"><input type="radio" name="q22" value="C">C. 1928</label>
+<label class="option"><input type="radio" name="q22" value="D">D. 1930</label>
+<label class="option"><input type="radio" name="q22" value="E">E. 1945</label>
+<div class="explain"><b>Jawaban: B.</b> FIFA didirikan pada 1904.</div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 23</span><span class="tag">Sepak Bola</span>
+<div class="q">Teknik mengoper bola kepada teman disebut...</div>
+<label class="option"><input type="radio" name="q23" value="A">A. Passing</label>
+<label class="option"><input type="radio" name="q23" value="B">B. Shooting</label>
+<label class="option"><input type="radio" name="q23" value="C">C. Heading</label>
+<label class="option"><input type="radio" name="q23" value="D">D. Tackling</label>
+<label class="option"><input type="radio" name="q23" value="E">E. Dribbling</label>
+<div class="explain"><b>Jawaban: A.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 24</span><span class="tag">Sepak Bola</span>
+<div class="q">Teknik membawa bola sambil bergerak disebut...</div>
+<label class="option"><input type="radio" name="q24" value="A">A. Passing</label>
+<label class="option"><input type="radio" name="q24" value="B">B. Dribbling</label>
+<label class="option"><input type="radio" name="q24" value="C">C. Heading</label>
+<label class="option"><input type="radio" name="q24" value="D">D. Throw-in</label>
+<label class="option"><input type="radio" name="q24" value="E">E. Corner kick</label>
+<div class="explain"><b>Jawaban: B.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 25</span><span class="tag">Sepak Bola</span>
+<div class="q">Teknik menyundul bola menggunakan kepala disebut...</div>
+<label class="option"><input type="radio" name="q25" value="A">A. Heading</label>
+<label class="option"><input type="radio" name="q25" value="B">B. Passing</label>
+<label class="option"><input type="radio" name="q25" value="C">C. Shooting</label>
+<label class="option"><input type="radio" name="q25" value="D">D. Tackling</label>
+<label class="option"><input type="radio" name="q25" value="E">E. Dribbling</label>
+<div class="explain"><b>Jawaban: A.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 26</span><span class="tag">Strategi</span>
+<div class="q">Tujuan utama strategi penyerangan dalam sepak bola adalah...</div>
+<label class="option"><input type="radio" name="q26" value="A">A. Mempertahankan bola di daerah sendiri</label>
+<label class="option"><input type="radio" name="q26" value="B">B. Menciptakan peluang dan mencetak gol</label>
+<label class="option"><input type="radio" name="q26" value="C">C. Mengurangi jumlah pemain sendiri</label>
+<label class="option"><input type="radio" name="q26" value="D">D. Membiarkan lawan menyerang</label>
+<label class="option"><input type="radio" name="q26" value="E">E. Menghindari penguasaan bola</label>
+<div class="explain"><b>Jawaban: B.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 27</span><span class="tag">Strategi</span>
+<div class="q">Strategi bertahan yang menempatkan pemain untuk menjaga pemain lawan tertentu disebut...</div>
+<label class="option"><input type="radio" name="q27" value="A">A. Zone defense</label>
+<label class="option"><input type="radio" name="q27" value="B">B. Man to man marking</label>
+<label class="option"><input type="radio" name="q27" value="C">C. Counter attack</label>
+<label class="option"><input type="radio" name="q27" value="D">D. Fast break</label>
+<label class="option"><input type="radio" name="q27" value="E">E. Overlap</label>
+<div class="explain"><b>Jawaban: B.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 28</span><span class="tag">Formasi</span>
+<div class="q">Formasi 4-3-3 dalam sepak bola menunjukkan...</div>
+<label class="option"><input type="radio" name="q28" value="A">A. 4 penyerang, 3 gelandang, 3 bek</label>
+<label class="option"><input type="radio" name="q28" value="B">B. 4 bek, 3 gelandang, 3 penyerang</label>
+<label class="option"><input type="radio" name="q28" value="C">C. 4 kiper, 3 bek, 3 penyerang</label>
+<label class="option"><input type="radio" name="q28" value="D">D. 4 gelandang, 3 bek, 3 kiper</label>
+<label class="option"><input type="radio" name="q28" value="E">E. 4 bek, 3 kiper, 3 gelandang</label>
+<div class="explain"><b>Jawaban: B.</b> Angka tersebut menunjukkan susunan pemain lapangan dari belakang ke depan.</div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 29</span><span class="tag">Formasi</span>
+<div class="q">Salah satu karakteristik formasi 4-4-2 adalah...</div>
+<label class="option"><input type="radio" name="q29" value="A">A. Empat bek, empat gelandang, dua penyerang</label>
+<label class="option"><input type="radio" name="q29" value="B">B. Empat penyerang, empat bek, dua kiper</label>
+<label class="option"><input type="radio" name="q29" value="C">C. Dua bek, empat gelandang, empat penyerang</label>
+<label class="option"><input type="radio" name="q29" value="D">D. Empat kiper, empat bek, dua gelandang</label>
+<label class="option"><input type="radio" name="q29" value="E">E. Dua kiper, empat bek, empat penyerang</label>
+<div class="explain"><b>Jawaban: A.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 30</span><span class="tag">Strategi</span>
+<div class="q">Ketika tim kehilangan bola, tindakan bertahan yang tepat adalah...</div>
+<label class="option"><input type="radio" name="q30" value="A">A. Semua pemain langsung maju menyerang</label>
+<label class="option"><input type="radio" name="q30" value="B">B. Mengorganisasi pertahanan dan menutup ruang lawan</label>
+<label class="option"><input type="radio" name="q30" value="C">C. Membiarkan lawan bergerak bebas</label>
+<label class="option"><input type="radio" name="q30" value="D">D. Semua pemain meninggalkan posisi</label>
+<label class="option"><input type="radio" name="q30" value="E">E. Menghentikan permainan sendiri</label>
+<div class="explain"><b>Jawaban: B.</b></div>
+</div>
+
+<!-- 31-38 PERATURAN -->
+
+<div class="card">
+<span class="num">SOAL 31</span><span class="tag">Peraturan Voli</span>
+<div class="q">Jika bola jatuh di dalam garis lapangan lawan dan tidak dapat dikembalikan, maka...</div>
+<label class="option"><input type="radio" name="q31" value="A">A. Permainan diulang</label>
+<label class="option"><input type="radio" name="q31" value="B">B. Tim yang melakukan serangan mendapat angka</label>
+<label class="option"><input type="radio" name="q31" value="C">C. Tidak ada angka</label>
+<label class="option"><input type="radio" name="q31" value="D">D. Wasit mengganti bola</label>
+<label class="option"><input type="radio" name="q31" value="E">E. Set otomatis selesai</label>
+<div class="explain"><b>Jawaban: B.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 32</span><span class="tag">Peraturan Basket</span>
+<div class="q">Pelanggaran traveling berkaitan dengan...</div>
+<label class="option"><input type="radio" name="q32" value="A">A. Kontak fisik</label>
+<label class="option"><input type="radio" name="q32" value="B">B. Langkah kaki yang tidak sesuai aturan saat menguasai bola</label>
+<label class="option"><input type="radio" name="q32" value="C">C. Bola keluar lapangan</label>
+<label class="option"><input type="radio" name="q32" value="D">D. Lemparan bebas</label>
+<label class="option"><input type="radio" name="q32" value="E">E. Waktu istirahat</label>
+<div class="explain"><b>Jawaban: B.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 33</span><span class="tag">Peraturan Basket</span>
+<div class="q">Jika bola keluar dari garis samping dalam permainan basket, permainan dilanjutkan dengan...</div>
+<label class="option"><input type="radio" name="q33" value="A">A. Tendangan bebas</label>
+<label class="option"><input type="radio" name="q33" value="B">B. Lemparan ke dalam</label>
+<label class="option"><input type="radio" name="q33" value="C">C. Tendangan sudut</label>
+<label class="option"><input type="radio" name="q33" value="D">D. Servis</label>
+<label class="option"><input type="radio" name="q33" value="E">E. Jump ball setiap saat</label>
+<div class="explain"><b>Jawaban: B.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 34</span><span class="tag">Peraturan Sepak Bola</span>
+<div class="q">Lemparan ke dalam dilakukan ketika...</div>
+<label class="option"><input type="radio" name="q34" value="A">A. Bola melewati garis samping</label>
+<label class="option"><input type="radio" name="q34" value="B">B. Bola melewati garis gawang setelah gol</label>
+<label class="option"><input type="radio" name="q34" value="C">C. Terjadi pelanggaran di tengah lapangan</label>
+<label class="option"><input type="radio" name="q34" value="D">D. Pemain mencetak gol</label>
+<label class="option"><input type="radio" name="q34" value="E">E. Kiper menangkap bola</label>
+<div class="explain"><b>Jawaban: A.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 35</span><span class="tag">Peraturan Sepak Bola</span>
+<div class="q">Tendangan sudut diberikan ketika...</div>
+<label class="option"><input type="radio" name="q35" value="A">A. Bola keluar garis samping</label>
+<label class="option"><input type="radio" name="q35" value="B">B. Bola terakhir disentuh pemain bertahan sebelum melewati garis gawang dan tidak terjadi gol</label>
+<label class="option"><input type="radio" name="q35" value="C">C. Penyerang melakukan lemparan</label>
+<label class="option"><input type="radio" name="q35" value="D">D. Kiper keluar lapangan</label>
+<label class="option"><input type="radio" name="q35" value="E">E. Wasit mengganti bola</label>
+<div class="explain"><b>Jawaban: B.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 36</span><span class="tag">Peraturan Sepak Bola</span>
+<div class="q">Pemain selain kiper umumnya tidak boleh menyentuh bola dengan...</div>
+<label class="option"><input type="radio" name="q36" value="A">A. Kepala</label>
+<label class="option"><input type="radio" name="q36" value="B">B. Dada</label>
+<label class="option"><input type="radio" name="q36" value="C">C. Kaki</label>
+<label class="option"><input type="radio" name="q36" value="D">D. Tangan atau lengan</label>
+<label class="option"><input type="radio" name="q36" value="E">E. Paha</label>
+<div class="explain"><b>Jawaban: D.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 37</span><span class="tag">Strategi</span>
+<div class="q">Counter attack paling tepat dilakukan ketika...</div>
+<label class="option"><input type="radio" name="q37" value="A">A. Tim baru saja kehilangan bola</label>
+<label class="option"><input type="radio" name="q37" value="B">B. Lawan sedang kehilangan keseimbangan pertahanan setelah kehilangan bola</label>
+<label class="option"><input type="radio" name="q37" value="C">C. Bola berada di luar lapangan</label>
+<label class="option"><input type="radio" name="q37" value="D">D. Wasit menghentikan pertandingan</label>
+<label class="option"><input type="radio" name="q37" value="E">E. Semua pemain bertahan di belakang</label>
+<div class="explain"><b>Jawaban: B.</b> Counter attack memanfaatkan keadaan pertahanan lawan yang belum terorganisasi.</div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 38</span><span class="tag">Strategi</span>
+<div class="q">Dalam pertandingan, lawan memiliki penyerang yang sangat berbahaya. Strategi bertahan yang dapat digunakan adalah...</div>
+<label class="option"><input type="radio" name="q38" value="A">A. Membiarkan penyerang bergerak bebas</label>
+<label class="option"><input type="radio" name="q38" value="B">B. Memberikan penjagaan ketat dan menutup ruang geraknya</label>
+<label class="option"><input type="radio" name="q38" value="C">C. Mengurangi jumlah bek</label>
+<label class="option"><input type="radio" name="q38" value="D">D. Semua pemain berada di depan</label>
+<label class="option"><input type="radio" name="q38" value="E">E. Tidak melakukan pressing</label>
+<div class="explain"><b>Jawaban: B.</b></div>
+</div>
+
+<!-- 39-44 KESEHATAN & KEBIASAAN -->
+
+<div class="card">
+<span class="num">SOAL 39</span><span class="tag">Kebiasaan Sehat</span>
+<div class="q">Salah satu kebiasaan anak Indonesia yang mendukung kebugaran jasmani adalah...</div>
+<label class="option"><input type="radio" name="q39" value="A">A. Jarang bergerak</label>
+<label class="option"><input type="radio" name="q39" value="B">B. Berolahraga secara teratur</label>
+<label class="option"><input type="radio" name="q39" value="C">C. Tidur sangat larut setiap hari</label>
+<label class="option"><input type="radio" name="q39" value="D">D. Melewatkan sarapan terus-menerus</label>
+<label class="option"><input type="radio" name="q39" value="E">E. Duduk sepanjang hari</label>
+<div class="explain"><b>Jawaban: B.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 40</span><span class="tag">Senam Pagi</span>
+<div class="q">Salah satu manfaat melakukan senam pada pagi hari adalah...</div>
+<label class="option"><input type="radio" name="q40" value="A">A. Membuat tubuh tidak perlu bergerak lagi</label>
+<label class="option"><input type="radio" name="q40" value="B">B. Membantu tubuh menjadi lebih bugar dan aktif</label>
+<label class="option"><input type="radio" name="q40" value="C">C. Menggantikan kebutuhan tidur</label>
+<label class="option"><input type="radio" name="q40" value="D">D. Menghilangkan kebutuhan makan</label>
+<label class="option"><input type="radio" name="q40" value="E">E. Membuat tubuh selalu lelah</label>
+<div class="explain"><b>Jawaban: B.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 41</span><span class="tag">Kesehatan</span>
+<div class="q">Kebiasaan yang mendukung kesehatan tubuh selain olahraga adalah...</div>
+<label class="option"><input type="radio" name="q41" value="A">A. Pola makan seimbang</label>
+<label class="option"><input type="radio" name="q41" value="B">B. Kurang tidur</label>
+<label class="option"><input type="radio" name="q41" value="C">C. Jarang minum</label>
+<label class="option"><input type="radio" name="q41" value="D">D. Tidak pernah beraktivitas</label>
+<label class="option"><input type="radio" name="q41" value="E">E. Sering begadang tanpa alasan</label>
+<div class="explain"><b>Jawaban: A.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 42</span><span class="tag">Kesehatan</span>
+<div class="q">Mengapa pemanasan penting sebelum berolahraga?</div>
+<label class="option"><input type="radio" name="q42" value="A">A. Agar tubuh langsung kelelahan</label>
+<label class="option"><input type="radio" name="q42" value="B">B. Untuk mempersiapkan tubuh sebelum aktivitas fisik</label>
+<label class="option"><input type="radio" name="q42" value="C">C. Agar olahraga menjadi lebih singkat</label>
+<label class="option"><input type="radio" name="q42" value="D">D. Agar tidak perlu pendinginan</label>
+<label class="option"><input type="radio" name="q42" value="E">E. Agar denyut jantung tidak berubah</label>
+<div class="explain"><b>Jawaban: B.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 43</span><span class="tag">Kebugaran</span>
+<div class="q">Kebugaran jasmani adalah kemampuan tubuh untuk...</div>
+<label class="option"><input type="radio" name="q43" value="A">A. Melakukan aktivitas tanpa kelelahan berlebihan</label>
+<label class="option"><input type="radio" name="q43" value="B">B. Tidak melakukan aktivitas</label>
+<label class="option"><input type="radio" name="q43" value="C">C. Tidur sepanjang hari</label>
+<label class="option"><input type="radio" name="q43" value="D">D. Menghindari semua olahraga</label>
+<label class="option"><input type="radio" name="q43" value="E">E. Selalu beristirahat</label>
+<div class="explain"><b>Jawaban: A.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 44</span><span class="tag">Kebugaran</span>
+<div class="q">Kemampuan otot untuk melakukan kerja secara berulang dalam waktu tertentu disebut...</div>
+<label class="option"><input type="radio" name="q44" value="A">A. Kecepatan</label>
+<label class="option"><input type="radio" name="q44" value="B">B. Daya tahan otot</label>
+<label class="option"><input type="radio" name="q44" value="C">C. Kelentukan</label>
+<label class="option"><input type="radio" name="q44" value="D">D. Keseimbangan</label>
+<label class="option"><input type="radio" name="q44" value="E">E. Reaksi</label>
+<div class="explain"><b>Jawaban: B.</b></div>
+</div>
+
+<!-- 45-50 KEBUGARAN -->
+
+<div class="card">
+<span class="num">SOAL 45</span><span class="tag">Kebugaran</span>
+<div class="q">Kemampuan tubuh melakukan aktivitas dalam waktu lama tanpa cepat lelah berkaitan dengan...</div>
+<label class="option"><input type="radio" name="q45" value="A">A. Daya tahan</label>
+<label class="option"><input type="radio" name="q45" value="B">B. Kelentukan</label>
+<label class="option"><input type="radio" name="q45" value="C">C. Keseimbangan</label>
+<label class="option"><input type="radio" name="q45" value="D">D. Koordinasi</label>
+<label class="option"><input type="radio" name="q45" value="E">E. Reaksi</label>
+<div class="explain"><b>Jawaban: A.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 46</span><span class="tag">Kebugaran</span>
+<div class="q">Kemampuan persendian untuk bergerak secara luas disebut...</div>
+<label class="option"><input type="radio" name="q46" value="A">A. Kecepatan</label>
+<label class="option"><input type="radio" name="q46" value="B">B. Kekuatan</label>
+<label class="option"><input type="radio" name="q46" value="C">C. Kelentukan</label>
+<label class="option"><input type="radio" name="q46" value="D">D. Daya tahan</label>
+<label class="option"><input type="radio" name="q46" value="E">E. Ketepatan</label>
+<div class="explain"><b>Jawaban: C.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 47</span><span class="tag">Kebugaran</span>
+<div class="q">Latihan lari dapat membantu meningkatkan komponen kebugaran berupa...</div>
+<label class="option"><input type="radio" name="q47" value="A">A. Daya tahan</label>
+<label class="option"><input type="radio" name="q47" value="B">B. Kemampuan membaca</label>
+<label class="option"><input type="radio" name="q47" value="C">C. Ketajaman penglihatan secara otomatis</label>
+<label class="option"><input type="radio" name="q47" value="D">D. Kemampuan menghafal</label>
+<label class="option"><input type="radio" name="q47" value="E">E. Tinggi badan secara otomatis</label>
+<div class="explain"><b>Jawaban: A.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 48</span><span class="tag">Kebugaran</span>
+<div class="q">Latihan sit-up terutama melatih...</div>
+<label class="option"><input type="radio" name="q48" value="A">A. Otot perut</label>
+<label class="option"><input type="radio" name="q48" value="B">B. Otot mata</label>
+<label class="option"><input type="radio" name="q48" value="C">C. Otot telinga</label>
+<label class="option"><input type="radio" name="q48" value="D">D. Otot jari saja</label>
+<label class="option"><input type="radio" name="q48" value="E">E. Otot leher saja</label>
+<div class="explain"><b>Jawaban: A.</b></div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 49</span><span class="tag">Analisis Kebugaran</span>
+<div class="q">Seorang siswa rutin melakukan senam pagi, jogging, makan dengan pola seimbang, dan cukup tidur. Kebiasaan tersebut menunjukkan...</div>
+<label class="option"><input type="radio" name="q49" value="A">A. Pola hidup tidak aktif</label>
+<label class="option"><input type="radio" name="q49" value="B">B. Pola hidup yang mendukung kebugaran</label>
+<label class="option"><input type="radio" name="q49" value="C">C. Kebiasaan yang mengurangi aktivitas fisik</label>
+<label class="option"><input type="radio" name="q49" value="D">D. Pola hidup yang tidak sehat</label>
+<label class="option"><input type="radio" name="q49" value="E">E. Kebiasaan tanpa hubungan dengan kesehatan</label>
+<div class="explain"><b>Jawaban: B.</b> Aktivitas fisik, pola makan seimbang, dan tidur cukup mendukung kebugaran.</div>
+</div>
+
+<div class="card">
+<span class="num">SOAL 50</span><span class="tag">Analisis Strategi</span>
+<div class="q">Sebuah tim sepak bola unggul satu gol. Lawan terus menyerang. Strategi yang paling sesuai secara umum adalah...</div>
+<label class="option"><input type="radio" name="q50" value="A">A. Semua pemain meninggalkan pertahanan</label>
+<label class="option"><input type="radio" name="q50" value="B">B. Menjaga organisasi pertahanan sambil tetap mencari peluang serangan balik</label>
+<label class="option"><input type="radio" name="q50" value="C">C. Tidak perlu menjaga lawan</label>
+<label class="option"><input type="radio" name="q50" value="D">D. Semua pemain berada di garis depan</label>
+<label class="option"><input type="radio" name="q50" value="E">E. Sengaja membiarkan lawan mencetak gol</label>
+<div class="explain"><b>Jawaban: B.</b> Tim dapat menjaga organisasi pertahanan dan memanfaatkan peluang counter attack.</div>
+</div>
+
+<button type="button" class="submit" onclick="finish()">🏁 SELESAI & LIHAT JAWABAN</button>
+</form>
+
+<div id="result">
+<h2 style="text-align:center">🎉 Hasil Kamu</h2>
+
+<div class="circle">
+<b id="score">0</b>
+<span>NILAI</span>
+</div>
+
+<div class="stats">
+<div class="stat"><b class="green" id="correct">0</b>Benar</div>
+<div class="stat"><b class="red" id="wrong">0</b>Salah</div>
+<div class="stat"><b class="yellow" id="empty">0</b>Kosong</div>
+</div>
+
+<div class="review">
+<h3>📋 Kunci Jawaban</h3>
+<div id="review"></div>
+</div>
+
+<button class="restart" onclick="location.reload()">🔄 Kerjakan Lagi</button>
+</div>
+
+</div>
+
+<script>
+const answers=[
+"C","C","C","A","B","C","B","B","B","C",
+"B","C","C","A","A","B","B","B","A","C",
+"B","B","A","B","A","B","B","B","A","B",
+"B","B","B","A","B","D","B","B","B","B",
+"A","B","A","B","A","C","A","A","B","B"
+];
+
+let time=3600;
+let done=false;
+
+function progress(){
+let n=0;
+for(let i=1;i<=50;i++){
+if(document.querySelector(`input[name="q${i}"]:checked`)) n++;
+}
+document.getElementById("answered").textContent=n;
+document.getElementById("bar").style.width=(n/50*100)+"%";
+}
+
+document.querySelectorAll("input").forEach(x=>{
+x.addEventListener("change",()=>{
+x.closest(".card").classList.remove("empty");
+progress();
+});
+});
+
+setInterval(()=>{
+if(done)return;
+time--;
+if(time<0)time=0;
+let m=Math.floor(time/60);
+let s=time%60;
+document.getElementById("timer").textContent=
+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+
+if(time===0)finish();
+},1000);
+
+function finish(){
+if(done)return;
+done=true;
+
+let benar=0,salah=0,kosong=0;
+let cards=document.querySelectorAll(".card");
+
+cards.forEach((card,i)=>{
+let no=i+1;
+let selected=document.querySelector(`input[name="q${no}"]:checked`);
+let opts=card.querySelectorAll(".option");
+
+opts.forEach(o=>o.classList.remove("correct","wrong"));
+
+if(!selected){
+kosong++;
+card.classList.add("empty");
+}else if(selected.value===answers[i]){
+benar++;
+selected.closest(".option").classList.add("correct");
+}else{
+salah++;
+selected.closest(".option").classList.add("wrong");
+
+opts.forEach(o=>{
+let input=o.querySelector("input");
+if(input && input.value===answers[i])
+o.classList.add("correct");
+});
+}
+
+let ex=card.querySelector(".explain");
+if(ex)ex.style.display="block";
+});
+
+let nilai=Math.round(benar/50*100);
+
+document.getElementById("score").textContent=nilai;
+document.getElementById("correct").textContent=benar;
+document.getElementById("wrong").textContent=salah;
+document.getElementById("empty").textContent=kosong;
+
+let review=document.getElementById("review");
+review.innerHTML="";
+
+for(let i=0;i<50;i++){
+let selected=document.querySelector(
+`input[name="q${i+1}"]:checked`
+);
+
+let status=selected?
+(selected.value===answers[i]?
+"✓ Benar":"✗ Salah"):
+"○ Kosong";
+
+let color=
+status.includes("Benar")?"#16a34a":
+status.includes("Salah")?"#dc2626":"#f59e0b";
+
+let div=document.createElement("div");
+div.innerHTML=`
+<b>Soal ${i+1}</b>
+<span style="color:${color};font-weight:bold">
+${status}
+</span>
+<br>
+<span style="font-size:14px;color:#667085">
+Kunci: <b>${answers[i]}</b>
+${selected?` • Jawaban kamu: <b>${selected.value}</b>`:""}
+</span>`;
+review.appendChild(div);
+}
+
+document.getElementById("result").style.display="block";
+document.querySelector(".submit").style.display="none";
+
+document.getElementById("result").scrollIntoView({
+behavior:"smooth"
+});
+}
+
+progress();
+</script>
+
+</body>
+</html>
