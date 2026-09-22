@@ -79,7 +79,7 @@ header p{
 
 .topics{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
+  grid-template-columns:repeat(6,1fr);
   gap:10px;
 }
 
@@ -235,7 +235,7 @@ button:hover{
   line-height:1.7;
 }
 
-@media(max-width:800px){
+@media(max-width:900px){
   .topics{
     grid-template-columns:repeat(3,1fr);
   }
@@ -275,7 +275,7 @@ button:hover{
 
 <header>
   <h1>⚡ Latihan Fisika XII</h1>
-  <p>80 Soal • 30 Konsep • 50 Hitungan</p>
+  <p>100 Soal • 35 Konsep • 65 Hitungan</p>
 </header>
 
 <div class="container">
@@ -285,7 +285,7 @@ button:hover{
   <div class="info">
     <b>📚 Materi:</b><br>
     Listrik Statis • Medan Listrik • Potensial Listrik •
-    Listrik Arus Searah • Kapasitor
+    Listrik Arus Searah • Kapasitor • Hukum Kirchhoff
     <br><br>
 
     <b>📐 Konstanta:</b><br>
@@ -302,7 +302,7 @@ button:hover{
 
   <div id="progressText"
        style="text-align:center;font-size:13px;color:#64748b;">
-    0 dari 80 soal dijawab
+    0 dari 100 soal dijawab
   </div>
 
   <div class="topics">
@@ -330,6 +330,11 @@ button:hover{
     <div class="topic-stat">
       <b>16</b>
       Kapasitor
+    </div>
+
+    <div class="topic-stat">
+      <b>20</b>
+      Kirchhoff
     </div>
 
   </div>
@@ -374,1301 +379,1454 @@ button:hover{
 
 /* =========================================================
    BANK SOAL
-   TOTAL = 80
-   KONSEP = 30
-   HITUNGAN = 50
+   TOTAL = 100
+   KONSEP = 35
+   HITUNGAN = 65
 
-   Listrik Statis      : 16
-   Medan Listrik       : 16
-   Potensial Listrik   : 16
-   Arus Searah         : 16
-   Kapasitor           : 16
+   Listrik Statis    : 16
+   Medan Listrik     : 16
+   Potensial         : 16
+   Arus Searah       : 16
+   Kapasitor         : 16
+   Kirchhoff         : 20
 ========================================================= */
 
-const questions = [
+const questions = [];
+
 
 /* =========================================================
-   LISTRIK STATIS
-   6 KONSEP + 10 HITUNGAN = 16
+   FUNGSI MENAMBAHKAN SOAL
 ========================================================= */
 
-{
-topic:"Listrik Statis",
-type:"Konsep",
-q:"Dua benda dikatakan bermuatan listrik negatif apabila...",
-options:[
+function addQuestion(topic,type,q,options,answer,explanation){
+  questions.push({
+    topic,
+    type,
+    q,
+    options,
+    answer,
+    explanation
+  });
+}
+
+
+/* =========================================================
+   1. LISTRIK STATIS
+   6 KONSEP + 10 HITUNGAN
+========================================================= */
+
+addQuestion(
+"Listrik Statis","Konsep",
+"Dua benda dikatakan bermuatan listrik negatif apabila...",
+[
 "jumlah proton lebih banyak daripada elektron",
 "jumlah elektron lebih banyak daripada proton",
 "jumlah proton sama dengan neutron",
 "jumlah neutron lebih banyak daripada elektron",
 "tidak memiliki elektron"
-],
-answer:1,
-explanation:"Muatan negatif terjadi ketika jumlah elektron lebih banyak daripada jumlah proton."
-},
+],1,
+"Muatan negatif terjadi ketika jumlah elektron lebih banyak daripada jumlah proton."
+);
 
-{
-topic:"Listrik Statis",
-type:"Konsep",
-q:"Jika dua muatan listrik sejenis didekatkan, kedua muatan akan...",
-options:[
+addQuestion(
+"Listrik Statis","Konsep",
+"Jika dua muatan listrik sejenis didekatkan, kedua muatan akan...",
+[
 "saling tarik-menarik",
 "saling meniadakan",
 "saling tolak-menolak",
 "tidak mengalami gaya",
 "selalu bergerak melingkar"
-],
-answer:2,
-explanation:"Muatan sejenis saling tolak-menolak, sedangkan muatan berbeda jenis saling tarik-menarik."
-},
+],2,
+"Muatan sejenis saling tolak-menolak, sedangkan muatan berbeda jenis saling tarik-menarik."
+);
 
-{
-topic:"Listrik Statis",
-type:"Konsep",
-q:"Hukum Coulomb menjelaskan hubungan antara...",
-options:[
+addQuestion(
+"Listrik Statis","Konsep",
+"Hukum Coulomb menjelaskan hubungan antara...",
+[
 "massa dan percepatan",
 "arus dan hambatan",
 "gaya listrik dan muatan",
 "tegangan dan waktu",
 "energi dan daya"
-],
-answer:2,
-explanation:"Hukum Coulomb menjelaskan gaya listrik antara dua muatan."
-},
+],2,
+"Hukum Coulomb menjelaskan gaya listrik antara dua muatan."
+);
 
-{
-topic:"Listrik Statis",
-type:"Konsep",
-q:"Jika jarak antara dua muatan diperbesar, gaya Coulomb akan...",
-options:[
+addQuestion(
+"Listrik Statis","Konsep",
+"Jika jarak antara dua muatan diperbesar, gaya Coulomb akan...",
+[
 "semakin besar",
 "tetap",
 "menjadi nol selalu",
 "semakin kecil",
 "berubah menjadi gaya gravitasi"
-],
-answer:3,
-explanation:"Gaya Coulomb berbanding terbalik dengan kuadrat jarak: F ∝ 1/r²."
-},
+],3,
+"Gaya Coulomb berbanding terbalik dengan kuadrat jarak: F ∝ 1/r²."
+);
 
-{
-topic:"Listrik Statis",
-type:"Konsep",
-q:"Muatan listrik yang sejenis akan...",
-options:[
+addQuestion(
+"Listrik Statis","Konsep",
+"Muatan listrik yang sejenis akan...",
+[
 "selalu tarik-menarik",
 "selalu tolak-menolak",
 "selalu menghasilkan gaya nol",
 "tidak memiliki medan listrik",
 "berubah menjadi netral"
-],
-answer:1,
-explanation:"Muatan positif dengan positif atau negatif dengan negatif saling tolak-menolak."
-},
+],1,
+"Muatan positif dengan positif atau negatif dengan negatif saling tolak-menolak."
+);
 
-{
-topic:"Listrik Statis",
-type:"Konsep",
-q:"Satuan SI untuk muatan listrik adalah...",
-options:[
+addQuestion(
+"Listrik Statis","Konsep",
+"Satuan SI untuk muatan listrik adalah...",
+[
 "volt",
 "ampere",
 "coulomb",
 "ohm",
 "joule"
-],
-answer:2,
-explanation:"Satuan SI untuk muatan listrik adalah coulomb (C)."
-},
+],2,
+"Satuan SI untuk muatan listrik adalah coulomb (C)."
+);
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Dua muatan +2 μC dan +3 μC berjarak 30 cm. Besar gaya Coulomb antara keduanya adalah...",
-options:[
+addQuestion(
+"Listrik Statis","Hitungan",
+"Dua muatan +2 μC dan +3 μC berjarak 30 cm. Besar gaya Coulomb antara keduanya adalah...",
+[
 "0,06 N",
 "0,2 N",
 "0,6 N",
 "6 N",
 "60 N"
-],
-answer:2,
-explanation:"F = k|q₁q₂|/r² = (9×10⁹)(2×10⁻⁶)(3×10⁻⁶)/(0,3)² = 0,6 N."
-},
+],2,
+"F = k|q₁q₂|/r² = (9×10⁹)(2×10⁻⁶)(3×10⁻⁶)/(0,3)² = 0,6 N."
+);
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Muatan +4 μC dan −6 μC berjarak 20 cm. Besar gaya Coulombnya adalah...",
-options:[
+addQuestion(
+"Listrik Statis","Hitungan",
+"Muatan +4 μC dan −6 μC berjarak 20 cm. Besar gaya Coulombnya adalah...",
+[
 "1,8 N",
 "5,4 N",
 "9 N",
 "18 N",
 "54 N"
-],
-answer:1,
-explanation:"F = (9×10⁹)(4×10⁻⁶)(6×10⁻⁶)/(0,2)² = 5,4 N. Karena muatannya berlawanan tanda, gayanya tarik-menarik."
-},
+],1,
+"F = (9×10⁹)(4×10⁻⁶)(6×10⁻⁶)/(0,2)² = 5,4 N. Karena muatannya berlawanan tanda, gayanya tarik-menarik."
+);
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Dua muatan masing-masing 2 μC berjarak 10 cm. Besar gaya Coulombnya adalah...",
-options:[
+addQuestion(
+"Listrik Statis","Hitungan",
+"Dua muatan masing-masing 2 μC berjarak 10 cm. Besar gaya Coulombnya adalah...",
+[
 "0,36 N",
 "3,6 N",
 "36 N",
 "360 N",
 "0,036 N"
-],
-answer:1,
-explanation:"F = (9×10⁹)(2×10⁻⁶)(2×10⁻⁶)/(0,1)² = 3,6 N."
-},
+],1,
+"F = (9×10⁹)(2×10⁻⁶)(2×10⁻⁶)/(0,1)² = 3,6 N."
+);
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Dua muatan +4 μC dan +4 μC berjarak 20 cm. Besar gaya Coulombnya adalah...",
-options:[
+addQuestion(
+"Listrik Statis","Hitungan",
+"Dua muatan +4 μC dan +4 μC berjarak 20 cm. Besar gaya Coulombnya adalah...",
+[
 "0,9 N",
 "3,6 N",
 "9 N",
 "18 N",
 "36 N"
-],
-answer:2,
-explanation:"F = (9×10⁹)(4×10⁻⁶)(4×10⁻⁶)/(0,2)² = 3,6 N."
-},
+],1,
+"F = (9×10⁹)(4×10⁻⁶)(4×10⁻⁶)/(0,2)² = 3,6 N."
+);
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Muatan +4 μC dan +9 μC berjarak 60 cm. Besar gaya Coulombnya adalah...",
-options:[
+addQuestion(
+"Listrik Statis","Hitungan",
+"Muatan +4 μC dan +9 μC berjarak 60 cm. Besar gaya Coulombnya adalah...",
+[
 "0,9 N",
 "1,5 N",
 "2,4 N",
 "3,6 N",
 "9 N"
-],
-answer:0,
-explanation:"F = (9×10⁹)(4×10⁻⁶)(9×10⁻⁶)/(0,6)² = 0,9 N."
-},
+],0,
+"F = (9×10⁹)(4×10⁻⁶)(9×10⁻⁶)/(0,6)² = 0,9 N."
+);
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Dua muatan menghasilkan gaya Coulomb sebesar 8 N pada jarak 2 m. Jika jarak menjadi 4 m, gaya baru adalah...",
-options:[
+addQuestion(
+"Listrik Statis","Hitungan",
+"Dua muatan menghasilkan gaya Coulomb sebesar 8 N pada jarak 2 m. Jika jarak menjadi 4 m, gaya baru adalah...",
+[
 "1 N",
 "2 N",
 "4 N",
 "16 N",
 "32 N"
-],
-answer:1,
-explanation:"Jarak menjadi 2 kali. Karena F ∝ 1/r², gaya menjadi 1/4 kali: 8/4 = 2 N."
-},
+],1,
+"Jarak menjadi 2 kali. Karena F ∝ 1/r², gaya menjadi 1/4 kali: 8/4 = 2 N."
+);
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Dua muatan +3 μC dan +12 μC berjarak 60 cm. Besar gaya Coulombnya adalah...",
-options:[
+addQuestion(
+"Listrik Statis","Hitungan",
+"Dua muatan +3 μC dan +12 μC berjarak 60 cm. Besar gaya Coulombnya adalah...",
+[
 "0,3 N",
 "0,9 N",
 "1,8 N",
 "3 N",
 "9 N"
-],
-answer:1,
-explanation:"F = (9×10⁹)(3×10⁻⁶)(12×10⁻⁶)/(0,6)² = 0,9 N."
-},
+],1,
+"F = (9×10⁹)(3×10⁻⁶)(12×10⁻⁶)/(0,6)² = 0,9 N."
+);
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Muatan +2 μC dan +8 μC berjarak 40 cm. Besar gaya Coulombnya adalah...",
-options:[
+addQuestion(
+"Listrik Statis","Hitungan",
+"Muatan +2 μC dan +8 μC berjarak 40 cm. Besar gaya Coulombnya adalah...",
+[
 "0,9 N",
 "1,8 N",
 "2,25 N",
 "4,5 N",
 "9 N"
-],
-answer:0,
-explanation:"F = (9×10⁹)(2×10⁻⁶)(8×10⁻⁶)/(0,4)² = 0,9 N."
-},
+],0,
+"F = (9×10⁹)(2×10⁻⁶)(8×10⁻⁶)/(0,4)² = 0,9 N."
+);
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Dua muatan menghasilkan gaya 12 N. Jika salah satu muatan dibuat 3 kali lebih besar sedangkan jarak tetap, gaya menjadi...",
-options:[
+addQuestion(
+"Listrik Statis","Hitungan",
+"Dua muatan menghasilkan gaya 12 N. Jika salah satu muatan dibuat 3 kali lebih besar sedangkan jarak tetap, gaya menjadi...",
+[
 "4 N",
 "12 N",
 "24 N",
 "36 N",
 "144 N"
-],
-answer:3,
-explanation:"Gaya berbanding lurus dengan salah satu muatan. Jadi gaya menjadi 3×12 = 36 N."
-},
+],3,
+"Gaya berbanding lurus dengan salah satu muatan. Jadi gaya menjadi 3×12 = 36 N."
+);
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Dua muatan menghasilkan gaya 18 N. Jika kedua muatan masing-masing menjadi setengahnya dan jarak tetap, gaya baru adalah...",
-options:[
+addQuestion(
+"Listrik Statis","Hitungan",
+"Dua muatan menghasilkan gaya 18 N. Jika kedua muatan masing-masing menjadi setengahnya dan jarak tetap, gaya baru adalah...",
+[
 "2,25 N",
 "4,5 N",
 "9 N",
 "18 N",
 "36 N"
-],
-answer:1,
-explanation:"Kedua muatan menjadi 1/2 sehingga hasil kali muatan menjadi 1/4. F baru = 18/4 = 4,5 N."
-},
+],1,
+"Kedua muatan menjadi 1/2 sehingga hasil kali muatan menjadi 1/4. F baru = 18/4 = 4,5 N."
+);
+
 
 /* =========================================================
-   MEDAN LISTRIK
-   6 KONSEP + 10 HITUNGAN = 16
+   2. MEDAN LISTRIK
+   6 KONSEP + 10 HITUNGAN
 ========================================================= */
 
-{
-topic:"Medan Listrik",
-type:"Konsep",
-q:"Medan listrik adalah...",
-options:[
+addQuestion(
+"Medan Listrik","Konsep",
+"Medan listrik adalah...",
+[
 "daerah di sekitar muatan tempat muatan lain mengalami gaya listrik",
 "daerah tanpa muatan",
 "aliran elektron dalam kawat",
 "energi yang tersimpan dalam resistor",
 "gaya gravitasi bumi"
-],
-answer:0,
-explanation:"Medan listrik adalah daerah di sekitar muatan yang menyebabkan muatan lain mengalami gaya listrik."
-},
+],0,
+"Medan listrik adalah daerah di sekitar muatan yang menyebabkan muatan lain mengalami gaya listrik."
+);
 
-{
-topic:"Medan Listrik",
-type:"Konsep",
-q:"Arah medan listrik di sekitar muatan positif adalah...",
-options:[
+addQuestion(
+"Medan Listrik","Konsep",
+"Arah medan listrik di sekitar muatan positif adalah...",
+[
 "menuju muatan",
 "menjauhi muatan",
 "melingkar",
 "selalu ke bawah",
 "tidak memiliki arah"
-],
-answer:1,
-explanation:"Garis medan listrik keluar atau menjauhi muatan positif."
-},
+],1,
+"Garis medan listrik keluar atau menjauhi muatan positif."
+);
 
-{
-topic:"Medan Listrik",
-type:"Konsep",
-q:"Arah medan listrik di sekitar muatan negatif adalah...",
-options:[
+addQuestion(
+"Medan Listrik","Konsep",
+"Arah medan listrik di sekitar muatan negatif adalah...",
+[
 "menjauhi muatan",
 "melingkar",
 "menuju muatan",
 "selalu ke atas",
 "tidak beraturan"
-],
-answer:2,
-explanation:"Garis medan listrik menuju atau masuk ke muatan negatif."
-},
+],2,
+"Garis medan listrik menuju atau masuk ke muatan negatif."
+);
 
-{
-topic:"Medan Listrik",
-type:"Konsep",
-q:"Semakin rapat garis-garis medan listrik menunjukkan bahwa...",
-options:[
+addQuestion(
+"Medan Listrik","Konsep",
+"Semakin rapat garis-garis medan listrik menunjukkan bahwa...",
+[
 "medannya semakin lemah",
 "medannya semakin kuat",
 "muatan semakin kecil pasti",
 "tidak ada medan",
 "arah medan berubah"
-],
-answer:1,
-explanation:"Kerapatan garis medan menggambarkan kuat medan listrik. Semakin rapat, semakin kuat."
-},
+],1,
+"Kerapatan garis medan menggambarkan kuat medan listrik. Semakin rapat, semakin kuat."
+);
 
-{
-topic:"Medan Listrik",
-type:"Konsep",
-q:"Rumus kuat medan listrik akibat muatan titik adalah...",
-options:[
+addQuestion(
+"Medan Listrik","Konsep",
+"Rumus kuat medan listrik akibat muatan titik adalah...",
+[
 "E = IR",
 "E = Q/t",
 "E = kQ/r²",
 "E = QV",
 "E = Wt"
-],
-answer:2,
-explanation:"Kuat medan listrik akibat muatan titik dirumuskan E = k|Q|/r²."
-},
+],2,
+"Kuat medan listrik akibat muatan titik dirumuskan E = k|Q|/r²."
+);
 
-{
-topic:"Medan Listrik",
-type:"Konsep",
-q:"Satuan kuat medan listrik dalam SI adalah...",
-options:[
+addQuestion(
+"Medan Listrik","Konsep",
+"Satuan kuat medan listrik dalam SI adalah...",
+[
 "N/C",
 "C/N",
 "J/C",
 "C/V",
 "Ω"
-],
-answer:0,
-explanation:"Kuat medan listrik dapat dinyatakan dalam N/C."
-},
+],0,
+"Kuat medan listrik dapat dinyatakan dalam N/C."
+);
 
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Sebuah muatan +4 μC berada di ruang bebas. Kuat medan listrik pada jarak 20 cm adalah...",
-options:[
+addQuestion(
+"Medan Listrik","Hitungan",
+"Sebuah muatan +4 μC berada di ruang bebas. Kuat medan listrik pada jarak 20 cm adalah...",
+[
 "9×10⁴ N/C",
 "9×10⁵ N/C",
 "9×10⁶ N/C",
 "9×10⁷ N/C",
 "9×10⁸ N/C"
-],
-answer:1,
-explanation:"E = kQ/r² = (9×10⁹)(4×10⁻⁶)/(0,2)² = 9×10⁵ N/C."
-},
+],1,
+"E = kQ/r² = (9×10⁹)(4×10⁻⁶)/(0,2)² = 9×10⁵ N/C."
+);
 
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Muatan +2 μC menghasilkan medan listrik 1,8×10⁶ N/C. Jarak titik tersebut dari muatan adalah...",
-options:[
+addQuestion(
+"Medan Listrik","Hitungan",
+"Muatan +2 μC menghasilkan medan listrik 1,8×10⁶ N/C. Jarak titik tersebut dari muatan adalah...",
+[
 "5 cm",
 "10 cm",
 "15 cm",
 "20 cm",
 "30 cm"
-],
-answer:1,
-explanation:"r = √(kQ/E) = √[(9×10⁹)(2×10⁻⁶)/(1,8×10⁶)] = 0,1 m = 10 cm."
-},
+],1,
+"r = √(kQ/E) = √[(9×10⁹)(2×10⁻⁶)/(1,8×10⁶)] = 0,1 m = 10 cm."
+);
 
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Kuat medan listrik di suatu titik adalah 5×10⁴ N/C. Jika muatan uji 2 μC diletakkan di titik tersebut, gaya listriknya adalah...",
-options:[
+addQuestion(
+"Medan Listrik","Hitungan",
+"Kuat medan listrik di suatu titik adalah 5×10⁴ N/C. Jika muatan uji 2 μC diletakkan di titik tersebut, gaya listriknya adalah...",
+[
 "0,01 N",
 "0,05 N",
 "0,1 N",
 "1 N",
 "10 N"
-],
-answer:2,
-explanation:"F = qE = (2×10⁻⁶)(5×10⁴) = 0,1 N."
-},
+],2,
+"F = qE = (2×10⁻⁶)(5×10⁴) = 0,1 N."
+);
 
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Muatan +8 μC berada pada jarak 40 cm dari suatu titik. Kuat medan listriknya adalah...",
-options:[
+addQuestion(
+"Medan Listrik","Hitungan",
+"Muatan +8 μC berada pada jarak 40 cm dari suatu titik. Kuat medan listriknya adalah...",
+[
 "2,25×10⁵ N/C",
 "4,5×10⁵ N/C",
 "9×10⁵ N/C",
 "1,8×10⁶ N/C",
 "4,5×10⁶ N/C"
-],
-answer:1,
-explanation:"E = (9×10⁹)(8×10⁻⁶)/(0,4)² = 4,5×10⁵ N/C."
-},
+],1,
+"E = (9×10⁹)(8×10⁻⁶)/(0,4)² = 4,5×10⁵ N/C."
+);
 
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Kuat medan listrik 9×10⁵ N/C pada jarak 20 cm. Jika jarak menjadi 40 cm, medan listrik menjadi...",
-options:[
+addQuestion(
+"Medan Listrik","Hitungan",
+"Kuat medan listrik 9×10⁵ N/C pada jarak 20 cm. Jika jarak menjadi 40 cm, medan listrik menjadi...",
+[
 "1,125×10⁵ N/C",
 "2,25×10⁵ N/C",
 "4,5×10⁵ N/C",
 "9×10⁵ N/C",
 "18×10⁵ N/C"
-],
-answer:1,
-explanation:"Jarak menjadi 2 kali sehingga E menjadi 1/4. E = 9×10⁵/4 = 2,25×10⁵ N/C."
-},
+],1,
+"Jarak menjadi 2 kali sehingga E menjadi 1/4. E = 9×10⁵/4 = 2,25×10⁵ N/C."
+);
 
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Kuat medan listrik 3×10⁵ N/C bekerja pada muatan 4 μC. Gaya yang dialami muatan adalah...",
-options:[
+addQuestion(
+"Medan Listrik","Hitungan",
+"Kuat medan listrik 3×10⁵ N/C bekerja pada muatan 4 μC. Gaya yang dialami muatan adalah...",
+[
 "0,12 N",
 "0,8 N",
 "1,2 N",
 "12 N",
 "120 N"
-],
-answer:2,
-explanation:"F = qE = (4×10⁻⁶)(3×10⁵) = 1,2 N."
-},
+],2,
+"F = qE = (4×10⁻⁶)(3×10⁵) = 1,2 N."
+);
 
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Sebuah muatan 6 μC berada pada jarak 30 cm. Kuat medan listriknya adalah...",
-options:[
+addQuestion(
+"Medan Listrik","Hitungan",
+"Sebuah muatan 6 μC berada pada jarak 30 cm. Kuat medan listriknya adalah...",
+[
 "3×10⁵ N/C",
 "6×10⁵ N/C",
 "9×10⁵ N/C",
 "1,2×10⁶ N/C",
 "1,8×10⁶ N/C"
-],
-answer:1,
-explanation:"E = (9×10⁹)(6×10⁻⁶)/(0,3)² = 6×10⁵ N/C."
-},
+],1,
+"E = (9×10⁹)(6×10⁻⁶)/(0,3)² = 6×10⁵ N/C."
+);
 
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Jika kuat medan listrik 2×10⁶ N/C pada jarak 10 cm, besar muatan sumbernya adalah...",
-options:[
+addQuestion(
+"Medan Listrik","Hitungan",
+"Jika kuat medan listrik 2×10⁶ N/C pada jarak 10 cm, besar muatan sumbernya adalah...",
+[
 "0,22 μC",
 "1,11 μC",
 "2,22 μC",
 "4,44 μC",
 "22 μC"
-],
-answer:2,
-explanation:"Q = Er²/k = (2×10⁶)(0,1)²/(9×10⁹) = 2,22×10⁻⁶ C = 2,22 μC."
-},
+],2,
+"Q = Er²/k = (2×10⁶)(0,1)²/(9×10⁹) = 2,22×10⁻⁶ C = 2,22 μC."
+);
 
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Medan listrik 8×10⁴ N/C bekerja pada muatan 5 nC. Besar gaya listriknya adalah...",
-options:[
+addQuestion(
+"Medan Listrik","Hitungan",
+"Medan listrik 8×10⁴ N/C bekerja pada muatan 5 nC. Besar gaya listriknya adalah...",
+[
 "2×10⁻⁵ N",
 "4×10⁻⁴ N",
 "4×10⁻³ N",
 "4×10⁻² N",
 "4 N"
-],
-answer:1,
-explanation:"F = qE = (5×10⁻⁹)(8×10⁴) = 4×10⁻⁴ N."
-},
+],1,
+"F = qE = (5×10⁻⁹)(8×10⁴) = 4×10⁻⁴ N."
+);
 
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Jika muatan sumber dibuat 3 kali lebih besar dan jaraknya dibuat 3 kali lebih besar, kuat medan listrik menjadi...",
-options:[
+addQuestion(
+"Medan Listrik","Hitungan",
+"Jika muatan sumber dibuat 3 kali lebih besar dan jaraknya dibuat 3 kali lebih besar, kuat medan listrik menjadi...",
+[
 "1/9 kali",
 "1/3 kali",
 "tetap",
 "3 kali",
 "9 kali"
-],
-answer:1,
-explanation:"E ∝ Q/r². Faktor perubahan = 3/3² = 1/3. Jadi medan menjadi 1/3 kali semula."
-},
+],1,
+"E ∝ Q/r². Faktor perubahan = 3/3² = 1/3. Jadi medan menjadi 1/3 kali semula."
+);
 
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Dua muatan +4 μC dan +4 μC terpisah 20 cm. Di titik tengah antara keduanya, kuat medan listrik total adalah...",
-options:[
-"0 N/C",
-"9×10⁵ N/C",
-"1,8×10⁶ N/C",
-"3,6×10⁶ N/C",
-"7,2×10⁶ N/C"
-],
-answer:0,
-explanation:"Di titik tengah, medan dari kedua muatan sama besar tetapi berlawanan arah sehingga resultannya 0 N/C."
-},
 
 /* =========================================================
-   POTENSIAL LISTRIK
-   6 KONSEP + 10 HITUNGAN = 16
+   3. POTENSIAL LISTRIK
+   6 KONSEP + 10 HITUNGAN
 ========================================================= */
 
-{
-topic:"Potensial Listrik",
-type:"Konsep",
-q:"Potensial listrik merupakan...",
-options:[
+addQuestion(
+"Potensial Listrik","Konsep",
+"Potensial listrik merupakan...",
+[
 "energi potensial listrik per satuan muatan",
 "gaya per satuan massa",
 "muatan per satuan waktu",
 "arus per satuan tegangan",
 "energi per satuan massa"
-],
-answer:0,
-explanation:"Potensial listrik didefinisikan sebagai energi potensial listrik per satuan muatan: V = Ep/q."
-},
+],0,
+"Potensial listrik didefinisikan sebagai energi potensial listrik per satuan muatan: V = Ep/q."
+);
 
-{
-topic:"Potensial Listrik",
-type:"Konsep",
-q:"Potensial listrik merupakan besaran...",
-options:[
+addQuestion(
+"Potensial Listrik","Konsep",
+"Potensial listrik merupakan besaran...",
+[
 "vektor",
 "skalar",
 "tensor",
 "tak berdimensi",
 "selalu negatif"
-],
-answer:1,
-explanation:"Potensial listrik merupakan besaran skalar karena hanya memiliki besar tanpa arah."
-},
+],1,
+"Potensial listrik merupakan besaran skalar karena hanya memiliki besar tanpa arah."
+);
 
-{
-topic:"Potensial Listrik",
-type:"Konsep",
-q:"Potensial listrik akibat muatan titik dirumuskan...",
-options:[
+addQuestion(
+"Potensial Listrik","Konsep",
+"Potensial listrik akibat muatan titik dirumuskan...",
+[
 "V = IR",
 "V = kQ/r",
 "V = Q/t",
 "V = Fq",
 "V = kQ/r²"
-],
-answer:1,
-explanation:"Potensial listrik akibat muatan titik adalah V = kQ/r."
-},
+],1,
+"Potensial listrik akibat muatan titik adalah V = kQ/r."
+);
 
-{
-topic:"Potensial Listrik",
-type:"Konsep",
-q:"Jika muatan sumber positif, potensial listrik di sekitarnya dengan titik acuan tak hingga bernilai...",
-options:[
+addQuestion(
+"Potensial Listrik","Konsep",
+"Jika muatan sumber positif, potensial listrik di sekitarnya dengan titik acuan tak hingga bernilai...",
+[
 "negatif",
 "nol di semua titik",
 "positif",
 "selalu tidak terdefinisi",
 "selalu sama"
-],
-answer:2,
-explanation:"Untuk muatan sumber positif dan titik acuan di tak hingga, potensial listrik bernilai positif."
-},
+],2,
+"Untuk muatan sumber positif dan titik acuan di tak hingga, potensial listrik bernilai positif."
+);
 
-{
-topic:"Potensial Listrik",
-type:"Konsep",
-q:"Hubungan energi potensial listrik dengan potensial listrik adalah...",
-options:[
+addQuestion(
+"Potensial Listrik","Konsep",
+"Hubungan energi potensial listrik dengan potensial listrik adalah...",
+[
 "Ep = V/q",
 "Ep = qV",
 "Ep = q/V",
 "Ep = V²q",
 "Ep = V−q"
-],
-answer:1,
-explanation:"Dari V = Ep/q diperoleh Ep = qV."
-},
+],1,
+"Dari V = Ep/q diperoleh Ep = qV."
+);
 
-{
-topic:"Potensial Listrik",
-type:"Konsep",
-q:"Potensial listrik termasuk besaran skalar sehingga potensial total dari beberapa muatan diperoleh dengan...",
-options:[
+addQuestion(
+"Potensial Listrik","Konsep",
+"Potensial listrik termasuk besaran skalar sehingga potensial total dari beberapa muatan diperoleh dengan...",
+[
 "menjumlahkan secara aljabar",
 "menjumlahkan arah seperti vektor",
 "mengalikan semua potensial",
 "selalu mengambil nilai terbesar",
 "selalu mengambil nilai terkecil"
-],
-answer:0,
-explanation:"Karena potensial adalah skalar, potensial total diperoleh dengan penjumlahan aljabar, termasuk memperhatikan tandanya."
-},
+],0,
+"Karena potensial adalah skalar, potensial total diperoleh dengan penjumlahan aljabar, termasuk memperhatikan tandanya."
+);
 
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Potensial listrik pada jarak 30 cm dari muatan +2 μC adalah...",
-options:[
+addQuestion(
+"Potensial Listrik","Hitungan",
+"Potensial listrik pada jarak 30 cm dari muatan +2 μC adalah...",
+[
 "6×10³ V",
 "6×10⁴ V",
 "6×10⁵ V",
 "6×10⁶ V",
 "6×10⁷ V"
-],
-answer:1,
-explanation:"V = kQ/r = (9×10⁹)(2×10⁻⁶)/0,3 = 6×10⁴ V."
-},
+],1,
+"V = kQ/r = (9×10⁹)(2×10⁻⁶)/0,3 = 6×10⁴ V."
+);
 
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Muatan +4 μC berada 20 cm dari suatu titik. Potensial listrik titik tersebut adalah...",
-options:[
+addQuestion(
+"Potensial Listrik","Hitungan",
+"Muatan +4 μC berada 20 cm dari suatu titik. Potensial listrik titik tersebut adalah...",
+[
 "9×10⁴ V",
 "1,8×10⁵ V",
 "2,7×10⁵ V",
 "3,6×10⁵ V",
 "9×10⁵ V"
-],
-answer:1,
-explanation:"V = (9×10⁹)(4×10⁻⁶)/0,2 = 1,8×10⁵ V."
-},
+],1,
+"V = (9×10⁹)(4×10⁻⁶)/0,2 = 1,8×10⁵ V."
+);
 
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Sebuah muatan 5 μC berada 50 cm dari titik P. Potensial di P adalah...",
-options:[
+addQuestion(
+"Potensial Listrik","Hitungan",
+"Sebuah muatan 5 μC berada 50 cm dari titik P. Potensial di P adalah...",
+[
 "9×10⁴ V",
 "9×10⁵ V",
 "1,8×10⁵ V",
 "4,5×10⁵ V",
 "9×10⁶ V"
-],
-answer:0,
-explanation:"V = (9×10⁹)(5×10⁻⁶)/0,5 = 9×10⁴ V."
-},
+],0,
+"V = (9×10⁹)(5×10⁻⁶)/0,5 = 9×10⁴ V."
+);
 
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Jika potensial listrik 2×10⁴ V dialami muatan 3 μC, energi potensial listriknya adalah...",
-options:[
+addQuestion(
+"Potensial Listrik","Hitungan",
+"Jika potensial listrik 2×10⁴ V dialami muatan 3 μC, energi potensial listriknya adalah...",
+[
 "0,006 J",
 "0,06 J",
 "0,6 J",
 "6 J",
 "60 J"
-],
-answer:1,
-explanation:"Ep = qV = (3×10⁻⁶)(2×10⁴) = 0,06 J."
-},
+],1,
+"Ep = qV = (3×10⁻⁶)(2×10⁴) = 0,06 J."
+);
 
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Energi potensial listrik sebuah muatan 4 μC adalah 0,08 J. Potensial di tempat tersebut adalah...",
-options:[
+addQuestion(
+"Potensial Listrik","Hitungan",
+"Energi potensial listrik sebuah muatan 4 μC adalah 0,08 J. Potensial di tempat tersebut adalah...",
+[
 "2×10³ V",
 "2×10⁴ V",
 "2×10⁵ V",
 "3×10⁴ V",
 "4×10⁵ V"
-],
-answer:1,
-explanation:"V = Ep/q = 0,08/(4×10⁻⁶) = 2×10⁴ V."
-},
+],1,
+"V = Ep/q = 0,08/(4×10⁻⁶) = 2×10⁴ V."
+);
 
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Muatan +2 μC menghasilkan potensial 9×10⁴ V pada suatu titik. Jarak titik tersebut adalah...",
-options:[
+addQuestion(
+"Potensial Listrik","Hitungan",
+"Muatan +2 μC menghasilkan potensial 9×10⁴ V pada suatu titik. Jarak titik tersebut adalah...",
+[
 "10 cm",
 "20 cm",
 "30 cm",
 "40 cm",
 "50 cm"
-],
-answer:1,
-explanation:"r = kQ/V = (9×10⁹)(2×10⁻⁶)/(9×10⁴) = 0,2 m = 20 cm."
-},
+],1,
+"r = kQ/V = (9×10⁹)(2×10⁻⁶)/(9×10⁴) = 0,2 m = 20 cm."
+);
 
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Dua muatan +2 μC dan +3 μC masing-masing berjarak 20 cm dari titik P. Potensial total di P adalah...",
-options:[
+addQuestion(
+"Potensial Listrik","Hitungan",
+"Dua muatan +2 μC dan +3 μC masing-masing berjarak 20 cm dari titik P. Potensial total di P adalah...",
+[
 "1,8×10⁵ V",
 "2,25×10⁵ V",
 "4,5×10⁵ V",
 "6,75×10⁵ V",
 "9×10⁵ V"
-],
-answer:1,
-explanation:"Vtotal = k(q₁+q₂)/r = (9×10⁹)(5×10⁻⁶)/0,2 = 2,25×10⁵ V."
-},
+],1,
+"Vtotal = k(q₁+q₂)/r = (9×10⁹)(5×10⁻⁶)/0,2 = 2,25×10⁵ V."
+);
 
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Muatan +4 μC dan −2 μC masing-masing berjarak 20 cm dari titik P. Potensial total di P adalah...",
-options:[
+addQuestion(
+"Potensial Listrik","Hitungan",
+"Muatan +4 μC dan −2 μC masing-masing berjarak 20 cm dari titik P. Potensial total di P adalah...",
+[
 "−9×10⁴ V",
 "−4,5×10⁴ V",
 "0 V",
 "4,5×10⁴ V",
 "9×10⁴ V"
-],
-answer:4,
-explanation:"Vtotal = k(q₁+q₂)/r = (9×10⁹)(2×10⁻⁶)/0,2 = 9×10⁴ V."
-},
+],4,
+"Vtotal = k(q₁+q₂)/r = (9×10⁹)(2×10⁻⁶)/0,2 = 9×10⁴ V."
+);
 
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Muatan 2 μC berpindah dari titik A berpotensial 100 V ke titik B berpotensial 400 V. Perubahan energi potensialnya adalah...",
-options:[
+addQuestion(
+"Potensial Listrik","Hitungan",
+"Muatan 2 μC berpindah dari titik A berpotensial 100 V ke titik B berpotensial 400 V. Perubahan energi potensialnya adalah...",
+[
 "0,0006 J",
 "0,003 J",
 "0,006 J",
 "0,06 J",
 "0,6 J"
-],
-answer:0,
-explanation:"ΔEp = q(VB−VA) = 2×10⁻⁶(400−100) = 6×10⁻⁴ J = 0,0006 J."
-},
+],0,
+"ΔEp = q(VB−VA) = 2×10⁻⁶(400−100) = 6×10⁻⁴ J = 0,0006 J."
+);
 
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Jika jarak dari sebuah muatan titik diperbesar menjadi 2 kali semula, potensial listrik menjadi...",
-options:[
+addQuestion(
+"Potensial Listrik","Hitungan",
+"Jika jarak dari sebuah muatan titik diperbesar menjadi 2 kali semula, potensial listrik menjadi...",
+[
 "1/4 kali",
 "1/2 kali",
 "tetap",
 "2 kali",
 "4 kali"
-],
-answer:1,
-explanation:"V ∝ 1/r. Jika jarak menjadi 2 kali, potensial menjadi 1/2 kali."
-},
+],1,
+"V ∝ 1/r. Jika jarak menjadi 2 kali, potensial menjadi 1/2 kali."
+);
 
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Sebuah titik berada 10 cm dari muatan +1 μC. Potensial listriknya adalah...",
-options:[
-"9×10² V",
-"9×10³ V",
-"9×10⁴ V",
-"9×10⁵ V",
-"9×10⁶ V"
-],
-answer:2,
-explanation:"V = (9×10⁹)(1×10⁻⁶)/0,1 = 9×10⁴ V."
-},
 
 /* =========================================================
-   LISTRIK ARUS SEARAH
-   6 KONSEP + 10 HITUNGAN = 16
+   4. LISTRIK ARUS SEARAH
+   6 KONSEP + 10 HITUNGAN
 ========================================================= */
 
-{
-topic:"Listrik Arus Searah",
-type:"Konsep",
-q:"Arus listrik adalah...",
-options:[
+addQuestion(
+"Listrik Arus Searah","Konsep",
+"Arus listrik adalah...",
+[
 "energi yang tersimpan dalam baterai",
 "laju aliran muatan listrik",
 "hambatan dalam rangkaian",
 "jumlah tegangan",
 "gaya listrik"
-],
-answer:1,
-explanation:"Arus listrik adalah laju aliran muatan listrik dengan rumus I = Q/t."
-},
+],1,
+"Arus listrik adalah laju aliran muatan listrik dengan rumus I = Q/t."
+);
 
-{
-topic:"Listrik Arus Searah",
-type:"Konsep",
-q:"Alat yang digunakan untuk mengukur kuat arus listrik adalah...",
-options:[
+addQuestion(
+"Listrik Arus Searah","Konsep",
+"Alat yang digunakan untuk mengukur kuat arus listrik adalah...",
+[
 "voltmeter",
 "ohmmeter",
 "amperemeter",
 "termometer",
 "barometer"
-],
-answer:2,
-explanation:"Kuat arus listrik diukur menggunakan amperemeter."
-},
+],2,
+"Kuat arus listrik diukur menggunakan amperemeter."
+);
 
-{
-topic:"Listrik Arus Searah",
-type:"Konsep",
-q:"Amperemeter dipasang secara...",
-options:[
+addQuestion(
+"Listrik Arus Searah","Konsep",
+"Amperemeter dipasang secara...",
+[
 "paralel",
 "seri",
 "di luar rangkaian",
 "tegak lurus",
 "acak"
-],
-answer:1,
-explanation:"Amperemeter dipasang seri agar arus rangkaian melewatinya."
-},
+],1,
+"Amperemeter dipasang seri agar arus rangkaian melewatinya."
+);
 
-{
-topic:"Listrik Arus Searah",
-type:"Konsep",
-q:"Voltmeter dipasang secara...",
-options:[
+addQuestion(
+"Listrik Arus Searah","Konsep",
+"Voltmeter dipasang secara...",
+[
 "seri",
 "paralel",
 "di luar rangkaian",
 "berurutan dengan sakelar",
 "acak"
-],
-answer:1,
-explanation:"Voltmeter dipasang paralel terhadap komponen yang akan diukur beda potensialnya."
-},
+],1,
+"Voltmeter dipasang paralel terhadap komponen yang akan diukur beda potensialnya."
+);
 
-{
-topic:"Listrik Arus Searah",
-type:"Konsep",
-q:"Menurut hukum Ohm, hubungan tegangan, arus, dan hambatan adalah...",
-options:[
+addQuestion(
+"Listrik Arus Searah","Konsep",
+"Menurut hukum Ohm, hubungan tegangan, arus, dan hambatan adalah...",
+[
 "V = IR",
 "V = I/R",
 "V = R/I",
 "I = VR",
 "R = VI"
-],
-answer:0,
-explanation:"Hukum Ohm menyatakan V = IR."
-},
+],0,
+"Hukum Ohm menyatakan V = IR."
+);
 
-{
-topic:"Listrik Arus Searah",
-type:"Konsep",
-q:"Pada rangkaian seri, besaran yang sama pada setiap resistor adalah...",
-options:[
+addQuestion(
+"Listrik Arus Searah","Konsep",
+"Pada rangkaian seri, besaran yang sama pada setiap resistor adalah...",
+[
 "tegangan",
 "arus",
 "daya",
 "hambatan",
 "energi"
-],
-answer:1,
-explanation:"Pada rangkaian seri, arus yang melewati setiap resistor sama besar."
-},
+],1,
+"Pada rangkaian seri, arus yang melewati setiap resistor sama besar."
+);
 
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Muatan 60 C mengalir melalui penghantar selama 20 s. Besar arusnya adalah...",
-options:[
+addQuestion(
+"Listrik Arus Searah","Hitungan",
+"Muatan 60 C mengalir melalui penghantar selama 20 s. Besar arusnya adalah...",
+[
 "0,3 A",
 "2 A",
 "3 A",
 "20 A",
 "1200 A"
-],
-answer:2,
-explanation:"I = Q/t = 60/20 = 3 A."
-},
+],2,
+"I = Q/t = 60/20 = 3 A."
+);
 
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Arus 4 A mengalir selama 15 s. Muatan yang berpindah adalah...",
-options:[
+addQuestion(
+"Listrik Arus Searah","Hitungan",
+"Arus 4 A mengalir selama 15 s. Muatan yang berpindah adalah...",
+[
 "15 C",
 "30 C",
 "45 C",
 "60 C",
 "75 C"
-],
-answer:3,
-explanation:"Q = It = 4×15 = 60 C."
-},
+],3,
+"Q = It = 4×15 = 60 C."
+);
 
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Sebuah resistor 6 Ω diberi tegangan 12 V. Arus yang mengalir adalah...",
-options:[
+addQuestion(
+"Listrik Arus Searah","Hitungan",
+"Sebuah resistor 6 Ω diberi tegangan 12 V. Arus yang mengalir adalah...",
+[
 "0,5 A",
 "1 A",
 "2 A",
 "6 A",
 "72 A"
-],
-answer:2,
-explanation:"I = V/R = 12/6 = 2 A."
-},
+],2,
+"I = V/R = 12/6 = 2 A."
+);
 
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Arus 3 A mengalir melalui resistor 8 Ω. Tegangan pada resistor adalah...",
-options:[
+addQuestion(
+"Listrik Arus Searah","Hitungan",
+"Arus 3 A mengalir melalui resistor 8 Ω. Tegangan pada resistor adalah...",
+[
 "11 V",
 "16 V",
 "24 V",
 "32 V",
 "48 V"
-],
-answer:2,
-explanation:"V = IR = 3×8 = 24 V."
-},
+],2,
+"V = IR = 3×8 = 24 V."
+);
 
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Sebuah resistor dialiri arus 2 A pada tegangan 18 V. Nilai hambatannya adalah...",
-options:[
+addQuestion(
+"Listrik Arus Searah","Hitungan",
+"Sebuah resistor dialiri arus 2 A pada tegangan 18 V. Nilai hambatannya adalah...",
+[
 "6 Ω",
 "8 Ω",
 "9 Ω",
 "18 Ω",
 "36 Ω"
-],
-answer:2,
-explanation:"R = V/I = 18/2 = 9 Ω."
-},
+],2,
+"R = V/I = 18/2 = 9 Ω."
+);
 
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Dua resistor 4 Ω dan 6 Ω disusun seri. Hambatan totalnya adalah...",
-options:[
+addQuestion(
+"Listrik Arus Searah","Hitungan",
+"Dua resistor 4 Ω dan 6 Ω disusun seri. Hambatan totalnya adalah...",
+[
 "1,5 Ω",
 "2,4 Ω",
 "6 Ω",
 "10 Ω",
 "24 Ω"
-],
-answer:3,
-explanation:"Rtotal = R₁ + R₂ = 4 + 6 = 10 Ω."
-},
+],3,
+"Rtotal = R₁ + R₂ = 4 + 6 = 10 Ω."
+);
 
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Tiga resistor 2 Ω, 3 Ω, dan 5 Ω disusun seri. Jika diberi tegangan 20 V, arus totalnya adalah...",
-options:[
+addQuestion(
+"Listrik Arus Searah","Hitungan",
+"Tiga resistor 2 Ω, 3 Ω, dan 5 Ω disusun seri. Jika diberi tegangan 20 V, arus totalnya adalah...",
+[
 "1 A",
 "2 A",
 "4 A",
 "5 A",
 "10 A"
-],
-answer:1,
-explanation:"Rtotal = 2+3+5 = 10 Ω. I = V/R = 20/10 = 2 A."
-},
+],1,
+"Rtotal = 2+3+5 = 10 Ω. I = V/R = 20/10 = 2 A."
+);
 
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Dua resistor 6 Ω dan 3 Ω dipasang paralel. Hambatan penggantinya adalah...",
-options:[
+addQuestion(
+"Listrik Arus Searah","Hitungan",
+"Dua resistor 6 Ω dan 3 Ω dipasang paralel. Hambatan penggantinya adalah...",
+[
 "1 Ω",
 "2 Ω",
 "3 Ω",
 "4 Ω",
 "9 Ω"
-],
-answer:1,
-explanation:"1/Rp = 1/6 + 1/3 = 1/2, sehingga Rp = 2 Ω."
-},
+],1,
+"1/Rp = 1/6 + 1/3 = 1/2, sehingga Rp = 2 Ω."
+);
 
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Resistor 4 Ω dan 12 Ω dipasang paralel pada tegangan 24 V. Arus total rangkaian adalah...",
-options:[
+addQuestion(
+"Listrik Arus Searah","Hitungan",
+"Resistor 4 Ω dan 12 Ω dipasang paralel pada tegangan 24 V. Arus total rangkaian adalah...",
+[
 "2 A",
 "4 A",
 "6 A",
 "8 A",
 "12 A"
-],
-answer:3,
-explanation:"Rp = (4×12)/(4+12) = 3 Ω. I = V/Rp = 24/3 = 8 A."
-},
+],3,
+"Rp = (4×12)/(4+12) = 3 Ω. I = V/Rp = 24/3 = 8 A."
+);
 
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Dua resistor 5 Ω dan 10 Ω disusun seri pada tegangan 30 V. Tegangan pada resistor 10 Ω adalah...",
-options:[
+addQuestion(
+"Listrik Arus Searah","Hitungan",
+"Dua resistor 5 Ω dan 10 Ω disusun seri pada tegangan 30 V. Tegangan pada resistor 10 Ω adalah...",
+[
 "5 V",
 "10 V",
 "15 V",
 "20 V",
 "25 V"
-],
-answer:3,
-explanation:"Rtotal = 15 Ω. I = 30/15 = 2 A. Tegangan pada 10 Ω = 2×10 = 20 V."
-},
+],3,
+"Rtotal = 15 Ω. I = 30/15 = 2 A. Tegangan pada 10 Ω = 2×10 = 20 V."
+);
+
 
 /* =========================================================
-   KAPASITOR
-   6 KONSEP + 10 HITUNGAN = 16
+   5. KAPASITOR
+   6 KONSEP + 10 HITUNGAN
 ========================================================= */
 
-{
-topic:"Kapasitor",
-type:"Konsep",
-q:"Kapasitor adalah komponen yang berfungsi utama untuk...",
-options:[
+addQuestion(
+"Kapasitor","Konsep",
+"Kapasitor adalah komponen yang berfungsi utama untuk...",
+[
 "mengukur arus",
 "menyimpan muatan listrik",
 "mengubah massa",
 "menghasilkan medan gravitasi",
 "mengukur suhu"
-],
-answer:1,
-explanation:"Kapasitor berfungsi menyimpan muatan listrik dan energi dalam medan listriknya."
-},
+],1,
+"Kapasitor berfungsi menyimpan muatan listrik dan energi dalam medan listriknya."
+);
 
-{
-topic:"Kapasitor",
-type:"Konsep",
-q:"Kapasitansi didefinisikan sebagai...",
-options:[
+addQuestion(
+"Kapasitor","Konsep",
+"Kapasitansi didefinisikan sebagai...",
+[
 "C = V/Q",
 "C = Q/V",
 "C = QV",
 "C = Q+V",
 "C = Q−V"
-],
-answer:1,
-explanation:"Kapasitansi dirumuskan C = Q/V."
-},
+],1,
+"Kapasitansi dirumuskan C = Q/V."
+);
 
-{
-topic:"Kapasitor",
-type:"Konsep",
-q:"Pada rangkaian kapasitor paralel, besaran yang sama pada setiap kapasitor adalah...",
-options:[
+addQuestion(
+"Kapasitor","Konsep",
+"Pada rangkaian kapasitor paralel, besaran yang sama pada setiap kapasitor adalah...",
+[
 "muatan",
 "tegangan",
 "energi",
 "kapasitansi",
 "arus"
-],
-answer:1,
-explanation:"Pada rangkaian paralel, beda potensial setiap kapasitor sama."
-},
+],1,
+"Pada rangkaian paralel, beda potensial setiap kapasitor sama."
+);
 
-{
-topic:"Kapasitor",
-type:"Konsep",
-q:"Pada rangkaian kapasitor seri, besaran yang sama pada setiap kapasitor adalah...",
-options:[
+addQuestion(
+"Kapasitor","Konsep",
+"Pada rangkaian kapasitor seri, besaran yang sama pada setiap kapasitor adalah...",
+[
 "tegangan",
 "muatan",
 "energi",
 "daya",
 "arus"
-],
-answer:1,
-explanation:"Pada rangkaian seri, muatan pada setiap kapasitor sama besar."
-},
+],1,
+"Pada rangkaian seri, muatan pada setiap kapasitor sama besar."
+);
 
-{
-topic:"Kapasitor",
-type:"Konsep",
-q:"Rumus kapasitor paralel adalah...",
-options:[
+addQuestion(
+"Kapasitor","Konsep",
+"Rumus kapasitor paralel adalah...",
+[
 "Cp = C₁ + C₂ + ...",
 "1/Cp = 1/C₁ + 1/C₂",
 "Cp = C₁C₂",
 "Cp = C₁/C₂",
 "Cp = C₁−C₂"
-],
-answer:0,
-explanation:"Untuk kapasitor paralel, kapasitansi pengganti adalah jumlah semua kapasitansi."
-},
+],0,
+"Untuk kapasitor paralel, kapasitansi pengganti adalah jumlah semua kapasitansi."
+);
 
-{
-topic:"Kapasitor",
-type:"Konsep",
-q:"Jika dua kapasitor identik masing-masing C disusun seri, kapasitansi penggantinya adalah...",
-options:[
+addQuestion(
+"Kapasitor","Konsep",
+"Jika dua kapasitor identik masing-masing C disusun seri, kapasitansi penggantinya adalah...",
+[
 "2C",
 "C",
 "C/2",
 "4C",
 "0"
-],
-answer:2,
-explanation:"Dua kapasitor identik yang disusun seri memiliki kapasitansi pengganti C/2."
-},
+],2,
+"Dua kapasitor identik yang disusun seri memiliki kapasitansi pengganti C/2."
+);
 
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Sebuah kapasitor 4 μF diberi tegangan 12 V. Muatan yang tersimpan adalah...",
-options:[
+addQuestion(
+"Kapasitor","Hitungan",
+"Sebuah kapasitor 4 μF diberi tegangan 12 V. Muatan yang tersimpan adalah...",
+[
 "12 μC",
 "24 μC",
 "48 μC",
 "60 μC",
 "96 μC"
-],
-answer:2,
-explanation:"Q = CV = 4×12 = 48 μC."
-},
+],2,
+"Q = CV = 4×12 = 48 μC."
+);
 
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Kapasitor menyimpan muatan 60 μC pada tegangan 20 V. Kapasitansinya adalah...",
-options:[
+addQuestion(
+"Kapasitor","Hitungan",
+"Kapasitor menyimpan muatan 60 μC pada tegangan 20 V. Kapasitansinya adalah...",
+[
 "1 μF",
 "2 μF",
 "3 μF",
 "4 μF",
 "6 μF"
-],
-answer:2,
-explanation:"C = Q/V = 60/20 = 3 μF."
-},
+],2,
+"C = Q/V = 60/20 = 3 μF."
+);
 
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Kapasitor 5 μF diberi tegangan 20 V. Muatan yang tersimpan adalah...",
-options:[
+addQuestion(
+"Kapasitor","Hitungan",
+"Kapasitor 5 μF diberi tegangan 20 V. Muatan yang tersimpan adalah...",
+[
 "25 μC",
 "50 μC",
 "75 μC",
 "100 μC",
 "125 μC"
-],
-answer:3,
-explanation:"Q = CV = 5×20 = 100 μC."
-},
+],3,
+"Q = CV = 5×20 = 100 μC."
+);
 
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Dua kapasitor 4 μF dan 6 μF dipasang paralel. Kapasitansi totalnya adalah...",
-options:[
+addQuestion(
+"Kapasitor","Hitungan",
+"Dua kapasitor 4 μF dan 6 μF dipasang paralel. Kapasitansi totalnya adalah...",
+[
 "1,5 μF",
 "2,4 μF",
 "10 μF",
 "24 μF",
 "48 μF"
-],
-answer:2,
-explanation:"Cp = C₁+C₂ = 4+6 = 10 μF."
-},
+],2,
+"Cp = C₁+C₂ = 4+6 = 10 μF."
+);
 
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Kapasitor 3 μF dan 6 μF dipasang seri. Kapasitansi penggantinya adalah...",
-options:[
+addQuestion(
+"Kapasitor","Hitungan",
+"Kapasitor 3 μF dan 6 μF dipasang seri. Kapasitansi penggantinya adalah...",
+[
 "1 μF",
 "2 μF",
 "3 μF",
 "6 μF",
 "9 μF"
-],
-answer:1,
-explanation:"Cs = (C₁C₂)/(C₁+C₂) = (3×6)/(3+6) = 2 μF."
-},
+],1,
+"Cs = (C₁C₂)/(C₁+C₂) = (3×6)/(3+6) = 2 μF."
+);
 
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Dua kapasitor 10 μF dan 10 μF dipasang seri pada sumber 20 V. Muatan yang tersimpan pada masing-masing kapasitor adalah...",
-options:[
+addQuestion(
+"Kapasitor","Hitungan",
+"Dua kapasitor 10 μF dan 10 μF dipasang seri pada sumber 20 V. Muatan yang tersimpan pada masing-masing kapasitor adalah...",
+[
 "50 μC",
 "100 μC",
 "150 μC",
 "200 μC",
 "400 μC"
-],
-answer:1,
-explanation:"Ceq = 10/2 = 5 μF. Karena seri, Q sama. Q = CeqV = 5×20 = 100 μC."
-},
+],1,
+"Ceq = 10/2 = 5 μF. Karena seri, Q sama. Q = CeqV = 5×20 = 100 μC."
+);
 
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Dua kapasitor 4 μF dan 12 μF dipasang paralel pada tegangan 10 V. Muatan total adalah...",
-options:[
+addQuestion(
+"Kapasitor","Hitungan",
+"Dua kapasitor 4 μF dan 12 μF dipasang paralel pada tegangan 10 V. Muatan total adalah...",
+[
 "40 μC",
 "80 μC",
 "120 μC",
 "160 μC",
 "200 μC"
-],
-answer:3,
-explanation:"Ctotal = 4+12 = 16 μF. Qtotal = CV = 16×10 = 160 μC."
-},
+],3,
+"Ctotal = 4+12 = 16 μF. Qtotal = CV = 16×10 = 160 μC."
+);
 
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Kapasitor 2 μF diberi tegangan 30 V. Energi yang tersimpan adalah...",
-options:[
+addQuestion(
+"Kapasitor","Hitungan",
+"Kapasitor 2 μF diberi tegangan 30 V. Energi yang tersimpan adalah...",
+[
 "0,0003 J",
 "0,0006 J",
 "0,0009 J",
 "0,0018 J",
 "0,009 J"
-],
-answer:2,
-explanation:"U = 1/2 CV² = 1/2(2×10⁻⁶)(30²) = 9×10⁻⁴ J = 0,0009 J."
-},
+],2,
+"U = 1/2 CV² = 1/2(2×10⁻⁶)(30²) = 9×10⁻⁴ J = 0,0009 J."
+);
 
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Kapasitor 8 μF diberi tegangan 10 V. Muatan yang tersimpan adalah...",
-options:[
+addQuestion(
+"Kapasitor","Hitungan",
+"Kapasitor 8 μF diberi tegangan 10 V. Muatan yang tersimpan adalah...",
+[
 "20 μC",
 "40 μC",
 "60 μC",
 "80 μC",
 "160 μC"
-],
-answer:3,
-explanation:"Q = CV = 8×10 = 80 μC."
-},
+],3,
+"Q = CV = 8×10 = 80 μC."
+);
 
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Tiga kapasitor 2 μF, 3 μF, dan 5 μF dipasang paralel. Kapasitansi totalnya adalah...",
-options:[
+addQuestion(
+"Kapasitor","Hitungan",
+"Tiga kapasitor 2 μF, 3 μF, dan 5 μF dipasang paralel. Kapasitansi totalnya adalah...",
+[
 "5 μF",
 "6 μF",
 "8 μF",
 "10 μF",
 "30 μF"
-],
-answer:3,
-explanation:"Cp = 2+3+5 = 10 μF."
-},
-
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Kapasitor 6 μF dan 3 μF disusun seri. Jika diberi tegangan 18 V, muatan pada masing-masing kapasitor adalah...",
-options:[
-"18 μC",
-"24 μC",
-"36 μC",
-"54 μC",
-"72 μC"
-],
-answer:2,
-explanation:"Ceq = (6×3)/(6+3) = 2 μF. Q = CeqV = 2×18 = 36 μC."
-}
-
-];
+],3,
+"Cp = 2+3+5 = 10 μF."
+);
 
 
 /* =========================================================
-   CEK JUMLAH SOAL
+   6. HUKUM KIRCHHOFF
+   5 KONSEP + 15 HITUNGAN = 20
 ========================================================= */
 
-console.log("Jumlah soal:", questions.length);
 
-if(questions.length !== 80){
+/* -------------------------
+   KONSEP 1
+------------------------- */
+
+addQuestion(
+"Hukum Kirchhoff","Konsep",
+"Hukum Kirchhoff I atau Kirchhoff's Current Law (KCL) menyatakan bahwa...",
+[
+"jumlah tegangan selalu lebih besar dari arus",
+"jumlah arus yang masuk ke titik percabangan sama dengan jumlah arus yang keluar",
+"tegangan selalu sama pada semua resistor",
+"arus selalu sama pada semua cabang",
+"jumlah hambatan harus nol"
+],1,
+"Hukum Kirchhoff I berdasarkan kekekalan muatan: jumlah arus yang masuk ke suatu titik sama dengan jumlah arus yang keluar."
+);
+
+
+/* -------------------------
+   KONSEP 2
+------------------------- */
+
+addQuestion(
+"Hukum Kirchhoff","Konsep",
+"Hukum Kirchhoff II atau Kirchhoff's Voltage Law (KVL) diterapkan pada...",
+[
+"titik percabangan saja",
+"jalur terbuka",
+"lintasan atau loop tertutup",
+"resistor tunggal saja",
+"baterai saja"
+],2,
+"Kirchhoff II diterapkan pada loop tertutup dengan jumlah aljabar perubahan tegangan sama dengan nol."
+);
+
+
+/* -------------------------
+   KONSEP 3
+------------------------- */
+
+addQuestion(
+"Hukum Kirchhoff","Konsep",
+"Dasar dari Hukum Kirchhoff I adalah hukum kekekalan...",
+[
+"energi",
+"momentum",
+"muatan listrik",
+"massa jenis",
+"suhu"
+],2,
+"Kirchhoff I berasal dari prinsip kekekalan muatan listrik. Muatan tidak dapat tiba-tiba hilang atau muncul di titik percabangan."
+);
+
+
+/* -------------------------
+   KONSEP 4
+------------------------- */
+
+addQuestion(
+"Hukum Kirchhoff","Konsep",
+"Dasar dari Hukum Kirchhoff II adalah hukum kekekalan...",
+[
+"muatan",
+"energi",
+"massa",
+"arus",
+"hambatan"
+],1,
+"Kirchhoff II berkaitan dengan kekekalan energi dalam satu lintasan tertutup."
+);
+
+
+/* -------------------------
+   KONSEP 5
+------------------------- */
+
+addQuestion(
+"Hukum Kirchhoff","Konsep",
+"Ketika melewati resistor searah dengan arah arus yang dipilih, perubahan potensial pada resistor biasanya ditulis...",
+[
+"+IR",
+"−IR",
+"+I/R",
+"−I/R",
+"0"
+],1,
+"Jika melintasi resistor searah arus, potensial berkurang sebesar IR sehingga ditulis −IR. Jika melawan arah arus, perubahan potensialnya +IR."
+);
+
+
+/* =========================================================
+   HITUNGAN 1
+========================================================= */
+
+addQuestion(
+"Hukum Kirchhoff","Hitungan",
+"Pada sebuah titik percabangan, arus 4 A dan 2 A masuk. Arus 3 A keluar. Besar arus lain yang keluar adalah...",
+[
+"1 A",
+"2 A",
+"3 A",
+"4 A",
+"6 A"
+],1,
+"Gunakan KCL: arus masuk = arus keluar. 4 + 2 = 3 + I. Jadi I = 3 A."
+);
+
+
+/* HITUNGAN 2 */
+
+addQuestion(
+"Hukum Kirchhoff","Hitungan",
+"Sebuah loop memiliki baterai 12 V dan dua resistor 2 Ω serta 4 Ω yang disusun seri. Arus dalam loop adalah...",
+[
+"1 A",
+"2 A",
+"3 A",
+"4 A",
+"6 A"
+],1,
+"Rtotal = 2 + 4 = 6 Ω. Dengan KVL: 12 − 6I = 0. Maka I = 12/6 = 2 A."
+);
+
+
+/* HITUNGAN 3 */
+
+addQuestion(
+"Hukum Kirchhoff","Hitungan",
+"Sebuah rangkaian satu loop memiliki sumber 20 V dan resistor 4 Ω serta 6 Ω seri. Besar arusnya adalah...",
+[
+"1 A",
+"2 A",
+"3 A",
+"4 A",
+"5 A"
+],1,
+"Rtotal = 4 + 6 = 10 Ω. KVL: 20 − 10I = 0. Jadi I = 2 A."
+);
+
+
+/* HITUNGAN 4 */
+
+addQuestion(
+"Hukum Kirchhoff","Hitungan",
+"Dua baterai 18 V dan 6 V dipasang berlawanan arah dalam satu loop. Hambatan total rangkaian 8 Ω. Besar arus yang mengalir adalah...",
+[
+"0,5 A",
+"1 A",
+"1,5 A",
+"2 A",
+"3 A"
+],2,
+"Karena baterai berlawanan arah, GGL bersih = 18 − 6 = 12 V. I = 12/8 = 1,5 A."
+);
+
+
+/* HITUNGAN 5 */
+
+addQuestion(
+"Hukum Kirchhoff","Hitungan",
+"Pada sebuah titik percabangan, arus 8 A masuk. Arus 3 A dan 2 A keluar. Arus ketiga yang keluar adalah...",
+[
+"1 A",
+"2 A",
+"3 A",
+"4 A",
+"5 A"
+],2,
+"KCL: 8 = 3 + 2 + I. Jadi I = 3 A."
+);
+
+
+/* HITUNGAN 6 */
+
+addQuestion(
+"Hukum Kirchhoff","Hitungan",
+"Sebuah loop mempunyai sumber 24 V dan tiga resistor 4 Ω, 8 Ω, dan 12 Ω yang tersusun seri. Arus rangkaian adalah...",
+[
+"0,5 A",
+"1 A",
+"2 A",
+"3 A",
+"4 A"
+],1,
+"Rtotal = 4 + 8 + 12 = 24 Ω. KVL: 24 − 24I = 0. Jadi I = 1 A."
+);
+
+
+/* HITUNGAN 7 */
+
+addQuestion(
+"Hukum Kirchhoff","Hitungan",
+"Dua sumber tegangan 10 V dan 6 V dipasang searah dalam satu loop. Jika hambatan total 8 Ω, arus yang mengalir adalah...",
+[
+"1 A",
+"2 A",
+"3 A",
+"4 A",
+"8 A"
+],1,
+"Karena sumber searah, GGL total = 10 + 6 = 16 V. I = 16/8 = 2 A."
+);
+
+
+/* HITUNGAN 8 */
+
+addQuestion(
+"Hukum Kirchhoff","Hitungan",
+"Dua baterai 18 V dan 6 V dipasang berlawanan arah. Jika resistor dalam loop masing-masing 3 Ω dan 3 Ω, besar arus adalah...",
+[
+"1 A",
+"2 A",
+"3 A",
+"4 A",
+"6 A"
+],1,
+"GGL bersih = 18 − 6 = 12 V. Rtotal = 3 + 3 = 6 Ω. I = 12/6 = 2 A."
+);
+
+
+/* HITUNGAN 9 */
+
+addQuestion(
+"Hukum Kirchhoff","Hitungan",
+"Sebuah sumber 30 V mengalirkan arus melalui resistor 5 Ω dan 10 Ω yang tersusun seri. Tegangan pada resistor 10 Ω adalah...",
+[
+"5 V",
+"10 V",
+"15 V",
+"20 V",
+"25 V"
+],3,
+"Rtotal = 5 + 10 = 15 Ω. I = 30/15 = 2 A. Tegangan pada resistor 10 Ω: V = IR = 2×10 = 20 V."
+);
+
+
+/* HITUNGAN 10 */
+
+addQuestion(
+"Hukum Kirchhoff","Hitungan",
+"Pada sebuah titik percabangan, arus 7 A masuk bersama arus I. Arus yang keluar adalah 4 A dan 2 A. Jika arah I diasumsikan masuk, nilai I adalah...",
+[
+"−3 A",
+"−1 A",
+"1 A",
+"3 A",
+"9 A"
+],1,
+"KCL: 7 + I = 4 + 2. Maka I = −1 A. Tanda negatif berarti arah sebenarnya berlawanan dengan asumsi, yaitu 1 A keluar."
+);
+
+
+/* HITUNGAN 11 — DUA LOOP */
+
+addQuestion(
+"Hukum Kirchhoff","Hitungan",
+"Dalam rangkaian dua loop, persamaan Kirchhoff yang diperoleh adalah 4I₁ − 2I₂ = 10 dan −2I₁ + 4I₂ = 2. Nilai I₁ adalah...",
+[
+"2 A",
+"7/3 A",
+"3 A",
+"11/3 A",
+"5 A"
+],3,
+"Dari persamaan pertama: 2I₁ − I₂ = 5, sehingga I₂ = 2I₁ − 5. Substitusi ke persamaan kedua menghasilkan I₁ = 11/3 A."
+);
+
+
+/* HITUNGAN 12 — DUA LOOP */
+
+addQuestion(
+"Hukum Kirchhoff","Hitungan",
+"Dalam suatu rangkaian dua loop diperoleh persamaan 3I₁ − I₂ = 8 dan −I₁ + 3I₂ = 4. Besar I₂ adalah...",
+[
+"1,5 A",
+"2 A",
+"2,5 A",
+"3 A",
+"3,5 A"
+],2,
+"Dari persamaan pertama I₂ = 3I₁ − 8. Substitusi ke persamaan kedua menghasilkan I₁ = 3,5 A dan I₂ = 2,5 A."
+);
+
+
+/* HITUNGAN 13 */
+
+addQuestion(
+"Hukum Kirchhoff","Hitungan",
+"Pada titik percabangan, arus 10 A masuk dan terbagi menjadi dua cabang. Jika salah satu cabang membawa 4 A keluar, arus pada cabang lainnya adalah...",
+[
+"2 A",
+"4 A",
+"5 A",
+"6 A",
+"10 A"
+],3,
+"KCL: 10 = 4 + I. Jadi I = 6 A."
+);
+
+
+/* HITUNGAN 14 */
+
+addQuestion(
+"Hukum Kirchhoff","Hitungan",
+"Suatu loop memiliki sumber 20 V yang berlawanan dengan baterai E. Arus loop 2 A melewati resistor 2 Ω dan 3 Ω. Nilai E adalah...",
+[
+"5 V",
+"10 V",
+"15 V",
+"20 V",
+"30 V"
+],1,
+"Penurunan tegangan pada resistor = I(R₁+R₂) = 2(2+3) = 10 V. Karena 20 − E − 10 = 0, maka E = 10 V."
+);
+
+
+/* HITUNGAN 15 */
+
+addQuestion(
+"Hukum Kirchhoff","Hitungan",
+"Sebuah sumber 24 V menghasilkan arus 3 A melalui resistor 2 Ω dan resistor R yang disusun seri. Nilai R adalah...",
+[
+"2 Ω",
+"4 Ω",
+"6 Ω",
+"8 Ω",
+"10 Ω"
+],2,
+"Rtotal = V/I = 24/3 = 8 Ω. Karena 2 + R = 8, maka R = 6 Ω."
+);
+
+
+/* =========================================================
+   CEK JUMLAH
+========================================================= */
+
+console.log("Jumlah soal:",questions.length);
+
+if(questions.length !== 100){
   console.error(
-    "ERROR: Jumlah soal bukan 80. Jumlah saat ini:",
+    "ERROR: Jumlah soal bukan 100. Jumlah saat ini:",
     questions.length
   );
 }
@@ -1854,6 +2012,12 @@ function checkAnswers(){
   });
 
 
+  const unanswered =
+  questions.length - answered;
+
+  const wrong =
+  questions.length - score - unanswered;
+
   const nilai =
   Math.round((score/questions.length)*100);
 
@@ -1883,7 +2047,8 @@ function checkAnswers(){
 
   document.getElementById("summary").innerHTML =
   `Benar: <b>${score}</b> dari <b>${questions.length}</b> soal<br>
-   Salah: <b>${questions.length-score}</b> soal<br>
+   Salah: <b>${wrong}</b> soal<br>
+   Tidak dijawab: <b>${unanswered}</b> soal<br>
    Dijawab: <b>${answered}</b> soal`;
 
   document.getElementById("result").style.display =
@@ -1948,7 +2113,7 @@ function resetQuiz(){
 
 
 /* =========================================================
-   SCROLL KE SOAL SALAH
+   SCROLL KE SOAL SALAH / TIDAK DIJAWAB
 ========================================================= */
 
 function scrollToWrong(){
