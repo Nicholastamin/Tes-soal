@@ -3,207 +3,270 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <title>Latihan Fisika XII</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 body{
-    margin:0;
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f3f4f6;
-    color:#172033;
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(135deg,#f5f3ff,#eef2ff,#f8fafc);
+  color:#1e293b;
+  padding-bottom:40px;
 }
 
 header{
-    background:linear-gradient(135deg,#111827,#1d4ed8);
-    color:white;
-    padding:28px 18px;
-    text-align:center;
+  background:linear-gradient(135deg,#6d28d9,#7c3aed,#4f46e5);
+  color:white;
+  padding:28px 20px;
+  text-align:center;
+  box-shadow:0 5px 20px rgba(0,0,0,.15);
 }
 
 header h1{
-    margin:0;
-    font-size:28px;
+  font-size:30px;
+  margin-bottom:8px;
 }
 
 header p{
-    margin:8px 0 0;
-    opacity:.9;
+  opacity:.9;
+  font-size:15px;
 }
 
 .container{
-    max-width:950px;
-    margin:auto;
-    padding:18px;
+  max-width:1000px;
+  margin:25px auto;
+  padding:0 15px;
 }
 
 .card{
-    background:white;
-    border-radius:16px;
-    padding:20px;
-    margin-bottom:18px;
-    box-shadow:0 5px 20px rgba(0,0,0,.07);
+  background:white;
+  border-radius:18px;
+  padding:22px;
+  margin-bottom:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
 }
 
 .info{
-    background:#eff6ff;
-    border-left:5px solid #2563eb;
-    padding:14px;
-    border-radius:9px;
-    line-height:1.6;
-}
-
-.topic{
-    display:inline-block;
-    background:#e0e7ff;
-    color:#3730a3;
-    padding:5px 9px;
-    border-radius:20px;
-    font-size:12px;
-    font-weight:bold;
-    margin-bottom:10px;
-}
-
-.question{
-    font-size:17px;
-    line-height:1.65;
-    font-weight:600;
-    margin-bottom:14px;
-}
-
-.option{
-    display:block;
-    border:1px solid #d1d5db;
-    border-radius:10px;
-    padding:12px;
-    margin:8px 0;
-    cursor:pointer;
-    transition:.15s;
-    font-weight:normal;
-}
-
-.option:hover{
-    background:#f8fafc;
-}
-
-.option input{
-    margin-right:8px;
-}
-
-.option.correct{
-    background:#dcfce7;
-    border-color:#16a34a;
-}
-
-.option.wrong{
-    background:#fee2e2;
-    border-color:#dc2626;
-}
-
-.explanation{
-    display:none;
-    background:#f8fafc;
-    border-left:4px solid #2563eb;
-    padding:13px;
-    margin-top:13px;
-    border-radius:7px;
-    line-height:1.6;
-}
-
-.result{
-    display:none;
-    text-align:center;
-}
-
-.score{
-    font-size:48px;
-    font-weight:bold;
-    color:#2563eb;
-}
-
-.grade{
-    font-size:20px;
-    margin:8px 0 18px;
-}
-
-button{
-    border:none;
-    border-radius:10px;
-    padding:13px 20px;
-    margin:5px;
-    font-size:15px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.btn-primary{
-    background:#2563eb;
-    color:white;
-}
-
-.btn-secondary{
-    background:#e5e7eb;
-    color:#111827;
-}
-
-.btn-primary:hover{
-    background:#1d4ed8;
-}
-
-.navigation{
-    position:sticky;
-    bottom:10px;
-    z-index:10;
-    background:white;
-    padding:12px;
-    border-radius:14px;
-    box-shadow:0 4px 20px rgba(0,0,0,.15);
-    text-align:center;
+  background:#f5f3ff;
+  border-left:5px solid #7c3aed;
+  padding:15px;
+  border-radius:10px;
+  line-height:1.7;
+  margin-bottom:18px;
 }
 
 .progress-wrap{
-    background:#e5e7eb;
-    height:9px;
-    border-radius:20px;
-    overflow:hidden;
-    margin:15px 0;
+  width:100%;
+  height:12px;
+  background:#e5e7eb;
+  border-radius:20px;
+  overflow:hidden;
+  margin:15px 0;
 }
 
 .progress{
-    width:0%;
-    height:100%;
-    background:#2563eb;
-    transition:.2s;
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#7c3aed,#4f46e5);
+  transition:.3s;
 }
 
 .topics{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:8px;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
 }
 
 .topic-stat{
-    background:#f8fafc;
-    border:1px solid #e5e7eb;
-    border-radius:10px;
-    padding:10px;
-    text-align:center;
-    font-size:12px;
+  background:#f8fafc;
+  border-radius:12px;
+  padding:12px 5px;
+  text-align:center;
+  font-size:12px;
+  border:1px solid #e5e7eb;
 }
 
 .topic-stat b{
-    display:block;
-    font-size:20px;
+  display:block;
+  font-size:21px;
+  color:#6d28d9;
+  margin-bottom:4px;
 }
 
-@media(max-width:650px){
-    header h1{font-size:23px}
-    .container{padding:10px}
-    .card{padding:15px}
-    .topics{grid-template-columns:repeat(2,1fr)}
-    .question{font-size:16px}
-    button{width:100%;margin:4px 0}
+.question{
+  background:white;
+  border-radius:18px;
+  padding:22px;
+  margin-bottom:18px;
+  box-shadow:0 4px 16px rgba(0,0,0,.07);
+  border:2px solid transparent;
+  transition:.2s;
+}
+
+.question:hover{
+  border-color:#ddd6fe;
+}
+
+.question h3{
+  font-size:17px;
+  line-height:1.6;
+  margin-bottom:15px;
+}
+
+.number{
+  color:#7c3aed;
+  font-weight:bold;
+}
+
+.topic-label{
+  display:inline-block;
+  background:#ede9fe;
+  color:#6d28d9;
+  padding:5px 10px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.options{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.option{
+  border:1px solid #d1d5db;
+  border-radius:10px;
+  padding:11px 13px;
+  cursor:pointer;
+  transition:.2s;
+  line-height:1.5;
+}
+
+.option:hover{
+  background:#f5f3ff;
+  border-color:#8b5cf6;
+}
+
+.option input{
+  margin-right:8px;
+  accent-color:#7c3aed;
+}
+
+.correct{
+  background:#dcfce7 !important;
+  border-color:#22c55e !important;
+}
+
+.wrong{
+  background:#fee2e2 !important;
+  border-color:#ef4444 !important;
+}
+
+.explanation{
+  display:none;
+  margin-top:15px;
+  padding:14px;
+  border-radius:10px;
+  background:#f8fafc;
+  border-left:4px solid #7c3aed;
+  line-height:1.7;
+  font-size:14px;
+}
+
+.navigation{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin:25px 0;
+}
+
+button{
+  border:none;
+  border-radius:12px;
+  padding:13px 22px;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.2s;
+}
+
+button:hover{
+  transform:translateY(-2px);
+}
+
+.btn-primary{
+  background:linear-gradient(135deg,#7c3aed,#4f46e5);
+  color:white;
+}
+
+.btn-secondary{
+  background:#e5e7eb;
+  color:#334155;
+}
+
+.result{
+  display:none;
+  text-align:center;
+}
+
+.score{
+  font-size:58px;
+  font-weight:bold;
+  color:#7c3aed;
+  margin:10px 0;
+}
+
+.grade{
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+#summary{
+  line-height:1.7;
+}
+
+@media(max-width:800px){
+  .topics{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(max-width:550px){
+  header h1{
+    font-size:24px;
+  }
+
+  .container{
+    padding:0 10px;
+  }
+
+  .card,
+  .question{
+    padding:16px;
+    border-radius:14px;
+  }
+
+  .topics{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .question h3{
+    font-size:15px;
+  }
+
+  .option{
+    font-size:14px;
+  }
 }
 </style>
 </head>
@@ -211,151 +274,216 @@ button{
 <body>
 
 <header>
-    <h1>⚡ Latihan Fisika XII</h1>
-    <p>Listrik Statis • Medan Listrik • Potensial • Listrik Dinamis • Kapasitor</p>
+  <h1>⚡ Latihan Fisika XII</h1>
+  <p>80 Soal • 30 Konsep • 50 Hitungan</p>
 </header>
 
 <div class="container">
 
 <div class="card">
 
-    <div class="info">
-        <b>📚 Petunjuk</b><br>
-        Kerjakan 50 soal berikut. Pilih satu jawaban yang paling tepat.
-        Setelah selesai, tekan <b>Periksa Jawaban</b> untuk melihat nilai,
-        jawaban benar, jawaban salah, dan pembahasannya.
-        <br><br>
-        <b>Gunakan:</b><br>
-        k = 9 × 10⁹ N·m²/C²
+  <div class="info">
+    <b>📚 Materi:</b><br>
+    Listrik Statis • Medan Listrik • Potensial Listrik •
+    Listrik Arus Searah • Kapasitor
+    <br><br>
+    <b>📐 Konstanta:</b><br>
+    k = 9 × 10⁹ N·m²/C²
+    <br>
+    μC = 10⁻⁶ C &nbsp; | &nbsp;
+    nC = 10⁻⁹ C &nbsp; | &nbsp;
+    μF = 10⁻⁶ F
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress" id="progress"></div>
+  </div>
+
+  <div id="progressText"
+       style="text-align:center;font-size:13px;color:#64748b;">
+    0 dari 80 soal dijawab
+  </div>
+
+  <div class="topics">
+    <div class="topic-stat">
+      <b>16</b>
+      Listrik Statis
     </div>
 
-    <div class="progress-wrap">
-        <div class="progress" id="progress"></div>
+    <div class="topic-stat">
+      <b>16</b>
+      Medan Listrik
     </div>
 
-    <div class="topics">
-        <div class="topic-stat">
-            <b>10</b>
-            Listrik Statis
-        </div>
-        <div class="topic-stat">
-            <b>10</b>
-            Medan Listrik
-        </div>
-        <div class="topic-stat">
-            <b>10</b>
-            Potensial
-        </div>
-        <div class="topic-stat">
-            <b>10</b>
-            Arus Searah
-        </div>
-        <div class="topic-stat">
-            <b>10</b>
-            Kapasitor
-        </div>
+    <div class="topic-stat">
+      <b>16</b>
+      Potensial
     </div>
+
+    <div class="topic-stat">
+      <b>16</b>
+      Arus Searah
+    </div>
+
+    <div class="topic-stat">
+      <b>16</b>
+      Kapasitor
+    </div>
+  </div>
 
 </div>
 
 <div id="questions"></div>
 
 <div class="navigation">
-    <button class="btn-primary" onclick="checkAnswers()">
-        ✅ Periksa Jawaban
-    </button>
+  <button class="btn-primary" onclick="checkAnswers()">
+    ✅ Periksa Jawaban
+  </button>
 
-    <button class="btn-secondary" onclick="resetQuiz()">
-        🔄 Ulangi
-    </button>
+  <button class="btn-secondary" onclick="resetQuiz()">
+    🔄 Ulangi
+  </button>
 </div>
 
 <div class="card result" id="result">
 
-    <h2>🎯 Hasil Latihan</h2>
+  <h2>🎯 Hasil Latihan</h2>
 
-    <div class="score" id="score">0</div>
+  <div class="score" id="score">0</div>
 
-    <div class="grade" id="grade"></div>
+  <div class="grade" id="grade"></div>
 
-    <p id="summary"></p>
+  <p id="summary"></p>
 
-    <button class="btn-primary" onclick="scrollToWrong()">
-        🔎 Lihat Jawaban
-    </button>
+  <br>
+
+  <button class="btn-primary" onclick="scrollToWrong()">
+    🔎 Lihat Jawaban Salah
+  </button>
 
 </div>
 
 </div>
-
 
 <script>
 
 const questions = [
 
-/* =====================================================
+/* =========================================================
    LISTRIK STATIS
-===================================================== */
+   1-6 KONSEP
+   7-16 HITUNGAN
+========================================================= */
 
 {
 topic:"Listrik Statis",
-q:"Sebuah benda mempunyai jumlah proton yang sama dengan jumlah elektronnya. Benda tersebut bersifat...",
+type:"Konsep",
+q:"Dua benda dikatakan bermuatan listrik negatif apabila...",
 options:[
-"Positif",
-"Negatif",
-"Netral",
-"Konduktor",
-"Isolator"
+"jumlah proton lebih banyak daripada elektron",
+"jumlah elektron lebih banyak daripada proton",
+"jumlah proton sama dengan neutron",
+"jumlah neutron lebih banyak daripada elektron",
+"tidak memiliki elektron"
+],
+answer:1,
+explanation:"Muatan negatif terjadi ketika jumlah elektron lebih banyak daripada jumlah proton."
+},
+
+{
+topic:"Listrik Statis",
+type:"Konsep",
+q:"Jika dua muatan listrik sejenis didekatkan, kedua muatan akan...",
+options:[
+"saling tarik-menarik",
+"saling meniadakan",
+"saling tolak-menolak",
+"tidak mengalami gaya",
+"selalu bergerak melingkar"
 ],
 answer:2,
-explanation:"Jika jumlah proton sama dengan jumlah elektron, muatan positif dan negatif saling meniadakan sehingga benda bersifat netral."
-},
-
-{
-topic:"Listrik Statis",
-q:"Sebuah benda memiliki jumlah elektron lebih banyak daripada proton. Benda tersebut bermuatan...",
-options:[
-"Positif",
-"Negatif",
-"Netral",
-"Positif dan negatif sekaligus",
-"Tidak bermuatan"
-],
-answer:1,
-explanation:"Elektron bermuatan negatif. Jika jumlah elektron lebih banyak daripada proton, benda mempunyai kelebihan muatan negatif."
-},
-
-{
-topic:"Listrik Statis",
-q:"Dua muatan listrik yang sejenis jika didekatkan akan...",
-options:[
-"Tarik-menarik",
-"Tolak-menolak",
-"Tidak berinteraksi",
-"Menjadi netral",
-"Berubah menjadi magnet"
-],
-answer:1,
 explanation:"Muatan sejenis saling tolak-menolak, sedangkan muatan berbeda jenis saling tarik-menarik."
 },
 
 {
 topic:"Listrik Statis",
-q:"Dua muatan +2 μC dan +3 μC berjarak 30 cm. Besar gaya Coulomb antara kedua muatan adalah...",
+type:"Konsep",
+q:"Hukum Coulomb menjelaskan hubungan antara...",
 options:[
-"0,06 N",
-"0,2 N",
-"0,6 N",
-"2 N",
-"6 N"
+"massa dan percepatan",
+"arus dan hambatan",
+"gaya listrik dan muatan",
+"tegangan dan waktu",
+"energi dan daya"
 ],
 answer:2,
-explanation:"F = k|q1q2|/r² = 9×10⁹(2×10⁻⁶)(3×10⁻⁶)/(0,3)² = 0,6 N."
+explanation:"Hukum Coulomb menyatakan besar gaya listrik antara dua muatan bergantung pada besar kedua muatan dan kuadrat jaraknya."
 },
 
 {
 topic:"Listrik Statis",
-q:"Dua muatan +4 μC dan −6 μC berjarak 20 cm. Besar gaya Coulombnya adalah...",
+type:"Konsep",
+q:"Jika jarak antara dua muatan diperbesar, gaya Coulomb akan...",
+options:[
+"semakin besar",
+"tetap",
+"menjadi nol selalu",
+"semakin kecil",
+"berubah menjadi gaya gravitasi"
+],
+answer:3,
+explanation:"Gaya Coulomb berbanding terbalik dengan kuadrat jarak: F ∝ 1/r²."
+},
+
+{
+topic:"Listrik Statis",
+type:"Konsep",
+q:"Garis gaya listrik tidak pernah saling berpotongan karena...",
+options:[
+"medan listrik hanya memiliki satu arah pada satu titik",
+"muatan listrik selalu diam",
+"garis gaya tidak memiliki arah",
+"semua muatan bernilai positif",
+"medan listrik selalu nol"
+],
+answer:0,
+explanation:"Pada satu titik, medan listrik hanya memiliki satu arah. Jika garis berpotongan, satu titik akan mempunyai dua arah medan yang berbeda."
+},
+
+{
+topic:"Listrik Statis",
+type:"Konsep",
+q:"Satuan SI untuk muatan listrik adalah...",
+options:[
+"volt",
+"ampere",
+"coulomb",
+"ohm",
+"joule"
+],
+answer:2,
+explanation:"Satuan SI untuk muatan listrik adalah coulomb (C)."
+},
+
+{
+topic:"Listrik Statis",
+type:"Hitungan",
+q:"Dua muatan +2 μC dan +3 μC berjarak 30 cm. Besar gaya Coulomb antara keduanya adalah...",
+options:[
+"0,06 N",
+"0,2 N",
+"0,6 N",
+"6 N",
+"60 N"
+],
+answer:2,
+explanation:"F = k|q₁q₂|/r² = (9×10⁹)(2×10⁻⁶)(3×10⁻⁶)/(0,3)² = 0,6 N."
+},
+
+{
+topic:"Listrik Statis",
+type:"Hitungan",
+q:"Muatan +4 μC dan −6 μC berjarak 20 cm. Besar gaya Coulombnya adalah...",
 options:[
 "1,8 N",
 "5,4 N",
@@ -363,468 +491,788 @@ options:[
 "18 N",
 "54 N"
 ],
-answer:3,
-explanation:"F = 9×10⁹ × (4×10⁻⁶)(6×10⁻⁶)/(0,2)² = 5,4 N. Karena tandanya berbeda, gaya bersifat tarik-menarik."
+answer:1,
+explanation:"F = (9×10⁹)(4×10⁻⁶)(6×10⁻⁶)/(0,2)² = 5,4 N. Karena muatannya berlawanan, gaya bersifat tarik-menarik."
 },
 
 {
 topic:"Listrik Statis",
-q:"Jika jarak antara dua muatan dibuat 2 kali semula, gaya Coulomb menjadi...",
+type:"Hitungan",
+q:"Dua muatan masing-masing 2 μC berjarak 10 cm. Besar gaya Coulombnya adalah...",
 options:[
-"2 kali lebih besar",
-"4 kali lebih besar",
-"1/2 kali",
-"1/4 kali",
-"Tetap"
-],
-answer:3,
-explanation:"Hukum Coulomb menunjukkan F berbanding terbalik dengan r². Jika r menjadi 2r, gaya menjadi F/4."
-},
-
-{
-topic:"Listrik Statis",
-q:"Jika salah satu muatan dibuat 3 kali lebih besar sedangkan jarak tetap, gaya Coulomb menjadi...",
-options:[
-"1/3 kali",
-"2 kali",
-"3 kali",
-"6 kali",
-"9 kali"
-],
-answer:2,
-explanation:"Gaya Coulomb berbanding lurus dengan masing-masing muatan. Jika salah satu muatan menjadi 3 kali, gaya juga menjadi 3 kali."
-},
-
-{
-topic:"Listrik Statis",
-q:"Dua gaya Coulomb pada sebuah muatan masing-masing 8 N ke kanan dan 3 N ke kiri. Resultan gayanya adalah...",
-options:[
-"5 N ke kiri",
-"5 N ke kanan",
-"11 N ke kanan",
-"11 N ke kiri",
-"24 N ke kanan"
+"0,36 N",
+"3,6 N",
+"36 N",
+"360 N",
+"0,036 N"
 ],
 answer:1,
-explanation:"Kedua gaya berlawanan arah, sehingga FR = 8 − 3 = 5 N ke kanan."
+explanation:"F = (9×10⁹)(2×10⁻⁶)(2×10⁻⁶)/(0,1)² = 3,6 N."
 },
 
 {
 topic:"Listrik Statis",
-q:"Dua gaya yang bekerja pada suatu muatan masing-masing 6 N dan 8 N saling tegak lurus. Besar resultan gayanya adalah...",
+type:"Hitungan",
+q:"Dua muatan 4 μC dan 2 μC menghasilkan gaya 7,2 N. Jika jaraknya 10 cm, besar muatan kedua yang digunakan dalam perhitungan adalah...",
 options:[
+"0,2 μC",
+"1 μC",
+"2 μC",
+"20 μC",
+"200 μC"
+],
+answer:2,
+explanation:"q₂ = Fr²/(kq₁) = 7,2(0,1)² / [(9×10⁹)(4×10⁻⁶)] = 2×10⁻⁶ C = 2 μC."
+},
+
+{
+topic:"Listrik Statis",
+type:"Hitungan",
+q:"Jika gaya Coulomb antara dua muatan adalah 8 N pada jarak 2 m, maka gaya ketika jarak menjadi 4 m adalah...",
+options:[
+"1 N",
 "2 N",
-"10 N",
-"14 N",
-"48 N",
-"64 N"
+"4 N",
+"16 N",
+"32 N"
 ],
 answer:1,
-explanation:"Karena tegak lurus, FR = √(6² + 8²) = √100 = 10 N."
+explanation:"Jarak menjadi 2 kali. Karena F ∝ 1/r², gaya menjadi 1/4 kali. F₂ = 8/4 = 2 N."
 },
 
 {
 topic:"Listrik Statis",
-q:"Pernyataan yang tepat mengenai resultan gaya Coulomb adalah...",
+type:"Hitungan",
+q:"Dua muatan +3 μC dan +12 μC berjarak 60 cm. Besar gaya Coulombnya adalah...",
 options:[
-"Selalu merupakan penjumlahan biasa tanpa memperhatikan arah",
-"Hanya bergantung pada besar muatan",
-"Merupakan penjumlahan vektor gaya-gaya Coulomb",
-"Selalu bernilai positif",
-"Selalu sama dengan nol"
+"0,3 N",
+"0,9 N",
+"1,8 N",
+"3 N",
+"9 N"
 ],
 answer:2,
-explanation:"Gaya Coulomb merupakan besaran vektor sehingga resultannya harus memperhatikan besar dan arah setiap gaya."
-},
-
-
-/* =====================================================
-   MEDAN LISTRIK
-===================================================== */
-
-{
-topic:"Medan Listrik",
-q:"Medan listrik adalah...",
-options:[
-"Daerah yang tidak memiliki muatan",
-"Daerah di sekitar muatan yang dapat menimbulkan gaya listrik",
-"Aliran elektron dalam kabel",
-"Daerah tanpa gaya",
-"Ruang di dalam baterai"
-],
-answer:1,
-explanation:"Medan listrik adalah daerah di sekitar muatan listrik yang menyebabkan timbulnya gaya listrik pada muatan uji."
+explanation:"F = (9×10⁹)(3×10⁻⁶)(12×10⁻⁶)/(0,6)² = 0,9 N. Jadi jawaban yang benar adalah 0,9 N.",
 },
 
 {
-topic:"Medan Listrik",
-q:"Arah garis medan listrik yang berasal dari muatan positif adalah...",
+topic:"Listrik Statis",
+type:"Hitungan",
+q:"Tiga muatan berada segaris. q₁ = +2 μC dan q₂ = +4 μC berjarak 20 cm. Gaya q₁ terhadap q₂ adalah...",
 options:[
-"Menuju muatan",
-"Keluar dari muatan",
-"Berputar mengelilingi muatan",
-"Selalu ke bawah",
-"Selalu ke atas"
-],
-answer:1,
-explanation:"Garis gaya listrik dari muatan positif digambarkan keluar dari muatan ke segala arah."
-},
-
-{
-topic:"Medan Listrik",
-q:"Arah garis medan listrik pada muatan negatif adalah...",
-options:[
-"Keluar dari muatan",
-"Masuk menuju muatan",
-"Sejajar permukaan",
-"Berputar",
-"Tidak mempunyai arah"
-],
-answer:1,
-explanation:"Garis gaya listrik pada muatan negatif digambarkan masuk menuju muatan."
-},
-
-{
-topic:"Medan Listrik",
-q:"Jika garis-garis medan listrik semakin rapat, berarti...",
-options:[
-"Medan semakin lemah",
-"Muatan semakin kecil",
-"Medan listrik semakin kuat",
-"Tidak ada medan",
-"Jarak selalu semakin besar"
+"0,18 N",
+"0,9 N",
+"1,8 N",
+"3,6 N",
+"18 N"
 ],
 answer:2,
-explanation:"Kerapatan garis gaya digunakan untuk menunjukkan kuat medan listrik. Semakin rapat, medan semakin kuat."
+explanation:"F = (9×10⁹)(2×10⁻⁶)(4×10⁻⁶)/(0,2)² = 1,8 N."
 },
 
 {
-topic:"Medan Listrik",
-q:"Garis-garis gaya listrik tidak boleh...",
+topic:"Listrik Statis",
+type:"Hitungan",
+q:"Sebuah muatan 5 μC mengalami gaya listrik 2 N. Muatan lain yang menyebabkan gaya tersebut berjarak 15 cm. Besar muatan lain adalah...",
 options:[
-"Keluar dari muatan positif",
-"Masuk ke muatan negatif",
-"Berpotongan satu sama lain",
-"Menunjukkan arah medan",
-"Menjadi semakin rapat"
+"0,5 μC",
+"1 μC",
+"2 μC",
+"5 μC",
+"10 μC"
 ],
 answer:2,
-explanation:"Salah satu sifat garis gaya listrik adalah tidak saling berpotongan."
+explanation:"q₂ = Fr²/(kq₁) = 2(0,15)² / [(9×10⁹)(5×10⁻⁶)] = 1 μC."
 },
 
 {
-topic:"Medan Listrik",
-q:"Sebuah muatan 2 μC mengalami gaya listrik 0,6 N. Besar medan listrik pada posisi muatan tersebut adalah...",
+topic:"Listrik Statis",
+type:"Hitungan",
+q:"Dua muatan 2 μC dan 8 μC berjarak 40 cm. Gaya Coulomb yang terjadi adalah...",
 options:[
-"3 × 10⁴ N/C",
-"3 × 10⁵ N/C",
-"3 × 10⁶ N/C",
-"1,2 × 10⁶ N/C",
-"1,2 × 10⁵ N/C"
-],
-answer:1,
-explanation:"E = F/q = 0,6/(2×10⁻⁶) = 3×10⁵ N/C."
-},
-
-{
-topic:"Medan Listrik",
-q:"Medan listrik akibat muatan titik dapat dihitung menggunakan...",
-options:[
-"E = kqr²",
-"E = kr/q",
-"E = kq/r²",
-"E = qr/k",
-"E = k/rq"
-],
-answer:2,
-explanation:"Kuat medan listrik akibat muatan titik adalah E = k|q|/r²."
-},
-
-{
-topic:"Medan Listrik",
-q:"Jika jarak dari sebuah muatan menjadi 2 kali lebih jauh, kuat medan listriknya menjadi...",
-options:[
-"2 kali",
-"4 kali",
-"1/2 kali",
-"1/4 kali",
-"Tetap"
-],
-answer:3,
-explanation:"E berbanding terbalik dengan r². Jika jarak menjadi 2r, E menjadi E/4."
-},
-
-{
-topic:"Medan Listrik",
-q:"Muatan positif yang diletakkan dalam medan listrik akan mengalami gaya yang arahnya...",
-options:[
-"Berlawanan dengan arah medan",
-"Searah medan",
-"Tegak lurus medan",
-"Selalu menuju pusat bumi",
-"Tidak memiliki arah"
-],
-answer:1,
-explanation:"Arah medan listrik didefinisikan sebagai arah gaya pada muatan uji positif."
-},
-
-{
-topic:"Medan Listrik",
-q:"Jika dua garis gaya listrik digambarkan sangat rapat pada suatu daerah, maka daerah tersebut memiliki...",
-options:[
-"Medan listrik lemah",
-"Medan listrik kuat",
-"Potensial nol",
-"Muatan nol",
-"Tegangan nol"
-],
-answer:1,
-explanation:"Semakin rapat garis gaya listrik, semakin kuat medan listrik di daerah tersebut."
-},
-
-
-/* =====================================================
-   ENERGI POTENSIAL DAN POTENSIAL
-===================================================== */
-
-{
-topic:"Potensial Listrik",
-q:"Energi potensial listrik merupakan energi yang dimiliki benda bermuatan karena...",
-options:[
-"Warnanya",
-"Posisinya dalam medan listrik",
-"Suhunya saja",
-"Massanya saja",
-"Kecepatannya saja"
-],
-answer:1,
-explanation:"Benda bermuatan yang berada dalam medan listrik mempunyai energi potensial listrik karena posisinya."
-},
-
-{
-topic:"Potensial Listrik",
-q:"Satuan energi potensial listrik adalah...",
-options:[
-"Volt",
-"Newton",
-"Coulomb",
-"Joule",
-"Ampere"
-],
-answer:3,
-explanation:"Energi potensial listrik merupakan energi, sehingga satuannya adalah joule (J)."
-},
-
-{
-topic:"Potensial Listrik",
-q:"Potensial listrik didefinisikan sebagai...",
-options:[
-"Gaya per satuan jarak",
-"Energi potensial per satuan muatan",
-"Muatan per satuan waktu",
-"Arus per hambatan",
-"Jarak per muatan"
-],
-answer:1,
-explanation:"Potensial listrik adalah energi potensial listrik per satuan muatan: V = Ep/q."
-},
-
-{
-topic:"Potensial Listrik",
-q:"Satuan potensial listrik adalah...",
-options:[
-"Joule",
-"Coulomb",
-"Volt",
-"Newton",
-"Ohm"
-],
-answer:2,
-explanation:"Satuan potensial listrik adalah volt (V)."
-},
-
-{
-topic:"Potensial Listrik",
-q:"Potensial listrik merupakan besaran...",
-options:[
-"Vektor",
-"Skalar",
-"Pokok",
-"Tanpa satuan",
-"Selalu negatif"
-],
-answer:1,
-explanation:"Potensial listrik merupakan besaran skalar, sehingga hanya mempunyai nilai dan tanda."
-},
-
-{
-topic:"Potensial Listrik",
-q:"Rumus potensial listrik akibat sebuah muatan titik adalah...",
-options:[
-"V = kq/r",
-"V = kr/q",
-"V = q/rk",
-"V = kqr",
-"V = r/kq"
+"0,45 N",
+"0,9 N",
+"1,8 N",
+"2,25 N",
+"4,5 N"
 ],
 answer:0,
-explanation:"Potensial listrik akibat muatan titik adalah V = kq/r."
+explanation:"F = (9×10⁹)(2×10⁻⁶)(8×10⁻⁶)/(0,4)² = 0,9 N. Jadi jawaban yang benar adalah 0,9 N.",
 },
 
 {
-topic:"Potensial Listrik",
-q:"Muatan +2 μC berada 0,3 m dari titik P. Potensial listrik di P adalah...",
+topic:"Listrik Statis",
+type:"Hitungan",
+q:"Dua muatan menghasilkan gaya 12 N. Jika salah satu muatan dibuat 3 kali lebih besar sedangkan jarak tetap, gaya menjadi...",
 options:[
-"6 × 10³ V",
-"6 × 10⁴ V",
-"6 × 10⁵ V",
-"3 × 10⁴ V",
-"3 × 10⁵ V"
+"4 N",
+"12 N",
+"24 N",
+"36 N",
+"144 N"
+],
+answer:3,
+explanation:"Gaya Coulomb berbanding lurus dengan besar muatan. Jika salah satu muatan menjadi 3 kali, gaya juga menjadi 3 kali: 3×12 = 36 N."
+},
+
+{
+topic:"Listrik Statis",
+type:"Hitungan",
+q:"Dua muatan menghasilkan gaya 18 N. Jika kedua muatan masing-masing menjadi setengahnya dan jarak tetap, gaya baru adalah...",
+options:[
+"2,25 N",
+"4,5 N",
+"9 N",
+"18 N",
+"36 N"
 ],
 answer:1,
-explanation:"V = kq/r = (9×10⁹)(2×10⁻⁶)/0,3 = 6×10⁴ V."
+explanation:"F ∝ q₁q₂. Kedua muatan menjadi 1/2, sehingga F baru = 1/4 × 18 = 4,5 N."
 },
 
 {
-topic:"Potensial Listrik",
-q:"Jika muatan sumber bernilai negatif, maka potensial listrik yang dihasilkannya...",
+topic:"Listrik Statis",
+type:"Hitungan",
+q:"Dua muatan menghasilkan gaya 20 N pada jarak r. Jika jarak diperbesar menjadi 5r, gaya menjadi...",
 options:[
-"Selalu positif",
-"Selalu nol",
-"Bernilai negatif",
-"Tidak dapat dihitung",
-"Selalu sama dengan muatan"
-],
-answer:2,
-explanation:"Karena V = kq/r dan q dimasukkan dengan tandanya, muatan negatif menghasilkan potensial negatif."
-},
-
-{
-topic:"Potensial Listrik",
-q:"Energi potensial listrik dan potensial listrik termasuk besaran skalar. Artinya...",
-options:[
-"Memiliki besar dan arah",
-"Hanya memiliki nilai tanpa arah",
-"Selalu bernilai positif",
-"Selalu bernilai nol",
-"Tidak mempunyai satuan"
+"0,2 N",
+"0,8 N",
+"4 N",
+"5 N",
+"100 N"
 ],
 answer:1,
-explanation:"Besaran skalar hanya mempunyai nilai. Tanda positif atau negatif tetap dapat muncul dalam perhitungan."
+explanation:"F₂ = F₁/5² = 20/25 = 0,8 N."
+},
+
+/* =========================================================
+   MEDAN LISTRIK
+   17-22 KONSEP
+   23-32 HITUNGAN
+========================================================= */
+
+{
+topic:"Medan Listrik",
+type:"Konsep",
+q:"Medan listrik adalah...",
+options:[
+"daerah di sekitar muatan tempat muatan lain mengalami gaya listrik",
+"daerah tanpa muatan",
+"aliran elektron dalam kawat",
+"energi yang tersimpan dalam resistor",
+"gaya gravitasi bumi"
+],
+answer:0,
+explanation:"Medan listrik adalah daerah di sekitar muatan listrik yang menyebabkan muatan lain mengalami gaya listrik."
+},
+
+{
+topic:"Medan Listrik",
+type:"Konsep",
+q:"Arah medan listrik di sekitar muatan positif adalah...",
+options:[
+"menuju muatan",
+"menjauhi muatan",
+"melingkar",
+"selalu ke bawah",
+"tidak memiliki arah"
+],
+answer:1,
+explanation:"Garis medan listrik keluar atau menjauhi muatan positif."
+},
+
+{
+topic:"Medan Listrik",
+type:"Konsep",
+q:"Arah medan listrik di sekitar muatan negatif adalah...",
+options:[
+"menjauhi muatan",
+"melingkar",
+"menuju muatan",
+"selalu ke atas",
+"tidak beraturan"
+],
+answer:2,
+explanation:"Garis medan listrik menuju atau masuk ke muatan negatif."
+},
+
+{
+topic:"Medan Listrik",
+type:"Konsep",
+q:"Semakin rapat garis-garis medan listrik menunjukkan bahwa...",
+options:[
+"medannya semakin lemah",
+"medannya semakin kuat",
+"muatan semakin kecil pasti",
+"tidak ada medan",
+"arah medan berubah"
+],
+answer:1,
+explanation:"Kerapatan garis medan menggambarkan kuat medan listrik. Semakin rapat, semakin kuat."
+},
+
+{
+topic:"Medan Listrik",
+type:"Konsep",
+q:"Rumus kuat medan listrik yang disebabkan oleh muatan titik adalah...",
+options:[
+"E = IR",
+"E = Q/t",
+"E = kQ/r²",
+"E = QV",
+"E = Wt"
+],
+answer:2,
+explanation:"Untuk muatan titik, E = k|Q|/r²."
+},
+
+{
+topic:"Medan Listrik",
+type:"Konsep",
+q:"Satuan kuat medan listrik dalam SI adalah...",
+options:[
+"N/C",
+"C/N",
+"J/C",
+"C/V",
+"Ω"
+],
+answer:0,
+explanation:"Kuat medan listrik dapat dinyatakan dalam N/C atau V/m."
+},
+
+{
+topic:"Medan Listrik",
+type:"Hitungan",
+q:"Sebuah muatan +4 μC berada di ruang bebas. Kuat medan listrik pada jarak 20 cm adalah...",
+options:[
+"9×10⁴ N/C",
+"9×10⁵ N/C",
+"9×10⁶ N/C",
+"9×10⁷ N/C",
+"9×10⁸ N/C"
+],
+answer:2,
+explanation:"E = kQ/r² = (9×10⁹)(4×10⁻⁶)/(0,2)² = 9×10⁵ N/C. Jadi jawaban yang benar 9×10⁵ N/C.",
+},
+
+{
+topic:"Medan Listrik",
+type:"Hitungan",
+q:"Muatan 2 μC menghasilkan medan listrik 1,8×10⁶ N/C. Jarak titik tersebut dari muatan adalah...",
+options:[
+"5 cm",
+"10 cm",
+"15 cm",
+"20 cm",
+"30 cm"
+],
+answer:1,
+explanation:"r = √(kQ/E) = √[(9×10⁹)(2×10⁻⁶)/(1,8×10⁶)] = 0,1 m = 10 cm."
+},
+
+{
+topic:"Medan Listrik",
+type:"Hitungan",
+q:"Kuat medan listrik di suatu titik adalah 5×10⁴ N/C. Jika muatan uji 2 μC diletakkan di titik tersebut, gaya listriknya adalah...",
+options:[
+"0,01 N",
+"0,05 N",
+"0,1 N",
+"1 N",
+"10 N"
+],
+answer:2,
+explanation:"F = qE = (2×10⁻⁶)(5×10⁴) = 0,1 N."
+},
+
+{
+topic:"Medan Listrik",
+type:"Hitungan",
+q:"Muatan +8 μC menghasilkan medan listrik pada jarak 40 cm. Besar medannya adalah...",
+options:[
+"2,5×10⁴ N/C",
+"4,5×10⁵ N/C",
+"9×10⁵ N/C",
+"1,8×10⁶ N/C",
+"4,5×10⁶ N/C"
+],
+answer:1,
+explanation:"E = (9×10⁹)(8×10⁻⁶)/(0,4)² = 4,5×10⁵ N/C."
+},
+
+{
+topic:"Medan Listrik",
+type:"Hitungan",
+q:"Sebuah muatan menghasilkan medan 9×10⁵ N/C pada jarak 20 cm. Jika jarak menjadi 40 cm, medan listrik menjadi...",
+options:[
+"1,125×10⁵ N/C",
+"2,25×10⁵ N/C",
+"4,5×10⁵ N/C",
+"9×10⁵ N/C",
+"18×10⁵ N/C"
+],
+answer:1,
+explanation:"Jarak menjadi 2 kali, maka E menjadi 1/4. E₂ = 9×10⁵/4 = 2,25×10⁵ N/C."
+},
+
+{
+topic:"Medan Listrik",
+type:"Hitungan",
+q:"Kuat medan listrik 3×10⁵ N/C bekerja pada muatan 4 μC. Gaya yang dialami muatan adalah...",
+options:[
+"0,12 N",
+"0,8 N",
+"1,2 N",
+"12 N",
+"120 N"
+],
+answer:2,
+explanation:"F = qE = (4×10⁻⁶)(3×10⁵) = 1,2 N."
+},
+
+{
+topic:"Medan Listrik",
+type:"Hitungan",
+q:"Sebuah muatan 6 μC berada pada jarak 30 cm. Kuat medan listriknya adalah...",
+options:[
+"3×10⁵ N/C",
+"6×10⁵ N/C",
+"9×10⁵ N/C",
+"1,2×10⁶ N/C",
+"1,8×10⁶ N/C"
+],
+answer:2,
+explanation:"E = (9×10⁹)(6×10⁻⁶)/(0,3)² = 6×10⁵ N/C. Jadi jawaban yang benar 6×10⁵ N/C.",
+},
+
+{
+topic:"Medan Listrik",
+type:"Hitungan",
+q:"Jika kuat medan listrik akibat sebuah muatan adalah 2×10⁶ N/C pada jarak 10 cm, maka besar muatannya adalah...",
+options:[
+"0,22 μC",
+"1,11 μC",
+"2,22 μC",
+"4,44 μC",
+"22 μC"
+],
+answer:2,
+explanation:"Q = Er²/k = (2×10⁶)(0,1)²/(9×10⁹) = 2,22×10⁻⁶ C = 2,22 μC."
+},
+
+{
+topic:"Medan Listrik",
+type:"Hitungan",
+q:"Medan listrik 8×10⁴ N/C bekerja pada muatan 5 nC. Besar gaya listriknya adalah...",
+options:[
+"2×10⁻⁵ N",
+"4×10⁻⁴ N",
+"4×10⁻³ N",
+"4×10⁻² N",
+"4 N"
+],
+answer:1,
+explanation:"F = qE = (5×10⁻⁹)(8×10⁴) = 4×10⁻⁴ N."
+},
+
+{
+topic:"Medan Listrik",
+type:"Hitungan",
+q:"Jika muatan sumber dibuat 3 kali lebih besar dan jaraknya dibuat 3 kali lebih besar, kuat medan listrik menjadi...",
+options:[
+"1/9 kali",
+"1/3 kali",
+"tetap",
+"3 kali",
+"9 kali"
+],
+answer:1,
+explanation:"E ∝ Q/r². Faktor perubahan = 3/3² = 1/3. Jadi medan menjadi 1/3 kali semula."
+},
+
+{
+topic:"Medan Listrik",
+type:"Hitungan",
+q:"Dua muatan +4 μC dan +4 μC terpisah 20 cm. Di titik tengah antara keduanya, kuat medan listrik total adalah...",
+options:[
+"0 N/C",
+"9×10⁵ N/C",
+"1,8×10⁶ N/C",
+"3,6×10⁶ N/C",
+"7,2×10⁶ N/C"
+],
+answer:0,
+explanation:"Di titik tengah, medan dari kedua muatan sama besar tetapi berlawanan arah sehingga resultannya 0 N/C."
+},
+
+{
+topic:"Medan Listrik",
+type:"Hitungan",
+q:"Muatan +5 μC menghasilkan medan listrik pada jarak 50 cm. Besarnya adalah...",
+options:[
+"9×10⁴ N/C",
+"1,8×10⁵ N/C",
+"3,6×10⁵ N/C",
+"9×10⁵ N/C",
+"1,8×10⁶ N/C"
+],
+answer:2,
+explanation:"E = (9×10⁹)(5×10⁻⁶)/(0,5)² = 1,8×10⁵ N/C. Jadi jawaban yang benar 1,8×10⁵ N/C.",
+},
+
+/* =========================================================
+   POTENSIAL LISTRIK
+   33-38 KONSEP
+   39-48 HITUNGAN
+========================================================= */
+
+{
+topic:"Potensial Listrik",
+type:"Konsep",
+q:"Potensial listrik merupakan...",
+options:[
+"energi potensial listrik per satuan muatan",
+"gaya per satuan massa",
+"muatan per satuan waktu",
+"arus per satuan tegangan",
+"energi per satuan massa"
+],
+answer:0,
+explanation:"Potensial listrik didefinisikan sebagai energi potensial listrik per satuan muatan: V = Ep/q."
 },
 
 {
 topic:"Potensial Listrik",
-q:"Jika energi potensial listrik suatu muatan adalah 20 J dan muatannya 4 C, potensial listriknya adalah...",
+type:"Konsep",
+q:"Potensial listrik merupakan besaran...",
 options:[
-"2 V",
-"4 V",
-"5 V",
-"16 V",
-"80 V"
+"vektor",
+"skalar",
+"tensor",
+"tak berdimensi",
+"selalu negatif"
 ],
-answer:2,
-explanation:"V = Ep/q = 20/4 = 5 V."
+answer:1,
+explanation:"Potensial listrik adalah besaran skalar karena hanya memiliki nilai tanpa arah."
 },
 
+{
+topic:"Potensial Listrik",
+type:"Konsep",
+q:"Potensial listrik akibat muatan titik dirumuskan...",
+options:[
+"V = IR",
+"V = kQ/r",
+"V = Q/t",
+"V = Fq",
+"V = kQ/r²"
+],
+answer:1,
+explanation:"Potensial listrik akibat muatan titik adalah V = kQ/r."
+},
 
-/* =====================================================
+{
+topic:"Potensial Listrik",
+type:"Konsep",
+q:"Jika muatan sumber positif, potensial listrik di sekitarnya bernilai...",
+options:[
+"negatif",
+"nol di semua titik",
+"positif",
+"selalu tidak terdefinisi",
+"selalu sama"
+],
+answer:2,
+explanation:"Untuk titik acuan tak hingga, potensial dari muatan positif bernilai positif."
+},
+
+{
+topic:"Potensial Listrik",
+type:"Konsep",
+q:"Hubungan energi potensial listrik dengan potensial listrik adalah...",
+options:[
+"Ep = V/q",
+"Ep = qV",
+"Ep = q/V",
+"Ep = V²q",
+"Ep = V−q"
+],
+answer:1,
+explanation:"Dari V = Ep/q diperoleh Ep = qV."
+},
+
+{
+topic:"Potensial Listrik",
+type:"Konsep",
+q:"Ketika muatan uji dipindahkan dalam medan listrik, perubahan energi potensial berkaitan dengan...",
+options:[
+"perbedaan potensial",
+"massa jenis",
+"hambatan jenis",
+"frekuensi",
+"induktansi"
+],
+answer:0,
+explanation:"Perubahan energi potensial listrik berhubungan dengan beda potensial melalui ΔEp = qΔV."
+},
+
+{
+topic:"Potensial Listrik",
+type:"Hitungan",
+q:"Potensial listrik pada jarak 30 cm dari muatan +2 μC adalah...",
+options:[
+"6×10³ V",
+"6×10⁴ V",
+"6×10⁵ V",
+"6×10⁶ V",
+"6×10⁷ V"
+],
+answer:1,
+explanation:"V = kQ/r = (9×10⁹)(2×10⁻⁶)/0,3 = 6×10⁴ V."
+},
+
+{
+topic:"Potensial Listrik",
+type:"Hitungan",
+q:"Muatan +4 μC berada 20 cm dari suatu titik. Potensial listrik titik tersebut adalah...",
+options:[
+"9×10⁴ V",
+"1,8×10⁵ V",
+"2,7×10⁵ V",
+"3,6×10⁵ V",
+"9×10⁵ V"
+],
+answer:3,
+explanation:"V = (9×10⁹)(4×10⁻⁶)/0,2 = 1,8×10⁵ V. Jadi jawaban yang benar 1,8×10⁵ V.",
+},
+
+{
+topic:"Potensial Listrik",
+type:"Hitungan",
+q:"Sebuah muatan 5 μC berada 50 cm dari titik P. Potensial di P adalah...",
+options:[
+"9×10⁴ V",
+"9×10⁵ V",
+"1,8×10⁵ V",
+"4,5×10⁵ V",
+"9×10⁶ V"
+],
+answer:1,
+explanation:"V = (9×10⁹)(5×10⁻⁶)/0,5 = 9×10⁴ V. Jadi jawaban yang benar 9×10⁴ V.",
+},
+
+{
+topic:"Potensial Listrik",
+type:"Hitungan",
+q:"Jika potensial listrik 2×10⁴ V dialami muatan 3 μC, energi potensial listriknya adalah...",
+options:[
+"0,006 J",
+"0,06 J",
+"0,6 J",
+"6 J",
+"60 J"
+],
+answer:1,
+explanation:"Ep = qV = (3×10⁻⁶)(2×10⁴) = 6×10⁻² J = 0,06 J."
+},
+
+{
+topic:"Potensial Listrik",
+type:"Hitungan",
+q:"Energi potensial listrik sebuah muatan 4 μC adalah 0,08 J. Potensial di tempat tersebut adalah...",
+options:[
+"2×10³ V",
+"2×10⁴ V",
+"2×10⁵ V",
+"3×10⁴ V",
+"4×10⁵ V"
+],
+answer:1,
+explanation:"V = Ep/q = 0,08/(4×10⁻⁶) = 2×10⁴ V."
+},
+
+{
+topic:"Potensial Listrik",
+type:"Hitungan",
+q:"Muatan +2 μC menghasilkan potensial 9×10⁴ V pada suatu titik. Jarak titik tersebut adalah...",
+options:[
+"10 cm",
+"20 cm",
+"30 cm",
+"40 cm",
+"50 cm"
+],
+answer:2,
+explanation:"r = kQ/V = (9×10⁹)(2×10⁻⁶)/(9×10⁴) = 0,2 m = 20 cm. Jadi jawaban yang benar 20 cm."
+},
+
+{
+topic:"Potensial Listrik",
+type:"Hitungan",
+q:"Dua muatan +2 μC dan +3 μC masing-masing berjarak 20 cm dari titik P. Jika keduanya berada pada posisi yang sama arah radialnya, potensial total di P adalah...",
+options:[
+"1,8×10⁵ V",
+"2,25×10⁵ V",
+"4,5×10⁵ V",
+"6,75×10⁵ V",
+"9×10⁵ V"
+],
+answer:2,
+explanation:"Potensial adalah skalar, sehingga Vtotal = k(q₁+q₂)/r = (9×10⁹)(5×10⁻⁶)/0,2 = 2,25×10⁵ V. Jadi jawaban yang benar 2,25×10⁵ V.",
+},
+
+{
+topic:"Potensial Listrik",
+type:"Hitungan",
+q:"Muatan +4 μC dan −2 μC masing-masing berjarak 20 cm dari titik P. Potensial total di P adalah...",
+options:[
+"−9×10⁴ V",
+"−4,5×10⁴ V",
+"0 V",
+"4,5×10⁴ V",
+"9×10⁴ V"
+],
+answer:3,
+explanation:"V = k(q₁+q₂)/r = (9×10⁹)(2×10⁻⁶)/0,2 = 9×10⁴ V. Jadi jawaban yang benar 9×10⁴ V.",
+},
+
+{
+topic:"Potensial Listrik",
+type:"Hitungan",
+q:"Sebuah muatan 2 μC berpindah dari titik A berpotensial 100 V ke titik B berpotensial 400 V. Perubahan energi potensialnya adalah...",
+options:[
+"0,0006 J",
+"0,003 J",
+"0,006 J",
+"0,06 J",
+"0,6 J"
+],
+answer:2,
+explanation:"ΔEp = q(VB−VA) = 2×10⁻⁶(400−100) = 6×10⁻⁴ J. Jadi hasilnya 0,0006 J.",
+},
+
+{
+topic:"Potensial Listrik",
+type:"Hitungan",
+q:"Potensial listrik akibat muatan +6 μC pada jarak 60 cm adalah...",
+options:[
+"9×10⁴ V",
+"9×10⁵ V",
+"1,8×10⁵ V",
+"3,6×10⁵ V",
+"6×10⁵ V"
+],
+answer:0,
+explanation:"V = (9×10⁹)(6×10⁻⁶)/0,6 = 9×10⁴ V."
+},
+
+{
+topic:"Potensial Listrik",
+type:"Hitungan",
+q:"Jika jarak dari muatan titik diperbesar 2 kali, potensial listrik menjadi...",
+options:[
+"1/4 kali",
+"1/2 kali",
+"tetap",
+"2 kali",
+"4 kali"
+],
+answer:1,
+explanation:"V ∝ 1/r. Jika jarak menjadi 2 kali, potensial menjadi 1/2 kali."
+},
+
+{
+topic:"Potensial Listrik",
+type:"Hitungan",
+q:"Sebuah titik berada 10 cm dari muatan +1 μC. Potensial listriknya adalah...",
+options:[
+"9×10² V",
+"9×10³ V",
+"9×10⁴ V",
+"9×10⁵ V",
+"9×10⁶ V"
+],
+answer:2,
+explanation:"V = (9×10⁹)(1×10⁻⁶)/0,1 = 9×10⁴ V."
+},
+
+/* =========================================================
    LISTRIK ARUS SEARAH
-===================================================== */
+   49-54 KONSEP
+   55-64 HITUNGAN
+========================================================= */
 
 {
 topic:"Listrik Arus Searah",
-q:"Listrik dinamis adalah...",
+type:"Konsep",
+q:"Arus listrik adalah...",
 options:[
-"Muatan listrik yang selalu diam",
-"Aliran muatan listrik yang bergerak terus-menerus melalui penghantar dalam rangkaian tertutup",
-"Muatan tanpa tegangan",
-"Medan listrik tanpa arus",
-"Muatan di dalam atom"
+"energi yang tersimpan dalam baterai",
+"laju aliran muatan listrik",
+"hambatan dalam rangkaian",
+"jumlah tegangan",
+"gaya listrik"
 ],
 answer:1,
-explanation:"Listrik dinamis merupakan aliran muatan listrik yang bergerak terus-menerus melalui penghantar dalam rangkaian tertutup."
+explanation:"Arus listrik adalah laju aliran muatan listrik. Rumusnya I = Q/t."
 },
 
 {
 topic:"Listrik Arus Searah",
-q:"Rumus kuat arus listrik adalah...",
+type:"Konsep",
+q:"Alat yang digunakan untuk mengukur kuat arus listrik adalah...",
 options:[
-"I = t/Q",
-"I = Q/t",
-"I = Qt",
-"I = Q + t",
-"I = Q − t"
+"voltmeter",
+"ohmmeter",
+"amperemeter",
+"termometer",
+"barometer"
 ],
-answer:1,
-explanation:"Kuat arus adalah laju aliran muatan terhadap waktu: I = Q/t."
+answer:2,
+explanation:"Kuat arus diukur menggunakan amperemeter."
 },
 
 {
 topic:"Listrik Arus Searah",
-q:"Jika muatan 20 C mengalir selama 5 sekon, kuat arusnya adalah...",
+type:"Konsep",
+q:"Amperemeter dipasang secara...",
 options:[
-"2 A",
-"4 A",
-"5 A",
-"10 A",
-"100 A"
+"paralel",
+"seri",
+"di luar rangkaian",
+"tegak lurus",
+"acak"
 ],
 answer:1,
-explanation:"I = Q/t = 20/5 = 4 A."
+explanation:"Amperemeter harus dipasang seri agar arus rangkaian melewatinya."
 },
 
 {
 topic:"Listrik Arus Searah",
-q:"Alat untuk mengukur kuat arus listrik disebut...",
+type:"Konsep",
+q:"Voltmeter dipasang secara...",
 options:[
-"Voltmeter",
-"Amperemeter",
-"Termometer",
-"Barometer",
-"Galvanometer"
+"seri",
+"paralel",
+"di luar rangkaian",
+"berurutan dengan sakelar",
+"acak"
 ],
 answer:1,
-explanation:"Kuat arus listrik diukur menggunakan amperemeter."
+explanation:"Voltmeter dipasang paralel terhadap komponen yang akan diukur beda potensialnya."
 },
 
 {
 topic:"Listrik Arus Searah",
-q:"Amperemeter harus dipasang...",
-options:[
-"Paralel",
-"Seri",
-"Tanpa rangkaian",
-"Sejajar dengan baterai saja",
-"Di luar rangkaian"
-],
-answer:1,
-explanation:"Amperemeter dipasang seri agar arus yang melewati komponen juga melewati amperemeter."
-},
-
-{
-topic:"Listrik Arus Searah",
-q:"Voltmeter harus dipasang...",
-options:[
-"Seri",
-"Paralel",
-"Di luar rangkaian",
-"Hanya pada baterai",
-"Berurutan dengan resistor"
-],
-answer:1,
-explanation:"Voltmeter mengukur beda potensial antara dua titik sehingga dipasang paralel dengan komponen."
-},
-
-{
-topic:"Listrik Arus Searah",
-q:"Menurut Hukum Ohm, hubungan antara tegangan, arus, dan hambatan adalah...",
+type:"Konsep",
+q:"Menurut hukum Ohm, hubungan tegangan, arus, dan hambatan adalah...",
 options:[
 "V = IR",
 "V = I/R",
 "V = R/I",
-"V = I + R",
-"V = I − R"
+"I = VR",
+"R = VI"
 ],
 answer:0,
 explanation:"Hukum Ohm menyatakan V = IR."
@@ -832,7 +1280,53 @@ explanation:"Hukum Ohm menyatakan V = IR."
 
 {
 topic:"Listrik Arus Searah",
-q:"Sebuah resistor 6 Ω dihubungkan dengan tegangan 12 V. Arus yang mengalir adalah...",
+type:"Konsep",
+q:"Pada rangkaian seri, besaran yang sama pada setiap resistor adalah...",
+options:[
+"tegangan",
+"arus",
+"daya",
+"hambatan",
+"energi"
+],
+answer:1,
+explanation:"Pada rangkaian seri, arus yang melewati setiap komponen sama besar."
+},
+
+{
+topic:"Listrik Arus Searah",
+type:"Hitungan",
+q:"Muatan 60 C mengalir melalui sebuah penghantar selama 20 s. Besar arusnya adalah...",
+options:[
+"0,3 A",
+"2 A",
+"3 A",
+"20 A",
+"1200 A"
+],
+answer:2,
+explanation:"I = Q/t = 60/20 = 3 A."
+},
+
+{
+topic:"Listrik Arus Searah",
+type:"Hitungan",
+q:"Arus 4 A mengalir selama 15 s. Muatan yang berpindah adalah...",
+options:[
+"15 C",
+"30 C",
+"45 C",
+"60 C",
+"75 C"
+],
+answer:3,
+explanation:"Q = It = 4×15 = 60 C."
+},
+
+{
+topic:"Listrik Arus Searah",
+type:"Hitungan",
+q:"Sebuah resistor 6 Ω diberi tegangan 12 V. Arus yang mengalir adalah...",
 options:[
 "0,5 A",
 "1 A",
@@ -846,539 +1340,796 @@ explanation:"I = V/R = 12/6 = 2 A."
 
 {
 topic:"Listrik Arus Searah",
-q:"Pada rangkaian seri, besaran yang sama pada setiap komponen adalah...",
+type:"Hitungan",
+q:"Arus 3 A mengalir melalui resistor 8 Ω. Tegangan pada resistor adalah...",
 options:[
-"Tegangan",
-"Arus",
-"Hambatan",
-"Daya",
-"Muatan kapasitor"
+"11 V",
+"16 V",
+"24 V",
+"32 V",
+"48 V"
 ],
-answer:1,
-explanation:"Pada rangkaian seri, arus listrik yang melewati setiap komponen sama."
+answer:2,
+explanation:"V = IR = 3×8 = 24 V."
 },
 
 {
 topic:"Listrik Arus Searah",
-q:"Pada rangkaian paralel, besaran yang sama pada setiap cabang adalah...",
+type:"Hitungan",
+q:"Sebuah resistor dialiri arus 2 A pada tegangan 18 V. Nilai hambatannya adalah...",
 options:[
-"Arus",
-"Tegangan",
-"Hambatan",
-"Daya",
-"Muatan total"
-],
-answer:1,
-explanation:"Pada rangkaian paralel, setiap cabang terhubung pada dua titik yang sama sehingga beda potensialnya sama."
-},
-
-
-/* =====================================================
-   KAPASITOR
-===================================================== */
-
-{
-topic:"Kapasitor",
-q:"Fungsi utama kapasitor adalah...",
-options:[
-"Mengubah arus menjadi massa",
-"Menyimpan muatan listrik",
-"Mengukur tegangan",
-"Menghasilkan proton",
-"Menghilangkan hambatan"
-],
-answer:1,
-explanation:"Kapasitor merupakan komponen listrik yang berfungsi menyimpan muatan listrik."
-},
-
-{
-topic:"Kapasitor",
-q:"Besaran yang menunjukkan kemampuan kapasitor menyimpan muatan disebut...",
-options:[
-"Hambatan",
-"Arus",
-"Kapasitansi",
-"Tegangan",
-"Resistansi"
+"6 Ω",
+"8 Ω",
+"9 Ω",
+"18 Ω",
+"36 Ω"
 ],
 answer:2,
-explanation:"Kemampuan kapasitor untuk menyimpan muatan dinyatakan dengan kapasitansi."
+explanation:"R = V/I = 18/2 = 9 Ω."
 },
 
 {
-topic:"Kapasitor",
-q:"Pada kapasitor yang disusun seri, muatan pada setiap kapasitor adalah...",
+topic:"Listrik Arus Searah",
+type:"Hitungan",
+q:"Dua resistor 4 Ω dan 6 Ω disusun seri. Hambatan totalnya adalah...",
 options:[
-"Qtotal",
-"Sama",
-"Selalu nol",
-"Berbeda",
-"Selalu dua kali"
-],
-answer:1,
-explanation:"Pada rangkaian kapasitor seri, besar muatan pada setiap kapasitor sama: Q1 = Q2 = Q3."
-},
-
-{
-topic:"Kapasitor",
-q:"Pada rangkaian kapasitor seri, hubungan tegangan total adalah...",
-options:[
-"V = V1 = V2",
-"V = V1 + V2 + V3",
-"V = V1 − V2",
-"V = V1V2",
-"V = V1/V2"
-],
-answer:1,
-explanation:"Tegangan total pada kapasitor seri merupakan jumlah tegangan setiap kapasitor."
-},
-
-{
-topic:"Kapasitor",
-q:"Pada rangkaian kapasitor paralel, tegangan pada setiap kapasitor adalah...",
-options:[
-"Berbeda selalu",
-"Sama",
-"Selalu nol",
-"Dua kali",
-"Setengah"
-],
-answer:1,
-explanation:"Pada rangkaian paralel, semua kapasitor terhubung pada dua titik yang sama sehingga tegangannya sama."
-},
-
-{
-topic:"Kapasitor",
-q:"Pada kapasitor paralel, muatan total merupakan...",
-options:[
-"Selisih muatan",
-"Jumlah muatan setiap kapasitor",
-"Muatan terbesar saja",
-"Muatan terkecil saja",
-"Nol"
-],
-answer:1,
-explanation:"Pada rangkaian paralel Qtotal = Q1 + Q2 + Q3."
-},
-
-{
-topic:"Kapasitor",
-q:"Dua kapasitor 4 μF dan 6 μF disusun paralel. Kapasitansi penggantinya adalah...",
-options:[
-"2,4 μF",
-"4 μF",
-"6 μF",
-"10 μF",
-"24 μF"
+"1,5 Ω",
+"2,4 Ω",
+"6 Ω",
+"10 Ω",
+"24 Ω"
 ],
 answer:3,
-explanation:"Untuk paralel, Ctotal = C1 + C2 = 4 + 6 = 10 μF."
+explanation:"Rseri = R₁ + R₂ = 4 + 6 = 10 Ω."
+},
+
+{
+topic:"Listrik Arus Searah",
+type:"Hitungan",
+q:"Tiga resistor 2 Ω, 3 Ω, dan 5 Ω disusun seri. Jika diberi tegangan 20 V, arus totalnya adalah...",
+options:[
+"1 A",
+"2 A",
+"4 A",
+"5 A",
+"10 A"
+],
+answer:1,
+explanation:"Rtotal = 2+3+5 = 10 Ω. I = V/R = 20/10 = 2 A."
+},
+
+{
+topic:"Listrik Arus Searah",
+type:"Hitungan",
+q:"Dua resistor 6 Ω dan 3 Ω dipasang paralel. Hambatan penggantinya adalah...",
+options:[
+"1 Ω",
+"2 Ω",
+"3 Ω",
+"4 Ω",
+"9 Ω"
+],
+answer:1,
+explanation:"1/Rp = 1/6 + 1/3 = 3/6 = 1/2, sehingga Rp = 2 Ω."
+},
+
+{
+topic:"Listrik Arus Searah",
+type:"Hitungan",
+q:"Resistor 4 Ω dan 12 Ω dipasang paralel pada tegangan 24 V. Arus total rangkaian adalah...",
+options:[
+"2 A",
+"4 A",
+"6 A",
+"8 A",
+"12 A"
+],
+answer:3,
+explanation:"Rp = (4×12)/(4+12) = 3 Ω. I = V/Rp = 24/3 = 8 A."
+},
+
+{
+topic:"Listrik Arus Searah",
+type:"Hitungan",
+q:"Dua resistor 5 Ω dan 10 Ω disusun seri pada tegangan 30 V. Tegangan pada resistor 10 Ω adalah...",
+options:[
+"5 V",
+"10 V",
+"15 V",
+"20 V",
+"25 V"
+],
+answer:3,
+explanation:"Rtotal = 15 Ω, sehingga I = 30/15 = 2 A. Tegangan resistor 10 Ω: V = IR = 2×10 = 20 V."
+},
+
+{
+topic:"Listrik Arus Searah",
+type:"Hitungan",
+q:"Sebuah rangkaian memiliki tegangan 12 V dan arus 0,5 A. Hambatan totalnya adalah...",
+options:[
+"6 Ω",
+"12 Ω",
+"18 Ω",
+"24 Ω",
+"36 Ω"
+],
+answer:3,
+explanation:"R = V/I = 12/0,5 = 24 Ω."
+},
+
+{
+topic:"Listrik Arus Searah",
+type:"Hitungan",
+q:"Sebuah alat listrik memiliki hambatan 20 Ω dan dialiri arus 0,5 A. Daya listriknya adalah...",
+options:[
+"2 W",
+"5 W",
+"10 W",
+"20 W",
+"40 W"
+],
+answer:2,
+explanation:"P = I²R = (0,5)²(20) = 5 W. Jadi jawaban yang benar 5 W.",
+},
+
+{
+topic:"Listrik Arus Searah",
+type:"Hitungan",
+q:"Resistor 10 Ω dialiri arus 2 A selama 5 s. Energi listrik yang digunakan adalah...",
+options:[
+"20 J",
+"50 J",
+"100 J",
+"200 J",
+"400 J"
+],
+answer:2,
+explanation:"P = I²R = 4×10 = 40 W. Energi W = Pt = 40×5 = 200 J. Jadi jawaban yang benar 200 J.",
+},
+
+{
+topic:"Listrik Arus Searah",
+type:"Hitungan",
+q:"Sebuah resistor 8 Ω diberi tegangan 16 V selama 10 s. Energi yang digunakan adalah...",
+options:[
+"160 J",
+"240 J",
+"320 J",
+"640 J",
+"1280 J"
+],
+answer:2,
+explanation:"P = V²/R = 256/8 = 32 W. W = Pt = 32×10 = 320 J."
+},
+
+/* =========================================================
+   KAPASITOR
+   65-70 KONSEP
+   71-80 HITUNGAN
+========================================================= */
+
+{
+topic:"Kapasitor",
+type:"Konsep",
+q:"Kapasitor adalah komponen yang berfungsi utama untuk...",
+options:[
+"mengukur arus",
+"menyimpan muatan listrik",
+"mengubah massa",
+"menghasilkan medan gravitasi",
+"mengukur suhu"
+],
+answer:1,
+explanation:"Kapasitor berfungsi menyimpan muatan listrik dan energi dalam medan listriknya."
 },
 
 {
 topic:"Kapasitor",
-q:"Dua kapasitor 6 μF dan 3 μF disusun seri. Kapasitansi penggantinya adalah...",
+type:"Konsep",
+q:"Kapasitansi didefinisikan sebagai...",
+options:[
+"C = V/Q",
+"C = Q/V",
+"C = QV",
+"C = Q+V",
+"C = Q−V"
+],
+answer:1,
+explanation:"Kapasitansi dirumuskan C = Q/V."
+},
+
+{
+topic:"Kapasitor",
+type:"Konsep",
+q:"Pada rangkaian kapasitor paralel, besaran yang sama pada setiap kapasitor adalah...",
+options:[
+"muatan",
+"tegangan",
+"energi",
+"kapasitansi",
+"arus"
+],
+answer:1,
+explanation:"Pada rangkaian paralel, beda potensial setiap kapasitor sama."
+},
+
+{
+topic:"Kapasitor",
+type:"Konsep",
+q:"Pada rangkaian kapasitor seri, besaran yang sama pada setiap kapasitor adalah...",
+options:[
+"tegangan",
+"muatan",
+"energi",
+"daya",
+"arus"
+],
+answer:1,
+explanation:"Pada rangkaian seri, muatan pada setiap kapasitor sama besar."
+},
+
+{
+topic:"Kapasitor",
+type:"Konsep",
+q:"Rumus kapasitor paralel adalah...",
+options:[
+"Cp = C₁ + C₂ + ...",
+"1/Cp = 1/C₁ + 1/C₂",
+"Cp = C₁C₂",
+"Cp = C₁/C₂",
+"Cp = C₁−C₂"
+],
+answer:0,
+explanation:"Untuk kapasitor paralel, kapasitansi pengganti adalah jumlah semua kapasitansi."
+},
+
+{
+topic:"Kapasitor",
+type:"Konsep",
+q:"Jika dua kapasitor identik disusun seri, kapasitansi penggantinya dibandingkan satu kapasitor adalah...",
+options:[
+"dua kali lebih besar",
+"tetap",
+"setengahnya",
+"empat kali lebih besar",
+"nol"
+],
+answer:2,
+explanation:"Dua kapasitor identik C disusun seri menghasilkan Ceq = C/2."
+},
+
+{
+topic:"Kapasitor",
+type:"Hitungan",
+q:"Sebuah kapasitor 4 μF diberi tegangan 12 V. Muatan yang tersimpan adalah...",
+options:[
+"12 μC",
+"24 μC",
+"48 μC",
+"60 μC",
+"96 μC"
+],
+answer:2,
+explanation:"Q = CV = 4 μF × 12 V = 48 μC."
+},
+
+{
+topic:"Kapasitor",
+type:"Hitungan",
+q:"Kapasitor menyimpan muatan 60 μC pada tegangan 20 V. Kapasitansinya adalah...",
 options:[
 "1 μF",
 "2 μF",
 "3 μF",
-"9 μF",
-"18 μF"
+"4 μF",
+"6 μF"
 ],
-answer:1,
-explanation:"1/C = 1/6 + 1/3 = 1/6 + 2/6 = 3/6 = 1/2, sehingga C = 2 μF."
+answer:2,
+explanation:"C = Q/V = 60/20 = 3 μF."
 },
 
 {
 topic:"Kapasitor",
-q:"Dua kapasitor identik masing-masing 10 μF disusun seri. Kapasitansi penggantinya adalah...",
+type:"Hitungan",
+q:"Kapasitor 5 μF diberi tegangan 20 V. Muatan yang tersimpan adalah...",
 options:[
-"5 μF",
-"10 μF",
-"20 μF",
-"100 μF",
-"2 μF"
+"25 μC",
+"50 μC",
+"75 μC",
+"100 μC",
+"125 μC"
 ],
-answer:0,
-explanation:"Untuk dua kapasitor identik seri, Ctotal = C/2 = 10/2 = 5 μF."
+answer:3,
+explanation:"Q = CV = 5×20 = 100 μC."
 },
 
 {
 topic:"Kapasitor",
-q:"Tiga kapasitor 2 μF, 3 μF, dan 5 μF disusun paralel. Kapasitansi totalnya adalah...",
+type:"Hitungan",
+q:"Dua kapasitor 4 μF dan 6 μF dipasang paralel. Kapasitansi totalnya adalah...",
+options:[
+"1,5 μF",
+"2,4 μF",
+"10 μF",
+"24 μF",
+"48 μF"
+],
+answer:2,
+explanation:"Cp = C₁ + C₂ = 4 + 6 = 10 μF."
+},
+
+{
+topic:"Kapasitor",
+type:"Hitungan",
+q:"Kapasitor 3 μF dan 6 μF dipasang seri. Kapasitansi penggantinya adalah...",
 options:[
 "1 μF",
+"2 μF",
+"3 μF",
+"6 μF",
+"9 μF"
+],
+answer:1,
+explanation:"Cs = C₁C₂/(C₁+C₂) = (3×6)/(3+6) = 2 μF."
+},
+
+{
+topic:"Kapasitor",
+type:"Hitungan",
+q:"Dua kapasitor 10 μF dan 10 μF dipasang seri pada sumber 20 V. Muatan total yang tersimpan adalah...",
+options:[
+"50 μC",
+"100 μC",
+"150 μC",
+"200 μC",
+"400 μC"
+],
+answer:3,
+explanation:"Ceq = 10/2 = 5 μF. Q = CV = 5×20 = 100 μC. Jadi jawaban yang benar 100 μC.",
+},
+
+{
+topic:"Kapasitor",
+type:"Hitungan",
+q:"Dua kapasitor 4 μF dan 12 μF dipasang paralel pada tegangan 10 V. Muatan total adalah...",
+options:[
+"40 μC",
+"80 μC",
+"120 μC",
+"160 μC",
+"200 μC"
+],
+answer:3,
+explanation:"Ctotal = 4+12 = 16 μF. Qtotal = CV = 16×10 = 160 μC."
+},
+
+{
+topic:"Kapasitor",
+type:"Hitungan",
+q:"Kapasitor 2 μF diberi tegangan 30 V. Energi yang tersimpan adalah...",
+options:[
+"0,0003 J",
+"0,0006 J",
+"0,0009 J",
+"0,0018 J",
+"0,009 J"
+],
+answer:2,
+explanation:"Energi kapasitor U = 1/2 CV² = 1/2(2×10⁻⁶)(30²) = 9×10⁻⁴ J."
+},
+
+{
+topic:"Kapasitor",
+type:"Hitungan",
+q:"Kapasitor 8 μF diberi tegangan 10 V. Muatan yang tersimpan adalah...",
+options:[
+"20 μC",
+"40 μC",
+"60 μC",
+"80 μC",
+"160 μC"
+],
+answer:3,
+explanation:"Q = CV = 8×10 = 80 μC."
+},
+
+{
+topic:"Kapasitor",
+type:"Hitungan",
+q:"Tiga kapasitor 2 μF, 3 μF, dan 5 μF dipasang paralel. Kapasitansi totalnya adalah...",
+options:[
 "5 μF",
+"6 μF",
 "8 μF",
 "10 μF",
 "30 μF"
 ],
 answer:3,
-explanation:"Ctotal = 2 + 3 + 5 = 10 μF."
+explanation:"Cp = 2+3+5 = 10 μF."
+},
+
+{
+topic:"Kapasitor",
+type:"Hitungan",
+q:"Kapasitor 6 μF dan 3 μF disusun seri. Jika diberi tegangan 18 V, muatan pada masing-masing kapasitor adalah...",
+options:[
+"18 μC",
+"24 μC",
+"36 μC",
+"54 μC",
+"72 μC"
+],
+answer:2,
+explanation:"Ceq = (6×3)/(6+3) = 2 μF. Karena seri, Q sama. Q = CeqV = 2×18 = 36 μC."
+},
+
+{
+topic:"Kapasitor",
+type:"Hitungan",
+q:"Kapasitor 4 μF diberi tegangan 25 V. Energi yang tersimpan adalah...",
+options:[
+"0,0005 J",
+"0,001 J",
+"0,00125 J",
+"0,002 J",
+"0,005 J"
+],
+answer:2,
+explanation:"U = 1/2 CV² = 1/2(4×10⁻⁶)(25²) = 1,25×10⁻³ J."
+},
+
+{
+topic:"Kapasitor",
+type:"Hitungan",
+q:"Sebuah kapasitor memiliki kapasitansi 10 μF dan menyimpan muatan 200 μC. Tegangan pada kapasitor adalah...",
+options:[
+"10 V",
+"20 V",
+"30 V",
+"40 V",
+"50 V"
+],
+answer:1,
+explanation:"V = Q/C = 200/10 = 20 V."
+},
+
+{
+topic:"Kapasitor",
+type:"Hitungan",
+q:"Tiga kapasitor identik masing-masing 6 μF disusun seri. Kapasitansi penggantinya adalah...",
+options:[
+"1 μF",
+"2 μF",
+"3 μF",
+"6 μF",
+"18 μF"
+],
+answer:1,
+explanation:"Untuk tiga kapasitor identik seri, Ceq = C/3 = 6/3 = 2 μF."
 }
 
 ];
 
-
-/* =====================================================
+/* =========================================================
    RENDER SOAL
-===================================================== */
+========================================================= */
 
 const questionsContainer =
 document.getElementById("questions");
 
 function renderQuestions(){
 
-    questionsContainer.innerHTML="";
+  questionsContainer.innerHTML="";
 
-    questions.forEach((item,index)=>{
+  questions.forEach((item,index)=>{
 
-        const card =
-        document.createElement("div");
+    const questionDiv =
+    document.createElement("div");
 
-        card.className="card question-card";
+    questionDiv.className="question";
+    questionDiv.id="question-"+index;
 
-        card.id="question-"+index;
+    let optionsHTML="";
 
-        let html=`
+    item.options.forEach((option,optIndex)=>{
 
-            <div class="topic">
-                ${item.topic}
-            </div>
+      optionsHTML += `
+        <label class="option"
+               id="option-${index}-${optIndex}">
 
-            <div class="question">
-                ${index+1}. ${item.q}
-            </div>
-        `;
+          <input
+            type="radio"
+            name="question-${index}"
+            value="${optIndex}"
+            onchange="updateProgress()">
 
-        item.options.forEach((option,optIndex)=>{
+          <b>${String.fromCharCode(65+optIndex)}.</b>
+          ${option}
 
-            html+=`
-
-                <label class="option"
-                       id="option-${index}-${optIndex}">
-
-                    <input
-                        type="radio"
-                        name="q${index}"
-                        value="${optIndex}"
-                        onchange="updateProgress()">
-
-                    ${String.fromCharCode(65+optIndex)}.
-                    ${option}
-
-                </label>
-
-            `;
-
-        });
-
-        html+=`
-
-            <div
-                class="explanation"
-                id="explanation-${index}">
-
-                <b>💡 Pembahasan:</b><br>
-                ${item.explanation}
-
-            </div>
-
-        `;
-
-        card.innerHTML=html;
-
-        questionsContainer.appendChild(card);
+        </label>
+      `;
 
     });
+
+    questionDiv.innerHTML=`
+
+      <div class="topic-label">
+        ${item.topic} • ${item.type}
+      </div>
+
+      <h3>
+        <span class="number">${index+1}.</span>
+        ${item.q}
+      </h3>
+
+      <div class="options">
+        ${optionsHTML}
+      </div>
+
+      <div class="explanation"
+           id="explanation-${index}">
+        <b>💡 Pembahasan:</b><br>
+        ${item.explanation}
+      </div>
+
+    `;
+
+    questionsContainer.appendChild(questionDiv);
+
+  });
 
 }
 
 
-/* =====================================================
+/* =========================================================
    PROGRESS
-===================================================== */
+========================================================= */
 
 function updateProgress(){
 
-    let answered=0;
+  let answered=0;
 
-    questions.forEach((q,index)=>{
+  questions.forEach((q,index)=>{
 
-        if(
-            document.querySelector(
-                `input[name="q${index}"]:checked`
-            )
-        ){
-            answered++;
-        }
+    const selected =
+    document.querySelector(
+      `input[name="question-${index}"]:checked`
+    );
 
-    });
+    if(selected){
+      answered++;
+    }
 
-    const percent =
-        answered/questions.length*100;
+  });
 
-    document.getElementById("progress")
-        .style.width=percent+"%";
+  const percent =
+  (answered/questions.length)*100;
+
+  document.getElementById("progress").style.width =
+  percent+"%";
+
+  document.getElementById("progressText").textContent =
+  `${answered} dari ${questions.length} soal dijawab`;
+
 }
 
 
-/* =====================================================
-   CHECK ANSWERS
-===================================================== */
+/* =========================================================
+   PERIKSA JAWABAN
+========================================================= */
 
 function checkAnswers(){
 
-    let correct=0;
+  let score=0;
+  let answered=0;
 
-    let answered=0;
+  questions.forEach((item,index)=>{
 
+    const selected =
+    document.querySelector(
+      `input[name="question-${index}"]:checked`
+    );
 
-    questions.forEach((item,index)=>{
+    const explanation =
+    document.getElementById(
+      `explanation-${index}`
+    );
 
-        const selected =
-            document.querySelector(
-                `input[name="q${index}"]:checked`
-            );
+    const correctOption =
+    document.getElementById(
+      `option-${index}-${item.answer}`
+    );
 
+    // Bersihkan warna terlebih dahulu
+    item.options.forEach((_,optIndex)=>{
 
-        if(selected){
+      const option =
+      document.getElementById(
+        `option-${index}-${optIndex}`
+      );
 
-            answered++;
+      option.classList.remove(
+        "correct",
+        "wrong"
+      );
 
-            const selectedValue =
-                Number(selected.value);
+    });
 
+    if(selected){
 
-            if(selectedValue===item.answer){
+      answered++;
 
-                correct++;
+      const selectedIndex =
+      Number(selected.value);
 
-            }
+      if(selectedIndex === item.answer){
 
-
-            /*
-               tandai pilihan
-            */
-
-            item.options.forEach((option,optIndex)=>{
-
-                const label =
-                    document.getElementById(
-                        `option-${index}-${optIndex}`
-                    );
-
-                label.classList.remove(
-                    "correct",
-                    "wrong"
-                );
-
-
-                if(optIndex===item.answer){
-
-                    label.classList.add("correct");
-
-                }
-
-
-                if(
-                    selectedValue!==item.answer &&
-                    optIndex===selectedValue
-                ){
-
-                    label.classList.add("wrong");
-
-                }
-
-            });
-
-        }else{
-
-            /*
-               Jika belum dijawab,
-               tetap tampilkan jawaban benar
-            */
-
-            const correctLabel =
-                document.getElementById(
-                    `option-${index}-${item.answer}`
-                );
-
-            correctLabel.classList.add("correct");
-
-        }
-
-
-        /*
-           tampilkan pembahasan
-        */
+        score++;
 
         document.getElementById(
-            `explanation-${index}`
-        ).style.display="block";
+          `option-${index}-${selectedIndex}`
+        ).classList.add("correct");
 
-    });
-
-
-    const score =
-        Math.round(correct/questions.length*100);
-
-
-    let grade;
-
-
-    if(score>=90){
-        grade="Sangat baik";
-    }
-    else if(score>=80){
-        grade="Baik";
-    }
-    else if(score>=70){
-        grade="Cukup";
-    }
-    else if(score>=60){
-        grade="Perlu latihan lagi";
-    }
-    else{
-        grade="Pelajari kembali materinya";
-    }
-
-
-    document.getElementById("score")
-        .textContent=score;
-
-
-    document.getElementById("grade")
-        .textContent=grade;
-
-
-    document.getElementById("summary")
-        .innerHTML=
-        `Benar: <b>${correct}</b> dari ${questions.length}
-        soal.<br>
-        Dijawab: <b>${answered}</b> soal.`;
-
-
-    document.getElementById("result")
-        .style.display="block";
-
-
-    window.scrollTo({
-
-        top:document.getElementById("result")
-            .offsetTop-20,
-
-        behavior:"smooth"
-
-    });
-
-}
-
-
-/* =====================================================
-   RESET
-===================================================== */
-
-function resetQuiz(){
-
-    questions.forEach((item,index)=>{
-
-        const radios =
-            document.querySelectorAll(
-                `input[name="q${index}"]`
-            );
-
-
-        radios.forEach(radio=>{
-
-            radio.checked=false;
-
-        });
-
-
-        item.options.forEach((option,optIndex)=>{
-
-            const label =
-                document.getElementById(
-                    `option-${index}-${optIndex}`
-                );
-
-            label.classList.remove(
-                "correct",
-                "wrong"
-            );
-
-        });
-
+      }else{
 
         document.getElementById(
-            `explanation-${index}`
-        ).style.display="none";
+          `option-${index}-${selectedIndex}`
+        ).classList.add("wrong");
 
-    });
+        correctOption.classList.add("correct");
 
-
-    document.getElementById("progress")
-        .style.width="0%";
-
-
-    document.getElementById("result")
-        .style.display="none";
-
-
-    window.scrollTo({
-
-        top:0,
-
-        behavior:"smooth"
-
-    });
-
-}
-
-
-/* =====================================================
-   SCROLL TO WRONG / ANSWERS
-===================================================== */
-
-function scrollToWrong(){
-
-    const firstWrong =
-        document.querySelector(
-            ".option.wrong"
-        );
-
-
-    if(firstWrong){
-
-        firstWrong.scrollIntoView({
-
-            behavior:"smooth",
-
-            block:"center"
-
-        });
+      }
 
     }else{
 
-        document.getElementById(
-            "questions"
-        ).scrollIntoView({
-
-            behavior:"smooth"
-
-        });
+      // Kalau belum dijawab,
+      // tetap tampilkan jawaban benar
+      correctOption.classList.add("correct");
 
     }
+
+    explanation.style.display="block";
+
+  });
+
+
+  const nilai =
+  Math.round((score/questions.length)*100);
+
+  document.getElementById("score").textContent =
+  `${nilai}`;
+
+  let grade="";
+
+  if(nilai>=90){
+    grade="🏆 Sangat Baik";
+  }
+  else if(nilai>=80){
+    grade="🌟 Baik";
+  }
+  else if(nilai>=70){
+    grade="👍 Cukup Baik";
+  }
+  else if(nilai>=60){
+    grade="📖 Perlu Belajar Lagi";
+  }
+  else{
+    grade="💪 Tetap Semangat Belajar";
+  }
+
+  document.getElementById("grade").textContent =
+  grade;
+
+  document.getElementById("summary").innerHTML =
+  `Benar: <b>${score}</b> dari <b>${questions.length}</b> soal<br>
+   Salah: <b>${questions.length-score}</b> soal<br>
+   Dijawab: <b>${answered}</b> soal`;
+
+  document.getElementById("result").style.display =
+  "block";
+
+  window.scrollTo({
+    top:document.getElementById("result").offsetTop-20,
+    behavior:"smooth"
+  });
 
 }
 
 
-/* =====================================================
-   START
-===================================================== */
+/* =========================================================
+   ULANGI
+========================================================= */
+
+function resetQuiz(){
+
+  questions.forEach((item,index)=>{
+
+    const radios =
+    document.querySelectorAll(
+      `input[name="question-${index}"]`
+    );
+
+    radios.forEach(radio=>{
+      radio.checked=false;
+    });
+
+    item.options.forEach((_,optIndex)=>{
+
+      const option =
+      document.getElementById(
+        `option-${index}-${optIndex}`
+      );
+
+      option.classList.remove(
+        "correct",
+        "wrong"
+      );
+
+    });
+
+    document.getElementById(
+      `explanation-${index}`
+    ).style.display="none";
+
+  });
+
+  document.getElementById("result").style.display =
+  "none";
+
+  updateProgress();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =========================================================
+   SCROLL KE SOAL SALAH
+========================================================= */
+
+function scrollToWrong(){
+
+  for(let i=0;i<questions.length;i++){
+
+    const selected =
+    document.querySelector(
+      `input[name="question-${i}"]:checked`
+    );
+
+    if(!selected ||
+       Number(selected.value)!==questions[i].answer){
+
+      const target =
+      document.getElementById(
+        `question-${i}`
+      );
+
+      target.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+      });
+
+      return;
+
+    }
+
+  }
+
+  alert("🎉 Semua jawaban benar!");
+
+}
+
+
+/* =========================================================
+   MULAI
+========================================================= */
 
 renderQuestions();
+updateProgress();
 
 </script>
 
