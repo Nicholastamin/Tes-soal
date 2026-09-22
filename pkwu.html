@@ -4,281 +4,310 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Latihan PKWU XII — Produk Nonpangan Herbal</title>
+<title>PKWU XII - Produk Nonpangan Herbal</title>
 
 <style>
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:linear-gradient(135deg,#eef7f0,#f5f7ff);
-  color:#202124;
-  line-height:1.55;
+    font-family:Inter,Arial,Helvetica,sans-serif;
+    background:#f5faf7;
+    color:#202124;
+    line-height:1.55;
 }
 
 .container{
-  max-width:900px;
-  margin:auto;
-  padding:20px;
+    width:100%;
+    max-width:920px;
+    margin:auto;
+    padding:16px;
 }
 
-/* HEADER */
-header{
-  background:linear-gradient(135deg,#176b3a,#2e8b57);
-  color:white;
-  border-radius:20px;
-  padding:25px 22px;
-  margin-bottom:18px;
-  box-shadow:0 8px 25px rgba(0,0,0,.12);
-}
+/* ================= HEADER ================= */
 
-header h1{
-  font-size:27px;
-  margin:8px 0;
-}
-
-header p{
-  opacity:.94;
+.header{
+    background:linear-gradient(135deg,#167344,#2e9b62);
+    color:white;
+    padding:26px 22px;
+    border-radius:22px;
+    margin-bottom:16px;
+    box-shadow:0 8px 25px rgba(0,0,0,.10);
 }
 
 .badge{
-  display:inline-block;
-  padding:5px 10px;
-  border-radius:20px;
-  background:#e7f4eb;
-  color:#176b3a;
-  font-size:13px;
-  font-weight:bold;
+    display:inline-block;
+    background:white;
+    color:#167344;
+    padding:6px 12px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:10px;
 }
 
-/* PROGRESS */
-.progress-box{
-  background:white;
-  border-radius:15px;
-  padding:14px 16px;
-  margin-bottom:18px;
-  box-shadow:0 4px 15px rgba(0,0,0,.07);
-  position:sticky;
-  top:8px;
-  z-index:10;
+.header h1{
+    font-size:28px;
+    margin-bottom:7px;
 }
 
-.progress-top{
-  display:flex;
-  justify-content:space-between;
-  font-size:14px;
-  font-weight:bold;
-  margin-bottom:8px;
+.header p{
+    font-size:14px;
+    opacity:.96;
 }
 
-.progress{
-  height:10px;
-  background:#e7e7e7;
-  border-radius:20px;
-  overflow:hidden;
+/* ================= PROGRESS ================= */
+
+.progress-card{
+    background:white;
+    border-radius:17px;
+    padding:15px;
+    margin-bottom:18px;
+    box-shadow:0 4px 16px rgba(0,0,0,.07);
+    position:sticky;
+    top:7px;
+    z-index:50;
 }
 
-.progress-bar{
-  height:100%;
-  width:0%;
-  background:#2e8b57;
-  transition:width .25s ease;
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:9px;
 }
 
-/* QUESTION CARD */
-.card{
-  background:white;
-  border-radius:17px;
-  padding:20px;
-  margin-bottom:15px;
-  box-shadow:0 4px 15px rgba(0,0,0,.07);
-  border:2px solid transparent;
+.progress-track{
+    height:10px;
+    width:100%;
+    background:#e6ebe8;
+    border-radius:20px;
+    overflow:hidden;
 }
 
-.card.correct{
-  border-color:#35a854;
-  background:#fbfffc;
+.progress-fill{
+    width:0%;
+    height:100%;
+    background:#209257;
+    border-radius:20px;
+    transition:.25s;
 }
 
-.card.wrong{
-  border-color:#e14c4c;
-  background:#fffafa;
+/* ================= SOAL ================= */
+
+.question-card{
+    background:white;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:15px;
+    border:2px solid transparent;
+    box-shadow:0 4px 16px rgba(0,0,0,.065);
 }
 
-.question{
-  font-weight:bold;
-  font-size:17px;
-  margin-bottom:14px;
+.question-card.correct{
+    border-color:#35a853;
 }
 
-/* OPTIONS */
+.question-card.wrong{
+    border-color:#e04b4b;
+}
+
+.question-number{
+    color:#167344;
+    font-size:13px;
+    font-weight:800;
+    margin-bottom:5px;
+}
+
+.question-text{
+    font-size:17px;
+    font-weight:700;
+    margin-bottom:14px;
+}
+
+/* ================= OPTIONS ================= */
+
 .option{
-  display:flex;
-  gap:10px;
-  align-items:flex-start;
-  padding:12px;
-  margin:8px 0;
-  border:1px solid #ddd;
-  border-radius:11px;
-  cursor:pointer;
-  transition:.15s;
-  background:#fff;
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+    padding:12px;
+    margin:8px 0;
+    border:1px solid #d9dfdc;
+    border-radius:12px;
+    background:#fff;
+    cursor:pointer;
+    transition:.15s;
 }
 
 .option:hover{
-  background:#f2f8f4;
-  border-color:#75a98a;
+    background:#f2faf5;
+    border-color:#65a981;
 }
 
 .option input{
-  margin-top:5px;
-  accent-color:#176b3a;
-  flex-shrink:0;
+    margin-top:4px;
+    accent-color:#167344;
+    flex-shrink:0;
 }
 
-.letter{
-  font-weight:bold;
-  min-width:22px;
+.option-letter{
+    font-weight:800;
+    min-width:22px;
 }
 
-/* HASIL PER SOAL */
+.option-text{
+    flex:1;
+}
+
+/* ================= HASIL JAWABAN ================= */
+
+.result-info{
+    display:none;
+    margin-top:13px;
+    padding:11px 13px;
+    border-radius:10px;
+    font-size:14px;
+}
+
+.question-card.checked .result-info{
+    display:block;
+}
+
+.question-card.correct .result-info{
+    background:#edf9f0;
+    color:#17753b;
+}
+
+.question-card.wrong .result-info{
+    background:#fff0f0;
+    color:#b42323;
+}
+
 .explanation{
-  display:none;
-  margin-top:14px;
-  padding:12px 14px;
-  border-radius:10px;
-  background:#f3f7f4;
-  border-left:4px solid #2e8b57;
-  font-size:14px;
+    display:none;
+    margin-top:10px;
+    padding:13px;
+    border-radius:10px;
+    background:#f0f8f3;
+    border-left:4px solid #2e9b62;
+    font-size:14px;
 }
 
-.card.checked .explanation{
-  display:block;
+.question-card.checked .explanation{
+    display:block;
 }
 
-.answer-info{
-  display:none;
-  margin-top:10px;
-  font-size:14px;
-  line-height:1.6;
+/* ================= BUTTON ================= */
+
+.check-button{
+    width:100%;
+    border:none;
+    padding:16px;
+    border-radius:14px;
+    background:#167344;
+    color:white;
+    font-size:16px;
+    font-weight:800;
+    cursor:pointer;
+    margin:8px 0 20px;
 }
 
-.card.checked .answer-info{
-  display:block;
+.check-button:hover{
+    background:#125b35;
 }
 
-.correct-text{
-  color:#188038;
-  font-weight:bold;
+/* ================= RESULT ================= */
+
+.final-result{
+    display:none;
+    background:white;
+    border-radius:21px;
+    padding:25px;
+    text-align:center;
+    margin-bottom:30px;
+    box-shadow:0 7px 25px rgba(0,0,0,.10);
 }
 
-.wrong-text{
-  color:#d93025;
-  font-weight:bold;
-}
-
-/* RESULT */
-.result{
-  display:none;
-  background:white;
-  border-radius:20px;
-  padding:24px;
-  margin:20px 0;
-  text-align:center;
-  box-shadow:0 6px 20px rgba(0,0,0,.1);
+.final-result h2{
+    font-size:23px;
+    margin-bottom:5px;
 }
 
 .score{
-  font-size:48px;
-  font-weight:800;
-  color:#176b3a;
-  margin:5px 0;
+    font-size:58px;
+    line-height:1.1;
+    font-weight:900;
+    color:#167344;
+    margin:8px 0;
 }
 
-.result h2{
-  margin-bottom:5px;
+.summary{
+    font-size:15px;
 }
 
-#summary{
-  margin-top:8px;
+.message{
+    margin-top:8px;
+    font-weight:700;
 }
 
-#grade{
-  margin-top:8px;
-  font-weight:bold;
+.reset-button{
+    margin-top:17px;
+    border:none;
+    padding:12px 18px;
+    border-radius:11px;
+    background:#e8efeb;
+    color:#202124;
+    font-weight:700;
+    cursor:pointer;
 }
 
-/* BUTTON */
-button{
-  border:0;
-  border-radius:12px;
-  padding:13px 20px;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-}
+/* ================= MOBILE ================= */
 
-#submit{
-  background:#176b3a;
-  color:white;
-  width:100%;
-  margin:8px 0 25px;
-}
-
-#submit:hover{
-  background:#12552e;
-}
-
-#reset{
-  background:#eceff1;
-  color:#222;
-  margin-top:15px;
-}
-
-/* MOBILE */
 @media(max-width:600px){
 
-  .container{
-    padding:12px;
-  }
+    .container{
+        padding:10px;
+    }
 
-  header{
-    padding:20px 17px;
-    border-radius:16px;
-  }
+    .header{
+        padding:21px 17px;
+        border-radius:17px;
+    }
 
-  header h1{
-    font-size:22px;
-  }
+    .header h1{
+        font-size:22px;
+    }
 
-  header p{
-    font-size:14px;
-  }
+    .header p{
+        font-size:13px;
+    }
 
-  .card{
-    padding:16px;
-  }
+    .progress-card{
+        top:5px;
+    }
 
-  .question{
-    font-size:16px;
-  }
+    .question-card{
+        padding:16px;
+        border-radius:15px;
+    }
 
-  .option{
-    font-size:14px;
-    padding:10px;
-  }
+    .question-text{
+        font-size:16px;
+    }
 
-  .score{
-    font-size:40px;
-  }
+    .option{
+        font-size:14px;
+        padding:11px;
+    }
 
-  .progress-box{
-    top:5px;
-  }
+    .score{
+        font-size:48px;
+    }
 }
 </style>
 </head>
@@ -287,1011 +316,2887 @@ button{
 
 <div class="container">
 
-<header>
-  <span class="badge">PKWU XII • 50 Soal Analitik</span>
+<!-- ================= HEADER ================= -->
 
-  <h1>
-    Produk Nonpangan dari Tanaman Herbal
-  </h1>
+<div class="header">
 
-  <p>
-    Latihan berdasarkan materi potensi tanaman herbal,
-    produk olahan, perencanaan usaha, prinsip 6M,
-    dan fungsi kemasan.
-  </p>
-</header>
-
-<div class="progress-box">
-
-  <div class="progress-top">
-    <span>Progress pengerjaan</span>
-    <span id="progressText">0 / 50</span>
-  </div>
-
-  <div class="progress">
-    <div
-      class="progress-bar"
-      id="progressBar">
+    <div class="badge">
+        PKWU XII • 50 SOAL
     </div>
-  </div>
+
+    <h1>
+        Produk Nonpangan dari Tanaman Herbal
+    </h1>
+
+    <p>
+        Latihan analitik tentang tanaman herbal, produk olahan,
+        perencanaan usaha, 6M, dan fungsi kemasan.
+    </p>
 
 </div>
 
-<form id="quiz"></form>
+<!-- ================= PROGRESS ================= -->
 
-<button
-  id="submit"
-  type="button">
-  SELESAI & PERIKSA JAWABAN
+<div class="progress-card">
+
+    <div class="progress-info">
+        <span>Progress pengerjaan</span>
+        <span id="progressText">0 / 50</span>
+    </div>
+
+    <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+</div>
+
+<!-- =========================================================
+     SOAL
+========================================================= -->
+
+<form id="quiz">
+
+<!-- SOAL 1 -->
+
+<div class="question-card" data-answer="B">
+
+    <div class="question-number">SOAL 1</div>
+
+    <div class="question-text">
+        Senyawa utama pada kunyit yang berperan sebagai antioksidan
+        dalam perawatan kulit adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q1" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Eugenol</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q1" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Kurkumin</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q1" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Andrografolid</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q1" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Mentol</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q1" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Flavonoid</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Kunyit mengandung kurkumin yang dalam materi dikaitkan
+        dengan aktivitas antioksidan.
+    </div>
+
+</div>
+
+
+<!-- SOAL 2 -->
+
+<div class="question-card" data-answer="B">
+
+    <div class="question-number">SOAL 2</div>
+
+    <div class="question-text">
+        Sebuah kelompok ingin membuat produk aromaterapi untuk
+        membantu menciptakan suasana rileks. Mereka memiliki serai
+        dan lavender. Pertimbangan yang paling relevan adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q2" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Serai hanya dapat digunakan sebagai bahan makanan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q2" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Lavender memiliki pemanfaatan yang berkaitan dengan relaksasi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q2" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Serai tidak dapat menghasilkan minyak esensial</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q2" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Lavender hanya berfungsi sebagai antiseptik</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q2" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Kedua tanaman tidak memiliki nilai ekonomi</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Lavender dalam materi dikaitkan dengan relaksasi dan
+        membantu mengatasi insomnia.
+    </div>
+
+</div>
+
+
+<!-- SOAL 3 -->
+
+<div class="question-card" data-answer="B">
+
+    <div class="question-number">SOAL 3</div>
+
+    <div class="question-text">
+        Sirih memiliki potensi yang relevan untuk produk perawatan karena ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q3" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Mengandung kurkumin</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q3" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Kaya antioksidan dan memiliki sifat antiseptik</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q3" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Hanya berfungsi sebagai pewangi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q3" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Menghasilkan jaringan kulit secara langsung</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q3" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Tidak memiliki senyawa aktif</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Sirih dijelaskan memiliki kandungan antioksidan dan sifat antiseptik.
+    </div>
+
+</div>
+
+
+<!-- SOAL 4 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 4</div>
+
+    <div class="question-text">
+        Kelompok usaha memilih sambiloto untuk produk perawatan kulit.
+        Alasan yang paling sesuai dengan materi adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q4" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Membantu pertumbuhan sel jaringan kulit baru</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q4" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Menghasilkan aroma relaksasi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q4" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Mengusir nyamuk</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q4" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Menghasilkan kurkumin</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q4" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Menghasilkan minyak goreng</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Sambiloto dikaitkan dengan stimulasi dan percepatan
+        pertumbuhan sel jaringan kulit baru.
+    </div>
+
+</div>
+
+
+<!-- SOAL 5 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 5</div>
+
+    <div class="question-text">
+        Cengkih banyak diminati industri farmasi dan kosmetik terutama karena ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q5" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Kemampuannya melawan radikal bebas</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q5" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Kemampuannya menghasilkan air</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q5" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Tidak memiliki senyawa aktif</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q5" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Hanya digunakan sebagai pewarna</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q5" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Tidak dapat diolah</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Cengkih memiliki kemampuan melawan radikal bebas dan
+        memiliki nilai bagi industri farmasi serta kosmetik.
+    </div>
+
+</div>
+
+
+<!-- SOAL 6 -->
+
+<div class="question-card" data-answer="B">
+
+    <div class="question-number">SOAL 6</div>
+
+    <div class="question-text">
+        Pasangan tanaman dan manfaat yang tepat adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q6" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Kunyit — mengusir nyamuk</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q6" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Lavender — membantu mengatasi insomnia</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q6" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Sambiloto — menghasilkan kurkumin</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q6" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Serai — menghasilkan jaringan kulit baru</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q6" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Cengkih — menghasilkan minyak esensial untuk relaksasi</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Lavender dalam materi dikaitkan dengan membantu mengatasi insomnia.
+    </div>
+
+</div>
+
+
+<!-- SOAL 7 -->
+
+<div class="question-card" data-answer="B">
+
+    <div class="question-number">SOAL 7</div>
+
+    <div class="question-text">
+        Suatu usaha ingin memperoleh minyak asiri dari tanaman herbal.
+        Proses yang paling sesuai adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q7" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Pembekuan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q7" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Penyulingan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q7" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Penggorengan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q7" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Pengeringan tanpa proses ekstraksi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q7" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Pembakaran</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Minyak asiri atau essential oils dapat diperoleh melalui proses penyulingan.
+    </div>
+
+</div>
+
+
+<!-- SOAL 8 -->
+
+<div class="question-card" data-answer="B">
+
+    <div class="question-number">SOAL 8</div>
+
+    <div class="question-text">
+        Seorang siswa ingin membuat produk yang bertujuan membantu
+        menciptakan suasana relaksasi. Produk yang paling sesuai adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q8" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Sabun lidah buaya</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q8" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Lilin aromaterapi lavender</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q8" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Hand sanitizer</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q8" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Sabun tanpa aroma</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q8" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Produk pangan</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Lilin aromaterapi lavender sesuai dengan pemanfaatan lavender untuk relaksasi.
+    </div>
+
+</div>
+
+
+<!-- SOAL 9 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 9</div>
+
+    <div class="question-text">
+        Lidah buaya dapat digunakan sebagai bahan dasar sabun
+        yang ditujukan terutama untuk ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q9" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Kulit kering</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q9" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Mengusir nyamuk</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q9" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Menghasilkan minyak asiri</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q9" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Mengatasi insomnia</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q9" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Menghasilkan cengkih</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Contoh dalam materi menyebutkan sabun lidah buaya untuk kulit kering.
+    </div>
+
+</div>
+
+
+<!-- SOAL 10 -->
+
+<div class="question-card" data-answer="B">
+
+    <div class="question-number">SOAL 10</div>
+
+    <div class="question-text">
+        Contoh produk nonpangan yang dapat dibuat dengan bahan dasar
+        lidah buaya dan sirih adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q10" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Minuman herbal</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q10" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Hand sanitizer</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q10" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Tepung</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q10" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Minyak goreng</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q10" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Makanan ringan</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Materi memberikan contoh hand sanitizer dengan bahan dasar lidah buaya dan sirih.
+    </div>
+
+</div>
+
+
+<!-- SOAL 11 -->
+
+<div class="question-card" data-answer="B">
+
+    <div class="question-number">SOAL 11</div>
+
+    <div class="question-text">
+        Sebelum membangun usaha produk herbal, langkah yang paling tepat adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q11" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Langsung memproduksi dalam jumlah besar</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q11" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Menyusun deskripsi usaha dan visi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q11" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Membeli semua mesin</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q11" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Mengabaikan pasar</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q11" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Menentukan keuntungan tanpa menghitung biaya</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Perencanaan usaha diawali dengan penyusunan deskripsi usaha dan visi.
+    </div>
+
+</div>
+
+
+<!-- SOAL 12 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 12</div>
+
+    <div class="question-text">
+        Seorang pengusaha ingin mengetahui apakah usaha herbalnya
+        berpotensi memberikan keuntungan. Data yang perlu dianalisis adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q12" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Biaya produksi dan proyeksi keuntungan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q12" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Warna tanaman</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q12" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Ukuran daun</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q12" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Jumlah desain label</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q12" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Nama tanaman saja</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Biaya produksi dan proyeksi keuntungan diperlukan untuk menilai aspek keuangan usaha.
+    </div>
+
+</div>
+
+
+<!-- SOAL 13 -->
+
+<div class="question-card" data-answer="B">
+
+    <div class="question-number">SOAL 13</div>
+
+    <div class="question-text">
+        Dalam prinsip 6M, Material berarti ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q13" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Tenaga kerja</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q13" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Bahan baku</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q13" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Peralatan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q13" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Modal</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q13" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Target pasar</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Material berarti bahan baku yang digunakan dalam usaha.
+    </div>
+
+</div>
+
+
+<!-- SOAL 14 -->
+
+<div class="question-card" data-answer="D">
+
+    <div class="question-number">SOAL 14</div>
+
+    <div class="question-text">
+        Sebuah usaha memiliki tenaga kerja, bahan, mesin, modal,
+        dan target pasar, tetapi belum memiliki prosedur produksi
+        yang jelas. Unsur 6M yang belum terpenuhi adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q14" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Man</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q14" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Material</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q14" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Machine</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q14" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Method</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q14" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Market</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Method berarti metode atau cara kerja yang digunakan
+        dalam proses usaha.
+    </div>
+
+</div>
+
+
+<!-- SOAL 15 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 15</div>
+
+    <div class="question-text">
+        Perhatikan pasangan berikut: Man—sumber daya manusia,
+        Material—bahan baku, Machine—peralatan, Money—modal,
+        Market—target pasar. Kesimpulan yang tepat adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q15" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Semua pasangan benar</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q15" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Hanya Man yang benar</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q15" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Hanya Material yang benar</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q15" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Money berarti target pasar</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q15" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Market berarti modal</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Kelima pasangan tersebut sesuai dengan prinsip 6M.
+    </div>
+
+</div>
+
+
+<!-- SOAL 16 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 16</div>
+
+    <div class="question-text">
+        Sebelum menentukan strategi pemasaran, sebuah usaha perlu
+        mengetahui siapa calon pembelinya. Kegiatan tersebut berkaitan dengan ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q16" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Analisis pasar</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q16" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Pemilihan mesin</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q16" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Pengemasan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q16" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Penyimpanan bahan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q16" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Penyulingan</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Mengetahui calon konsumen merupakan bagian dari analisis pasar.
+    </div>
+
+</div>
+
+
+<!-- SOAL 17 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 17</div>
+
+    <div class="question-text">
+        Sebuah produk herbal sudah berkualitas baik, tetapi pengusaha
+        tidak mengetahui siapa calon konsumennya. Unsur 6M yang harus
+        dianalisis adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q17" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Market</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q17" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Man</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q17" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Machine</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q17" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Method</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q17" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Material</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Market berkaitan dengan pasar dan target konsumen.
+    </div>
+
+</div>
+
+
+<!-- SOAL 18 -->
+
+<div class="question-card" data-answer="D">
+
+    <div class="question-number">SOAL 18</div>
+
+    <div class="question-text">
+        Sebuah usaha memiliki bahan, tenaga kerja, mesin, dan target pasar,
+        tetapi modalnya tidak mencukupi. Unsur 6M yang menjadi kendala adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q18" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Man</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q18" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Material</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q18" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Machine</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q18" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Money</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q18" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Market</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Money berarti modal atau dana yang digunakan untuk menjalankan usaha.
+    </div>
+
+</div>
+
+
+<!-- SOAL 19 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 19</div>
+
+    <div class="question-text">
+        Sebuah usaha memiliki bahan dan modal, tetapi tidak memiliki
+        tenaga kerja yang mampu menjalankan proses produksi. Unsur yang
+        perlu diperbaiki adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q19" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Man</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q19" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Material</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q19" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Machine</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q19" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Money</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q19" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Market</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Man mengacu pada sumber daya manusia yang menjalankan usaha.
+    </div>
+
+</div>
+
+
+<!-- SOAL 20 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 20</div>
+
+    <div class="question-text">
+        Kualitas produk berubah-ubah karena prosedur produksinya
+        tidak konsisten. Unsur 6M yang perlu dievaluasi terutama adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q20" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Method</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q20" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Market</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q20" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Money</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q20" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Material saja</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q20" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Kemasan</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Method berkaitan dengan cara kerja atau prosedur produksi.
+    </div>
+
+</div>
+
+
+<!-- SOAL 21 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 21</div>
+
+    <div class="question-text">
+        Sebuah usaha membeli mesin mahal, tetapi ternyata target konsumennya
+        sangat sedikit. Kesalahan perencanaan terutama berkaitan dengan kurangnya ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q21" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Analisis Market</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q21" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Pengolahan Material</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q21" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Tenaga kerja</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q21" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Metode produksi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q21" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Kemasan</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Market harus dianalisis agar investasi dan produksi sesuai
+        dengan kebutuhan calon konsumen.
+    </div>
+
+</div>
+
+
+<!-- SOAL 22 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 22</div>
+
+    <div class="question-text">
+        Jika bahan baku sulit diperoleh secara konsisten, dampak yang
+        paling mungkin terjadi adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q22" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Produksi dapat terganggu</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q22" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Keuntungan pasti meningkat</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q22" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Kemasan otomatis lebih menarik</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q22" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Pasar otomatis bertambah</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q22" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Promosi tidak diperlukan</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Ketersediaan bahan baku yang tidak stabil dapat menghambat proses produksi.
+    </div>
+
+</div>
+
+
+<!-- SOAL 23 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 23</div>
+
+    <div class="question-text">
+        Sebuah kelompok ingin mengetahui apakah harga jual produknya
+        dapat menghasilkan keuntungan. Hal yang paling tepat dilakukan adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q23" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Membandingkan biaya produksi dengan proyeksi pendapatan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q23" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Mengganti nama produk</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q23" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Mengubah warna tanaman</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q23" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Menghapus kemasan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q23" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Menambah jumlah logo</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Keuntungan perlu dianalisis melalui biaya produksi dan proyeksi pendapatan.
+    </div>
+
+</div>
+
+
+<!-- SOAL 24 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 24</div>
+
+    <div class="question-text">
+        Jika biaya produksi meningkat sedangkan harga jual tetap,
+        pengusaha sebaiknya ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q24" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Mengevaluasi kembali proyeksi keuntungan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q24" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Mengabaikan biaya</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q24" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Mengurangi informasi kemasan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q24" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Menghapus target pasar</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q24" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Menghentikan promosi secara otomatis</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Kenaikan biaya produksi akan memengaruhi proyeksi keuntungan
+        sehingga perlu dianalisis kembali.
+    </div>
+
+</div>
+
+
+<!-- SOAL 25 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 25</div>
+
+    <div class="question-text">
+        Sebuah usaha membuat produk herbal tanpa menentukan visi.
+        Dampak yang paling mungkin adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q25" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Arah pengembangan usaha menjadi kurang jelas</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q25" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Produk otomatis lebih murah</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q25" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Kualitas pasti meningkat</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q25" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Pasar otomatis terbentuk</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q25" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Kemasan tidak diperlukan</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Visi membantu menentukan arah dan tujuan pengembangan usaha.
+    </div>
+
+</div>
+
+
+<!-- SOAL 26 -->
+
+<div class="question-card" data-answer="D">
+
+    <div class="question-number">SOAL 26</div>
+
+    <div class="question-text">
+        Sebuah usaha memiliki tenaga kerja, bahan baku, peralatan,
+        modal, dan metode produksi, tetapi belum menentukan target konsumennya.
+        Unsur 6M yang belum terpenuhi adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q26" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Man</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q26" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Material</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q26" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Machine</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q26" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Market</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q26" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Method</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Market berarti pasar atau target konsumen.
+    </div>
+
+</div>
+
+
+<!-- SOAL 27 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 27</div>
+
+    <div class="question-text">
+        Hubungan Material dan Method yang paling tepat adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q27" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Bahan baku dan cara pengolahannya perlu disesuaikan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q27" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Material hanya berkaitan dengan promosi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q27" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Method berarti modal</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q27" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Material tidak berhubungan dengan produksi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q27" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Method hanya menentukan nama merek</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Bahan baku yang digunakan harus sesuai dengan metode
+        pengolahan agar produksi dapat berjalan dengan baik.
+    </div>
+
+</div>
+
+
+<!-- SOAL 28 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 28</div>
+
+    <div class="question-text">
+        Sebuah usaha memiliki modal besar tetapi tidak memiliki
+        tenaga kerja yang mampu mengoperasikan peralatan.
+        Kesimpulan yang tepat adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q28" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Money saja tidak cukup; Man dan Machine harus saling mendukung</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q28" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Modal dapat menggantikan tenaga kerja</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q28" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Market tidak diperlukan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q28" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Material tidak diperlukan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q28" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Method tidak diperlukan</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Keberhasilan usaha memerlukan keterkaitan antarunsur 6M,
+        bukan hanya modal.
+    </div>
+
+</div>
+
+
+<!-- SOAL 29 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 29</div>
+
+    <div class="question-text">
+        Sebuah sabun herbal berkualitas baik tetapi kemasannya
+        tidak memiliki nama merek. Fungsi kemasan yang belum terpenuhi adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q29" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Identitas merek</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q29" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Perlindungan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q29" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Distribusi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q29" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Informasi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q29" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Jaminan kualitas</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Nama merek berfungsi sebagai identitas atau ciri khas produk.
+    </div>
+
+</div>
+
+
+<!-- SOAL 30 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 30</div>
+
+    <div class="question-text">
+        Produk herbal akan dikirim ke berbagai daerah. Kemasan perlu
+        dirancang agar mudah dibawa dan disimpan. Hal tersebut menunjukkan
+        fungsi kemasan sebagai ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q30" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Kemudahan distribusi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q30" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Identitas merek</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q30" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Pemberi informasi saja</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q30" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Penentu bahan baku</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q30" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Penentu modal</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Kemasan berfungsi memudahkan distribusi, membawa,
+        dan menyimpan produk.
+    </div>
+
+</div>
+
+
+<!-- SOAL 31 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 31</div>
+
+    <div class="question-text">
+        Sebuah produk mudah rusak akibat kondisi lingkungan tertentu.
+        Fungsi kemasan yang paling relevan adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q31" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Pelindung produk</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q31" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Identitas merek</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q31" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Media promosi saja</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q31" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Target pasar</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q31" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Visi usaha</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Kemasan berfungsi melindungi produk dari kondisi lingkungan
+        dan kerusakan fisik.
+    </div>
+
+</div>
+
+
+<!-- SOAL 32 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 32</div>
+
+    <div class="question-text">
+        Dua produk memiliki kualitas sama, tetapi salah satunya
+        memiliki kemasan lebih menarik dan informatif. Keunggulan
+        kemasan tersebut terutama berkaitan dengan ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q32" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Media promosi dan pemberi informasi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q32" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Pengganti bahan baku</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q32" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Pengganti tenaga kerja</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q32" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Pengganti modal</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q32" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Penentu metode produksi</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Kemasan dapat menarik perhatian konsumen sekaligus
+        menyampaikan informasi produk.
+    </div>
+
+</div>
+
+
+<!-- SOAL 33 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 33</div>
+
+    <div class="question-text">
+        Informasi tanggal kedaluwarsa pada kemasan terutama membantu konsumen ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q33" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Mengetahui batas waktu penggunaan produk</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q33" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Menentukan jumlah tenaga kerja</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q33" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Menentukan modal</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q33" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Mengetahui proses penyulingan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q33" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Menghitung biaya produksi</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Tanggal kedaluwarsa merupakan informasi mengenai batas penggunaan produk.
+    </div>
+
+</div>
+
+
+<!-- SOAL 34 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 34</div>
+
+    <div class="question-text">
+        Sebuah produk herbal tidak mencantumkan bahan yang digunakan
+        pada kemasannya. Kekurangan tersebut berkaitan dengan fungsi
+        kemasan sebagai ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q34" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Pemberi informasi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q34" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Distribusi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q34" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Identitas merek</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q34" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Pelindung fisik</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q34" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Media produksi</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Komposisi atau bahan produk merupakan bagian dari informasi
+        yang disampaikan melalui kemasan.
+    </div>
+
+</div>
+
+
+<!-- SOAL 35 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 35</div>
+
+    <div class="question-text">
+        Pernyataan "kemasan adalah tenaga penjual diam" paling tepat berarti ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q35" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Kemasan dapat menyampaikan identitas, informasi, dan daya tarik produk</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q35" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Kemasan dapat menggantikan seluruh tenaga penjual</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q35" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Kemasan menentukan bahan baku</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q35" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Kemasan menggantikan modal</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q35" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Kemasan melakukan proses produksi</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Kemasan membantu menjual produk melalui tampilan, identitas,
+        informasi, dan daya tarik.
+    </div>
+
+</div>
+
+
+<!-- SOAL 36 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 36</div>
+
+    <div class="question-text">
+        Sebuah produk herbal sering rusak saat pengiriman.
+        Perbaikan kemasan yang paling tepat adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q36" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Meningkatkan kemampuan perlindungan dan mendukung distribusi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q36" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Mengurangi informasi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q36" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Menghilangkan identitas merek</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q36" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Mengurangi kualitas bahan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q36" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Menghilangkan kemasan</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Kemasan harus mampu melindungi produk sekaligus
+        mendukung proses distribusi.
+    </div>
+
+</div>
+
+
+<!-- SOAL 37 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 37</div>
+
+    <div class="question-text">
+        Sebuah usaha mengganti kemasan lama dengan desain yang
+        mencerminkan nama dan ciri khas produknya. Fungsi yang
+        sedang diperkuat adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q37" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Identitas merek</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q37" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Material</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q37" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Method</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q37" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Money</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q37" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Man</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Desain yang mencerminkan ciri khas produk memperkuat identitas merek.
+    </div>
+
+</div>
+
+
+<!-- SOAL 38 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 38</div>
+
+    <div class="question-text">
+        Sebuah kemasan memiliki desain menarik tetapi tidak memberikan
+        informasi isi dan kedaluwarsa. Fungsi yang belum terpenuhi adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q38" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Pemberi informasi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q38" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Identitas merek</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q38" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Promosi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q38" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Distribusi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q38" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Pelindung</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Kemasan harus memberikan informasi yang jelas, termasuk
+        isi atau bahan dan tanggal kedaluwarsa.
+    </div>
+
+</div>
+
+
+<!-- SOAL 39 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 39</div>
+
+    <div class="question-text">
+        Kelompok A memiliki lavender, modal terbatas, dan target pasar
+        remaja yang menyukai aromaterapi. Mereka memilih membuat lilin
+        aromaterapi lavender. Alasan yang paling logis adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q39" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Bahan, karakteristik pemanfaatan, modal, dan target pasar dipertimbangkan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q39" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Hanya warna lavender yang dipertimbangkan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q39" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Target pasar diabaikan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q39" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Mesin dibeli terlebih dahulu</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q39" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Bahan tidak dipertimbangkan</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Perencanaan usaha yang baik mempertimbangkan bahan,
+        karakteristik produk, kemampuan modal, dan target pasar.
+    </div>
+
+</div>
+
+
+<!-- SOAL 40 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 40</div>
+
+    <div class="question-text">
+        Kelompok B membuat sabun lidah buaya untuk kulit kering tetapi
+        memasarkan produknya kepada konsumen yang tidak membutuhkan
+        produk tersebut. Hal yang perlu dievaluasi adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q40" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Market dan strategi pemasaran</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q40" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Material saja</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q40" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Machine saja</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q40" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Method saja</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q40" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Money saja</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Target pasar dan strategi pemasaran harus sesuai
+        dengan karakteristik produk.
+    </div>
+
+</div>
+
+
+<!-- SOAL 41 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 41</div>
+
+    <div class="question-text">
+        Hand sanitizer berbahan lidah buaya dan sirih memiliki
+        kemasan tanpa informasi bahan dan tanggal kedaluwarsa.
+        Perbaikan yang paling tepat adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q41" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Menambahkan informasi bahan dan tanggal kedaluwarsa</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q41" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Menghilangkan nama merek</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q41" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Mengurangi perlindungan kemasan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q41" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Menghapus informasi produk</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q41" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Mengganti bahan tanpa alasan</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Informasi bahan dan tanggal kedaluwarsa merupakan bagian
+        penting dari fungsi informasi kemasan.
+    </div>
+
+</div>
+
+
+<!-- SOAL 42 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 42</div>
+
+    <div class="question-text">
+        Sebuah kelompok ingin membuat minyak herbal, tetapi bahan bakunya
+        tidak tersedia secara stabil. Berdasarkan 6M, tindakan yang paling tepat adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q42" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Mengevaluasi ketersediaan Material sebelum meningkatkan produksi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q42" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Mengabaikan bahan baku</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q42" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Membeli kemasan sebanyak mungkin</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q42" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Meningkatkan promosi tanpa bahan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q42" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Menambah target pasar terlebih dahulu</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Material harus tersedia secara memadai dan konsisten
+        agar produksi dapat berjalan.
+    </div>
+
+</div>
+
+
+<!-- SOAL 43 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 43</div>
+
+    <div class="question-text">
+        Produk herbal memiliki kualitas baik dan kemasan menarik,
+        tetapi harga jual tidak menghasilkan keuntungan.
+        Bagian perencanaan yang perlu dikaji adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q43" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Biaya produksi dan proyeksi keuntungan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q43" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Warna tanaman</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q43" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Nama tanaman</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q43" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Identitas merek saja</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q43" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Jumlah tanaman</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Ketidaksesuaian antara biaya produksi dan harga jual
+        harus dianalisis melalui proyeksi keuntungan.
+    </div>
+
+</div>
+
+
+<!-- SOAL 44 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 44</div>
+
+    <div class="question-text">
+        Sebuah kelompok membeli mesin produksi sebelum mengetahui
+        jumlah permintaan pasar. Berdasarkan 6M, hubungan yang belum
+        dianalisis dengan baik adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q44" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Machine dan Market</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q44" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Man dan Material</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q44" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Method dan Man</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q44" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Material dan Money</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q44" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Man dan Market</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Pembelian mesin seharusnya mempertimbangkan kebutuhan
+        produksi dan kondisi pasar.
+    </div>
+
+</div>
+
+
+<!-- SOAL 45 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 45</div>
+
+    <div class="question-text">
+        Sebuah kelompok ingin membuat lilin aromaterapi lavender.
+        Mereka telah menentukan target konsumen, menghitung modal,
+        menentukan bahan dan peralatan, serta menyusun prosedur produksi.
+        Hal tersebut menunjukkan penerapan ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q45" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Sebagian besar unsur 6M</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q45" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Fungsi kemasan saja</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q45" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Analisis bahan saja</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q45" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Promosi saja</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q45" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Identitas merek saja</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Tenaga kerja, bahan, mesin, modal, metode, dan pasar
+        merupakan unsur yang saling berkaitan dalam 6M.
+    </div>
+
+</div>
+
+
+<!-- SOAL 46 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 46</div>
+
+    <div class="question-text">
+        Produk herbal memiliki bahan sesuai, proses produksi baik,
+        dan kemasan menarik, tetapi sulit ditemukan konsumen karena
+        distribusinya buruk. Fungsi kemasan yang perlu diperhatikan adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q46" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Kemudahan distribusi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q46" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Identitas merek</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q46" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Pemberi informasi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q46" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Media promosi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q46" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Jaminan kualitas</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Kemasan juga berfungsi memudahkan produk dibawa,
+        disimpan, dan didistribusikan.
+    </div>
+
+</div>
+
+
+<!-- SOAL 47 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 47</div>
+
+    <div class="question-text">
+        Perusahaan memilih antara kunyit dan cengkih untuk produk
+        yang menonjolkan aktivitas antioksidan. Berdasarkan materi,
+        analisis yang tepat adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q47" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Keduanya memiliki potensi yang berkaitan dengan antioksidan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q47" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Hanya kunyit yang memiliki manfaat antioksidan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q47" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Hanya cengkih dapat digunakan dalam kosmetik</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q47" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Keduanya hanya digunakan untuk pangan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q47" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Keduanya tidak memiliki nilai ekonomi</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Kunyit dikaitkan dengan kurkumin sebagai antioksidan,
+        sedangkan cengkih memiliki kemampuan melawan radikal bebas.
+    </div>
+
+</div>
+
+
+<!-- SOAL 48 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 48</div>
+
+    <div class="question-text">
+        Kelompok ingin mengembangkan usaha produk nonpangan herbal
+        dari awal. Urutan tindakan yang paling logis adalah:
+        (1) mengidentifikasi potensi bahan dan produk,
+        (2) menentukan target pasar dan strategi pemasaran,
+        (3) menghitung biaya dan proyeksi keuntungan,
+        (4) menentukan kebutuhan 6M,
+        (5) merancang kemasan sesuai fungsi produk.
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q48" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">1 → 2 → 3 → 4 → 5</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q48" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">5 → 4 → 3 → 2 → 1</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q48" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">2 → 5 → 1 → 4 → 3</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q48" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">3 → 1 → 5 → 2 → 4</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q48" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">4 → 3 → 5 → 1 → 2</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Urutan tersebut dimulai dari identifikasi potensi,
+        pasar, aspek keuangan, kebutuhan 6M, kemudian desain kemasan.
+    </div>
+
+</div>
+
+
+<!-- SOAL 49 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 49</div>
+
+    <div class="question-text">
+        Dalam memilih tanaman untuk produk yang menonjolkan sifat
+        antioksidan, seorang pengusaha mempertimbangkan kunyit dan cengkih.
+        Kesimpulan berdasarkan materi adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q49" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">Keduanya memiliki potensi antioksidan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q49" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">Hanya kunyit yang dapat digunakan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q49" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">Hanya cengkih yang dapat digunakan</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q49" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">Keduanya tidak memiliki potensi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q49" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">Keduanya hanya digunakan untuk makanan</span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Kunyit memiliki kurkumin yang dikaitkan dengan aktivitas
+        antioksidan, sedangkan cengkih dikaitkan dengan kemampuan
+        melawan radikal bebas.
+    </div>
+
+</div>
+
+
+<!-- SOAL 50 -->
+
+<div class="question-card" data-answer="A">
+
+    <div class="question-number">SOAL 50</div>
+
+    <div class="question-text">
+        Kelompok ingin mengembangkan usaha produk nonpangan herbal
+        secara sistematis. Urutan berikut yang paling logis adalah ...
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q50" value="A">
+        <span class="option-letter">A.</span>
+        <span class="option-text">
+            Identifikasi potensi produk → analisis pasar →
+            hitung biaya dan keuntungan → tentukan 6M → rancang kemasan
+        </span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q50" value="B">
+        <span class="option-letter">B.</span>
+        <span class="option-text">
+            Rancang kemasan → beli mesin → produksi massal →
+            baru mencari pasar
+        </span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q50" value="C">
+        <span class="option-letter">C.</span>
+        <span class="option-text">
+            Produksi massal → mencari bahan → menentukan visi →
+            mencari konsumen
+        </span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q50" value="D">
+        <span class="option-letter">D.</span>
+        <span class="option-text">
+            Membeli mesin → membuat kemasan → menentukan produk →
+            menghitung biaya
+        </span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q50" value="E">
+        <span class="option-letter">E.</span>
+        <span class="option-text">
+            Menentukan harga → produksi → mencari bahan →
+            baru menentukan target pasar
+        </span>
+    </label>
+
+    <div class="result-info"></div>
+
+    <div class="explanation">
+        <b>Pembahasan:</b>
+        Perencanaan usaha dimulai dengan mengidentifikasi potensi,
+        menganalisis pasar, menghitung aspek keuangan, menentukan
+        kebutuhan 6M, kemudian merancang kemasan.
+    </div>
+
+</div>
+
+</form>
+
+<!-- ================= TOMBOL ================= -->
+
+<button class="check-button" id="checkButton">
+    SELESAI & PERIKSA JAWABAN
 </button>
 
-<div
-  class="result"
-  id="result">
+<!-- ================= HASIL ================= -->
 
-  <h2>Hasil Latihan</h2>
+<div class="final-result" id="finalResult">
 
-  <div
-    class="score"
-    id="score">
-    0
-  </div>
+    <h2>Hasil Latihan</h2>
 
-  <p id="summary"></p>
+    <div class="score" id="score">
+        0
+    </div>
 
-  <p id="grade"></p>
+    <div class="summary" id="summary">
+        -
+    </div>
 
-  <button
-    id="reset"
-    type="button">
-    ULANGI LATIHAN
-  </button>
+    <div class="message" id="message">
+        -
+    </div>
+
+    <button class="reset-button" onclick="location.reload()">
+        ULANGI LATIHAN
+    </button>
+
+</div>
 
 </div>
 
-</div>
 
 <script>
 
-/* =========================================================
-   DATA SOAL
-========================================================= */
+/* =====================================================
+   JAVASCRIPT HANYA UNTUK PROGRESS & PENILAIAN
+   SOAL SUDAH STATIS DI HTML
+===================================================== */
 
-const questions = [
+var cards = document.querySelectorAll(".question-card");
 
-[
-"Senyawa utama pada kunyit yang berperan sebagai antioksidan dalam perawatan kulit adalah ...",
-[
-"Eugenol",
-"Kurkumin",
-"Andrografolid",
-"Mentol",
-"Flavonoid"
-],
-1,
-"Kunyit mengandung kurkumin yang dalam materi dikaitkan dengan aktivitas antioksidan."
-],
+var total = cards.length;
 
-[
-"Sebuah kelompok ingin membuat produk aromaterapi untuk membantu menciptakan suasana rileks. Mereka memiliki serai dan lavender. Pertimbangan yang paling relevan adalah ...",
-[
-"Serai hanya dapat digunakan sebagai bahan makanan",
-"Lavender memiliki pemanfaatan yang berkaitan dengan relaksasi",
-"Serai tidak dapat menghasilkan minyak esensial",
-"Lavender hanya berfungsi sebagai antiseptik",
-"Kedua tanaman tidak memiliki nilai ekonomi"
-],
-1,
-"Lavender dalam materi dikaitkan dengan relaksasi dan membantu mengatasi insomnia."
-],
 
-[
-"Sirih memiliki potensi yang relevan untuk produk perawatan karena ...",
-[
-"Mengandung kurkumin",
-"Kaya antioksidan dan memiliki sifat antiseptik",
-"Hanya berfungsi sebagai pewangi",
-"Menghasilkan jaringan kulit secara langsung",
-"Tidak memiliki senyawa aktif"
-],
-1,
-"Materi menjelaskan bahwa sirih kaya antioksidan dan memiliki sifat antiseptik."
-],
-
-[
-"Kelompok usaha memilih sambiloto untuk produk perawatan kulit. Alasan yang paling sesuai dengan materi adalah ...",
-[
-"Membantu pertumbuhan sel jaringan kulit baru",
-"Menghasilkan aroma relaksasi",
-"Mengusir nyamuk",
-"Menghasilkan kurkumin",
-"Menghasilkan minyak goreng"
-],
-0,
-"Sambiloto dikaitkan dengan stimulasi dan percepatan pertumbuhan sel jaringan kulit baru."
-],
-
-[
-"Cengkih banyak diminati industri farmasi dan kosmetik terutama karena ...",
-[
-"Kemampuannya melawan radikal bebas",
-"Kemampuannya menghasilkan air",
-"Tidak memiliki senyawa aktif",
-"Hanya digunakan sebagai pewarna",
-"Tidak dapat diolah"
-],
-0,
-"Cengkih memiliki kemampuan melawan radikal bebas dan memiliki nilai bagi industri farmasi serta kosmetik."
-],
-
-[
-"Pasangan tanaman dan manfaat yang tepat adalah ...",
-[
-"Kunyit — mengusir nyamuk",
-"Lavender — membantu mengatasi insomnia",
-"Sambiloto — menghasilkan kurkumin",
-"Serai — menghasilkan jaringan kulit baru",
-"Cengkih — menghasilkan minyak esensial untuk relaksasi"
-],
-1,
-"Lavender dalam materi dikaitkan dengan membantu mengatasi insomnia."
-],
-
-[
-"Suatu usaha ingin memperoleh minyak asiri dari tanaman herbal. Proses yang paling sesuai adalah ...",
-[
-"Pembekuan",
-"Penyulingan",
-"Penggorengan",
-"Pengeringan tanpa proses ekstraksi",
-"Pembakaran"
-],
-1,
-"Minyak asiri atau essential oils dapat diperoleh melalui proses penyulingan."
-],
-
-[
-"Seorang siswa ingin membuat produk yang bertujuan membantu menciptakan suasana relaksasi. Produk yang paling sesuai adalah ...",
-[
-"Sabun lidah buaya",
-"Lilin aromaterapi lavender",
-"Hand sanitizer",
-"Sabun tanpa aroma",
-"Produk pangan"
-],
-1,
-"Lilin aromaterapi lavender sesuai dengan pemanfaatan lavender untuk relaksasi."
-],
-
-[
-"Lidah buaya dapat digunakan sebagai bahan dasar sabun yang ditujukan terutama untuk ...",
-[
-"Kulit kering",
-"Mengusir nyamuk",
-"Menghasilkan minyak asiri",
-"Mengatasi insomnia",
-"Menghasilkan cengkih"
-],
-0,
-"Contoh dalam materi menyebutkan sabun lidah buaya untuk kulit kering."
-],
-
-[
-"Contoh produk nonpangan yang dapat dibuat dengan bahan dasar lidah buaya dan sirih adalah ...",
-[
-"Minuman herbal",
-"Hand sanitizer",
-"Tepung",
-"Minyak goreng",
-"Makanan ringan"
-],
-1,
-"Materi memberikan contoh hand sanitizer dengan bahan dasar lidah buaya dan sirih."
-],
-
-[
-"Sebelum membangun usaha produk herbal, langkah yang paling tepat adalah ...",
-[
-"Langsung memproduksi dalam jumlah besar",
-"Menyusun deskripsi usaha dan visi",
-"Membeli semua mesin",
-"Mengabaikan pasar",
-"Menentukan keuntungan tanpa menghitung biaya"
-],
-1,
-"Perencanaan usaha diawali dengan penyusunan deskripsi usaha dan visi."
-],
-
-[
-"Seorang pengusaha ingin mengetahui apakah usaha herbalnya berpotensi memberikan keuntungan. Data yang perlu dianalisis adalah ...",
-[
-"Biaya produksi dan proyeksi keuntungan",
-"Warna tanaman",
-"Ukuran daun",
-"Jumlah desain label",
-"Nama tanaman saja"
-],
-0,
-"Biaya produksi dan proyeksi keuntungan diperlukan untuk menilai aspek keuangan usaha."
-],
-
-[
-"Dalam prinsip 6M, Material berarti ...",
-[
-"Tenaga kerja",
-"Bahan baku",
-"Peralatan",
-"Modal",
-"Target pasar"
-],
-1,
-"Material berarti bahan baku yang digunakan dalam usaha."
-],
-
-[
-"Sebuah usaha memiliki tenaga kerja, bahan, mesin, modal, dan target pasar, tetapi belum memiliki prosedur produksi yang jelas. Unsur 6M yang belum terpenuhi adalah ...",
-[
-"Man",
-"Material",
-"Machine",
-"Method",
-"Market"
-],
-3,
-"Method berarti metode atau cara kerja yang digunakan dalam proses usaha."
-],
-
-[
-"Perhatikan pasangan berikut: Man—sumber daya manusia, Material—bahan baku, Machine—peralatan, Money—modal, Market—target pasar. Kesimpulan yang tepat adalah ...",
-[
-"Semua pasangan benar",
-"Hanya Man yang benar",
-"Hanya Material yang benar",
-"Money berarti target pasar",
-"Market berarti modal"
-],
-0,
-"Kelima pasangan tersebut sesuai dengan prinsip 6M."
-],
-
-[
-"Sebuah usaha memiliki target pasar yang jelas tetapi modalnya tidak cukup untuk membeli bahan. Unsur yang menjadi kendala utama adalah ...",
-[
-"Man",
-"Material",
-"Machine",
-"Money",
-"Market"
-],
-3,
-"Money berarti modal atau dana yang digunakan untuk menjalankan usaha."
-],
-
-[
-"Sebuah usaha memiliki bahan baku dan modal, tetapi tidak mempunyai tenaga kerja yang mampu menjalankan proses produksi. Unsur yang perlu diperbaiki adalah ...",
-[
-"Man",
-"Material",
-"Machine",
-"Money",
-"Market"
-],
-0,
-"Man mengacu pada sumber daya manusia yang menjalankan usaha."
-],
-
-[
-"Suatu produk sering menghasilkan kualitas yang berbeda-beda karena prosedur produksi tidak konsisten. Unsur yang perlu dievaluasi terutama adalah ...",
-[
-"Method",
-"Market",
-"Money",
-"Material saja",
-"Kemasan"
-],
-0,
-"Method berkaitan dengan cara kerja atau prosedur produksi."
-],
-
-[
-"Sebuah usaha membeli mesin mahal, tetapi ternyata target konsumennya sangat sedikit. Kesalahan perencanaan terutama berkaitan dengan kurangnya analisis ...",
-[
-"Man",
-"Material",
-"Market",
-"Method",
-"Kemasan"
-],
-2,
-"Market harus dianalisis agar investasi dan produksi sesuai dengan calon konsumen."
-],
-
-[
-"Jika bahan baku sulit diperoleh secara konsisten, dampak yang paling mungkin terjadi adalah ...",
-[
-"Produksi dapat terganggu",
-"Keuntungan pasti meningkat",
-"Kemasan otomatis lebih menarik",
-"Pasar otomatis bertambah",
-"Promosi tidak diperlukan"
-],
-0,
-"Ketersediaan bahan baku yang tidak stabil dapat menghambat proses produksi."
-],
-
-[
-"Sebuah kelompok ingin mengetahui apakah harga jual produknya dapat menghasilkan keuntungan. Hal yang paling tepat dilakukan adalah ...",
-[
-"Membandingkan biaya produksi dengan proyeksi pendapatan",
-"Mengganti nama produk",
-"Mengubah warna tanaman",
-"Menghapus kemasan",
-"Menambah jumlah logo"
-],
-0,
-"Keuntungan perlu dianalisis melalui biaya produksi dan proyeksi pendapatan."
-],
-
-[
-"Jika biaya produksi meningkat sedangkan harga jual tetap, pengusaha sebaiknya ...",
-[
-"Mengevaluasi kembali proyeksi keuntungan",
-"Mengabaikan biaya",
-"Mengurangi informasi kemasan",
-"Menghapus target pasar",
-"Menghentikan promosi secara otomatis"
-],
-0,
-"Kenaikan biaya produksi akan memengaruhi proyeksi keuntungan sehingga perlu dianalisis kembali."
-],
-
-[
-"Sebuah usaha membuat produk herbal tanpa menentukan visi. Dampak yang paling mungkin adalah ...",
-[
-"Arah pengembangan usaha menjadi kurang jelas",
-"Produk otomatis lebih murah",
-"Kualitas pasti meningkat",
-"Pasar otomatis terbentuk",
-"Kemasan tidak diperlukan"
-],
-0,
-"Visi membantu menentukan arah dan tujuan pengembangan usaha."
-],
-
-[
-"Perhatikan kondisi berikut: tenaga kerja tersedia, bahan baku tersedia, modal tersedia, target pasar tersedia, peralatan tersedia, tetapi cara produksi belum ditentukan. Unsur yang belum terpenuhi adalah ...",
-[
-"Man",
-"Material",
-"Machine",
-"Method",
-"Market"
-],
-3,
-"Semua unsur tersedia kecuali Method, yaitu cara kerja atau prosedur produksi."
-],
-
-[
-"Sebuah usaha mempunyai metode produksi yang baik tetapi tidak mempunyai alat yang memadai. Unsur yang perlu diperbaiki adalah ...",
-[
-"Machine",
-"Man",
-"Market",
-"Money",
-"Material"
-],
-0,
-"Machine berarti peralatan atau mesin yang digunakan dalam usaha."
-],
-
-[
-"Jika sebuah usaha memiliki semua unsur 6M kecuali target konsumen, unsur yang belum ditentukan adalah ...",
-[
-"Market",
-"Method",
-"Machine",
-"Material",
-"Man"
-],
-0,
-"Market berarti pasar atau target konsumen."
-],
-
-[
-"Hubungan Material dan Method yang paling tepat adalah ...",
-[
-"Bahan baku dan cara pengolahannya perlu disesuaikan",
-"Material hanya berkaitan dengan promosi",
-"Method berarti modal",
-"Material tidak berhubungan dengan produksi",
-"Method hanya menentukan nama merek"
-],
-0,
-"Bahan baku yang digunakan harus sesuai dengan metode pengolahan agar produksi dapat berjalan dengan baik."
-],
-
-[
-"Sebuah usaha memiliki modal besar tetapi tidak memiliki tenaga kerja yang mampu mengoperasikan peralatan. Kesimpulan yang tepat adalah ...",
-[
-"Money saja tidak cukup; Man dan Machine harus saling mendukung",
-"Modal dapat menggantikan tenaga kerja",
-"Market tidak diperlukan",
-"Material tidak diperlukan",
-"Method tidak diperlukan"
-],
-0,
-"Keberhasilan usaha memerlukan keterkaitan antarunsur 6M, bukan hanya modal."
-],
-
-[
-"Sebuah sabun herbal berkualitas baik tetapi kemasannya tidak memiliki nama merek. Fungsi kemasan yang belum terpenuhi adalah ...",
-[
-"Identitas merek",
-"Perlindungan",
-"Distribusi",
-"Informasi",
-"Jaminan kualitas"
-],
-0,
-"Nama merek berfungsi sebagai identitas atau ciri khas produk."
-],
-
-[
-"Produk herbal akan dikirim ke berbagai daerah. Kemasan perlu dirancang agar mudah dibawa dan disimpan. Hal tersebut menunjukkan fungsi kemasan sebagai ...",
-[
-"Kemudahan distribusi",
-"Identitas merek",
-"Pemberi informasi saja",
-"Penentu bahan baku",
-"Penentu modal"
-],
-0,
-"Salah satu fungsi kemasan adalah memudahkan distribusi, membawa, dan menyimpan produk."
-],
-
-[
-"Sebuah produk mudah rusak akibat kondisi lingkungan tertentu. Fungsi kemasan yang paling relevan adalah ...",
-[
-"Pelindung produk",
-"Identitas merek",
-"Media promosi saja",
-"Target pasar",
-"Visi usaha"
-],
-0,
-"Kemasan berfungsi melindungi produk dari suhu, kelembapan, dan kerusakan fisik."
-],
-
-[
-"Dua produk memiliki kualitas sama, tetapi salah satunya memiliki kemasan lebih menarik dan informatif. Keunggulan kemasan tersebut terutama berkaitan dengan ...",
-[
-"Media promosi dan pemberi informasi",
-"Pengganti bahan baku",
-"Pengganti tenaga kerja",
-"Pengganti modal",
-"Penentu metode produksi"
-],
-0,
-"Kemasan dapat menarik perhatian konsumen sekaligus menyampaikan informasi produk."
-],
-
-[
-"Informasi tanggal kedaluwarsa pada kemasan terutama membantu konsumen ...",
-[
-"Mengetahui batas waktu penggunaan produk",
-"Menentukan jumlah tenaga kerja",
-"Menentukan modal",
-"Mengetahui proses penyulingan",
-"Menghitung biaya produksi"
-],
-0,
-"Tanggal kedaluwarsa merupakan informasi penting bagi konsumen mengenai batas penggunaan produk."
-],
-
-[
-"Sebuah produk herbal tidak mencantumkan bahan yang digunakan pada kemasannya. Kekurangan tersebut berkaitan dengan fungsi kemasan sebagai ...",
-[
-"Pemberi informasi",
-"Distribusi",
-"Identitas merek",
-"Pelindung fisik",
-"Media produksi"
-],
-0,
-"Komposisi atau bahan produk merupakan bagian dari informasi yang perlu disampaikan melalui kemasan."
-],
-
-[
-"Pernyataan 'kemasan adalah tenaga penjual diam' paling tepat berarti ...",
-[
-"Kemasan dapat menyampaikan identitas, informasi, dan daya tarik produk",
-"Kemasan dapat menggantikan seluruh tenaga penjual",
-"Kemasan menentukan bahan baku",
-"Kemasan menggantikan modal",
-"Kemasan melakukan proses produksi"
-],
-0,
-"Kemasan membantu menjual produk melalui tampilan, identitas, informasi, dan daya tarik."
-],
-
-[
-"Sebuah produk herbal sering rusak saat pengiriman. Perbaikan kemasan yang paling tepat adalah ...",
-[
-"Meningkatkan kemampuan perlindungan dan mendukung distribusi",
-"Mengurangi informasi",
-"Menghilangkan identitas merek",
-"Mengurangi kualitas bahan",
-"Menghilangkan kemasan"
-],
-0,
-"Kemasan harus mampu melindungi produk sekaligus mendukung proses distribusi."
-],
-
-[
-"Sebuah usaha mengganti kemasan lama dengan desain yang mencerminkan nama dan ciri khas produknya. Fungsi yang sedang diperkuat adalah ...",
-[
-"Identitas merek",
-"Material",
-"Method",
-"Money",
-"Man"
-],
-0,
-"Desain yang mencerminkan ciri khas produk memperkuat identitas merek."
-],
-
-[
-"Sebuah kemasan memiliki desain menarik tetapi tidak memberikan informasi isi dan kedaluwarsa. Fungsi yang belum terpenuhi adalah ...",
-[
-"Pemberi informasi",
-"Identitas merek",
-"Promosi",
-"Distribusi",
-"Pelindung"
-],
-0,
-"Kemasan harus memberikan informasi yang jelas, termasuk bahan dan tanggal kedaluwarsa."
-],
-
-[
-"Kelompok A memiliki lavender, modal terbatas, dan target pasar remaja yang menyukai aromaterapi. Mereka memilih membuat lilin aromaterapi lavender. Alasan yang paling logis adalah ...",
-[
-"Bahan, karakteristik pemanfaatan, modal, dan target pasar dipertimbangkan",
-"Hanya warna lavender yang dipertimbangkan",
-"Target pasar diabaikan",
-"Mesin dibeli terlebih dahulu",
-"Bahan tidak dipertimbangkan"
-],
-0,
-"Perencanaan usaha yang baik mempertimbangkan bahan, karakteristik produk, kemampuan modal, dan target pasar."
-],
-
-[
-"Kelompok B membuat sabun lidah buaya untuk kulit kering tetapi memasarkan produknya kepada konsumen yang tidak membutuhkan produk tersebut. Hal yang perlu dievaluasi adalah ...",
-[
-"Market dan strategi pemasaran",
-"Material saja",
-"Machine saja",
-"Method saja",
-"Money saja"
-],
-0,
-"Target pasar dan strategi pemasaran harus sesuai dengan karakteristik produk."
-],
-
-[
-"Hand sanitizer berbahan lidah buaya dan sirih memiliki kemasan tanpa informasi bahan dan tanggal kedaluwarsa. Perbaikan yang paling tepat adalah ...",
-[
-"Menambahkan informasi bahan dan tanggal kedaluwarsa",
-"Menghilangkan nama merek",
-"Mengurangi perlindungan kemasan",
-"Menghapus informasi produk",
-"Mengganti bahan tanpa alasan"
-],
-0,
-"Informasi bahan dan tanggal kedaluwarsa merupakan bagian penting dari fungsi informasi kemasan."
-],
-
-[
-"Sebuah kelompok ingin membuat minyak herbal, tetapi bahan bakunya tidak tersedia secara stabil. Berdasarkan 6M, tindakan yang paling tepat adalah ...",
-[
-"Mengevaluasi ketersediaan Material sebelum meningkatkan produksi",
-"Mengabaikan bahan baku",
-"Membeli kemasan sebanyak mungkin",
-"Meningkatkan promosi tanpa bahan",
-"Menambah target pasar terlebih dahulu"
-],
-0,
-"Material harus tersedia secara memadai dan konsisten agar produksi dapat berjalan."
-],
-
-[
-"Produk herbal memiliki kualitas baik dan kemasan menarik, tetapi harga jual tidak menghasilkan keuntungan. Bagian perencanaan yang perlu dikaji adalah ...",
-[
-"Biaya produksi dan proyeksi keuntungan",
-"Warna tanaman",
-"Nama tanaman",
-"Identitas merek saja",
-"Jumlah tanaman"
-],
-0,
-"Ketidaksesuaian antara biaya produksi dan harga jual harus dianalisis melalui proyeksi keuntungan."
-],
-
-[
-"Sebuah kelompok membeli mesin produksi sebelum mengetahui jumlah permintaan pasar. Berdasarkan 6M, hubungan yang belum dianalisis dengan baik adalah ...",
-[
-"Machine dan Market",
-"Man dan Material",
-"Method dan Man",
-"Material dan Money",
-"Man dan Market"
-],
-0,
-"Pembelian mesin seharusnya mempertimbangkan kebutuhan produksi dan kondisi pasar."
-],
-
-[
-"Sebuah kelompok ingin membuat lilin aromaterapi lavender. Mereka telah menentukan target konsumen, menghitung modal, menentukan bahan dan peralatan, serta menyusun prosedur produksi. Hal tersebut menunjukkan penerapan ...",
-[
-"Sebagian besar unsur 6M",
-"Fungsi kemasan saja",
-"Analisis bahan saja",
-"Promosi saja",
-"Identitas merek saja"
-],
-0,
-"Tenaga kerja, bahan, mesin, modal, metode, dan pasar merupakan unsur yang saling berkaitan dalam 6M."
-],
-
-[
-"Produk herbal memiliki bahan sesuai, proses produksi baik, dan kemasan menarik, tetapi sulit ditemukan konsumen karena distribusinya buruk. Fungsi kemasan yang perlu diperhatikan adalah ...",
-[
-"Kemudahan distribusi",
-"Identitas merek",
-"Pemberi informasi",
-"Media promosi",
-"Jaminan kualitas"
-],
-0,
-"Kemasan juga berfungsi memudahkan produk dibawa, disimpan, dan didistribusikan."
-],
-
-[
-"Perusahaan memilih antara kunyit dan cengkih untuk produk yang menonjolkan aktivitas antioksidan. Berdasarkan materi, analisis yang tepat adalah ...",
-[
-"Keduanya memiliki potensi yang berkaitan dengan antioksidan",
-"Hanya kunyit yang memiliki manfaat antioksidan",
-"Hanya cengkih dapat digunakan dalam kosmetik",
-"Keduanya hanya digunakan untuk pangan",
-"Keduanya tidak memiliki nilai ekonomi"
-],
-0,
-"Kunyit dikaitkan dengan kurkumin sebagai antioksidan, sedangkan cengkih memiliki kemampuan melawan radikal bebas."
-],
-
-[
-"Kelompok ingin mengembangkan usaha produk nonpangan herbal dari awal. Urutan tindakan yang paling logis adalah: (1) mengidentifikasi potensi bahan dan produk, (2) menentukan target pasar dan strategi pemasaran, (3) menghitung biaya dan proyeksi keuntungan, (4) menentukan kebutuhan 6M, (5) merancang kemasan sesuai fungsi produk.",
-[
-"1 → 2 → 3 → 4 → 5",
-"5 → 4 → 3 → 2 → 1",
-"2 → 5 → 1 → 4 → 3",
-"3 → 1 → 5 → 2 → 4",
-"4 → 3 → 5 → 1 → 2"
-],
-0,
-"Urutan tersebut dimulai dari identifikasi potensi, pasar, aspek keuangan, kebutuhan 6M, kemudian desain kemasan."
-]
-
-];
-
-/* =========================================================
-   KONFIGURASI
-========================================================= */
-
-const letters = ["A","B","C","D","E"];
-
-/* =========================================================
-   RENDER SOAL
-========================================================= */
-
-function renderQuiz(){
-
-  const quiz = document.getElementById("quiz");
-
-  quiz.innerHTML = "";
-
-  questions.forEach(function(q,index){
-
-    const card = document.createElement("div");
-
-    card.className = "card";
-    card.id = "q" + index;
-
-    const questionNumber = index + 1;
-
-    let optionsHTML = "";
-
-    q[1].forEach(function(option,optIndex){
-
-      optionsHTML += `
-        <label class="option">
-
-          <input
-            type="radio"
-            name="q${index}"
-            value="${optIndex}"
-          >
-
-          <span class="letter">
-            ${letters[optIndex]}.
-          </span>
-
-          <span>
-            ${option}
-          </span>
-
-        </label>
-      `;
-
-    });
-
-    card.innerHTML = `
-
-      <div class="question">
-        ${questionNumber}. ${q[0]}
-      </div>
-
-      <div class="options">
-        ${optionsHTML}
-      </div>
-
-      <div class="answer-info"></div>
-
-      <div class="explanation">
-        <strong>Pembahasan:</strong><br>
-        ${q[3]}
-      </div>
-
-    `;
-
-    quiz.appendChild(card);
-
-  });
-
-  /*
-     Pasang event listener setelah soal dibuat.
-     Ini lebih aman daripada mengandalkan onchange
-     di dalam HTML.
-  */
-
-  const radios = document.querySelectorAll(
-    '#quiz input[type="radio"]'
-  );
-
-  radios.forEach(function(radio){
-
-    radio.addEventListener("change",updateProgress);
-
-  });
-
-}
-
-/* =========================================================
-   PROGRESS
-========================================================= */
+/* ================= PROGRESS ================= */
 
 function updateProgress(){
 
-  let answered = 0;
+    var answered = 0;
 
-  questions.forEach(function(q,index){
+    cards.forEach(function(card){
 
-    const selected = document.querySelector(
-      `input[name="q${index}"]:checked`
-    );
+        var selected =
+            card.querySelector("input[type='radio']:checked");
 
-    if(selected){
-      answered++;
-    }
+        if(selected){
+            answered++;
+        }
 
-  });
+    });
 
-  const total = questions.length;
+    document.getElementById("progressText").textContent =
+        answered + " / " + total;
 
-  const percent =
-    total === 0
-      ? 0
-      : (answered / total) * 100;
-
-  document.getElementById("progressText").textContent =
-    answered + " / " + total;
-
-  document.getElementById("progressBar").style.width =
-    percent + "%";
+    document.getElementById("progressFill").style.width =
+        ((answered / total) * 100) + "%";
 }
 
-/* =========================================================
-   PERIKSA JAWABAN
-========================================================= */
 
-function finishQuiz(){
+/* ================= DETEKSI PILIHAN ================= */
 
-  let score = 0;
-  let answered = 0;
+document
+.querySelectorAll("input[type='radio']")
+.forEach(function(input){
 
-  questions.forEach(function(q,index){
+    input.addEventListener("change",function(){
 
-    const card =
-      document.getElementById("q" + index);
+        updateProgress();
 
-    const selected =
-      document.querySelector(
-        `input[name="q${index}"]:checked`
-      );
+    });
 
-    card.classList.remove(
-      "correct",
-      "wrong"
-    );
+});
 
-    card.classList.add("checked");
 
-    const answerInfo =
-      card.querySelector(".answer-info");
+/* ================= PERIKSA ================= */
 
-    if(selected){
+document
+.getElementById("checkButton")
+.addEventListener("click",function(){
 
-      answered++;
+    var correct = 0;
+    var answered = 0;
 
-      const userAnswer =
-        Number(selected.value);
+    cards.forEach(function(card){
 
-      if(userAnswer === q[2]){
+        var correctAnswer =
+            card.getAttribute("data-answer");
 
-        score++;
+        var selected =
+            card.querySelector(
+                "input[type='radio']:checked"
+            );
 
-        card.classList.add("correct");
+        var result =
+            card.querySelector(".result-info");
 
-        answerInfo.innerHTML = `
-          <span class="correct-text">
-            ✓ Jawaban kamu benar.
-          </span>
-        `;
+        card.classList.remove("correct");
+        card.classList.remove("wrong");
+        card.classList.add("checked");
 
-      }else{
+        if(selected){
 
-        card.classList.add("wrong");
+            answered++;
 
-        answerInfo.innerHTML = `
-          <span class="wrong-text">
-            ✗ Jawaban kamu salah.
-          </span>
+            if(selected.value === correctAnswer){
 
-          <br>
+                correct++;
 
-          Jawaban benar:
-          <strong>
-            ${letters[q[2]]}. ${q[1][q[2]]}
-          </strong>
-        `;
+                card.classList.add("correct");
 
-      }
+                result.innerHTML =
+                    "<b>✓ Jawaban benar.</b>";
+
+            }else{
+
+                card.classList.add("wrong");
+
+                result.innerHTML =
+                    "<b>✗ Jawaban salah.</b><br>" +
+                    "Jawaban yang benar: <b>" +
+                    correctAnswer +
+                    "</b>";
+
+            }
+
+        }else{
+
+            card.classList.add("wrong");
+
+            result.innerHTML =
+                "<b>✗ Belum dijawab.</b><br>" +
+                "Jawaban yang benar: <b>" +
+                correctAnswer +
+                "</b>";
+
+        }
+
+    });
+
+
+    /* ================= NILAI ================= */
+
+    var score =
+        Math.round((correct / total) * 100);
+
+    document.getElementById("score").textContent =
+        score;
+
+    document.getElementById("summary").textContent =
+        "Benar " +
+        correct +
+        " dari " +
+        total +
+        " soal • Dijawab " +
+        answered +
+        " soal.";
+
+
+    /* ================= PESAN ================= */
+
+    var message = "";
+
+    if(score >= 90){
+
+        message =
+            "Pemahaman materi sangat baik.";
+
+    }else if(score >= 80){
+
+        message =
+            "Pemahaman materi sudah baik.";
+
+    }else if(score >= 70){
+
+        message =
+            "Pemahaman materi cukup baik.";
+
+    }else if(score >= 60){
+
+        message =
+            "Masih perlu mempelajari beberapa bagian materi.";
 
     }else{
 
-      card.classList.add("wrong");
-
-      answerInfo.innerHTML = `
-        <span class="wrong-text">
-          ✗ Belum dijawab.
-        </span>
-
-        <br>
-
-        Jawaban benar:
-        <strong>
-          ${letters[q[2]]}. ${q[1][q[2]]}
-        </strong>
-      `;
+        message =
+            "Pelajari kembali materi kemudian coba lagi.";
 
     }
 
-  });
+    document.getElementById("message").textContent =
+        message;
 
-  const total =
-    questions.length;
 
-  const nilai =
-    Math.round((score / total) * 100);
+    /* ================= TAMPILKAN HASIL ================= */
 
-  document.getElementById("score").textContent =
-    nilai;
+    var finalResult =
+        document.getElementById("finalResult");
 
-  document.getElementById("summary").textContent =
-    `Benar ${score} dari ${total} soal • Dijawab ${answered} soal`;
+    finalResult.style.display =
+        "block";
 
-  let grade = "";
 
-  if(nilai >= 90){
+    setTimeout(function(){
 
-    grade =
-      "Sangat baik! Pemahaman materi kamu sangat kuat.";
+        finalResult.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
 
-  }else if(nilai >= 80){
+    },100);
 
-    grade =
-      "Baik! Pemahaman materi kamu sudah bagus.";
+});
 
-  }else if(nilai >= 70){
 
-    grade =
-      "Cukup baik. Masih ada beberapa konsep yang perlu dipelajari.";
+/* ================= AWAL ================= */
 
-  }else if(nilai >= 60){
-
-    grade =
-      "Perlu latihan lagi, terutama pada soal analisis kasus.";
-
-  }else{
-
-    grade =
-      "Pelajari kembali materi kemudian coba ulangi latihan.";
-
-  }
-
-  document.getElementById("grade").textContent =
-    grade;
-
-  const result =
-    document.getElementById("result");
-
-  result.style.display = "block";
-
-  /*
-     Jangan langsung window.scrollTo(0,0).
-     Biarkan browser membawa pengguna
-     ke hasil nilai.
-  */
-
-  setTimeout(function(){
-
-    result.scrollIntoView({
-      behavior:"smooth",
-      block:"center"
-    });
-
-  },100);
-
-}
-
-/* =========================================================
-   TOMBOL
-========================================================= */
-
-document
-  .getElementById("submit")
-  .addEventListener(
-    "click",
-    finishQuiz
-  );
-
-document
-  .getElementById("reset")
-  .addEventListener(
-    "click",
-    function(){
-
-      location.reload();
-
-    }
-  );
-
-/* =========================================================
-   MULAI
-========================================================= */
-
-renderQuiz();
 updateProgress();
 
 </script>
