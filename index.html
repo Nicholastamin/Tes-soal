@@ -2,2134 +2,1124 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Latihan Fisika XII</title>
+<title>Halaman Utama - Bank Soal</title>
 
 <style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,Arial,sans-serif;
 }
+
+
+/* =====================================================
+   BODY
+===================================================== */
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:linear-gradient(135deg,#f5f3ff,#eef2ff,#f8fafc);
-  color:#1e293b;
-  padding-bottom:40px;
+    min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #dbeafe 0,
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at top right,
+            #ede9fe 0,
+            transparent 30%
+        ),
+        #f8fafc;
+
+    color:#172033;
 }
 
-header{
-  background:linear-gradient(135deg,#6d28d9,#7c3aed,#4f46e5);
-  color:white;
-  padding:28px 20px;
-  text-align:center;
-  box-shadow:0 5px 20px rgba(0,0,0,.15);
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+    position:relative;
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #312e81,
+            #4f46e5,
+            #7c3aed
+        );
+
+    color:white;
+
+    padding:55px 20px 75px;
+
+    border-radius:
+        0 0 42px 42px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(49,46,129,.25);
 }
 
-header h1{
-  font-size:30px;
-  margin-bottom:8px;
+
+/* Dekorasi header */
+
+.header::before,
+.header::after{
+    content:"";
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.08);
 }
 
-header p{
-  opacity:.9;
-  font-size:15px;
+.header::before{
+    width:230px;
+    height:230px;
+
+    right:-70px;
+    top:-100px;
 }
+
+.header::after{
+    width:180px;
+    height:180px;
+
+    left:-80px;
+    bottom:-100px;
+}
+
+
+/* Header content */
+
+.header-content{
+    position:relative;
+    z-index:2;
+
+    max-width:1100px;
+
+    margin:auto;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo{
+    display:flex;
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:25px;
+}
+
+.logo-icon{
+    width:55px;
+    height:55px;
+
+    border-radius:17px;
+
+    background:
+        rgba(255,255,255,.17);
+
+    backdrop-filter:blur(10px);
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    font-size:28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+}
+
+.logo-text{
+    font-size:15px;
+
+    font-weight:600;
+
+    opacity:.9;
+}
+
+
+/* =====================================================
+   JUDUL
+===================================================== */
+
+.header h1{
+    font-size:
+        clamp(32px,6vw,54px);
+
+    line-height:1.05;
+
+    letter-spacing:-1.5px;
+
+    margin-bottom:15px;
+}
+
+.header p{
+    max-width:600px;
+
+    line-height:1.6;
+
+    color:#e0e7ff;
+
+    font-size:16px;
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.search-wrapper{
+    max-width:1100px;
+
+    margin:-30px auto 0;
+
+    padding:0 18px;
+
+    position:relative;
+
+    z-index:5;
+}
+
+.search{
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    padding:
+        19px
+        22px
+        19px
+        55px;
+
+    border-radius:18px;
+
+    background:white;
+
+    box-shadow:
+        0 12px 35px
+        rgba(15,23,42,.12);
+
+    font-size:15px;
+
+    color:#172033;
+}
+
+.search::placeholder{
+    color:#94a3b8;
+}
+
+.search-icon{
+    position:absolute;
+
+    left:37px;
+    top:18px;
+
+    font-size:21px;
+
+    pointer-events:none;
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
 
 .container{
-  max-width:1000px;
-  margin:25px auto;
-  padding:0 15px;
+    max-width:1100px;
+
+    margin:40px auto;
+
+    padding:
+        0 18px
+        50px;
 }
+
+
+/* =====================================================
+   SECTION HEADER
+===================================================== */
+
+.section-head{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:end;
+
+    margin-bottom:22px;
+}
+
+.section-head h2{
+    font-size:24px;
+}
+
+.section-head p{
+    color:#64748b;
+
+    font-size:14px;
+
+    margin-top:5px;
+}
+
+
+/* =====================================================
+   GRID
+===================================================== */
+
+.grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
 
 .card{
-  background:white;
-  border-radius:18px;
-  padding:22px;
-  margin-bottom:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,.08);
+    display:block;
+
+    text-decoration:none;
+
+    color:inherit;
+
+    background:white;
+
+    border:
+        1px solid
+        #e5e7eb;
+
+    border-radius:24px;
+
+    padding:24px;
+
+    min-height:205px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:
+        .25s ease;
+
+    box-shadow:
+        0 6px 20px
+        rgba(15,23,42,.05);
 }
 
-.info{
-  background:#f5f3ff;
-  border-left:5px solid #7c3aed;
-  padding:15px;
-  border-radius:10px;
-  line-height:1.7;
-  margin-bottom:18px;
+
+/* Lingkaran dekorasi */
+
+.card::after{
+    content:"";
+
+    position:absolute;
+
+    width:100px;
+    height:100px;
+
+    right:-35px;
+    bottom:-45px;
+
+    border-radius:50%;
+
+    background:
+        var(--soft);
+
+    opacity:.8;
+
+    pointer-events:none;
 }
 
-.progress-wrap{
-  width:100%;
-  height:12px;
-  background:#e5e7eb;
-  border-radius:20px;
-  overflow:hidden;
-  margin:15px 0;
+
+/* Hover */
+
+.card:hover{
+    transform:
+        translateY(-7px);
+
+    box-shadow:
+        0 18px 35px
+        rgba(15,23,42,.12);
+
+    border-color:
+        #c7d2fe;
 }
 
-.progress{
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg,#7c3aed,#4f46e5);
-  transition:.3s;
+
+/* Active */
+
+.card:active{
+    transform:
+        scale(.98);
 }
 
-.topics{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:10px;
+
+/* =====================================================
+   ICON
+===================================================== */
+
+.icon{
+    width:60px;
+    height:60px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    margin-bottom:20px;
+
+    background:
+        var(--soft);
+
+    position:relative;
+
+    z-index:2;
 }
 
-.topic-stat{
-  background:#f8fafc;
-  border-radius:12px;
-  padding:12px 5px;
-  text-align:center;
-  font-size:12px;
-  border:1px solid #e5e7eb;
+
+/* =====================================================
+   CARD TEXT
+===================================================== */
+
+.card h3{
+    font-size:20px;
+
+    margin-bottom:8px;
+
+    position:relative;
+
+    z-index:2;
 }
 
-.topic-stat b{
-  display:block;
-  font-size:21px;
-  color:#6d28d9;
-  margin-bottom:4px;
+.card p{
+    color:#64748b;
+
+    line-height:1.5;
+
+    font-size:14px;
+
+    max-width:90%;
+
+    position:relative;
+
+    z-index:2;
 }
 
-.question{
-  background:white;
-  border-radius:18px;
-  padding:22px;
-  margin-bottom:18px;
-  box-shadow:0 4px 16px rgba(0,0,0,.07);
-  border:2px solid transparent;
-  transition:.2s;
+
+/* =====================================================
+   ARROW
+===================================================== */
+
+.arrow{
+    position:absolute;
+
+    right:22px;
+    top:24px;
+
+    width:34px;
+    height:34px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    background:#f1f5f9;
+
+    color:#475569;
+
+    font-size:18px;
+
+    transition:.2s;
+
+    z-index:3;
 }
 
-.question:hover{
-  border-color:#ddd6fe;
+.card:hover .arrow{
+    background:#4f46e5;
+
+    color:white;
+
+    transform:
+        translateX(2px);
 }
 
-.question h3{
-  font-size:17px;
-  line-height:1.6;
-  margin-bottom:15px;
+
+/* =====================================================
+   COLORS
+===================================================== */
+
+.indonesia{
+    --soft:#fee2e2;
 }
 
-.number{
-  color:#7c3aed;
-  font-weight:bold;
+.pjok{
+    --soft:#dcfce7;
 }
 
-.topic-label{
-  display:inline-block;
-  background:#ede9fe;
-  color:#6d28d9;
-  padding:5px 10px;
-  border-radius:20px;
-  font-size:11px;
-  font-weight:bold;
-  margin-bottom:10px;
+.sejarah{
+    --soft:#fef3c7;
 }
 
-.options{
-  display:flex;
-  flex-direction:column;
-  gap:9px;
+.sejarah-lanjut{
+    --soft:#ffedd5;
 }
 
-.option{
-  border:1px solid #d1d5db;
-  border-radius:10px;
-  padding:11px 13px;
-  cursor:pointer;
-  transition:.2s;
-  line-height:1.5;
+.senibudaya{
+    --soft:#fce7f3;
 }
 
-.option:hover{
-  background:#f5f3ff;
-  border-color:#8b5cf6;
+.pkwu{
+    --soft:#ccfbf1;
 }
 
-.option input{
-  margin-right:8px;
-  accent-color:#7c3aed;
+.fisika{
+    --soft:#dbeafe;
 }
 
-.correct{
-  background:#dcfce7 !important;
-  border-color:#22c55e !important;
+
+/* =====================================================
+   EMPTY SEARCH
+===================================================== */
+
+.empty{
+    display:none;
+
+    text-align:center;
+
+    padding:45px 20px;
+
+    color:#64748b;
+
+    font-size:15px;
 }
 
-.wrong{
-  background:#fee2e2 !important;
-  border-color:#ef4444 !important;
+.empty-icon{
+    font-size:38px;
+
+    margin-bottom:12px;
 }
 
-.explanation{
-  display:none;
-  margin-top:15px;
-  padding:14px;
-  border-radius:10px;
-  background:#f8fafc;
-  border-left:4px solid #7c3aed;
-  line-height:1.7;
-  font-size:14px;
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    text-align:center;
+
+    padding:
+        25px
+        15px
+        35px;
+
+    color:#94a3b8;
+
+    font-size:13px;
 }
 
-.navigation{
-  display:flex;
-  gap:12px;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin:25px 0;
-}
 
-button{
-  border:none;
-  border-radius:12px;
-  padding:13px 22px;
-  font-size:15px;
-  font-weight:bold;
-  cursor:pointer;
-  transition:.2s;
-}
-
-button:hover{
-  transform:translateY(-2px);
-}
-
-.btn-primary{
-  background:linear-gradient(135deg,#7c3aed,#4f46e5);
-  color:white;
-}
-
-.btn-secondary{
-  background:#e5e7eb;
-  color:#334155;
-}
-
-.result{
-  display:none;
-  text-align:center;
-}
-
-.score{
-  font-size:58px;
-  font-weight:bold;
-  color:#7c3aed;
-  margin:10px 0;
-}
-
-.grade{
-  font-size:20px;
-  font-weight:bold;
-  margin-bottom:10px;
-}
-
-#summary{
-  line-height:1.7;
-}
+/* =====================================================
+   TABLET
+===================================================== */
 
 @media(max-width:800px){
-  .topics{
-    grid-template-columns:repeat(3,1fr);
-  }
+
+    .grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
 }
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media(max-width:550px){
-  header h1{
-    font-size:24px;
-  }
 
-  .container{
-    padding:0 10px;
-  }
+    .header{
+        padding:
+            40px
+            18px
+            65px;
 
-  .card,
-  .question{
-    padding:16px;
-    border-radius:14px;
-  }
+        border-radius:
+            0 0 30px 30px;
+    }
 
-  .topics{
-    grid-template-columns:repeat(2,1fr);
-  }
+    .header h1{
+        font-size:35px;
+    }
 
-  .question h3{
-    font-size:15px;
-  }
+    .header p{
+        font-size:14px;
+    }
 
-  .option{
-    font-size:14px;
-  }
+    .grid{
+        grid-template-columns:1fr;
+
+        gap:15px;
+    }
+
+    .card{
+        min-height:175px;
+
+        padding:21px;
+    }
+
+    .container{
+        margin-top:32px;
+    }
+
+    .section-head h2{
+        font-size:21px;
+    }
+
+    .search{
+        padding:
+            17px
+            18px
+            17px
+            50px;
+    }
+
+    .search-icon{
+        left:33px;
+        top:16px;
+    }
+
 }
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media(max-width:380px){
+
+    .header h1{
+        font-size:31px;
+    }
+
+    .logo-icon{
+        width:50px;
+        height:50px;
+        font-size:25px;
+    }
+
+    .card{
+        padding:19px;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<header>
-  <h1>⚡ Latihan Fisika XII</h1>
-  <p>80 Soal • 30 Konsep • 50 Hitungan</p>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="header-content">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                📚
+            </div>
+
+            <div class="logo-text">
+                BANK SOAL SEKOLAH
+            </div>
+
+        </div>
+
+
+        <h1>
+            Belajar.<br>
+            Latihan. Berhasil.
+        </h1>
+
+
+        <p>
+            Pilih mata pelajaran yang ingin kamu
+            pelajari dan mulai mengerjakan soal.
+        </p>
+
+    </div>
+
 </header>
 
-<div class="container">
 
-<div class="card">
 
-  <div class="info">
-    <b>📚 Materi:</b><br>
-    Listrik Statis • Medan Listrik • Potensial Listrik •
-    Listrik Arus Searah • Kapasitor
-    <br><br>
-    <b>📐 Konstanta:</b><br>
-    k = 9 × 10⁹ N·m²/C²
-    <br>
-    μC = 10⁻⁶ C &nbsp; | &nbsp;
-    nC = 10⁻⁹ C &nbsp; | &nbsp;
-    μF = 10⁻⁶ F
-  </div>
+<!-- =====================================================
+     SEARCH
+===================================================== -->
 
-  <div class="progress-wrap">
-    <div class="progress" id="progress"></div>
-  </div>
+<div class="search-wrapper">
 
-  <div id="progressText"
-       style="text-align:center;font-size:13px;color:#64748b;">
-    0 dari 80 soal dijawab
-  </div>
+    <span class="search-icon">
+        🔎
+    </span>
 
-  <div class="topics">
-    <div class="topic-stat">
-      <b>16</b>
-      Listrik Statis
-    </div>
-
-    <div class="topic-stat">
-      <b>16</b>
-      Medan Listrik
-    </div>
-
-    <div class="topic-stat">
-      <b>16</b>
-      Potensial
-    </div>
-
-    <div class="topic-stat">
-      <b>16</b>
-      Arus Searah
-    </div>
-
-    <div class="topic-stat">
-      <b>16</b>
-      Kapasitor
-    </div>
-  </div>
+    <input
+        type="text"
+        id="search"
+        class="search"
+        placeholder="Cari mata pelajaran..."
+        autocomplete="off"
+        aria-label="Cari mata pelajaran"
+    >
 
 </div>
 
-<div id="questions"></div>
 
-<div class="navigation">
-  <button class="btn-primary" onclick="checkAnswers()">
-    ✅ Periksa Jawaban
-  </button>
 
-  <button class="btn-secondary" onclick="resetQuiz()">
-    🔄 Ulangi
-  </button>
-</div>
+<!-- =====================================================
+     CONTENT
+===================================================== -->
 
-<div class="card result" id="result">
+<main class="container">
 
-  <h2>🎯 Hasil Latihan</h2>
 
-  <div class="score" id="score">0</div>
+    <div class="section-head">
 
-  <div class="grade" id="grade"></div>
+        <div>
 
-  <p id="summary"></p>
+            <h2>
+                📖 Mata Pelajaran
+            </h2>
 
-  <br>
+            <p>
+                Pilih salah satu untuk mulai latihan
+            </p>
 
-  <button class="btn-primary" onclick="scrollToWrong()">
-    🔎 Lihat Jawaban Salah
-  </button>
+        </div>
 
-</div>
+    </div>
 
-</div>
+
+
+    <div
+        class="grid"
+        id="subjectGrid"
+    >
+
+
+        <!-- =================================================
+             BAHASA INDONESIA
+        ================================================== -->
+
+        <a
+            href="soal-bahasa-indonesia.html"
+            class="card indonesia"
+            data-name="bahasa indonesia bahasa"
+        >
+
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="icon">
+                🇮🇩
+            </div>
+
+            <h3>
+                Bahasa Indonesia
+            </h3>
+
+            <p>
+                Latihan soal Bahasa Indonesia
+                sesuai materi pembelajaran.
+            </p>
+
+        </a>
+
+
+
+        <!-- =================================================
+             FISIKA
+        ================================================== -->
+
+        <a
+            href="fisika.html"
+            class="card fisika"
+            data-name="fisika listrik listrik statis listrik dinamis medan listrik potensial kapasitor"
+        >
+
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="icon">
+                ⚡
+            </div>
+
+            <h3>
+                Fisika
+            </h3>
+
+            <p>
+                Listrik statis, medan listrik,
+                potensial listrik, listrik dinamis,
+                dan kapasitor.
+            </p>
+
+        </a>
+
+
+
+        <!-- =================================================
+             PJOK
+        ================================================== -->
+
+        <a
+            href="pjok.html"
+            class="card pjok"
+            data-name="pjok pendidikan jasmani olahraga kesehatan olahraga"
+        >
+
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="icon">
+                🏃
+            </div>
+
+            <h3>
+                PJOK
+            </h3>
+
+            <p>
+                Olahraga, permainan, strategi,
+                peraturan, dan kebugaran jasmani.
+            </p>
+
+        </a>
+
+
+
+        <!-- =================================================
+             SEJARAH
+        ================================================== -->
+
+        <a
+            href="sejarah.html"
+            class="card sejarah"
+            data-name="sejarah sejarah indonesia"
+        >
+
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="icon">
+                🏛️
+            </div>
+
+            <h3>
+                Sejarah
+            </h3>
+
+            <p>
+                Latihan soal sejarah Indonesia
+                dan berbagai peristiwa sejarah.
+            </p>
+
+        </a>
+
+
+
+        <!-- =================================================
+             SEJARAH LANJUT
+        ================================================== -->
+
+        <a
+            href="sejarah-lanjut.html"
+            class="card sejarah-lanjut"
+            data-name="sejarah lanjut sejarah lanjutan"
+        >
+
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="icon">
+                📜
+            </div>
+
+            <h3>
+                Sejarah Lanjut
+            </h3>
+
+            <p>
+                Materi dan latihan soal sejarah
+                tingkat lanjutan.
+            </p>
+
+        </a>
+
+
+
+        <!-- =================================================
+             SENI BUDAYA
+        ================================================== -->
+
+        <a
+            href="senibudaya.html"
+            class="card senibudaya"
+            data-name="seni budaya seni seni budaya"
+        >
+
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="icon">
+                🎨
+            </div>
+
+            <h3>
+                Seni Budaya
+            </h3>
+
+            <p>
+                Seni rupa, musik, tari, teater,
+                dan kebudayaan.
+            </p>
+
+        </a>
+
+
+
+        <!-- =================================================
+             PKWU
+        ================================================== -->
+
+        <a
+            href="pkwu.html"
+            class="card pkwu"
+            data-name="pkwu prakarya kewirausahaan usaha"
+        >
+
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="icon">
+                💡
+            </div>
+
+            <h3>
+                PKWU
+            </h3>
+
+            <p>
+                Prakarya, kewirausahaan,
+                produk, dan pengembangan usaha.
+            </p>
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         EMPTY SEARCH
+    ====================================================== -->
+
+    <div
+        class="empty"
+        id="empty"
+    >
+
+        <div class="empty-icon">
+            🔍
+        </div>
+
+        <strong>
+            Mata pelajaran tidak ditemukan.
+        </strong>
+
+        <p style="margin-top:7px;">
+            Coba gunakan kata pencarian lain.
+        </p>
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+    © 2026 • Bank Soal Sekolah
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script>
 
-const questions = [
+const search =
+    document.getElementById("search");
 
-/* =========================================================
-   LISTRIK STATIS
-   1-6 KONSEP
-   7-16 HITUNGAN
-========================================================= */
+const cards =
+    document.querySelectorAll(".card");
 
-{
-topic:"Listrik Statis",
-type:"Konsep",
-q:"Dua benda dikatakan bermuatan listrik negatif apabila...",
-options:[
-"jumlah proton lebih banyak daripada elektron",
-"jumlah elektron lebih banyak daripada proton",
-"jumlah proton sama dengan neutron",
-"jumlah neutron lebih banyak daripada elektron",
-"tidak memiliki elektron"
-],
-answer:1,
-explanation:"Muatan negatif terjadi ketika jumlah elektron lebih banyak daripada jumlah proton."
-},
+const empty =
+    document.getElementById("empty");
 
-{
-topic:"Listrik Statis",
-type:"Konsep",
-q:"Jika dua muatan listrik sejenis didekatkan, kedua muatan akan...",
-options:[
-"saling tarik-menarik",
-"saling meniadakan",
-"saling tolak-menolak",
-"tidak mengalami gaya",
-"selalu bergerak melingkar"
-],
-answer:2,
-explanation:"Muatan sejenis saling tolak-menolak, sedangkan muatan berbeda jenis saling tarik-menarik."
-},
 
-{
-topic:"Listrik Statis",
-type:"Konsep",
-q:"Hukum Coulomb menjelaskan hubungan antara...",
-options:[
-"massa dan percepatan",
-"arus dan hambatan",
-"gaya listrik dan muatan",
-"tegangan dan waktu",
-"energi dan daya"
-],
-answer:2,
-explanation:"Hukum Coulomb menyatakan besar gaya listrik antara dua muatan bergantung pada besar kedua muatan dan kuadrat jaraknya."
-},
+/* =====================================================
+   SEARCH
+===================================================== */
 
-{
-topic:"Listrik Statis",
-type:"Konsep",
-q:"Jika jarak antara dua muatan diperbesar, gaya Coulomb akan...",
-options:[
-"semakin besar",
-"tetap",
-"menjadi nol selalu",
-"semakin kecil",
-"berubah menjadi gaya gravitasi"
-],
-answer:3,
-explanation:"Gaya Coulomb berbanding terbalik dengan kuadrat jarak: F ∝ 1/r²."
-},
+search.addEventListener(
+    "input",
+    function(){
 
-{
-topic:"Listrik Statis",
-type:"Konsep",
-q:"Garis gaya listrik tidak pernah saling berpotongan karena...",
-options:[
-"medan listrik hanya memiliki satu arah pada satu titik",
-"muatan listrik selalu diam",
-"garis gaya tidak memiliki arah",
-"semua muatan bernilai positif",
-"medan listrik selalu nol"
-],
-answer:0,
-explanation:"Pada satu titik, medan listrik hanya memiliki satu arah. Jika garis berpotongan, satu titik akan mempunyai dua arah medan yang berbeda."
-},
+        const keyword =
+            this.value
+                .toLowerCase()
+                .trim();
 
-{
-topic:"Listrik Statis",
-type:"Konsep",
-q:"Satuan SI untuk muatan listrik adalah...",
-options:[
-"volt",
-"ampere",
-"coulomb",
-"ohm",
-"joule"
-],
-answer:2,
-explanation:"Satuan SI untuk muatan listrik adalah coulomb (C)."
-},
+        let found = 0;
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Dua muatan +2 μC dan +3 μC berjarak 30 cm. Besar gaya Coulomb antara keduanya adalah...",
-options:[
-"0,06 N",
-"0,2 N",
-"0,6 N",
-"6 N",
-"60 N"
-],
-answer:2,
-explanation:"F = k|q₁q₂|/r² = (9×10⁹)(2×10⁻⁶)(3×10⁻⁶)/(0,3)² = 0,6 N."
-},
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Muatan +4 μC dan −6 μC berjarak 20 cm. Besar gaya Coulombnya adalah...",
-options:[
-"1,8 N",
-"5,4 N",
-"9 N",
-"18 N",
-"54 N"
-],
-answer:1,
-explanation:"F = (9×10⁹)(4×10⁻⁶)(6×10⁻⁶)/(0,2)² = 5,4 N. Karena muatannya berlawanan, gaya bersifat tarik-menarik."
-},
+        cards.forEach(
+            card => {
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Dua muatan masing-masing 2 μC berjarak 10 cm. Besar gaya Coulombnya adalah...",
-options:[
-"0,36 N",
-"3,6 N",
-"36 N",
-"360 N",
-"0,036 N"
-],
-answer:1,
-explanation:"F = (9×10⁹)(2×10⁻⁶)(2×10⁻⁶)/(0,1)² = 3,6 N."
-},
+                const name =
+                    card.dataset.name
+                        .toLowerCase();
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Dua muatan 4 μC dan 2 μC menghasilkan gaya 7,2 N. Jika jaraknya 10 cm, besar muatan kedua yang digunakan dalam perhitungan adalah...",
-options:[
-"0,2 μC",
-"1 μC",
-"2 μC",
-"20 μC",
-"200 μC"
-],
-answer:2,
-explanation:"q₂ = Fr²/(kq₁) = 7,2(0,1)² / [(9×10⁹)(4×10⁻⁶)] = 2×10⁻⁶ C = 2 μC."
-},
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Jika gaya Coulomb antara dua muatan adalah 8 N pada jarak 2 m, maka gaya ketika jarak menjadi 4 m adalah...",
-options:[
-"1 N",
-"2 N",
-"4 N",
-"16 N",
-"32 N"
-],
-answer:1,
-explanation:"Jarak menjadi 2 kali. Karena F ∝ 1/r², gaya menjadi 1/4 kali. F₂ = 8/4 = 2 N."
-},
+                if(
+                    name.includes(keyword)
+                ){
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Dua muatan +3 μC dan +12 μC berjarak 60 cm. Besar gaya Coulombnya adalah...",
-options:[
-"0,3 N",
-"0,9 N",
-"1,8 N",
-"3 N",
-"9 N"
-],
-answer:2,
-explanation:"F = (9×10⁹)(3×10⁻⁶)(12×10⁻⁶)/(0,6)² = 0,9 N. Jadi jawaban yang benar adalah 0,9 N.",
-},
+                    card.style.display =
+                        "block";
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Tiga muatan berada segaris. q₁ = +2 μC dan q₂ = +4 μC berjarak 20 cm. Gaya q₁ terhadap q₂ adalah...",
-options:[
-"0,18 N",
-"0,9 N",
-"1,8 N",
-"3,6 N",
-"18 N"
-],
-answer:2,
-explanation:"F = (9×10⁹)(2×10⁻⁶)(4×10⁻⁶)/(0,2)² = 1,8 N."
-},
+                    found++;
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Sebuah muatan 5 μC mengalami gaya listrik 2 N. Muatan lain yang menyebabkan gaya tersebut berjarak 15 cm. Besar muatan lain adalah...",
-options:[
-"0,5 μC",
-"1 μC",
-"2 μC",
-"5 μC",
-"10 μC"
-],
-answer:2,
-explanation:"q₂ = Fr²/(kq₁) = 2(0,15)² / [(9×10⁹)(5×10⁻⁶)] = 1 μC."
-},
+                }
+                else{
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Dua muatan 2 μC dan 8 μC berjarak 40 cm. Gaya Coulomb yang terjadi adalah...",
-options:[
-"0,45 N",
-"0,9 N",
-"1,8 N",
-"2,25 N",
-"4,5 N"
-],
-answer:0,
-explanation:"F = (9×10⁹)(2×10⁻⁶)(8×10⁻⁶)/(0,4)² = 0,9 N. Jadi jawaban yang benar adalah 0,9 N.",
-},
+                    card.style.display =
+                        "none";
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Dua muatan menghasilkan gaya 12 N. Jika salah satu muatan dibuat 3 kali lebih besar sedangkan jarak tetap, gaya menjadi...",
-options:[
-"4 N",
-"12 N",
-"24 N",
-"36 N",
-"144 N"
-],
-answer:3,
-explanation:"Gaya Coulomb berbanding lurus dengan besar muatan. Jika salah satu muatan menjadi 3 kali, gaya juga menjadi 3 kali: 3×12 = 36 N."
-},
+                }
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Dua muatan menghasilkan gaya 18 N. Jika kedua muatan masing-masing menjadi setengahnya dan jarak tetap, gaya baru adalah...",
-options:[
-"2,25 N",
-"4,5 N",
-"9 N",
-"18 N",
-"36 N"
-],
-answer:1,
-explanation:"F ∝ q₁q₂. Kedua muatan menjadi 1/2, sehingga F baru = 1/4 × 18 = 4,5 N."
-},
+            }
+        );
 
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Dua muatan menghasilkan gaya 20 N pada jarak r. Jika jarak diperbesar menjadi 5r, gaya menjadi...",
-options:[
-"0,2 N",
-"0,8 N",
-"4 N",
-"5 N",
-"100 N"
-],
-answer:1,
-explanation:"F₂ = F₁/5² = 20/25 = 0,8 N."
-},
 
-/* =========================================================
-   MEDAN LISTRIK
-   17-22 KONSEP
-   23-32 HITUNGAN
-========================================================= */
+        if(found === 0){
 
-{
-topic:"Medan Listrik",
-type:"Konsep",
-q:"Medan listrik adalah...",
-options:[
-"daerah di sekitar muatan tempat muatan lain mengalami gaya listrik",
-"daerah tanpa muatan",
-"aliran elektron dalam kawat",
-"energi yang tersimpan dalam resistor",
-"gaya gravitasi bumi"
-],
-answer:0,
-explanation:"Medan listrik adalah daerah di sekitar muatan listrik yang menyebabkan muatan lain mengalami gaya listrik."
-},
+            empty.style.display =
+                "block";
 
-{
-topic:"Medan Listrik",
-type:"Konsep",
-q:"Arah medan listrik di sekitar muatan positif adalah...",
-options:[
-"menuju muatan",
-"menjauhi muatan",
-"melingkar",
-"selalu ke bawah",
-"tidak memiliki arah"
-],
-answer:1,
-explanation:"Garis medan listrik keluar atau menjauhi muatan positif."
-},
+        }
+        else{
 
-{
-topic:"Medan Listrik",
-type:"Konsep",
-q:"Arah medan listrik di sekitar muatan negatif adalah...",
-options:[
-"menjauhi muatan",
-"melingkar",
-"menuju muatan",
-"selalu ke atas",
-"tidak beraturan"
-],
-answer:2,
-explanation:"Garis medan listrik menuju atau masuk ke muatan negatif."
-},
+            empty.style.display =
+                "none";
 
-{
-topic:"Medan Listrik",
-type:"Konsep",
-q:"Semakin rapat garis-garis medan listrik menunjukkan bahwa...",
-options:[
-"medannya semakin lemah",
-"medannya semakin kuat",
-"muatan semakin kecil pasti",
-"tidak ada medan",
-"arah medan berubah"
-],
-answer:1,
-explanation:"Kerapatan garis medan menggambarkan kuat medan listrik. Semakin rapat, semakin kuat."
-},
-
-{
-topic:"Medan Listrik",
-type:"Konsep",
-q:"Rumus kuat medan listrik yang disebabkan oleh muatan titik adalah...",
-options:[
-"E = IR",
-"E = Q/t",
-"E = kQ/r²",
-"E = QV",
-"E = Wt"
-],
-answer:2,
-explanation:"Untuk muatan titik, E = k|Q|/r²."
-},
-
-{
-topic:"Medan Listrik",
-type:"Konsep",
-q:"Satuan kuat medan listrik dalam SI adalah...",
-options:[
-"N/C",
-"C/N",
-"J/C",
-"C/V",
-"Ω"
-],
-answer:0,
-explanation:"Kuat medan listrik dapat dinyatakan dalam N/C atau V/m."
-},
-
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Sebuah muatan +4 μC berada di ruang bebas. Kuat medan listrik pada jarak 20 cm adalah...",
-options:[
-"9×10⁴ N/C",
-"9×10⁵ N/C",
-"9×10⁶ N/C",
-"9×10⁷ N/C",
-"9×10⁸ N/C"
-],
-answer:2,
-explanation:"E = kQ/r² = (9×10⁹)(4×10⁻⁶)/(0,2)² = 9×10⁵ N/C. Jadi jawaban yang benar 9×10⁵ N/C.",
-},
-
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Muatan 2 μC menghasilkan medan listrik 1,8×10⁶ N/C. Jarak titik tersebut dari muatan adalah...",
-options:[
-"5 cm",
-"10 cm",
-"15 cm",
-"20 cm",
-"30 cm"
-],
-answer:1,
-explanation:"r = √(kQ/E) = √[(9×10⁹)(2×10⁻⁶)/(1,8×10⁶)] = 0,1 m = 10 cm."
-},
-
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Kuat medan listrik di suatu titik adalah 5×10⁴ N/C. Jika muatan uji 2 μC diletakkan di titik tersebut, gaya listriknya adalah...",
-options:[
-"0,01 N",
-"0,05 N",
-"0,1 N",
-"1 N",
-"10 N"
-],
-answer:2,
-explanation:"F = qE = (2×10⁻⁶)(5×10⁴) = 0,1 N."
-},
-
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Muatan +8 μC menghasilkan medan listrik pada jarak 40 cm. Besar medannya adalah...",
-options:[
-"2,5×10⁴ N/C",
-"4,5×10⁵ N/C",
-"9×10⁵ N/C",
-"1,8×10⁶ N/C",
-"4,5×10⁶ N/C"
-],
-answer:1,
-explanation:"E = (9×10⁹)(8×10⁻⁶)/(0,4)² = 4,5×10⁵ N/C."
-},
-
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Sebuah muatan menghasilkan medan 9×10⁵ N/C pada jarak 20 cm. Jika jarak menjadi 40 cm, medan listrik menjadi...",
-options:[
-"1,125×10⁵ N/C",
-"2,25×10⁵ N/C",
-"4,5×10⁵ N/C",
-"9×10⁵ N/C",
-"18×10⁵ N/C"
-],
-answer:1,
-explanation:"Jarak menjadi 2 kali, maka E menjadi 1/4. E₂ = 9×10⁵/4 = 2,25×10⁵ N/C."
-},
-
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Kuat medan listrik 3×10⁵ N/C bekerja pada muatan 4 μC. Gaya yang dialami muatan adalah...",
-options:[
-"0,12 N",
-"0,8 N",
-"1,2 N",
-"12 N",
-"120 N"
-],
-answer:2,
-explanation:"F = qE = (4×10⁻⁶)(3×10⁵) = 1,2 N."
-},
-
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Sebuah muatan 6 μC berada pada jarak 30 cm. Kuat medan listriknya adalah...",
-options:[
-"3×10⁵ N/C",
-"6×10⁵ N/C",
-"9×10⁵ N/C",
-"1,2×10⁶ N/C",
-"1,8×10⁶ N/C"
-],
-answer:2,
-explanation:"E = (9×10⁹)(6×10⁻⁶)/(0,3)² = 6×10⁵ N/C. Jadi jawaban yang benar 6×10⁵ N/C.",
-},
-
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Jika kuat medan listrik akibat sebuah muatan adalah 2×10⁶ N/C pada jarak 10 cm, maka besar muatannya adalah...",
-options:[
-"0,22 μC",
-"1,11 μC",
-"2,22 μC",
-"4,44 μC",
-"22 μC"
-],
-answer:2,
-explanation:"Q = Er²/k = (2×10⁶)(0,1)²/(9×10⁹) = 2,22×10⁻⁶ C = 2,22 μC."
-},
-
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Medan listrik 8×10⁴ N/C bekerja pada muatan 5 nC. Besar gaya listriknya adalah...",
-options:[
-"2×10⁻⁵ N",
-"4×10⁻⁴ N",
-"4×10⁻³ N",
-"4×10⁻² N",
-"4 N"
-],
-answer:1,
-explanation:"F = qE = (5×10⁻⁹)(8×10⁴) = 4×10⁻⁴ N."
-},
-
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Jika muatan sumber dibuat 3 kali lebih besar dan jaraknya dibuat 3 kali lebih besar, kuat medan listrik menjadi...",
-options:[
-"1/9 kali",
-"1/3 kali",
-"tetap",
-"3 kali",
-"9 kali"
-],
-answer:1,
-explanation:"E ∝ Q/r². Faktor perubahan = 3/3² = 1/3. Jadi medan menjadi 1/3 kali semula."
-},
-
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Dua muatan +4 μC dan +4 μC terpisah 20 cm. Di titik tengah antara keduanya, kuat medan listrik total adalah...",
-options:[
-"0 N/C",
-"9×10⁵ N/C",
-"1,8×10⁶ N/C",
-"3,6×10⁶ N/C",
-"7,2×10⁶ N/C"
-],
-answer:0,
-explanation:"Di titik tengah, medan dari kedua muatan sama besar tetapi berlawanan arah sehingga resultannya 0 N/C."
-},
-
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Muatan +5 μC menghasilkan medan listrik pada jarak 50 cm. Besarnya adalah...",
-options:[
-"9×10⁴ N/C",
-"1,8×10⁵ N/C",
-"3,6×10⁵ N/C",
-"9×10⁵ N/C",
-"1,8×10⁶ N/C"
-],
-answer:2,
-explanation:"E = (9×10⁹)(5×10⁻⁶)/(0,5)² = 1,8×10⁵ N/C. Jadi jawaban yang benar 1,8×10⁵ N/C.",
-},
-
-/* =========================================================
-   POTENSIAL LISTRIK
-   33-38 KONSEP
-   39-48 HITUNGAN
-========================================================= */
-
-{
-topic:"Potensial Listrik",
-type:"Konsep",
-q:"Potensial listrik merupakan...",
-options:[
-"energi potensial listrik per satuan muatan",
-"gaya per satuan massa",
-"muatan per satuan waktu",
-"arus per satuan tegangan",
-"energi per satuan massa"
-],
-answer:0,
-explanation:"Potensial listrik didefinisikan sebagai energi potensial listrik per satuan muatan: V = Ep/q."
-},
-
-{
-topic:"Potensial Listrik",
-type:"Konsep",
-q:"Potensial listrik merupakan besaran...",
-options:[
-"vektor",
-"skalar",
-"tensor",
-"tak berdimensi",
-"selalu negatif"
-],
-answer:1,
-explanation:"Potensial listrik adalah besaran skalar karena hanya memiliki nilai tanpa arah."
-},
-
-{
-topic:"Potensial Listrik",
-type:"Konsep",
-q:"Potensial listrik akibat muatan titik dirumuskan...",
-options:[
-"V = IR",
-"V = kQ/r",
-"V = Q/t",
-"V = Fq",
-"V = kQ/r²"
-],
-answer:1,
-explanation:"Potensial listrik akibat muatan titik adalah V = kQ/r."
-},
-
-{
-topic:"Potensial Listrik",
-type:"Konsep",
-q:"Jika muatan sumber positif, potensial listrik di sekitarnya bernilai...",
-options:[
-"negatif",
-"nol di semua titik",
-"positif",
-"selalu tidak terdefinisi",
-"selalu sama"
-],
-answer:2,
-explanation:"Untuk titik acuan tak hingga, potensial dari muatan positif bernilai positif."
-},
-
-{
-topic:"Potensial Listrik",
-type:"Konsep",
-q:"Hubungan energi potensial listrik dengan potensial listrik adalah...",
-options:[
-"Ep = V/q",
-"Ep = qV",
-"Ep = q/V",
-"Ep = V²q",
-"Ep = V−q"
-],
-answer:1,
-explanation:"Dari V = Ep/q diperoleh Ep = qV."
-},
-
-{
-topic:"Potensial Listrik",
-type:"Konsep",
-q:"Ketika muatan uji dipindahkan dalam medan listrik, perubahan energi potensial berkaitan dengan...",
-options:[
-"perbedaan potensial",
-"massa jenis",
-"hambatan jenis",
-"frekuensi",
-"induktansi"
-],
-answer:0,
-explanation:"Perubahan energi potensial listrik berhubungan dengan beda potensial melalui ΔEp = qΔV."
-},
-
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Potensial listrik pada jarak 30 cm dari muatan +2 μC adalah...",
-options:[
-"6×10³ V",
-"6×10⁴ V",
-"6×10⁵ V",
-"6×10⁶ V",
-"6×10⁷ V"
-],
-answer:1,
-explanation:"V = kQ/r = (9×10⁹)(2×10⁻⁶)/0,3 = 6×10⁴ V."
-},
-
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Muatan +4 μC berada 20 cm dari suatu titik. Potensial listrik titik tersebut adalah...",
-options:[
-"9×10⁴ V",
-"1,8×10⁵ V",
-"2,7×10⁵ V",
-"3,6×10⁵ V",
-"9×10⁵ V"
-],
-answer:3,
-explanation:"V = (9×10⁹)(4×10⁻⁶)/0,2 = 1,8×10⁵ V. Jadi jawaban yang benar 1,8×10⁵ V.",
-},
-
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Sebuah muatan 5 μC berada 50 cm dari titik P. Potensial di P adalah...",
-options:[
-"9×10⁴ V",
-"9×10⁵ V",
-"1,8×10⁵ V",
-"4,5×10⁵ V",
-"9×10⁶ V"
-],
-answer:1,
-explanation:"V = (9×10⁹)(5×10⁻⁶)/0,5 = 9×10⁴ V. Jadi jawaban yang benar 9×10⁴ V.",
-},
-
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Jika potensial listrik 2×10⁴ V dialami muatan 3 μC, energi potensial listriknya adalah...",
-options:[
-"0,006 J",
-"0,06 J",
-"0,6 J",
-"6 J",
-"60 J"
-],
-answer:1,
-explanation:"Ep = qV = (3×10⁻⁶)(2×10⁴) = 6×10⁻² J = 0,06 J."
-},
-
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Energi potensial listrik sebuah muatan 4 μC adalah 0,08 J. Potensial di tempat tersebut adalah...",
-options:[
-"2×10³ V",
-"2×10⁴ V",
-"2×10⁵ V",
-"3×10⁴ V",
-"4×10⁵ V"
-],
-answer:1,
-explanation:"V = Ep/q = 0,08/(4×10⁻⁶) = 2×10⁴ V."
-},
-
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Muatan +2 μC menghasilkan potensial 9×10⁴ V pada suatu titik. Jarak titik tersebut adalah...",
-options:[
-"10 cm",
-"20 cm",
-"30 cm",
-"40 cm",
-"50 cm"
-],
-answer:2,
-explanation:"r = kQ/V = (9×10⁹)(2×10⁻⁶)/(9×10⁴) = 0,2 m = 20 cm. Jadi jawaban yang benar 20 cm."
-},
-
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Dua muatan +2 μC dan +3 μC masing-masing berjarak 20 cm dari titik P. Jika keduanya berada pada posisi yang sama arah radialnya, potensial total di P adalah...",
-options:[
-"1,8×10⁵ V",
-"2,25×10⁵ V",
-"4,5×10⁵ V",
-"6,75×10⁵ V",
-"9×10⁵ V"
-],
-answer:2,
-explanation:"Potensial adalah skalar, sehingga Vtotal = k(q₁+q₂)/r = (9×10⁹)(5×10⁻⁶)/0,2 = 2,25×10⁵ V. Jadi jawaban yang benar 2,25×10⁵ V.",
-},
-
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Muatan +4 μC dan −2 μC masing-masing berjarak 20 cm dari titik P. Potensial total di P adalah...",
-options:[
-"−9×10⁴ V",
-"−4,5×10⁴ V",
-"0 V",
-"4,5×10⁴ V",
-"9×10⁴ V"
-],
-answer:3,
-explanation:"V = k(q₁+q₂)/r = (9×10⁹)(2×10⁻⁶)/0,2 = 9×10⁴ V. Jadi jawaban yang benar 9×10⁴ V.",
-},
-
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Sebuah muatan 2 μC berpindah dari titik A berpotensial 100 V ke titik B berpotensial 400 V. Perubahan energi potensialnya adalah...",
-options:[
-"0,0006 J",
-"0,003 J",
-"0,006 J",
-"0,06 J",
-"0,6 J"
-],
-answer:2,
-explanation:"ΔEp = q(VB−VA) = 2×10⁻⁶(400−100) = 6×10⁻⁴ J. Jadi hasilnya 0,0006 J.",
-},
-
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Potensial listrik akibat muatan +6 μC pada jarak 60 cm adalah...",
-options:[
-"9×10⁴ V",
-"9×10⁵ V",
-"1,8×10⁵ V",
-"3,6×10⁵ V",
-"6×10⁵ V"
-],
-answer:0,
-explanation:"V = (9×10⁹)(6×10⁻⁶)/0,6 = 9×10⁴ V."
-},
-
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Jika jarak dari muatan titik diperbesar 2 kali, potensial listrik menjadi...",
-options:[
-"1/4 kali",
-"1/2 kali",
-"tetap",
-"2 kali",
-"4 kali"
-],
-answer:1,
-explanation:"V ∝ 1/r. Jika jarak menjadi 2 kali, potensial menjadi 1/2 kali."
-},
-
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Sebuah titik berada 10 cm dari muatan +1 μC. Potensial listriknya adalah...",
-options:[
-"9×10² V",
-"9×10³ V",
-"9×10⁴ V",
-"9×10⁵ V",
-"9×10⁶ V"
-],
-answer:2,
-explanation:"V = (9×10⁹)(1×10⁻⁶)/0,1 = 9×10⁴ V."
-},
-
-/* =========================================================
-   LISTRIK ARUS SEARAH
-   49-54 KONSEP
-   55-64 HITUNGAN
-========================================================= */
-
-{
-topic:"Listrik Arus Searah",
-type:"Konsep",
-q:"Arus listrik adalah...",
-options:[
-"energi yang tersimpan dalam baterai",
-"laju aliran muatan listrik",
-"hambatan dalam rangkaian",
-"jumlah tegangan",
-"gaya listrik"
-],
-answer:1,
-explanation:"Arus listrik adalah laju aliran muatan listrik. Rumusnya I = Q/t."
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Konsep",
-q:"Alat yang digunakan untuk mengukur kuat arus listrik adalah...",
-options:[
-"voltmeter",
-"ohmmeter",
-"amperemeter",
-"termometer",
-"barometer"
-],
-answer:2,
-explanation:"Kuat arus diukur menggunakan amperemeter."
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Konsep",
-q:"Amperemeter dipasang secara...",
-options:[
-"paralel",
-"seri",
-"di luar rangkaian",
-"tegak lurus",
-"acak"
-],
-answer:1,
-explanation:"Amperemeter harus dipasang seri agar arus rangkaian melewatinya."
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Konsep",
-q:"Voltmeter dipasang secara...",
-options:[
-"seri",
-"paralel",
-"di luar rangkaian",
-"berurutan dengan sakelar",
-"acak"
-],
-answer:1,
-explanation:"Voltmeter dipasang paralel terhadap komponen yang akan diukur beda potensialnya."
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Konsep",
-q:"Menurut hukum Ohm, hubungan tegangan, arus, dan hambatan adalah...",
-options:[
-"V = IR",
-"V = I/R",
-"V = R/I",
-"I = VR",
-"R = VI"
-],
-answer:0,
-explanation:"Hukum Ohm menyatakan V = IR."
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Konsep",
-q:"Pada rangkaian seri, besaran yang sama pada setiap resistor adalah...",
-options:[
-"tegangan",
-"arus",
-"daya",
-"hambatan",
-"energi"
-],
-answer:1,
-explanation:"Pada rangkaian seri, arus yang melewati setiap komponen sama besar."
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Muatan 60 C mengalir melalui sebuah penghantar selama 20 s. Besar arusnya adalah...",
-options:[
-"0,3 A",
-"2 A",
-"3 A",
-"20 A",
-"1200 A"
-],
-answer:2,
-explanation:"I = Q/t = 60/20 = 3 A."
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Arus 4 A mengalir selama 15 s. Muatan yang berpindah adalah...",
-options:[
-"15 C",
-"30 C",
-"45 C",
-"60 C",
-"75 C"
-],
-answer:3,
-explanation:"Q = It = 4×15 = 60 C."
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Sebuah resistor 6 Ω diberi tegangan 12 V. Arus yang mengalir adalah...",
-options:[
-"0,5 A",
-"1 A",
-"2 A",
-"6 A",
-"72 A"
-],
-answer:2,
-explanation:"I = V/R = 12/6 = 2 A."
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Arus 3 A mengalir melalui resistor 8 Ω. Tegangan pada resistor adalah...",
-options:[
-"11 V",
-"16 V",
-"24 V",
-"32 V",
-"48 V"
-],
-answer:2,
-explanation:"V = IR = 3×8 = 24 V."
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Sebuah resistor dialiri arus 2 A pada tegangan 18 V. Nilai hambatannya adalah...",
-options:[
-"6 Ω",
-"8 Ω",
-"9 Ω",
-"18 Ω",
-"36 Ω"
-],
-answer:2,
-explanation:"R = V/I = 18/2 = 9 Ω."
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Dua resistor 4 Ω dan 6 Ω disusun seri. Hambatan totalnya adalah...",
-options:[
-"1,5 Ω",
-"2,4 Ω",
-"6 Ω",
-"10 Ω",
-"24 Ω"
-],
-answer:3,
-explanation:"Rseri = R₁ + R₂ = 4 + 6 = 10 Ω."
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Tiga resistor 2 Ω, 3 Ω, dan 5 Ω disusun seri. Jika diberi tegangan 20 V, arus totalnya adalah...",
-options:[
-"1 A",
-"2 A",
-"4 A",
-"5 A",
-"10 A"
-],
-answer:1,
-explanation:"Rtotal = 2+3+5 = 10 Ω. I = V/R = 20/10 = 2 A."
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Dua resistor 6 Ω dan 3 Ω dipasang paralel. Hambatan penggantinya adalah...",
-options:[
-"1 Ω",
-"2 Ω",
-"3 Ω",
-"4 Ω",
-"9 Ω"
-],
-answer:1,
-explanation:"1/Rp = 1/6 + 1/3 = 3/6 = 1/2, sehingga Rp = 2 Ω."
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Resistor 4 Ω dan 12 Ω dipasang paralel pada tegangan 24 V. Arus total rangkaian adalah...",
-options:[
-"2 A",
-"4 A",
-"6 A",
-"8 A",
-"12 A"
-],
-answer:3,
-explanation:"Rp = (4×12)/(4+12) = 3 Ω. I = V/Rp = 24/3 = 8 A."
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Dua resistor 5 Ω dan 10 Ω disusun seri pada tegangan 30 V. Tegangan pada resistor 10 Ω adalah...",
-options:[
-"5 V",
-"10 V",
-"15 V",
-"20 V",
-"25 V"
-],
-answer:3,
-explanation:"Rtotal = 15 Ω, sehingga I = 30/15 = 2 A. Tegangan resistor 10 Ω: V = IR = 2×10 = 20 V."
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Sebuah rangkaian memiliki tegangan 12 V dan arus 0,5 A. Hambatan totalnya adalah...",
-options:[
-"6 Ω",
-"12 Ω",
-"18 Ω",
-"24 Ω",
-"36 Ω"
-],
-answer:3,
-explanation:"R = V/I = 12/0,5 = 24 Ω."
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Sebuah alat listrik memiliki hambatan 20 Ω dan dialiri arus 0,5 A. Daya listriknya adalah...",
-options:[
-"2 W",
-"5 W",
-"10 W",
-"20 W",
-"40 W"
-],
-answer:2,
-explanation:"P = I²R = (0,5)²(20) = 5 W. Jadi jawaban yang benar 5 W.",
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Resistor 10 Ω dialiri arus 2 A selama 5 s. Energi listrik yang digunakan adalah...",
-options:[
-"20 J",
-"50 J",
-"100 J",
-"200 J",
-"400 J"
-],
-answer:2,
-explanation:"P = I²R = 4×10 = 40 W. Energi W = Pt = 40×5 = 200 J. Jadi jawaban yang benar 200 J.",
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Sebuah resistor 8 Ω diberi tegangan 16 V selama 10 s. Energi yang digunakan adalah...",
-options:[
-"160 J",
-"240 J",
-"320 J",
-"640 J",
-"1280 J"
-],
-answer:2,
-explanation:"P = V²/R = 256/8 = 32 W. W = Pt = 32×10 = 320 J."
-},
-
-/* =========================================================
-   KAPASITOR
-   65-70 KONSEP
-   71-80 HITUNGAN
-========================================================= */
-
-{
-topic:"Kapasitor",
-type:"Konsep",
-q:"Kapasitor adalah komponen yang berfungsi utama untuk...",
-options:[
-"mengukur arus",
-"menyimpan muatan listrik",
-"mengubah massa",
-"menghasilkan medan gravitasi",
-"mengukur suhu"
-],
-answer:1,
-explanation:"Kapasitor berfungsi menyimpan muatan listrik dan energi dalam medan listriknya."
-},
-
-{
-topic:"Kapasitor",
-type:"Konsep",
-q:"Kapasitansi didefinisikan sebagai...",
-options:[
-"C = V/Q",
-"C = Q/V",
-"C = QV",
-"C = Q+V",
-"C = Q−V"
-],
-answer:1,
-explanation:"Kapasitansi dirumuskan C = Q/V."
-},
-
-{
-topic:"Kapasitor",
-type:"Konsep",
-q:"Pada rangkaian kapasitor paralel, besaran yang sama pada setiap kapasitor adalah...",
-options:[
-"muatan",
-"tegangan",
-"energi",
-"kapasitansi",
-"arus"
-],
-answer:1,
-explanation:"Pada rangkaian paralel, beda potensial setiap kapasitor sama."
-},
-
-{
-topic:"Kapasitor",
-type:"Konsep",
-q:"Pada rangkaian kapasitor seri, besaran yang sama pada setiap kapasitor adalah...",
-options:[
-"tegangan",
-"muatan",
-"energi",
-"daya",
-"arus"
-],
-answer:1,
-explanation:"Pada rangkaian seri, muatan pada setiap kapasitor sama besar."
-},
-
-{
-topic:"Kapasitor",
-type:"Konsep",
-q:"Rumus kapasitor paralel adalah...",
-options:[
-"Cp = C₁ + C₂ + ...",
-"1/Cp = 1/C₁ + 1/C₂",
-"Cp = C₁C₂",
-"Cp = C₁/C₂",
-"Cp = C₁−C₂"
-],
-answer:0,
-explanation:"Untuk kapasitor paralel, kapasitansi pengganti adalah jumlah semua kapasitansi."
-},
-
-{
-topic:"Kapasitor",
-type:"Konsep",
-q:"Jika dua kapasitor identik disusun seri, kapasitansi penggantinya dibandingkan satu kapasitor adalah...",
-options:[
-"dua kali lebih besar",
-"tetap",
-"setengahnya",
-"empat kali lebih besar",
-"nol"
-],
-answer:2,
-explanation:"Dua kapasitor identik C disusun seri menghasilkan Ceq = C/2."
-},
-
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Sebuah kapasitor 4 μF diberi tegangan 12 V. Muatan yang tersimpan adalah...",
-options:[
-"12 μC",
-"24 μC",
-"48 μC",
-"60 μC",
-"96 μC"
-],
-answer:2,
-explanation:"Q = CV = 4 μF × 12 V = 48 μC."
-},
-
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Kapasitor menyimpan muatan 60 μC pada tegangan 20 V. Kapasitansinya adalah...",
-options:[
-"1 μF",
-"2 μF",
-"3 μF",
-"4 μF",
-"6 μF"
-],
-answer:2,
-explanation:"C = Q/V = 60/20 = 3 μF."
-},
-
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Kapasitor 5 μF diberi tegangan 20 V. Muatan yang tersimpan adalah...",
-options:[
-"25 μC",
-"50 μC",
-"75 μC",
-"100 μC",
-"125 μC"
-],
-answer:3,
-explanation:"Q = CV = 5×20 = 100 μC."
-},
-
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Dua kapasitor 4 μF dan 6 μF dipasang paralel. Kapasitansi totalnya adalah...",
-options:[
-"1,5 μF",
-"2,4 μF",
-"10 μF",
-"24 μF",
-"48 μF"
-],
-answer:2,
-explanation:"Cp = C₁ + C₂ = 4 + 6 = 10 μF."
-},
-
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Kapasitor 3 μF dan 6 μF dipasang seri. Kapasitansi penggantinya adalah...",
-options:[
-"1 μF",
-"2 μF",
-"3 μF",
-"6 μF",
-"9 μF"
-],
-answer:1,
-explanation:"Cs = C₁C₂/(C₁+C₂) = (3×6)/(3+6) = 2 μF."
-},
-
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Dua kapasitor 10 μF dan 10 μF dipasang seri pada sumber 20 V. Muatan total yang tersimpan adalah...",
-options:[
-"50 μC",
-"100 μC",
-"150 μC",
-"200 μC",
-"400 μC"
-],
-answer:3,
-explanation:"Ceq = 10/2 = 5 μF. Q = CV = 5×20 = 100 μC. Jadi jawaban yang benar 100 μC.",
-},
-
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Dua kapasitor 4 μF dan 12 μF dipasang paralel pada tegangan 10 V. Muatan total adalah...",
-options:[
-"40 μC",
-"80 μC",
-"120 μC",
-"160 μC",
-"200 μC"
-],
-answer:3,
-explanation:"Ctotal = 4+12 = 16 μF. Qtotal = CV = 16×10 = 160 μC."
-},
-
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Kapasitor 2 μF diberi tegangan 30 V. Energi yang tersimpan adalah...",
-options:[
-"0,0003 J",
-"0,0006 J",
-"0,0009 J",
-"0,0018 J",
-"0,009 J"
-],
-answer:2,
-explanation:"Energi kapasitor U = 1/2 CV² = 1/2(2×10⁻⁶)(30²) = 9×10⁻⁴ J."
-},
-
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Kapasitor 8 μF diberi tegangan 10 V. Muatan yang tersimpan adalah...",
-options:[
-"20 μC",
-"40 μC",
-"60 μC",
-"80 μC",
-"160 μC"
-],
-answer:3,
-explanation:"Q = CV = 8×10 = 80 μC."
-},
-
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Tiga kapasitor 2 μF, 3 μF, dan 5 μF dipasang paralel. Kapasitansi totalnya adalah...",
-options:[
-"5 μF",
-"6 μF",
-"8 μF",
-"10 μF",
-"30 μF"
-],
-answer:3,
-explanation:"Cp = 2+3+5 = 10 μF."
-},
-
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Kapasitor 6 μF dan 3 μF disusun seri. Jika diberi tegangan 18 V, muatan pada masing-masing kapasitor adalah...",
-options:[
-"18 μC",
-"24 μC",
-"36 μC",
-"54 μC",
-"72 μC"
-],
-answer:2,
-explanation:"Ceq = (6×3)/(6+3) = 2 μF. Karena seri, Q sama. Q = CeqV = 2×18 = 36 μC."
-},
-
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Kapasitor 4 μF diberi tegangan 25 V. Energi yang tersimpan adalah...",
-options:[
-"0,0005 J",
-"0,001 J",
-"0,00125 J",
-"0,002 J",
-"0,005 J"
-],
-answer:2,
-explanation:"U = 1/2 CV² = 1/2(4×10⁻⁶)(25²) = 1,25×10⁻³ J."
-},
-
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Sebuah kapasitor memiliki kapasitansi 10 μF dan menyimpan muatan 200 μC. Tegangan pada kapasitor adalah...",
-options:[
-"10 V",
-"20 V",
-"30 V",
-"40 V",
-"50 V"
-],
-answer:1,
-explanation:"V = Q/C = 200/10 = 20 V."
-},
-
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Tiga kapasitor identik masing-masing 6 μF disusun seri. Kapasitansi penggantinya adalah...",
-options:[
-"1 μF",
-"2 μF",
-"3 μF",
-"6 μF",
-"18 μF"
-],
-answer:1,
-explanation:"Untuk tiga kapasitor identik seri, Ceq = C/3 = 6/3 = 2 μF."
-}
-
-];
-
-/* =========================================================
-   RENDER SOAL
-========================================================= */
-
-const questionsContainer =
-document.getElementById("questions");
-
-function renderQuestions(){
-
-  questionsContainer.innerHTML="";
-
-  questions.forEach((item,index)=>{
-
-    const questionDiv =
-    document.createElement("div");
-
-    questionDiv.className="question";
-    questionDiv.id="question-"+index;
-
-    let optionsHTML="";
-
-    item.options.forEach((option,optIndex)=>{
-
-      optionsHTML += `
-        <label class="option"
-               id="option-${index}-${optIndex}">
-
-          <input
-            type="radio"
-            name="question-${index}"
-            value="${optIndex}"
-            onchange="updateProgress()">
-
-          <b>${String.fromCharCode(65+optIndex)}.</b>
-          ${option}
-
-        </label>
-      `;
-
-    });
-
-    questionDiv.innerHTML=`
-
-      <div class="topic-label">
-        ${item.topic} • ${item.type}
-      </div>
-
-      <h3>
-        <span class="number">${index+1}.</span>
-        ${item.q}
-      </h3>
-
-      <div class="options">
-        ${optionsHTML}
-      </div>
-
-      <div class="explanation"
-           id="explanation-${index}">
-        <b>💡 Pembahasan:</b><br>
-        ${item.explanation}
-      </div>
-
-    `;
-
-    questionsContainer.appendChild(questionDiv);
-
-  });
-
-}
-
-
-/* =========================================================
-   PROGRESS
-========================================================= */
-
-function updateProgress(){
-
-  let answered=0;
-
-  questions.forEach((q,index)=>{
-
-    const selected =
-    document.querySelector(
-      `input[name="question-${index}"]:checked`
-    );
-
-    if(selected){
-      answered++;
-    }
-
-  });
-
-  const percent =
-  (answered/questions.length)*100;
-
-  document.getElementById("progress").style.width =
-  percent+"%";
-
-  document.getElementById("progressText").textContent =
-  `${answered} dari ${questions.length} soal dijawab`;
-
-}
-
-
-/* =========================================================
-   PERIKSA JAWABAN
-========================================================= */
-
-function checkAnswers(){
-
-  let score=0;
-  let answered=0;
-
-  questions.forEach((item,index)=>{
-
-    const selected =
-    document.querySelector(
-      `input[name="question-${index}"]:checked`
-    );
-
-    const explanation =
-    document.getElementById(
-      `explanation-${index}`
-    );
-
-    const correctOption =
-    document.getElementById(
-      `option-${index}-${item.answer}`
-    );
-
-    // Bersihkan warna terlebih dahulu
-    item.options.forEach((_,optIndex)=>{
-
-      const option =
-      document.getElementById(
-        `option-${index}-${optIndex}`
-      );
-
-      option.classList.remove(
-        "correct",
-        "wrong"
-      );
-
-    });
-
-    if(selected){
-
-      answered++;
-
-      const selectedIndex =
-      Number(selected.value);
-
-      if(selectedIndex === item.answer){
-
-        score++;
-
-        document.getElementById(
-          `option-${index}-${selectedIndex}`
-        ).classList.add("correct");
-
-      }else{
-
-        document.getElementById(
-          `option-${index}-${selectedIndex}`
-        ).classList.add("wrong");
-
-        correctOption.classList.add("correct");
-
-      }
-
-    }else{
-
-      // Kalau belum dijawab,
-      // tetap tampilkan jawaban benar
-      correctOption.classList.add("correct");
+        }
 
     }
-
-    explanation.style.display="block";
-
-  });
+);
 
 
-  const nilai =
-  Math.round((score/questions.length)*100);
+/* =====================================================
+   ENTER DI SEARCH
+===================================================== */
 
-  document.getElementById("score").textContent =
-  `${nilai}`;
+search.addEventListener(
+    "keydown",
+    function(event){
 
-  let grade="";
+        if(
+            event.key === "Enter"
+        ){
 
-  if(nilai>=90){
-    grade="🏆 Sangat Baik";
-  }
-  else if(nilai>=80){
-    grade="🌟 Baik";
-  }
-  else if(nilai>=70){
-    grade="👍 Cukup Baik";
-  }
-  else if(nilai>=60){
-    grade="📖 Perlu Belajar Lagi";
-  }
-  else{
-    grade="💪 Tetap Semangat Belajar";
-  }
-
-  document.getElementById("grade").textContent =
-  grade;
-
-  document.getElementById("summary").innerHTML =
-  `Benar: <b>${score}</b> dari <b>${questions.length}</b> soal<br>
-   Salah: <b>${questions.length-score}</b> soal<br>
-   Dijawab: <b>${answered}</b> soal`;
-
-  document.getElementById("result").style.display =
-  "block";
-
-  window.scrollTo({
-    top:document.getElementById("result").offsetTop-20,
-    behavior:"smooth"
-  });
-
-}
+            const visibleCards =
+                Array.from(cards)
+                .filter(
+                    card =>
+                    card.style.display !== "none"
+                );
 
 
-/* =========================================================
-   ULANGI
-========================================================= */
+            if(
+                visibleCards.length === 1
+            ){
 
-function resetQuiz(){
+                visibleCards[0].click();
 
-  questions.forEach((item,index)=>{
+            }
 
-    const radios =
-    document.querySelectorAll(
-      `input[name="question-${index}"]`
-    );
-
-    radios.forEach(radio=>{
-      radio.checked=false;
-    });
-
-    item.options.forEach((_,optIndex)=>{
-
-      const option =
-      document.getElementById(
-        `option-${index}-${optIndex}`
-      );
-
-      option.classList.remove(
-        "correct",
-        "wrong"
-      );
-
-    });
-
-    document.getElementById(
-      `explanation-${index}`
-    ).style.display="none";
-
-  });
-
-  document.getElementById("result").style.display =
-  "none";
-
-  updateProgress();
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* =========================================================
-   SCROLL KE SOAL SALAH
-========================================================= */
-
-function scrollToWrong(){
-
-  for(let i=0;i<questions.length;i++){
-
-    const selected =
-    document.querySelector(
-      `input[name="question-${i}"]:checked`
-    );
-
-    if(!selected ||
-       Number(selected.value)!==questions[i].answer){
-
-      const target =
-      document.getElementById(
-        `question-${i}`
-      );
-
-      target.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
-      });
-
-      return;
+        }
 
     }
-
-  }
-
-  alert("🎉 Semua jawaban benar!");
-
-}
-
-
-/* =========================================================
-   MULAI
-========================================================= */
-
-renderQuestions();
-updateProgress();
+);
 
 </script>
 
