@@ -287,6 +287,7 @@ button:hover{
     Listrik Statis • Medan Listrik • Potensial Listrik •
     Listrik Arus Searah • Kapasitor
     <br><br>
+
     <b>📐 Konstanta:</b><br>
     k = 9 × 10⁹ N·m²/C²
     <br>
@@ -305,6 +306,7 @@ button:hover{
   </div>
 
   <div class="topics">
+
     <div class="topic-stat">
       <b>16</b>
       Listrik Statis
@@ -329,6 +331,7 @@ button:hover{
       <b>16</b>
       Kapasitor
     </div>
+
   </div>
 
 </div>
@@ -336,6 +339,7 @@ button:hover{
 <div id="questions"></div>
 
 <div class="navigation">
+
   <button class="btn-primary" onclick="checkAnswers()">
     ✅ Periksa Jawaban
   </button>
@@ -343,6 +347,7 @@ button:hover{
   <button class="btn-secondary" onclick="resetQuiz()">
     🔄 Ulangi
   </button>
+
 </div>
 
 <div class="card result" id="result">
@@ -367,12 +372,24 @@ button:hover{
 
 <script>
 
+/* =========================================================
+   BANK SOAL
+   TOTAL = 80
+   KONSEP = 30
+   HITUNGAN = 50
+
+   Listrik Statis      : 16
+   Medan Listrik       : 16
+   Potensial Listrik   : 16
+   Arus Searah         : 16
+   Kapasitor           : 16
+========================================================= */
+
 const questions = [
 
 /* =========================================================
    LISTRIK STATIS
-   1-6 KONSEP
-   7-16 HITUNGAN
+   6 KONSEP + 10 HITUNGAN = 16
 ========================================================= */
 
 {
@@ -417,7 +434,7 @@ options:[
 "energi dan daya"
 ],
 answer:2,
-explanation:"Hukum Coulomb menyatakan besar gaya listrik antara dua muatan bergantung pada besar kedua muatan dan kuadrat jaraknya."
+explanation:"Hukum Coulomb menjelaskan gaya listrik antara dua muatan."
 },
 
 {
@@ -438,16 +455,16 @@ explanation:"Gaya Coulomb berbanding terbalik dengan kuadrat jarak: F ∝ 1/r².
 {
 topic:"Listrik Statis",
 type:"Konsep",
-q:"Garis gaya listrik tidak pernah saling berpotongan karena...",
+q:"Muatan listrik yang sejenis akan...",
 options:[
-"medan listrik hanya memiliki satu arah pada satu titik",
-"muatan listrik selalu diam",
-"garis gaya tidak memiliki arah",
-"semua muatan bernilai positif",
-"medan listrik selalu nol"
+"selalu tarik-menarik",
+"selalu tolak-menolak",
+"selalu menghasilkan gaya nol",
+"tidak memiliki medan listrik",
+"berubah menjadi netral"
 ],
-answer:0,
-explanation:"Pada satu titik, medan listrik hanya memiliki satu arah. Jika garis berpotongan, satu titik akan mempunyai dua arah medan yang berbeda."
+answer:1,
+explanation:"Muatan positif dengan positif atau negatif dengan negatif saling tolak-menolak."
 },
 
 {
@@ -492,7 +509,7 @@ options:[
 "54 N"
 ],
 answer:1,
-explanation:"F = (9×10⁹)(4×10⁻⁶)(6×10⁻⁶)/(0,2)² = 5,4 N. Karena muatannya berlawanan, gaya bersifat tarik-menarik."
+explanation:"F = (9×10⁹)(4×10⁻⁶)(6×10⁻⁶)/(0,2)² = 5,4 N. Karena muatannya berlawanan tanda, gayanya tarik-menarik."
 },
 
 {
@@ -513,22 +530,37 @@ explanation:"F = (9×10⁹)(2×10⁻⁶)(2×10⁻⁶)/(0,1)² = 3,6 N."
 {
 topic:"Listrik Statis",
 type:"Hitungan",
-q:"Dua muatan 4 μC dan 2 μC menghasilkan gaya 7,2 N. Jika jaraknya 10 cm, besar muatan kedua yang digunakan dalam perhitungan adalah...",
+q:"Dua muatan +4 μC dan +4 μC berjarak 20 cm. Besar gaya Coulombnya adalah...",
 options:[
-"0,2 μC",
-"1 μC",
-"2 μC",
-"20 μC",
-"200 μC"
+"0,9 N",
+"3,6 N",
+"9 N",
+"18 N",
+"36 N"
 ],
 answer:2,
-explanation:"q₂ = Fr²/(kq₁) = 7,2(0,1)² / [(9×10⁹)(4×10⁻⁶)] = 2×10⁻⁶ C = 2 μC."
+explanation:"F = (9×10⁹)(4×10⁻⁶)(4×10⁻⁶)/(0,2)² = 3,6 N."
 },
 
 {
 topic:"Listrik Statis",
 type:"Hitungan",
-q:"Jika gaya Coulomb antara dua muatan adalah 8 N pada jarak 2 m, maka gaya ketika jarak menjadi 4 m adalah...",
+q:"Muatan +4 μC dan +9 μC berjarak 60 cm. Besar gaya Coulombnya adalah...",
+options:[
+"0,9 N",
+"1,5 N",
+"2,4 N",
+"3,6 N",
+"9 N"
+],
+answer:0,
+explanation:"F = (9×10⁹)(4×10⁻⁶)(9×10⁻⁶)/(0,6)² = 0,9 N."
+},
+
+{
+topic:"Listrik Statis",
+type:"Hitungan",
+q:"Dua muatan menghasilkan gaya Coulomb sebesar 8 N pada jarak 2 m. Jika jarak menjadi 4 m, gaya baru adalah...",
 options:[
 "1 N",
 "2 N",
@@ -537,7 +569,7 @@ options:[
 "32 N"
 ],
 answer:1,
-explanation:"Jarak menjadi 2 kali. Karena F ∝ 1/r², gaya menjadi 1/4 kali. F₂ = 8/4 = 2 N."
+explanation:"Jarak menjadi 2 kali. Karena F ∝ 1/r², gaya menjadi 1/4 kali: 8/4 = 2 N."
 },
 
 {
@@ -551,53 +583,23 @@ options:[
 "3 N",
 "9 N"
 ],
-answer:2,
-explanation:"F = (9×10⁹)(3×10⁻⁶)(12×10⁻⁶)/(0,6)² = 0,9 N. Jadi jawaban yang benar adalah 0,9 N.",
+answer:1,
+explanation:"F = (9×10⁹)(3×10⁻⁶)(12×10⁻⁶)/(0,6)² = 0,9 N."
 },
 
 {
 topic:"Listrik Statis",
 type:"Hitungan",
-q:"Tiga muatan berada segaris. q₁ = +2 μC dan q₂ = +4 μC berjarak 20 cm. Gaya q₁ terhadap q₂ adalah...",
+q:"Muatan +2 μC dan +8 μC berjarak 40 cm. Besar gaya Coulombnya adalah...",
 options:[
-"0,18 N",
-"0,9 N",
-"1,8 N",
-"3,6 N",
-"18 N"
-],
-answer:2,
-explanation:"F = (9×10⁹)(2×10⁻⁶)(4×10⁻⁶)/(0,2)² = 1,8 N."
-},
-
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Sebuah muatan 5 μC mengalami gaya listrik 2 N. Muatan lain yang menyebabkan gaya tersebut berjarak 15 cm. Besar muatan lain adalah...",
-options:[
-"0,5 μC",
-"1 μC",
-"2 μC",
-"5 μC",
-"10 μC"
-],
-answer:2,
-explanation:"q₂ = Fr²/(kq₁) = 2(0,15)² / [(9×10⁹)(5×10⁻⁶)] = 1 μC."
-},
-
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Dua muatan 2 μC dan 8 μC berjarak 40 cm. Gaya Coulomb yang terjadi adalah...",
-options:[
-"0,45 N",
 "0,9 N",
 "1,8 N",
 "2,25 N",
-"4,5 N"
+"4,5 N",
+"9 N"
 ],
 answer:0,
-explanation:"F = (9×10⁹)(2×10⁻⁶)(8×10⁻⁶)/(0,4)² = 0,9 N. Jadi jawaban yang benar adalah 0,9 N.",
+explanation:"F = (9×10⁹)(2×10⁻⁶)(8×10⁻⁶)/(0,4)² = 0,9 N."
 },
 
 {
@@ -612,7 +614,7 @@ options:[
 "144 N"
 ],
 answer:3,
-explanation:"Gaya Coulomb berbanding lurus dengan besar muatan. Jika salah satu muatan menjadi 3 kali, gaya juga menjadi 3 kali: 3×12 = 36 N."
+explanation:"Gaya berbanding lurus dengan salah satu muatan. Jadi gaya menjadi 3×12 = 36 N."
 },
 
 {
@@ -627,28 +629,12 @@ options:[
 "36 N"
 ],
 answer:1,
-explanation:"F ∝ q₁q₂. Kedua muatan menjadi 1/2, sehingga F baru = 1/4 × 18 = 4,5 N."
-},
-
-{
-topic:"Listrik Statis",
-type:"Hitungan",
-q:"Dua muatan menghasilkan gaya 20 N pada jarak r. Jika jarak diperbesar menjadi 5r, gaya menjadi...",
-options:[
-"0,2 N",
-"0,8 N",
-"4 N",
-"5 N",
-"100 N"
-],
-answer:1,
-explanation:"F₂ = F₁/5² = 20/25 = 0,8 N."
+explanation:"Kedua muatan menjadi 1/2 sehingga hasil kali muatan menjadi 1/4. F baru = 18/4 = 4,5 N."
 },
 
 /* =========================================================
    MEDAN LISTRIK
-   17-22 KONSEP
-   23-32 HITUNGAN
+   6 KONSEP + 10 HITUNGAN = 16
 ========================================================= */
 
 {
@@ -663,7 +649,7 @@ options:[
 "gaya gravitasi bumi"
 ],
 answer:0,
-explanation:"Medan listrik adalah daerah di sekitar muatan listrik yang menyebabkan muatan lain mengalami gaya listrik."
+explanation:"Medan listrik adalah daerah di sekitar muatan yang menyebabkan muatan lain mengalami gaya listrik."
 },
 
 {
@@ -714,7 +700,7 @@ explanation:"Kerapatan garis medan menggambarkan kuat medan listrik. Semakin rap
 {
 topic:"Medan Listrik",
 type:"Konsep",
-q:"Rumus kuat medan listrik yang disebabkan oleh muatan titik adalah...",
+q:"Rumus kuat medan listrik akibat muatan titik adalah...",
 options:[
 "E = IR",
 "E = Q/t",
@@ -723,7 +709,7 @@ options:[
 "E = Wt"
 ],
 answer:2,
-explanation:"Untuk muatan titik, E = k|Q|/r²."
+explanation:"Kuat medan listrik akibat muatan titik dirumuskan E = k|Q|/r²."
 },
 
 {
@@ -738,7 +724,7 @@ options:[
 "Ω"
 ],
 answer:0,
-explanation:"Kuat medan listrik dapat dinyatakan dalam N/C atau V/m."
+explanation:"Kuat medan listrik dapat dinyatakan dalam N/C."
 },
 
 {
@@ -752,14 +738,14 @@ options:[
 "9×10⁷ N/C",
 "9×10⁸ N/C"
 ],
-answer:2,
-explanation:"E = kQ/r² = (9×10⁹)(4×10⁻⁶)/(0,2)² = 9×10⁵ N/C. Jadi jawaban yang benar 9×10⁵ N/C.",
+answer:1,
+explanation:"E = kQ/r² = (9×10⁹)(4×10⁻⁶)/(0,2)² = 9×10⁵ N/C."
 },
 
 {
 topic:"Medan Listrik",
 type:"Hitungan",
-q:"Muatan 2 μC menghasilkan medan listrik 1,8×10⁶ N/C. Jarak titik tersebut dari muatan adalah...",
+q:"Muatan +2 μC menghasilkan medan listrik 1,8×10⁶ N/C. Jarak titik tersebut dari muatan adalah...",
 options:[
 "5 cm",
 "10 cm",
@@ -789,9 +775,9 @@ explanation:"F = qE = (2×10⁻⁶)(5×10⁴) = 0,1 N."
 {
 topic:"Medan Listrik",
 type:"Hitungan",
-q:"Muatan +8 μC menghasilkan medan listrik pada jarak 40 cm. Besar medannya adalah...",
+q:"Muatan +8 μC berada pada jarak 40 cm dari suatu titik. Kuat medan listriknya adalah...",
 options:[
-"2,5×10⁴ N/C",
+"2,25×10⁵ N/C",
 "4,5×10⁵ N/C",
 "9×10⁵ N/C",
 "1,8×10⁶ N/C",
@@ -804,7 +790,7 @@ explanation:"E = (9×10⁹)(8×10⁻⁶)/(0,4)² = 4,5×10⁵ N/C."
 {
 topic:"Medan Listrik",
 type:"Hitungan",
-q:"Sebuah muatan menghasilkan medan 9×10⁵ N/C pada jarak 20 cm. Jika jarak menjadi 40 cm, medan listrik menjadi...",
+q:"Kuat medan listrik 9×10⁵ N/C pada jarak 20 cm. Jika jarak menjadi 40 cm, medan listrik menjadi...",
 options:[
 "1,125×10⁵ N/C",
 "2,25×10⁵ N/C",
@@ -813,7 +799,7 @@ options:[
 "18×10⁵ N/C"
 ],
 answer:1,
-explanation:"Jarak menjadi 2 kali, maka E menjadi 1/4. E₂ = 9×10⁵/4 = 2,25×10⁵ N/C."
+explanation:"Jarak menjadi 2 kali sehingga E menjadi 1/4. E = 9×10⁵/4 = 2,25×10⁵ N/C."
 },
 
 {
@@ -842,14 +828,14 @@ options:[
 "1,2×10⁶ N/C",
 "1,8×10⁶ N/C"
 ],
-answer:2,
-explanation:"E = (9×10⁹)(6×10⁻⁶)/(0,3)² = 6×10⁵ N/C. Jadi jawaban yang benar 6×10⁵ N/C.",
+answer:1,
+explanation:"E = (9×10⁹)(6×10⁻⁶)/(0,3)² = 6×10⁵ N/C."
 },
 
 {
 topic:"Medan Listrik",
 type:"Hitungan",
-q:"Jika kuat medan listrik akibat sebuah muatan adalah 2×10⁶ N/C pada jarak 10 cm, maka besar muatannya adalah...",
+q:"Jika kuat medan listrik 2×10⁶ N/C pada jarak 10 cm, besar muatan sumbernya adalah...",
 options:[
 "0,22 μC",
 "1,11 μC",
@@ -906,25 +892,9 @@ answer:0,
 explanation:"Di titik tengah, medan dari kedua muatan sama besar tetapi berlawanan arah sehingga resultannya 0 N/C."
 },
 
-{
-topic:"Medan Listrik",
-type:"Hitungan",
-q:"Muatan +5 μC menghasilkan medan listrik pada jarak 50 cm. Besarnya adalah...",
-options:[
-"9×10⁴ N/C",
-"1,8×10⁵ N/C",
-"3,6×10⁵ N/C",
-"9×10⁵ N/C",
-"1,8×10⁶ N/C"
-],
-answer:2,
-explanation:"E = (9×10⁹)(5×10⁻⁶)/(0,5)² = 1,8×10⁵ N/C. Jadi jawaban yang benar 1,8×10⁵ N/C.",
-},
-
 /* =========================================================
    POTENSIAL LISTRIK
-   33-38 KONSEP
-   39-48 HITUNGAN
+   6 KONSEP + 10 HITUNGAN = 16
 ========================================================= */
 
 {
@@ -954,7 +924,7 @@ options:[
 "selalu negatif"
 ],
 answer:1,
-explanation:"Potensial listrik adalah besaran skalar karena hanya memiliki nilai tanpa arah."
+explanation:"Potensial listrik merupakan besaran skalar karena hanya memiliki besar tanpa arah."
 },
 
 {
@@ -975,7 +945,7 @@ explanation:"Potensial listrik akibat muatan titik adalah V = kQ/r."
 {
 topic:"Potensial Listrik",
 type:"Konsep",
-q:"Jika muatan sumber positif, potensial listrik di sekitarnya bernilai...",
+q:"Jika muatan sumber positif, potensial listrik di sekitarnya dengan titik acuan tak hingga bernilai...",
 options:[
 "negatif",
 "nol di semua titik",
@@ -984,7 +954,7 @@ options:[
 "selalu sama"
 ],
 answer:2,
-explanation:"Untuk titik acuan tak hingga, potensial dari muatan positif bernilai positif."
+explanation:"Untuk muatan sumber positif dan titik acuan di tak hingga, potensial listrik bernilai positif."
 },
 
 {
@@ -1005,16 +975,16 @@ explanation:"Dari V = Ep/q diperoleh Ep = qV."
 {
 topic:"Potensial Listrik",
 type:"Konsep",
-q:"Ketika muatan uji dipindahkan dalam medan listrik, perubahan energi potensial berkaitan dengan...",
+q:"Potensial listrik termasuk besaran skalar sehingga potensial total dari beberapa muatan diperoleh dengan...",
 options:[
-"perbedaan potensial",
-"massa jenis",
-"hambatan jenis",
-"frekuensi",
-"induktansi"
+"menjumlahkan secara aljabar",
+"menjumlahkan arah seperti vektor",
+"mengalikan semua potensial",
+"selalu mengambil nilai terbesar",
+"selalu mengambil nilai terkecil"
 ],
 answer:0,
-explanation:"Perubahan energi potensial listrik berhubungan dengan beda potensial melalui ΔEp = qΔV."
+explanation:"Karena potensial adalah skalar, potensial total diperoleh dengan penjumlahan aljabar, termasuk memperhatikan tandanya."
 },
 
 {
@@ -1043,8 +1013,8 @@ options:[
 "3,6×10⁵ V",
 "9×10⁵ V"
 ],
-answer:3,
-explanation:"V = (9×10⁹)(4×10⁻⁶)/0,2 = 1,8×10⁵ V. Jadi jawaban yang benar 1,8×10⁵ V.",
+answer:1,
+explanation:"V = (9×10⁹)(4×10⁻⁶)/0,2 = 1,8×10⁵ V."
 },
 
 {
@@ -1058,8 +1028,8 @@ options:[
 "4,5×10⁵ V",
 "9×10⁶ V"
 ],
-answer:1,
-explanation:"V = (9×10⁹)(5×10⁻⁶)/0,5 = 9×10⁴ V. Jadi jawaban yang benar 9×10⁴ V.",
+answer:0,
+explanation:"V = (9×10⁹)(5×10⁻⁶)/0,5 = 9×10⁴ V."
 },
 
 {
@@ -1074,7 +1044,7 @@ options:[
 "60 J"
 ],
 answer:1,
-explanation:"Ep = qV = (3×10⁻⁶)(2×10⁴) = 6×10⁻² J = 0,06 J."
+explanation:"Ep = qV = (3×10⁻⁶)(2×10⁴) = 0,06 J."
 },
 
 {
@@ -1103,14 +1073,14 @@ options:[
 "40 cm",
 "50 cm"
 ],
-answer:2,
-explanation:"r = kQ/V = (9×10⁹)(2×10⁻⁶)/(9×10⁴) = 0,2 m = 20 cm. Jadi jawaban yang benar 20 cm."
+answer:1,
+explanation:"r = kQ/V = (9×10⁹)(2×10⁻⁶)/(9×10⁴) = 0,2 m = 20 cm."
 },
 
 {
 topic:"Potensial Listrik",
 type:"Hitungan",
-q:"Dua muatan +2 μC dan +3 μC masing-masing berjarak 20 cm dari titik P. Jika keduanya berada pada posisi yang sama arah radialnya, potensial total di P adalah...",
+q:"Dua muatan +2 μC dan +3 μC masing-masing berjarak 20 cm dari titik P. Potensial total di P adalah...",
 options:[
 "1,8×10⁵ V",
 "2,25×10⁵ V",
@@ -1118,8 +1088,8 @@ options:[
 "6,75×10⁵ V",
 "9×10⁵ V"
 ],
-answer:2,
-explanation:"Potensial adalah skalar, sehingga Vtotal = k(q₁+q₂)/r = (9×10⁹)(5×10⁻⁶)/0,2 = 2,25×10⁵ V. Jadi jawaban yang benar 2,25×10⁵ V.",
+answer:1,
+explanation:"Vtotal = k(q₁+q₂)/r = (9×10⁹)(5×10⁻⁶)/0,2 = 2,25×10⁵ V."
 },
 
 {
@@ -1133,14 +1103,14 @@ options:[
 "4,5×10⁴ V",
 "9×10⁴ V"
 ],
-answer:3,
-explanation:"V = k(q₁+q₂)/r = (9×10⁹)(2×10⁻⁶)/0,2 = 9×10⁴ V. Jadi jawaban yang benar 9×10⁴ V.",
+answer:4,
+explanation:"Vtotal = k(q₁+q₂)/r = (9×10⁹)(2×10⁻⁶)/0,2 = 9×10⁴ V."
 },
 
 {
 topic:"Potensial Listrik",
 type:"Hitungan",
-q:"Sebuah muatan 2 μC berpindah dari titik A berpotensial 100 V ke titik B berpotensial 400 V. Perubahan energi potensialnya adalah...",
+q:"Muatan 2 μC berpindah dari titik A berpotensial 100 V ke titik B berpotensial 400 V. Perubahan energi potensialnya adalah...",
 options:[
 "0,0006 J",
 "0,003 J",
@@ -1148,29 +1118,14 @@ options:[
 "0,06 J",
 "0,6 J"
 ],
-answer:2,
-explanation:"ΔEp = q(VB−VA) = 2×10⁻⁶(400−100) = 6×10⁻⁴ J. Jadi hasilnya 0,0006 J.",
-},
-
-{
-topic:"Potensial Listrik",
-type:"Hitungan",
-q:"Potensial listrik akibat muatan +6 μC pada jarak 60 cm adalah...",
-options:[
-"9×10⁴ V",
-"9×10⁵ V",
-"1,8×10⁵ V",
-"3,6×10⁵ V",
-"6×10⁵ V"
-],
 answer:0,
-explanation:"V = (9×10⁹)(6×10⁻⁶)/0,6 = 9×10⁴ V."
+explanation:"ΔEp = q(VB−VA) = 2×10⁻⁶(400−100) = 6×10⁻⁴ J = 0,0006 J."
 },
 
 {
 topic:"Potensial Listrik",
 type:"Hitungan",
-q:"Jika jarak dari muatan titik diperbesar 2 kali, potensial listrik menjadi...",
+q:"Jika jarak dari sebuah muatan titik diperbesar menjadi 2 kali semula, potensial listrik menjadi...",
 options:[
 "1/4 kali",
 "1/2 kali",
@@ -1199,8 +1154,7 @@ explanation:"V = (9×10⁹)(1×10⁻⁶)/0,1 = 9×10⁴ V."
 
 /* =========================================================
    LISTRIK ARUS SEARAH
-   49-54 KONSEP
-   55-64 HITUNGAN
+   6 KONSEP + 10 HITUNGAN = 16
 ========================================================= */
 
 {
@@ -1215,7 +1169,7 @@ options:[
 "gaya listrik"
 ],
 answer:1,
-explanation:"Arus listrik adalah laju aliran muatan listrik. Rumusnya I = Q/t."
+explanation:"Arus listrik adalah laju aliran muatan listrik dengan rumus I = Q/t."
 },
 
 {
@@ -1230,7 +1184,7 @@ options:[
 "barometer"
 ],
 answer:2,
-explanation:"Kuat arus diukur menggunakan amperemeter."
+explanation:"Kuat arus listrik diukur menggunakan amperemeter."
 },
 
 {
@@ -1245,7 +1199,7 @@ options:[
 "acak"
 ],
 answer:1,
-explanation:"Amperemeter harus dipasang seri agar arus rangkaian melewatinya."
+explanation:"Amperemeter dipasang seri agar arus rangkaian melewatinya."
 },
 
 {
@@ -1290,13 +1244,13 @@ options:[
 "energi"
 ],
 answer:1,
-explanation:"Pada rangkaian seri, arus yang melewati setiap komponen sama besar."
+explanation:"Pada rangkaian seri, arus yang melewati setiap resistor sama besar."
 },
 
 {
 topic:"Listrik Arus Searah",
 type:"Hitungan",
-q:"Muatan 60 C mengalir melalui sebuah penghantar selama 20 s. Besar arusnya adalah...",
+q:"Muatan 60 C mengalir melalui penghantar selama 20 s. Besar arusnya adalah...",
 options:[
 "0,3 A",
 "2 A",
@@ -1380,7 +1334,7 @@ options:[
 "24 Ω"
 ],
 answer:3,
-explanation:"Rseri = R₁ + R₂ = 4 + 6 = 10 Ω."
+explanation:"Rtotal = R₁ + R₂ = 4 + 6 = 10 Ω."
 },
 
 {
@@ -1410,7 +1364,7 @@ options:[
 "9 Ω"
 ],
 answer:1,
-explanation:"1/Rp = 1/6 + 1/3 = 3/6 = 1/2, sehingga Rp = 2 Ω."
+explanation:"1/Rp = 1/6 + 1/3 = 1/2, sehingga Rp = 2 Ω."
 },
 
 {
@@ -1440,73 +1394,12 @@ options:[
 "25 V"
 ],
 answer:3,
-explanation:"Rtotal = 15 Ω, sehingga I = 30/15 = 2 A. Tegangan resistor 10 Ω: V = IR = 2×10 = 20 V."
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Sebuah rangkaian memiliki tegangan 12 V dan arus 0,5 A. Hambatan totalnya adalah...",
-options:[
-"6 Ω",
-"12 Ω",
-"18 Ω",
-"24 Ω",
-"36 Ω"
-],
-answer:3,
-explanation:"R = V/I = 12/0,5 = 24 Ω."
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Sebuah alat listrik memiliki hambatan 20 Ω dan dialiri arus 0,5 A. Daya listriknya adalah...",
-options:[
-"2 W",
-"5 W",
-"10 W",
-"20 W",
-"40 W"
-],
-answer:2,
-explanation:"P = I²R = (0,5)²(20) = 5 W. Jadi jawaban yang benar 5 W.",
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Resistor 10 Ω dialiri arus 2 A selama 5 s. Energi listrik yang digunakan adalah...",
-options:[
-"20 J",
-"50 J",
-"100 J",
-"200 J",
-"400 J"
-],
-answer:2,
-explanation:"P = I²R = 4×10 = 40 W. Energi W = Pt = 40×5 = 200 J. Jadi jawaban yang benar 200 J.",
-},
-
-{
-topic:"Listrik Arus Searah",
-type:"Hitungan",
-q:"Sebuah resistor 8 Ω diberi tegangan 16 V selama 10 s. Energi yang digunakan adalah...",
-options:[
-"160 J",
-"240 J",
-"320 J",
-"640 J",
-"1280 J"
-],
-answer:2,
-explanation:"P = V²/R = 256/8 = 32 W. W = Pt = 32×10 = 320 J."
+explanation:"Rtotal = 15 Ω. I = 30/15 = 2 A. Tegangan pada 10 Ω = 2×10 = 20 V."
 },
 
 /* =========================================================
    KAPASITOR
-   65-70 KONSEP
-   71-80 HITUNGAN
+   6 KONSEP + 10 HITUNGAN = 16
 ========================================================= */
 
 {
@@ -1587,16 +1480,16 @@ explanation:"Untuk kapasitor paralel, kapasitansi pengganti adalah jumlah semua 
 {
 topic:"Kapasitor",
 type:"Konsep",
-q:"Jika dua kapasitor identik disusun seri, kapasitansi penggantinya dibandingkan satu kapasitor adalah...",
+q:"Jika dua kapasitor identik masing-masing C disusun seri, kapasitansi penggantinya adalah...",
 options:[
-"dua kali lebih besar",
-"tetap",
-"setengahnya",
-"empat kali lebih besar",
-"nol"
+"2C",
+"C",
+"C/2",
+"4C",
+"0"
 ],
 answer:2,
-explanation:"Dua kapasitor identik C disusun seri menghasilkan Ceq = C/2."
+explanation:"Dua kapasitor identik yang disusun seri memiliki kapasitansi pengganti C/2."
 },
 
 {
@@ -1611,7 +1504,7 @@ options:[
 "96 μC"
 ],
 answer:2,
-explanation:"Q = CV = 4 μF × 12 V = 48 μC."
+explanation:"Q = CV = 4×12 = 48 μC."
 },
 
 {
@@ -1656,7 +1549,7 @@ options:[
 "48 μF"
 ],
 answer:2,
-explanation:"Cp = C₁ + C₂ = 4 + 6 = 10 μF."
+explanation:"Cp = C₁+C₂ = 4+6 = 10 μF."
 },
 
 {
@@ -1671,13 +1564,13 @@ options:[
 "9 μF"
 ],
 answer:1,
-explanation:"Cs = C₁C₂/(C₁+C₂) = (3×6)/(3+6) = 2 μF."
+explanation:"Cs = (C₁C₂)/(C₁+C₂) = (3×6)/(3+6) = 2 μF."
 },
 
 {
 topic:"Kapasitor",
 type:"Hitungan",
-q:"Dua kapasitor 10 μF dan 10 μF dipasang seri pada sumber 20 V. Muatan total yang tersimpan adalah...",
+q:"Dua kapasitor 10 μF dan 10 μF dipasang seri pada sumber 20 V. Muatan yang tersimpan pada masing-masing kapasitor adalah...",
 options:[
 "50 μC",
 "100 μC",
@@ -1685,8 +1578,8 @@ options:[
 "200 μC",
 "400 μC"
 ],
-answer:3,
-explanation:"Ceq = 10/2 = 5 μF. Q = CV = 5×20 = 100 μC. Jadi jawaban yang benar 100 μC.",
+answer:1,
+explanation:"Ceq = 10/2 = 5 μF. Karena seri, Q sama. Q = CeqV = 5×20 = 100 μC."
 },
 
 {
@@ -1716,7 +1609,7 @@ options:[
 "0,009 J"
 ],
 answer:2,
-explanation:"Energi kapasitor U = 1/2 CV² = 1/2(2×10⁻⁶)(30²) = 9×10⁻⁴ J."
+explanation:"U = 1/2 CV² = 1/2(2×10⁻⁶)(30²) = 9×10⁻⁴ J = 0,0009 J."
 },
 
 {
@@ -1761,55 +1654,25 @@ options:[
 "72 μC"
 ],
 answer:2,
-explanation:"Ceq = (6×3)/(6+3) = 2 μF. Karena seri, Q sama. Q = CeqV = 2×18 = 36 μC."
-},
-
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Kapasitor 4 μF diberi tegangan 25 V. Energi yang tersimpan adalah...",
-options:[
-"0,0005 J",
-"0,001 J",
-"0,00125 J",
-"0,002 J",
-"0,005 J"
-],
-answer:2,
-explanation:"U = 1/2 CV² = 1/2(4×10⁻⁶)(25²) = 1,25×10⁻³ J."
-},
-
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Sebuah kapasitor memiliki kapasitansi 10 μF dan menyimpan muatan 200 μC. Tegangan pada kapasitor adalah...",
-options:[
-"10 V",
-"20 V",
-"30 V",
-"40 V",
-"50 V"
-],
-answer:1,
-explanation:"V = Q/C = 200/10 = 20 V."
-},
-
-{
-topic:"Kapasitor",
-type:"Hitungan",
-q:"Tiga kapasitor identik masing-masing 6 μF disusun seri. Kapasitansi penggantinya adalah...",
-options:[
-"1 μF",
-"2 μF",
-"3 μF",
-"6 μF",
-"18 μF"
-],
-answer:1,
-explanation:"Untuk tiga kapasitor identik seri, Ceq = C/3 = 6/3 = 2 μF."
+explanation:"Ceq = (6×3)/(6+3) = 2 μF. Q = CeqV = 2×18 = 36 μC."
 }
 
 ];
+
+
+/* =========================================================
+   CEK JUMLAH SOAL
+========================================================= */
+
+console.log("Jumlah soal:", questions.length);
+
+if(questions.length !== 80){
+  console.error(
+    "ERROR: Jumlah soal bukan 80. Jumlah saat ini:",
+    questions.length
+  );
+}
+
 
 /* =========================================================
    RENDER SOAL
@@ -1941,7 +1804,6 @@ function checkAnswers(){
       `option-${index}-${item.answer}`
     );
 
-    // Bersihkan warna terlebih dahulu
     item.options.forEach((_,optIndex)=>{
 
       const option =
@@ -1983,8 +1845,6 @@ function checkAnswers(){
 
     }else{
 
-      // Kalau belum dijawab,
-      // tetap tampilkan jawaban benar
       correctOption.classList.add("correct");
 
     }
@@ -1998,7 +1858,7 @@ function checkAnswers(){
   Math.round((score/questions.length)*100);
 
   document.getElementById("score").textContent =
-  `${nilai}`;
+  nilai;
 
   let grade="";
 
