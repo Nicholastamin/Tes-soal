@@ -1,12 +1,17 @@
-<!-- halaman utama.html -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Halaman Utama - Bank Soal</title>
 
 <style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
 *{
     margin:0;
     padding:0;
@@ -14,37 +19,78 @@
     font-family:Inter,Arial,sans-serif;
 }
 
+
+/* =====================================================
+   BODY
+===================================================== */
+
 body{
     min-height:100vh;
+
     background:
-        radial-gradient(circle at top left,#dbeafe 0,transparent 32%),
-        radial-gradient(circle at top right,#ede9fe 0,transparent 30%),
+        radial-gradient(
+            circle at top left,
+            #dbeafe 0,
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at top right,
+            #ede9fe 0,
+            transparent 30%
+        ),
         #f8fafc;
+
     color:#172033;
 }
 
-/* HEADER */
+
+/* =====================================================
+   HEADER
+===================================================== */
+
 .header{
     position:relative;
     overflow:hidden;
-    background:linear-gradient(135deg,#312e81,#4f46e5,#7c3aed);
+
+    background:
+        linear-gradient(
+            135deg,
+            #312e81,
+            #4f46e5,
+            #7c3aed
+        );
+
     color:white;
+
     padding:55px 20px 75px;
-    border-radius:0 0 42px 42px;
-    box-shadow:0 15px 40px rgba(49,46,129,.25);
+
+    border-radius:
+        0 0 42px 42px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(49,46,129,.25);
 }
+
+
+/* Dekorasi header */
 
 .header::before,
 .header::after{
     content:"";
+
     position:absolute;
+
     border-radius:50%;
-    background:rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.08);
 }
 
 .header::before{
     width:230px;
     height:230px;
+
     right:-70px;
     top:-100px;
 }
@@ -52,96 +98,179 @@ body{
 .header::after{
     width:180px;
     height:180px;
+
     left:-80px;
     bottom:-100px;
 }
 
+
+/* Header content */
+
 .header-content{
     position:relative;
     z-index:2;
+
     max-width:1100px;
+
     margin:auto;
 }
+
+
+/* =====================================================
+   LOGO
+===================================================== */
 
 .logo{
     display:flex;
     align-items:center;
+
     gap:14px;
+
     margin-bottom:25px;
 }
 
 .logo-icon{
     width:55px;
     height:55px;
+
     border-radius:17px;
-    background:rgba(255,255,255,.17);
+
+    background:
+        rgba(255,255,255,.17);
+
     backdrop-filter:blur(10px);
+
     display:flex;
+
     justify-content:center;
     align-items:center;
+
     font-size:28px;
-    border:1px solid rgba(255,255,255,.2);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
 }
 
 .logo-text{
     font-size:15px;
+
     font-weight:600;
+
     opacity:.9;
 }
 
+
+/* =====================================================
+   JUDUL
+===================================================== */
+
 .header h1{
-    font-size:clamp(32px,6vw,54px);
+    font-size:
+        clamp(32px,6vw,54px);
+
     line-height:1.05;
+
     letter-spacing:-1.5px;
+
     margin-bottom:15px;
 }
 
 .header p{
     max-width:600px;
+
     line-height:1.6;
+
     color:#e0e7ff;
+
     font-size:16px;
 }
 
-/* SEARCH */
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
 .search-wrapper{
     max-width:1100px;
+
     margin:-30px auto 0;
+
     padding:0 18px;
+
     position:relative;
+
     z-index:5;
 }
 
 .search{
     width:100%;
+
     border:none;
+
     outline:none;
-    padding:19px 22px 19px 55px;
+
+    padding:
+        19px
+        22px
+        19px
+        55px;
+
     border-radius:18px;
+
     background:white;
-    box-shadow:0 12px 35px rgba(15,23,42,.12);
+
+    box-shadow:
+        0 12px 35px
+        rgba(15,23,42,.12);
+
     font-size:15px;
+
     color:#172033;
+}
+
+.search::placeholder{
+    color:#94a3b8;
 }
 
 .search-icon{
     position:absolute;
+
     left:37px;
     top:18px;
+
     font-size:21px;
+
+    pointer-events:none;
 }
 
-/* CONTENT */
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
 .container{
     max-width:1100px;
+
     margin:40px auto;
-    padding:0 18px 50px;
+
+    padding:
+        0 18px
+        50px;
 }
+
+
+/* =====================================================
+   SECTION HEADER
+===================================================== */
 
 .section-head{
     display:flex;
+
     justify-content:space-between;
+
     align-items:end;
+
     margin-bottom:22px;
 }
 
@@ -151,100 +280,212 @@ body{
 
 .section-head p{
     color:#64748b;
+
     font-size:14px;
+
     margin-top:5px;
 }
 
-/* GRID */
+
+/* =====================================================
+   GRID
+===================================================== */
+
 .grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:20px;
 }
 
+
+/* =====================================================
+   CARD
+===================================================== */
+
 .card{
     display:block;
+
     text-decoration:none;
+
     color:inherit;
+
     background:white;
-    border:1px solid #e5e7eb;
+
+    border:
+        1px solid
+        #e5e7eb;
+
     border-radius:24px;
+
     padding:24px;
+
     min-height:205px;
+
     position:relative;
+
     overflow:hidden;
-    transition:.25s ease;
-    box-shadow:0 6px 20px rgba(15,23,42,.05);
+
+    transition:
+        .25s ease;
+
+    box-shadow:
+        0 6px 20px
+        rgba(15,23,42,.05);
 }
 
-.card:hover{
-    transform:translateY(-7px);
-    box-shadow:0 18px 35px rgba(15,23,42,.12);
-    border-color:#c7d2fe;
-}
 
-.card:active{
-    transform:scale(.98);
-}
+/* Lingkaran dekorasi */
 
 .card::after{
     content:"";
+
     position:absolute;
+
     width:100px;
     height:100px;
+
     right:-35px;
     bottom:-45px;
+
     border-radius:50%;
-    background:var(--soft);
+
+    background:
+        var(--soft);
+
+    opacity:.8;
+
+    pointer-events:none;
 }
+
+
+/* Hover */
+
+.card:hover{
+    transform:
+        translateY(-7px);
+
+    box-shadow:
+        0 18px 35px
+        rgba(15,23,42,.12);
+
+    border-color:
+        #c7d2fe;
+}
+
+
+/* Active */
+
+.card:active{
+    transform:
+        scale(.98);
+}
+
+
+/* =====================================================
+   ICON
+===================================================== */
 
 .icon{
     width:60px;
     height:60px;
+
     border-radius:18px;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     font-size:31px;
+
     margin-bottom:20px;
-    background:var(--soft);
+
+    background:
+        var(--soft);
+
+    position:relative;
+
+    z-index:2;
 }
+
+
+/* =====================================================
+   CARD TEXT
+===================================================== */
 
 .card h3{
     font-size:20px;
+
     margin-bottom:8px;
+
+    position:relative;
+
+    z-index:2;
 }
 
 .card p{
     color:#64748b;
+
     line-height:1.5;
+
     font-size:14px;
+
     max-width:90%;
+
+    position:relative;
+
+    z-index:2;
 }
+
+
+/* =====================================================
+   ARROW
+===================================================== */
 
 .arrow{
     position:absolute;
+
     right:22px;
     top:24px;
+
     width:34px;
     height:34px;
+
     border-radius:50%;
+
     display:flex;
+
     justify-content:center;
     align-items:center;
+
     background:#f1f5f9;
+
     color:#475569;
+
     font-size:18px;
+
     transition:.2s;
-    z-index:2;
+
+    z-index:3;
 }
 
 .card:hover .arrow{
     background:#4f46e5;
+
     color:white;
+
+    transform:
+        translateX(2px);
 }
 
-/* COLORS */
+
+/* =====================================================
+   COLORS
+===================================================== */
+
 .indonesia{
     --soft:#fee2e2;
 }
@@ -269,33 +510,80 @@ body{
     --soft:#ccfbf1;
 }
 
-/* EMPTY */
-.empty{
-    display:none;
-    text-align:center;
-    padding:45px 20px;
-    color:#64748b;
+.fisika{
+    --soft:#dbeafe;
 }
 
-/* FOOTER */
+
+/* =====================================================
+   EMPTY SEARCH
+===================================================== */
+
+.empty{
+    display:none;
+
+    text-align:center;
+
+    padding:45px 20px;
+
+    color:#64748b;
+
+    font-size:15px;
+}
+
+.empty-icon{
+    font-size:38px;
+
+    margin-bottom:12px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
 footer{
     text-align:center;
-    padding:25px 15px 35px;
+
+    padding:
+        25px
+        15px
+        35px;
+
     color:#94a3b8;
+
     font-size:13px;
 }
 
-/* MOBILE */
+
+/* =====================================================
+   TABLET
+===================================================== */
+
 @media(max-width:800px){
+
     .grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
+
 }
 
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
 @media(max-width:550px){
+
     .header{
-        padding:40px 18px 65px;
-        border-radius:0 0 30px 30px;
+        padding:
+            40px
+            18px
+            65px;
+
+        border-radius:
+            0 0 30px 30px;
     }
 
     .header h1{
@@ -308,11 +596,13 @@ footer{
 
     .grid{
         grid-template-columns:1fr;
+
         gap:15px;
     }
 
     .card{
         min-height:175px;
+
         padding:21px;
     }
 
@@ -323,210 +613,514 @@ footer{
     .section-head h2{
         font-size:21px;
     }
+
+    .search{
+        padding:
+            17px
+            18px
+            17px
+            50px;
+    }
+
+    .search-icon{
+        left:33px;
+        top:16px;
+    }
+
 }
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media(max-width:380px){
+
+    .header h1{
+        font-size:31px;
+    }
+
+    .logo-icon{
+        width:50px;
+        height:50px;
+        font-size:25px;
+    }
+
+    .card{
+        padding:19px;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- HEADER -->
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header class="header">
+
     <div class="header-content">
 
         <div class="logo">
-            <div class="logo-icon">📚</div>
-            <div class="logo-text">BANK SOAL SEKOLAH</div>
+
+            <div class="logo-icon">
+                📚
+            </div>
+
+            <div class="logo-text">
+                BANK SOAL SEKOLAH
+            </div>
+
         </div>
 
-        <h1>Belajar.<br>Latihan. Berhasil.</h1>
+
+        <h1>
+            Belajar.<br>
+            Latihan. Berhasil.
+        </h1>
+
 
         <p>
-            Pilih mata pelajaran yang ingin kamu pelajari
-            dan mulai mengerjakan soal.
+            Pilih mata pelajaran yang ingin kamu
+            pelajari dan mulai mengerjakan soal.
         </p>
 
     </div>
+
 </header>
 
 
-<!-- SEARCH -->
+
+<!-- =====================================================
+     SEARCH
+===================================================== -->
+
 <div class="search-wrapper">
-    <span class="search-icon">🔎</span>
+
+    <span class="search-icon">
+        🔎
+    </span>
+
     <input
         type="text"
         id="search"
         class="search"
         placeholder="Cari mata pelajaran..."
         autocomplete="off"
+        aria-label="Cari mata pelajaran"
     >
+
 </div>
 
 
-<!-- CONTENT -->
+
+<!-- =====================================================
+     CONTENT
+===================================================== -->
+
 <main class="container">
 
+
     <div class="section-head">
+
         <div>
-            <h2>📖 Mata Pelajaran</h2>
-            <p>Pilih salah satu untuk mulai latihan</p>
+
+            <h2>
+                📖 Mata Pelajaran
+            </h2>
+
+            <p>
+                Pilih salah satu untuk mulai latihan
+            </p>
+
         </div>
+
     </div>
 
 
-    <div class="grid" id="subjectGrid">
 
-        <!-- BAHASA INDONESIA -->
-        <a href="soal-bahasa-indonesia.html"
-           class="card indonesia"
-           data-name="bahasa indonesia">
-           
-            <div class="arrow">→</div>
+    <div
+        class="grid"
+        id="subjectGrid"
+    >
 
-            <div class="icon">🇮🇩</div>
 
-            <h3>Bahasa Indonesia</h3>
+        <!-- =================================================
+             BAHASA INDONESIA
+        ================================================== -->
+
+        <a
+            href="soal-bahasa-indonesia.html"
+            class="card indonesia"
+            data-name="bahasa indonesia bahasa"
+        >
+
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="icon">
+                🇮🇩
+            </div>
+
+            <h3>
+                Bahasa Indonesia
+            </h3>
 
             <p>
                 Latihan soal Bahasa Indonesia
                 sesuai materi pembelajaran.
             </p>
+
         </a>
 
 
-        <!-- PJOK -->
-        <a href="pjok.html"
-           class="card pjok"
-           data-name="pjok pendidikan jasmani olahraga kesehatan">
 
-            <div class="arrow">→</div>
+        <!-- =================================================
+             FISIKA
+        ================================================== -->
 
-            <div class="icon">🏃</div>
+        <a
+            href="fisika.html"
+            class="card fisika"
+            data-name="fisika listrik listrik statis listrik dinamis medan listrik potensial kapasitor"
+        >
 
-            <h3>PJOK</h3>
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="icon">
+                ⚡
+            </div>
+
+            <h3>
+                Fisika
+            </h3>
+
+            <p>
+                Listrik statis, medan listrik,
+                potensial listrik, listrik dinamis,
+                dan kapasitor.
+            </p>
+
+        </a>
+
+
+
+        <!-- =================================================
+             PJOK
+        ================================================== -->
+
+        <a
+            href="pjok.html"
+            class="card pjok"
+            data-name="pjok pendidikan jasmani olahraga kesehatan olahraga"
+        >
+
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="icon">
+                🏃
+            </div>
+
+            <h3>
+                PJOK
+            </h3>
 
             <p>
                 Olahraga, permainan, strategi,
                 peraturan, dan kebugaran jasmani.
             </p>
+
         </a>
 
 
-        <!-- SEJARAH -->
-        <a href="sejarah.html"
-           class="card sejarah"
-           data-name="sejarah">
 
-            <div class="arrow">→</div>
+        <!-- =================================================
+             SEJARAH
+        ================================================== -->
 
-            <div class="icon">🏛️</div>
+        <a
+            href="sejarah.html"
+            class="card sejarah"
+            data-name="sejarah sejarah indonesia"
+        >
 
-            <h3>Sejarah</h3>
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="icon">
+                🏛️
+            </div>
+
+            <h3>
+                Sejarah
+            </h3>
 
             <p>
                 Latihan soal sejarah Indonesia
                 dan berbagai peristiwa sejarah.
             </p>
+
         </a>
 
 
-        <!-- SEJARAH LANJUT -->
-        <a href="sejarah-lanjut.html"
-           class="card sejarah-lanjut"
-           data-name="sejarah lanjut sejarah lanjutan">
 
-            <div class="arrow">→</div>
+        <!-- =================================================
+             SEJARAH LANJUT
+        ================================================== -->
 
-            <div class="icon">📜</div>
+        <a
+            href="sejarah-lanjut.html"
+            class="card sejarah-lanjut"
+            data-name="sejarah lanjut sejarah lanjutan"
+        >
 
-            <h3>Sejarah Lanjut</h3>
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="icon">
+                📜
+            </div>
+
+            <h3>
+                Sejarah Lanjut
+            </h3>
 
             <p>
                 Materi dan latihan soal sejarah
                 tingkat lanjutan.
             </p>
+
         </a>
 
 
-        <!-- SENI BUDAYA -->
-        <a href="senibudaya.html"
-           class="card senibudaya"
-           data-name="seni budaya seni seni budaya">
 
-            <div class="arrow">→</div>
+        <!-- =================================================
+             SENI BUDAYA
+        ================================================== -->
 
-            <div class="icon">🎨</div>
+        <a
+            href="senibudaya.html"
+            class="card senibudaya"
+            data-name="seni budaya seni seni budaya"
+        >
 
-            <h3>Seni Budaya</h3>
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="icon">
+                🎨
+            </div>
+
+            <h3>
+                Seni Budaya
+            </h3>
 
             <p>
                 Seni rupa, musik, tari, teater,
                 dan kebudayaan.
             </p>
+
         </a>
 
 
-        <!-- PKWU -->
-        <a href="pkwu.html"
-           class="card pkwu"
-           data-name="pkwu prakarya kewirausahaan">
 
-            <div class="arrow">→</div>
+        <!-- =================================================
+             PKWU
+        ================================================== -->
 
-            <div class="icon">💡</div>
+        <a
+            href="pkwu.html"
+            class="card pkwu"
+            data-name="pkwu prakarya kewirausahaan usaha"
+        >
 
-            <h3>PKWU</h3>
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="icon">
+                💡
+            </div>
+
+            <h3>
+                PKWU
+            </h3>
 
             <p>
                 Prakarya, kewirausahaan,
                 produk, dan pengembangan usaha.
             </p>
+
         </a>
 
+
     </div>
 
 
-    <div class="empty" id="empty">
-        😕<br><br>
-        <strong>Mata pelajaran tidak ditemukan.</strong>
+
+    <!-- =====================================================
+         EMPTY SEARCH
+    ====================================================== -->
+
+    <div
+        class="empty"
+        id="empty"
+    >
+
+        <div class="empty-icon">
+            🔍
+        </div>
+
+        <strong>
+            Mata pelajaran tidak ditemukan.
+        </strong>
+
+        <p style="margin-top:7px;">
+            Coba gunakan kata pencarian lain.
+        </p>
+
     </div>
+
 
 </main>
 
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
     © 2026 • Bank Soal Sekolah
 </footer>
 
 
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
 <script>
-const search = document.getElementById("search");
-const cards = document.querySelectorAll(".card");
-const empty = document.getElementById("empty");
 
-search.addEventListener("input", function(){
+const search =
+    document.getElementById("search");
 
-    const keyword = this.value
-        .toLowerCase()
-        .trim();
+const cards =
+    document.querySelectorAll(".card");
 
-    let found = 0;
+const empty =
+    document.getElementById("empty");
 
-    cards.forEach(card => {
 
-        const name = card.dataset.name;
+/* =====================================================
+   SEARCH
+===================================================== */
 
-        if(name.includes(keyword)){
-            card.style.display = "block";
-            found++;
-        }else{
-            card.style.display = "none";
+search.addEventListener(
+    "input",
+    function(){
+
+        const keyword =
+            this.value
+                .toLowerCase()
+                .trim();
+
+        let found = 0;
+
+
+        cards.forEach(
+            card => {
+
+                const name =
+                    card.dataset.name
+                        .toLowerCase();
+
+
+                if(
+                    name.includes(keyword)
+                ){
+
+                    card.style.display =
+                        "block";
+
+                    found++;
+
+                }
+                else{
+
+                    card.style.display =
+                        "none";
+
+                }
+
+            }
+        );
+
+
+        if(found === 0){
+
+            empty.style.display =
+                "block";
+
+        }
+        else{
+
+            empty.style.display =
+                "none";
+
         }
 
-    });
+    }
+);
 
-    empty.style.display =
-        found === 0 ? "block" : "none";
-});
+
+/* =====================================================
+   ENTER DI SEARCH
+===================================================== */
+
+search.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Enter"
+        ){
+
+            const visibleCards =
+                Array.from(cards)
+                .filter(
+                    card =>
+                    card.style.display !== "none"
+                );
+
+
+            if(
+                visibleCards.length === 1
+            ){
+
+                visibleCards[0].click();
+
+            }
+
+        }
+
+    }
+);
+
 </script>
 
 </body>
