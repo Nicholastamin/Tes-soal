@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Latihan Produk Nonpangan Herbal XII</title>
+
+<title>Latihan PKWU XII — Produk Nonpangan Herbal</title>
 
 <style>
 *{
@@ -25,6 +26,7 @@ body{
   padding:20px;
 }
 
+/* HEADER */
 header{
   background:linear-gradient(135deg,#176b3a,#2e8b57);
   color:white;
@@ -53,6 +55,7 @@ header p{
   font-weight:bold;
 }
 
+/* PROGRESS */
 .progress-box{
   background:white;
   border-radius:15px;
@@ -61,7 +64,7 @@ header p{
   box-shadow:0 4px 15px rgba(0,0,0,.07);
   position:sticky;
   top:8px;
-  z-index:5;
+  z-index:10;
 }
 
 .progress-top{
@@ -81,11 +84,12 @@ header p{
 
 .progress-bar{
   height:100%;
-  width:0;
+  width:0%;
   background:#2e8b57;
-  transition:.25s;
+  transition:width .25s ease;
 }
 
+/* QUESTION CARD */
 .card{
   background:white;
   border-radius:17px;
@@ -97,10 +101,12 @@ header p{
 
 .card.correct{
   border-color:#35a854;
+  background:#fbfffc;
 }
 
 .card.wrong{
   border-color:#e14c4c;
+  background:#fffafa;
 }
 
 .question{
@@ -109,6 +115,7 @@ header p{
   margin-bottom:14px;
 }
 
+/* OPTIONS */
 .option{
   display:flex;
   gap:10px;
@@ -130,6 +137,7 @@ header p{
 .option input{
   margin-top:5px;
   accent-color:#176b3a;
+  flex-shrink:0;
 }
 
 .letter{
@@ -137,6 +145,7 @@ header p{
   min-width:22px;
 }
 
+/* HASIL PER SOAL */
 .explanation{
   display:none;
   margin-top:14px;
@@ -153,8 +162,9 @@ header p{
 
 .answer-info{
   display:none;
-  margin-top:8px;
+  margin-top:10px;
   font-size:14px;
+  line-height:1.6;
 }
 
 .card.checked .answer-info{
@@ -171,6 +181,7 @@ header p{
   font-weight:bold;
 }
 
+/* RESULT */
 .result{
   display:none;
   background:white;
@@ -192,6 +203,25 @@ header p{
   margin-bottom:5px;
 }
 
+#summary{
+  margin-top:8px;
+}
+
+#grade{
+  margin-top:8px;
+  font-weight:bold;
+}
+
+/* BUTTON */
+button{
+  border:0;
+  border-radius:12px;
+  padding:13px 20px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
 #submit{
   background:#176b3a;
   color:white;
@@ -209,16 +239,9 @@ header p{
   margin-top:15px;
 }
 
-button{
-  border:0;
-  border-radius:12px;
-  padding:13px 20px;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
+/* MOBILE */
 @media(max-width:600px){
+
   .container{
     padding:12px;
   }
@@ -230,6 +253,10 @@ button{
 
   header h1{
     font-size:22px;
+  }
+
+  header p{
+    font-size:14px;
   }
 
   .card{
@@ -248,6 +275,10 @@ button{
   .score{
     font-size:40px;
   }
+
+  .progress-box{
+    top:5px;
+  }
 }
 </style>
 </head>
@@ -257,426 +288,762 @@ button{
 <div class="container">
 
 <header>
-  <span class="badge">Kelas XII • 50 Soal Analitik</span>
-  <h1>Produk Nonpangan dari Tanaman Herbal</h1>
+  <span class="badge">PKWU XII • 50 Soal Analitik</span>
+
+  <h1>
+    Produk Nonpangan dari Tanaman Herbal
+  </h1>
+
   <p>
-    Latihan berdasarkan materi potensi tanaman herbal, produk olahan,
-    perencanaan usaha, prinsip 6M, dan fungsi kemasan.
+    Latihan berdasarkan materi potensi tanaman herbal,
+    produk olahan, perencanaan usaha, prinsip 6M,
+    dan fungsi kemasan.
   </p>
 </header>
 
 <div class="progress-box">
+
   <div class="progress-top">
     <span>Progress pengerjaan</span>
     <span id="progressText">0 / 50</span>
   </div>
 
   <div class="progress">
-    <div class="progress-bar" id="progressBar"></div>
+    <div
+      class="progress-bar"
+      id="progressBar">
+    </div>
   </div>
+
 </div>
 
 <form id="quiz"></form>
 
-<button id="submit" type="button" onclick="finishQuiz()">
+<button
+  id="submit"
+  type="button">
   SELESAI & PERIKSA JAWABAN
 </button>
 
-<div class="result" id="result">
+<div
+  class="result"
+  id="result">
+
   <h2>Hasil Latihan</h2>
 
-  <div class="score" id="score">0</div>
+  <div
+    class="score"
+    id="score">
+    0
+  </div>
 
   <p id="summary"></p>
+
   <p id="grade"></p>
 
-  <button id="reset" type="button" onclick="location.reload()">
+  <button
+    id="reset"
+    type="button">
     ULANGI LATIHAN
   </button>
+
 </div>
 
 </div>
 
 <script>
 
+/* =========================================================
+   DATA SOAL
+========================================================= */
+
 const questions = [
 
 [
 "Senyawa utama pada kunyit yang berperan sebagai antioksidan dalam perawatan kulit adalah ...",
-["Eugenol","Kurkumin","Andrografolid","Mentol","Flavonoid"],
+[
+"Eugenol",
+"Kurkumin",
+"Andrografolid",
+"Mentol",
+"Flavonoid"
+],
 1,
 "Kunyit mengandung kurkumin yang dalam materi dikaitkan dengan aktivitas antioksidan."
 ],
 
 [
 "Sebuah kelompok ingin membuat produk aromaterapi untuk membantu menciptakan suasana rileks. Mereka memiliki serai dan lavender. Pertimbangan yang paling relevan adalah ...",
-["Serai hanya dapat digunakan sebagai bahan makanan","Lavender memiliki pemanfaatan yang berkaitan dengan relaksasi","Serai tidak dapat menghasilkan minyak esensial","Lavender hanya berfungsi sebagai antiseptik","Kedua tanaman tidak memiliki nilai ekonomi"],
+[
+"Serai hanya dapat digunakan sebagai bahan makanan",
+"Lavender memiliki pemanfaatan yang berkaitan dengan relaksasi",
+"Serai tidak dapat menghasilkan minyak esensial",
+"Lavender hanya berfungsi sebagai antiseptik",
+"Kedua tanaman tidak memiliki nilai ekonomi"
+],
 1,
 "Lavender dalam materi dikaitkan dengan relaksasi dan membantu mengatasi insomnia."
 ],
 
 [
 "Sirih memiliki potensi yang relevan untuk produk perawatan karena ...",
-["Mengandung kurkumin","Kaya antioksidan dan memiliki sifat antiseptik","Hanya berfungsi sebagai pewangi","Menghasilkan jaringan kulit secara langsung","Tidak memiliki senyawa aktif"],
+[
+"Mengandung kurkumin",
+"Kaya antioksidan dan memiliki sifat antiseptik",
+"Hanya berfungsi sebagai pewangi",
+"Menghasilkan jaringan kulit secara langsung",
+"Tidak memiliki senyawa aktif"
+],
 1,
 "Materi menjelaskan bahwa sirih kaya antioksidan dan memiliki sifat antiseptik."
 ],
 
 [
 "Kelompok usaha memilih sambiloto untuk produk perawatan kulit. Alasan yang paling sesuai dengan materi adalah ...",
-["Membantu pertumbuhan sel jaringan kulit baru","Menghasilkan aroma relaksasi","Mengusir nyamuk","Menghasilkan kurkumin","Menghasilkan minyak goreng"],
+[
+"Membantu pertumbuhan sel jaringan kulit baru",
+"Menghasilkan aroma relaksasi",
+"Mengusir nyamuk",
+"Menghasilkan kurkumin",
+"Menghasilkan minyak goreng"
+],
 0,
 "Sambiloto dikaitkan dengan stimulasi dan percepatan pertumbuhan sel jaringan kulit baru."
 ],
 
 [
 "Cengkih banyak diminati industri farmasi dan kosmetik terutama karena ...",
-["Kemampuannya melawan radikal bebas","Kemampuannya menghasilkan air","Tidak memiliki senyawa aktif","Hanya digunakan sebagai pewarna","Tidak dapat diolah"],
+[
+"Kemampuannya melawan radikal bebas",
+"Kemampuannya menghasilkan air",
+"Tidak memiliki senyawa aktif",
+"Hanya digunakan sebagai pewarna",
+"Tidak dapat diolah"
+],
 0,
 "Cengkih memiliki kemampuan melawan radikal bebas dan memiliki nilai bagi industri farmasi serta kosmetik."
 ],
 
 [
 "Pasangan tanaman dan manfaat yang tepat adalah ...",
-["Kunyit — mengusir nyamuk","Lavender — membantu mengatasi insomnia","Sambiloto — menghasilkan kurkumin","Serai — menghasilkan jaringan kulit baru","Cengkih — menghasilkan minyak esensial untuk relaksasi"],
+[
+"Kunyit — mengusir nyamuk",
+"Lavender — membantu mengatasi insomnia",
+"Sambiloto — menghasilkan kurkumin",
+"Serai — menghasilkan jaringan kulit baru",
+"Cengkih — menghasilkan minyak esensial untuk relaksasi"
+],
 1,
 "Lavender dalam materi dikaitkan dengan membantu mengatasi insomnia."
 ],
 
 [
 "Suatu usaha ingin memperoleh minyak asiri dari tanaman herbal. Proses yang paling sesuai adalah ...",
-["Pembekuan","Penyulingan","Penggorengan","Pengeringan tanpa proses ekstraksi","Pembakaran"],
+[
+"Pembekuan",
+"Penyulingan",
+"Penggorengan",
+"Pengeringan tanpa proses ekstraksi",
+"Pembakaran"
+],
 1,
 "Minyak asiri atau essential oils dapat diperoleh melalui proses penyulingan."
 ],
 
 [
 "Seorang siswa ingin membuat produk yang bertujuan membantu menciptakan suasana relaksasi. Produk yang paling sesuai adalah ...",
-["Sabun lidah buaya","Lilin aromaterapi lavender","Hand sanitizer","Sabun tanpa aroma","Produk pangan"],
+[
+"Sabun lidah buaya",
+"Lilin aromaterapi lavender",
+"Hand sanitizer",
+"Sabun tanpa aroma",
+"Produk pangan"
+],
 1,
 "Lilin aromaterapi lavender sesuai dengan pemanfaatan lavender untuk relaksasi."
 ],
 
 [
 "Lidah buaya dapat digunakan sebagai bahan dasar sabun yang ditujukan terutama untuk ...",
-["Kulit kering","Mengusir nyamuk","Menghasilkan minyak asiri","Mengatasi insomnia","Menghasilkan cengkih"],
+[
+"Kulit kering",
+"Mengusir nyamuk",
+"Menghasilkan minyak asiri",
+"Mengatasi insomnia",
+"Menghasilkan cengkih"
+],
 0,
 "Contoh dalam materi menyebutkan sabun lidah buaya untuk kulit kering."
 ],
 
 [
 "Contoh produk nonpangan yang dapat dibuat dengan bahan dasar lidah buaya dan sirih adalah ...",
-["Minuman herbal","Hand sanitizer","Tepung","Minyak goreng","Makanan ringan"],
+[
+"Minuman herbal",
+"Hand sanitizer",
+"Tepung",
+"Minyak goreng",
+"Makanan ringan"
+],
 1,
 "Materi memberikan contoh hand sanitizer dengan bahan dasar lidah buaya dan sirih."
 ],
 
 [
 "Sebelum membangun usaha produk herbal, langkah yang paling tepat adalah ...",
-["Langsung memproduksi dalam jumlah besar","Menyusun deskripsi usaha dan visi","Membeli semua mesin","Mengabaikan pasar","Menentukan keuntungan tanpa menghitung biaya"],
+[
+"Langsung memproduksi dalam jumlah besar",
+"Menyusun deskripsi usaha dan visi",
+"Membeli semua mesin",
+"Mengabaikan pasar",
+"Menentukan keuntungan tanpa menghitung biaya"
+],
 1,
 "Perencanaan usaha diawali dengan penyusunan deskripsi usaha dan visi."
 ],
 
 [
 "Seorang pengusaha ingin mengetahui apakah usaha herbalnya berpotensi memberikan keuntungan. Data yang perlu dianalisis adalah ...",
-["Biaya produksi dan proyeksi keuntungan","Warna tanaman","Ukuran daun","Jumlah desain label","Nama tanaman saja"],
+[
+"Biaya produksi dan proyeksi keuntungan",
+"Warna tanaman",
+"Ukuran daun",
+"Jumlah desain label",
+"Nama tanaman saja"
+],
 0,
 "Biaya produksi dan proyeksi keuntungan diperlukan untuk menilai aspek keuangan usaha."
 ],
 
 [
 "Dalam prinsip 6M, Material berarti ...",
-["Tenaga kerja","Bahan baku","Peralatan","Modal","Target pasar"],
+[
+"Tenaga kerja",
+"Bahan baku",
+"Peralatan",
+"Modal",
+"Target pasar"
+],
 1,
 "Material berarti bahan baku yang digunakan dalam usaha."
 ],
 
 [
 "Sebuah usaha memiliki tenaga kerja, bahan, mesin, modal, dan target pasar, tetapi belum memiliki prosedur produksi yang jelas. Unsur 6M yang belum terpenuhi adalah ...",
-["Man","Material","Machine","Method","Market"],
+[
+"Man",
+"Material",
+"Machine",
+"Method",
+"Market"
+],
 3,
 "Method berarti metode atau cara kerja yang digunakan dalam proses usaha."
 ],
 
 [
 "Perhatikan pasangan berikut: Man—sumber daya manusia, Material—bahan baku, Machine—peralatan, Money—modal, Market—target pasar. Kesimpulan yang tepat adalah ...",
-["Semua pasangan benar","Hanya Man yang benar","Hanya Material yang benar","Money berarti target pasar","Market berarti modal"],
+[
+"Semua pasangan benar",
+"Hanya Man yang benar",
+"Hanya Material yang benar",
+"Money berarti target pasar",
+"Market berarti modal"
+],
 0,
 "Kelima pasangan tersebut sesuai dengan prinsip 6M."
 ],
 
 [
 "Sebuah usaha memiliki target pasar yang jelas tetapi modalnya tidak cukup untuk membeli bahan. Unsur yang menjadi kendala utama adalah ...",
-["Man","Material","Machine","Money","Market"],
+[
+"Man",
+"Material",
+"Machine",
+"Money",
+"Market"
+],
 3,
 "Money berarti modal atau dana yang digunakan untuk menjalankan usaha."
 ],
 
 [
 "Sebuah usaha memiliki bahan baku dan modal, tetapi tidak mempunyai tenaga kerja yang mampu menjalankan proses produksi. Unsur yang perlu diperbaiki adalah ...",
-["Man","Material","Machine","Money","Market"],
+[
+"Man",
+"Material",
+"Machine",
+"Money",
+"Market"
+],
 0,
 "Man mengacu pada sumber daya manusia yang menjalankan usaha."
 ],
 
 [
 "Suatu produk sering menghasilkan kualitas yang berbeda-beda karena prosedur produksi tidak konsisten. Unsur yang perlu dievaluasi terutama adalah ...",
-["Method","Market","Money","Material saja","Kemasan"],
+[
+"Method",
+"Market",
+"Money",
+"Material saja",
+"Kemasan"
+],
 0,
 "Method berkaitan dengan cara kerja atau prosedur produksi."
 ],
 
 [
 "Sebuah usaha membeli mesin mahal, tetapi ternyata target konsumennya sangat sedikit. Kesalahan perencanaan terutama berkaitan dengan kurangnya analisis ...",
-["Man","Material","Market","Method","Kemasan"],
+[
+"Man",
+"Material",
+"Market",
+"Method",
+"Kemasan"
+],
 2,
 "Market harus dianalisis agar investasi dan produksi sesuai dengan calon konsumen."
 ],
 
 [
 "Jika bahan baku sulit diperoleh secara konsisten, dampak yang paling mungkin terjadi adalah ...",
-["Produksi dapat terganggu","Keuntungan pasti meningkat","Kemasan otomatis lebih menarik","Pasar otomatis bertambah","Promosi tidak diperlukan"],
+[
+"Produksi dapat terganggu",
+"Keuntungan pasti meningkat",
+"Kemasan otomatis lebih menarik",
+"Pasar otomatis bertambah",
+"Promosi tidak diperlukan"
+],
 0,
 "Ketersediaan bahan baku yang tidak stabil dapat menghambat proses produksi."
 ],
 
 [
 "Sebuah kelompok ingin mengetahui apakah harga jual produknya dapat menghasilkan keuntungan. Hal yang paling tepat dilakukan adalah ...",
-["Membandingkan biaya produksi dengan proyeksi pendapatan","Mengganti nama produk","Mengubah warna tanaman","Menghapus kemasan","Menambah jumlah logo"],
+[
+"Membandingkan biaya produksi dengan proyeksi pendapatan",
+"Mengganti nama produk",
+"Mengubah warna tanaman",
+"Menghapus kemasan",
+"Menambah jumlah logo"
+],
 0,
 "Keuntungan perlu dianalisis melalui biaya produksi dan proyeksi pendapatan."
 ],
 
 [
 "Jika biaya produksi meningkat sedangkan harga jual tetap, pengusaha sebaiknya ...",
-["Mengevaluasi kembali proyeksi keuntungan","Mengabaikan biaya","Mengurangi informasi kemasan","Menghapus target pasar","Menghentikan promosi secara otomatis"],
+[
+"Mengevaluasi kembali proyeksi keuntungan",
+"Mengabaikan biaya",
+"Mengurangi informasi kemasan",
+"Menghapus target pasar",
+"Menghentikan promosi secara otomatis"
+],
 0,
 "Kenaikan biaya produksi akan memengaruhi proyeksi keuntungan sehingga perlu dianalisis kembali."
 ],
 
 [
 "Sebuah usaha membuat produk herbal tanpa menentukan visi. Dampak yang paling mungkin adalah ...",
-["Arah pengembangan usaha menjadi kurang jelas","Produk otomatis lebih murah","Kualitas pasti meningkat","Pasar otomatis terbentuk","Kemasan tidak diperlukan"],
+[
+"Arah pengembangan usaha menjadi kurang jelas",
+"Produk otomatis lebih murah",
+"Kualitas pasti meningkat",
+"Pasar otomatis terbentuk",
+"Kemasan tidak diperlukan"
+],
 0,
 "Visi membantu menentukan arah dan tujuan pengembangan usaha."
 ],
 
 [
 "Perhatikan kondisi berikut: tenaga kerja tersedia, bahan baku tersedia, modal tersedia, target pasar tersedia, peralatan tersedia, tetapi cara produksi belum ditentukan. Unsur yang belum terpenuhi adalah ...",
-["Man","Material","Machine","Method","Market"],
+[
+"Man",
+"Material",
+"Machine",
+"Method",
+"Market"
+],
 3,
 "Semua unsur tersedia kecuali Method, yaitu cara kerja atau prosedur produksi."
 ],
 
 [
 "Sebuah usaha mempunyai metode produksi yang baik tetapi tidak mempunyai alat yang memadai. Unsur yang perlu diperbaiki adalah ...",
-["Machine","Man","Market","Money","Material"],
+[
+"Machine",
+"Man",
+"Market",
+"Money",
+"Material"
+],
 0,
 "Machine berarti peralatan atau mesin yang digunakan dalam usaha."
 ],
 
 [
 "Jika sebuah usaha memiliki semua unsur 6M kecuali target konsumen, unsur yang belum ditentukan adalah ...",
-["Market","Method","Machine","Material","Man"],
+[
+"Market",
+"Method",
+"Machine",
+"Material",
+"Man"
+],
 0,
 "Market berarti pasar atau target konsumen."
 ],
 
 [
 "Hubungan Material dan Method yang paling tepat adalah ...",
-["Bahan baku dan cara pengolahannya perlu disesuaikan","Material hanya berkaitan dengan promosi","Method berarti modal","Material tidak berhubungan dengan produksi","Method hanya menentukan nama merek"],
+[
+"Bahan baku dan cara pengolahannya perlu disesuaikan",
+"Material hanya berkaitan dengan promosi",
+"Method berarti modal",
+"Material tidak berhubungan dengan produksi",
+"Method hanya menentukan nama merek"
+],
 0,
 "Bahan baku yang digunakan harus sesuai dengan metode pengolahan agar produksi dapat berjalan dengan baik."
 ],
 
 [
 "Sebuah usaha memiliki modal besar tetapi tidak memiliki tenaga kerja yang mampu mengoperasikan peralatan. Kesimpulan yang tepat adalah ...",
-["Money saja tidak cukup; Man dan Machine harus saling mendukung","Modal dapat menggantikan tenaga kerja","Market tidak diperlukan","Material tidak diperlukan","Method tidak diperlukan"],
+[
+"Money saja tidak cukup; Man dan Machine harus saling mendukung",
+"Modal dapat menggantikan tenaga kerja",
+"Market tidak diperlukan",
+"Material tidak diperlukan",
+"Method tidak diperlukan"
+],
 0,
 "Keberhasilan usaha memerlukan keterkaitan antarunsur 6M, bukan hanya modal."
 ],
 
 [
 "Sebuah sabun herbal berkualitas baik tetapi kemasannya tidak memiliki nama merek. Fungsi kemasan yang belum terpenuhi adalah ...",
-["Identitas merek","Perlindungan","Distribusi","Informasi","Jaminan kualitas"],
+[
+"Identitas merek",
+"Perlindungan",
+"Distribusi",
+"Informasi",
+"Jaminan kualitas"
+],
 0,
 "Nama merek berfungsi sebagai identitas atau ciri khas produk."
 ],
 
 [
 "Produk herbal akan dikirim ke berbagai daerah. Kemasan perlu dirancang agar mudah dibawa dan disimpan. Hal tersebut menunjukkan fungsi kemasan sebagai ...",
-["Kemudahan distribusi","Identitas merek","Pemberi informasi saja","Penentu bahan baku","Penentu modal"],
+[
+"Kemudahan distribusi",
+"Identitas merek",
+"Pemberi informasi saja",
+"Penentu bahan baku",
+"Penentu modal"
+],
 0,
 "Salah satu fungsi kemasan adalah memudahkan distribusi, membawa, dan menyimpan produk."
 ],
 
 [
 "Sebuah produk mudah rusak akibat kondisi lingkungan tertentu. Fungsi kemasan yang paling relevan adalah ...",
-["Pelindung produk","Identitas merek","Media promosi saja","Target pasar","Visi usaha"],
+[
+"Pelindung produk",
+"Identitas merek",
+"Media promosi saja",
+"Target pasar",
+"Visi usaha"
+],
 0,
 "Kemasan berfungsi melindungi produk dari suhu, kelembapan, dan kerusakan fisik."
 ],
 
 [
 "Dua produk memiliki kualitas sama, tetapi salah satunya memiliki kemasan lebih menarik dan informatif. Keunggulan kemasan tersebut terutama berkaitan dengan ...",
-["Media promosi dan pemberi informasi","Pengganti bahan baku","Pengganti tenaga kerja","Pengganti modal","Penentu metode produksi"],
+[
+"Media promosi dan pemberi informasi",
+"Pengganti bahan baku",
+"Pengganti tenaga kerja",
+"Pengganti modal",
+"Penentu metode produksi"
+],
 0,
 "Kemasan dapat menarik perhatian konsumen sekaligus menyampaikan informasi produk."
 ],
 
 [
 "Informasi tanggal kedaluwarsa pada kemasan terutama membantu konsumen ...",
-["Mengetahui batas waktu penggunaan produk","Menentukan jumlah tenaga kerja","Menentukan modal","Mengetahui proses penyulingan","Menghitung biaya produksi"],
+[
+"Mengetahui batas waktu penggunaan produk",
+"Menentukan jumlah tenaga kerja",
+"Menentukan modal",
+"Mengetahui proses penyulingan",
+"Menghitung biaya produksi"
+],
 0,
 "Tanggal kedaluwarsa merupakan informasi penting bagi konsumen mengenai batas penggunaan produk."
 ],
 
 [
 "Sebuah produk herbal tidak mencantumkan bahan yang digunakan pada kemasannya. Kekurangan tersebut berkaitan dengan fungsi kemasan sebagai ...",
-["Pemberi informasi","Distribusi","Identitas merek","Pelindung fisik","Media produksi"],
+[
+"Pemberi informasi",
+"Distribusi",
+"Identitas merek",
+"Pelindung fisik",
+"Media produksi"
+],
 0,
 "Komposisi atau bahan produk merupakan bagian dari informasi yang perlu disampaikan melalui kemasan."
 ],
 
 [
 "Pernyataan 'kemasan adalah tenaga penjual diam' paling tepat berarti ...",
-["Kemasan dapat menyampaikan identitas, informasi, dan daya tarik produk","Kemasan dapat menggantikan seluruh tenaga penjual","Kemasan menentukan bahan baku","Kemasan menggantikan modal","Kemasan melakukan proses produksi"],
+[
+"Kemasan dapat menyampaikan identitas, informasi, dan daya tarik produk",
+"Kemasan dapat menggantikan seluruh tenaga penjual",
+"Kemasan menentukan bahan baku",
+"Kemasan menggantikan modal",
+"Kemasan melakukan proses produksi"
+],
 0,
 "Kemasan membantu menjual produk melalui tampilan, identitas, informasi, dan daya tarik."
 ],
 
 [
 "Sebuah produk herbal sering rusak saat pengiriman. Perbaikan kemasan yang paling tepat adalah ...",
-["Meningkatkan kemampuan perlindungan dan mendukung distribusi","Mengurangi informasi","Menghilangkan identitas merek","Mengurangi kualitas bahan","Menghilangkan kemasan"],
+[
+"Meningkatkan kemampuan perlindungan dan mendukung distribusi",
+"Mengurangi informasi",
+"Menghilangkan identitas merek",
+"Mengurangi kualitas bahan",
+"Menghilangkan kemasan"
+],
 0,
 "Kemasan harus mampu melindungi produk sekaligus mendukung proses distribusi."
 ],
 
 [
 "Sebuah usaha mengganti kemasan lama dengan desain yang mencerminkan nama dan ciri khas produknya. Fungsi yang sedang diperkuat adalah ...",
-["Identitas merek","Material","Method","Money","Man"],
+[
+"Identitas merek",
+"Material",
+"Method",
+"Money",
+"Man"
+],
 0,
 "Desain yang mencerminkan ciri khas produk memperkuat identitas merek."
 ],
 
 [
 "Sebuah kemasan memiliki desain menarik tetapi tidak memberikan informasi isi dan kedaluwarsa. Fungsi yang belum terpenuhi adalah ...",
-["Pemberi informasi","Identitas merek","Promosi","Distribusi","Pelindung"],
+[
+"Pemberi informasi",
+"Identitas merek",
+"Promosi",
+"Distribusi",
+"Pelindung"
+],
 0,
 "Kemasan harus memberikan informasi yang jelas, termasuk bahan dan tanggal kedaluwarsa."
 ],
 
 [
 "Kelompok A memiliki lavender, modal terbatas, dan target pasar remaja yang menyukai aromaterapi. Mereka memilih membuat lilin aromaterapi lavender. Alasan yang paling logis adalah ...",
-["Bahan, karakteristik pemanfaatan, modal, dan target pasar dipertimbangkan","Hanya warna lavender yang dipertimbangkan","Target pasar diabaikan","Mesin dibeli terlebih dahulu","Bahan tidak dipertimbangkan"],
+[
+"Bahan, karakteristik pemanfaatan, modal, dan target pasar dipertimbangkan",
+"Hanya warna lavender yang dipertimbangkan",
+"Target pasar diabaikan",
+"Mesin dibeli terlebih dahulu",
+"Bahan tidak dipertimbangkan"
+],
 0,
 "Perencanaan usaha yang baik mempertimbangkan bahan, karakteristik produk, kemampuan modal, dan target pasar."
 ],
 
 [
 "Kelompok B membuat sabun lidah buaya untuk kulit kering tetapi memasarkan produknya kepada konsumen yang tidak membutuhkan produk tersebut. Hal yang perlu dievaluasi adalah ...",
-["Market dan strategi pemasaran","Material saja","Machine saja","Method saja","Money saja"],
+[
+"Market dan strategi pemasaran",
+"Material saja",
+"Machine saja",
+"Method saja",
+"Money saja"
+],
 0,
 "Target pasar dan strategi pemasaran harus sesuai dengan karakteristik produk."
 ],
 
 [
 "Hand sanitizer berbahan lidah buaya dan sirih memiliki kemasan tanpa informasi bahan dan tanggal kedaluwarsa. Perbaikan yang paling tepat adalah ...",
-["Menambahkan informasi bahan dan tanggal kedaluwarsa","Menghilangkan nama merek","Mengurangi perlindungan kemasan","Menghapus informasi produk","Mengganti bahan tanpa alasan"],
+[
+"Menambahkan informasi bahan dan tanggal kedaluwarsa",
+"Menghilangkan nama merek",
+"Mengurangi perlindungan kemasan",
+"Menghapus informasi produk",
+"Mengganti bahan tanpa alasan"
+],
 0,
 "Informasi bahan dan tanggal kedaluwarsa merupakan bagian penting dari fungsi informasi kemasan."
 ],
 
 [
 "Sebuah kelompok ingin membuat minyak herbal, tetapi bahan bakunya tidak tersedia secara stabil. Berdasarkan 6M, tindakan yang paling tepat adalah ...",
-["Mengevaluasi ketersediaan Material sebelum meningkatkan produksi","Mengabaikan bahan baku","Membeli kemasan sebanyak mungkin","Meningkatkan promosi tanpa bahan","Menambah target pasar terlebih dahulu"],
+[
+"Mengevaluasi ketersediaan Material sebelum meningkatkan produksi",
+"Mengabaikan bahan baku",
+"Membeli kemasan sebanyak mungkin",
+"Meningkatkan promosi tanpa bahan",
+"Menambah target pasar terlebih dahulu"
+],
 0,
 "Material harus tersedia secara memadai dan konsisten agar produksi dapat berjalan."
 ],
 
 [
 "Produk herbal memiliki kualitas baik dan kemasan menarik, tetapi harga jual tidak menghasilkan keuntungan. Bagian perencanaan yang perlu dikaji adalah ...",
-["Biaya produksi dan proyeksi keuntungan","Warna tanaman","Nama tanaman","Identitas merek saja","Jumlah tanaman"],
+[
+"Biaya produksi dan proyeksi keuntungan",
+"Warna tanaman",
+"Nama tanaman",
+"Identitas merek saja",
+"Jumlah tanaman"
+],
 0,
 "Ketidaksesuaian antara biaya produksi dan harga jual harus dianalisis melalui proyeksi keuntungan."
 ],
 
 [
 "Sebuah kelompok membeli mesin produksi sebelum mengetahui jumlah permintaan pasar. Berdasarkan 6M, hubungan yang belum dianalisis dengan baik adalah ...",
-["Machine dan Market","Man dan Material","Method dan Man","Material dan Money","Man dan Market"],
+[
+"Machine dan Market",
+"Man dan Material",
+"Method dan Man",
+"Material dan Money",
+"Man dan Market"
+],
 0,
 "Pembelian mesin seharusnya mempertimbangkan kebutuhan produksi dan kondisi pasar."
 ],
 
 [
 "Sebuah kelompok ingin membuat lilin aromaterapi lavender. Mereka telah menentukan target konsumen, menghitung modal, menentukan bahan dan peralatan, serta menyusun prosedur produksi. Hal tersebut menunjukkan penerapan ...",
-["Sebagian besar unsur 6M","Fungsi kemasan saja","Analisis bahan saja","Promosi saja","Identitas merek saja"],
+[
+"Sebagian besar unsur 6M",
+"Fungsi kemasan saja",
+"Analisis bahan saja",
+"Promosi saja",
+"Identitas merek saja"
+],
 0,
 "Tenaga kerja, bahan, mesin, modal, metode, dan pasar merupakan unsur yang saling berkaitan dalam 6M."
 ],
 
 [
 "Produk herbal memiliki bahan sesuai, proses produksi baik, dan kemasan menarik, tetapi sulit ditemukan konsumen karena distribusinya buruk. Fungsi kemasan yang perlu diperhatikan adalah ...",
-["Kemudahan distribusi","Identitas merek","Pemberi informasi","Media promosi","Jaminan kualitas"],
+[
+"Kemudahan distribusi",
+"Identitas merek",
+"Pemberi informasi",
+"Media promosi",
+"Jaminan kualitas"
+],
 0,
 "Kemasan juga berfungsi memudahkan produk dibawa, disimpan, dan didistribusikan."
 ],
 
 [
 "Perusahaan memilih antara kunyit dan cengkih untuk produk yang menonjolkan aktivitas antioksidan. Berdasarkan materi, analisis yang tepat adalah ...",
-["Keduanya memiliki potensi yang berkaitan dengan antioksidan","Hanya kunyit yang memiliki manfaat antioksidan","Hanya cengkih dapat digunakan dalam kosmetik","Keduanya hanya digunakan untuk pangan","Keduanya tidak memiliki nilai ekonomi"],
+[
+"Keduanya memiliki potensi yang berkaitan dengan antioksidan",
+"Hanya kunyit yang memiliki manfaat antioksidan",
+"Hanya cengkih dapat digunakan dalam kosmetik",
+"Keduanya hanya digunakan untuk pangan",
+"Keduanya tidak memiliki nilai ekonomi"
+],
 0,
 "Kunyit dikaitkan dengan kurkumin sebagai antioksidan, sedangkan cengkih memiliki kemampuan melawan radikal bebas."
 ],
 
 [
 "Kelompok ingin mengembangkan usaha produk nonpangan herbal dari awal. Urutan tindakan yang paling logis adalah: (1) mengidentifikasi potensi bahan dan produk, (2) menentukan target pasar dan strategi pemasaran, (3) menghitung biaya dan proyeksi keuntungan, (4) menentukan kebutuhan 6M, (5) merancang kemasan sesuai fungsi produk.",
-["1 → 2 → 3 → 4 → 5","5 → 4 → 3 → 2 → 1","2 → 5 → 1 → 4 → 3","3 → 1 → 5 → 2 → 4","4 → 3 → 5 → 1 → 2"],
+[
+"1 → 2 → 3 → 4 → 5",
+"5 → 4 → 3 → 2 → 1",
+"2 → 5 → 1 → 4 → 3",
+"3 → 1 → 5 → 2 → 4",
+"4 → 3 → 5 → 1 → 2"
+],
 0,
 "Urutan tersebut dimulai dari identifikasi potensi, pasar, aspek keuangan, kebutuhan 6M, kemudian desain kemasan."
 ]
 
 ];
 
+/* =========================================================
+   KONFIGURASI
+========================================================= */
+
 const letters = ["A","B","C","D","E"];
+
+/* =========================================================
+   RENDER SOAL
+========================================================= */
 
 function renderQuiz(){
 
   const quiz = document.getElementById("quiz");
 
-  questions.forEach((q,index)=>{
+  quiz.innerHTML = "";
+
+  questions.forEach(function(q,index){
 
     const card = document.createElement("div");
+
     card.className = "card";
     card.id = "q" + index;
 
-    let options = "";
+    const questionNumber = index + 1;
 
-    q[1].forEach((option,optIndex)=>{
+    let optionsHTML = "";
 
-      options += `
+    q[1].forEach(function(option,optIndex){
+
+      optionsHTML += `
         <label class="option">
+
           <input
             type="radio"
             name="q${index}"
             value="${optIndex}"
-            onchange="updateProgress()"
           >
-          <span class="letter">${letters[optIndex]}.</span>
-          <span>${option}</span>
+
+          <span class="letter">
+            ${letters[optIndex]}.
+          </span>
+
+          <span>
+            ${option}
+          </span>
+
         </label>
       `;
 
     });
 
     card.innerHTML = `
+
       <div class="question">
-        ${index+1}. ${q[0]}
+        ${questionNumber}. ${q[0]}
       </div>
 
       <div class="options">
-        ${options}
+        ${optionsHTML}
       </div>
 
       <div class="answer-info"></div>
@@ -685,72 +1052,129 @@ function renderQuiz(){
         <strong>Pembahasan:</strong><br>
         ${q[3]}
       </div>
+
     `;
 
     quiz.appendChild(card);
 
   });
 
+  /*
+     Pasang event listener setelah soal dibuat.
+     Ini lebih aman daripada mengandalkan onchange
+     di dalam HTML.
+  */
+
+  const radios = document.querySelectorAll(
+    '#quiz input[type="radio"]'
+  );
+
+  radios.forEach(function(radio){
+
+    radio.addEventListener("change",updateProgress);
+
+  });
+
 }
+
+/* =========================================================
+   PROGRESS
+========================================================= */
 
 function updateProgress(){
 
   let answered = 0;
 
-  questions.forEach((q,index)=>{
+  questions.forEach(function(q,index){
+
     const selected = document.querySelector(
       `input[name="q${index}"]:checked`
     );
 
-    if(selected) answered++;
+    if(selected){
+      answered++;
+    }
+
   });
 
+  const total = questions.length;
+
+  const percent =
+    total === 0
+      ? 0
+      : (answered / total) * 100;
+
   document.getElementById("progressText").textContent =
-    answered + " / " + questions.length;
+    answered + " / " + total;
 
   document.getElementById("progressBar").style.width =
-    (answered / questions.length * 100) + "%";
+    percent + "%";
 }
+
+/* =========================================================
+   PERIKSA JAWABAN
+========================================================= */
 
 function finishQuiz(){
 
   let score = 0;
   let answered = 0;
 
-  questions.forEach((q,index)=>{
+  questions.forEach(function(q,index){
 
-    const card = document.getElementById("q"+index);
+    const card =
+      document.getElementById("q" + index);
 
-    const selected = document.querySelector(
-      `input[name="q${index}"]:checked`
+    const selected =
+      document.querySelector(
+        `input[name="q${index}"]:checked`
+      );
+
+    card.classList.remove(
+      "correct",
+      "wrong"
     );
 
-    card.classList.remove("correct","wrong");
     card.classList.add("checked");
+
+    const answerInfo =
+      card.querySelector(".answer-info");
 
     if(selected){
 
       answered++;
 
-      const answer = Number(selected.value);
+      const userAnswer =
+        Number(selected.value);
 
-      if(answer === q[2]){
+      if(userAnswer === q[2]){
 
         score++;
 
         card.classList.add("correct");
 
-        card.querySelector(".answer-info").innerHTML =
-          `<span class="correct-text">✓ Jawaban kamu benar.</span>`;
+        answerInfo.innerHTML = `
+          <span class="correct-text">
+            ✓ Jawaban kamu benar.
+          </span>
+        `;
 
       }else{
 
         card.classList.add("wrong");
 
-        card.querySelector(".answer-info").innerHTML =
-          `<span class="wrong-text">✗ Jawaban kamu salah.</span>
-           <br>Jawaban benar:
-           <strong>${letters[q[2]}. ${q[1][q[2]]}</strong>`;
+        answerInfo.innerHTML = `
+          <span class="wrong-text">
+            ✗ Jawaban kamu salah.
+          </span>
+
+          <br>
+
+          Jawaban benar:
+          <strong>
+            ${letters[q[2]]}. ${q[1][q[2]]}
+          </strong>
+        `;
 
       }
 
@@ -758,51 +1182,114 @@ function finishQuiz(){
 
       card.classList.add("wrong");
 
-      card.querySelector(".answer-info").innerHTML =
-        `<span class="wrong-text">✗ Belum dijawab.</span>
-         <br>Jawaban benar:
-         <strong>${letters[q[2]}. ${q[1][q[2]]}</strong>`;
+      answerInfo.innerHTML = `
+        <span class="wrong-text">
+          ✗ Belum dijawab.
+        </span>
+
+        <br>
+
+        Jawaban benar:
+        <strong>
+          ${letters[q[2]]}. ${q[1][q[2]]}
+        </strong>
+      `;
 
     }
 
   });
 
-  const nilai = Math.round((score / questions.length) * 100);
+  const total =
+    questions.length;
+
+  const nilai =
+    Math.round((score / total) * 100);
 
   document.getElementById("score").textContent =
     nilai;
 
   document.getElementById("summary").textContent =
-    `Benar ${score} dari ${questions.length} soal • Dijawab ${answered} soal`;
+    `Benar ${score} dari ${total} soal • Dijawab ${answered} soal`;
 
   let grade = "";
 
   if(nilai >= 90){
-    grade = "Sangat baik! Pemahaman materi kamu sangat kuat.";
+
+    grade =
+      "Sangat baik! Pemahaman materi kamu sangat kuat.";
+
   }else if(nilai >= 80){
-    grade = "Baik! Pemahaman materi kamu sudah bagus.";
+
+    grade =
+      "Baik! Pemahaman materi kamu sudah bagus.";
+
   }else if(nilai >= 70){
-    grade = "Cukup baik. Masih ada beberapa konsep yang perlu dipelajari.";
+
+    grade =
+      "Cukup baik. Masih ada beberapa konsep yang perlu dipelajari.";
+
   }else if(nilai >= 60){
-    grade = "Perlu latihan lagi, terutama pada soal analisis kasus.";
+
+    grade =
+      "Perlu latihan lagi, terutama pada soal analisis kasus.";
+
   }else{
-    grade = "Pelajari kembali materi kemudian coba ulangi latihan.";
+
+    grade =
+      "Pelajari kembali materi kemudian coba ulangi latihan.";
+
   }
 
-  document.getElementById("grade").textContent = grade;
+  document.getElementById("grade").textContent =
+    grade;
 
-  document.getElementById("result").style.display = "block";
+  const result =
+    document.getElementById("result");
 
-  document.getElementById("result").scrollIntoView({
-    behavior:"smooth"
-  });
+  result.style.display = "block";
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+  /*
+     Jangan langsung window.scrollTo(0,0).
+     Biarkan browser membawa pengguna
+     ke hasil nilai.
+  */
+
+  setTimeout(function(){
+
+    result.scrollIntoView({
+      behavior:"smooth",
+      block:"center"
+    });
+
+  },100);
 
 }
+
+/* =========================================================
+   TOMBOL
+========================================================= */
+
+document
+  .getElementById("submit")
+  .addEventListener(
+    "click",
+    finishQuiz
+  );
+
+document
+  .getElementById("reset")
+  .addEventListener(
+    "click",
+    function(){
+
+      location.reload();
+
+    }
+  );
+
+/* =========================================================
+   MULAI
+========================================================= */
 
 renderQuiz();
 updateProgress();
