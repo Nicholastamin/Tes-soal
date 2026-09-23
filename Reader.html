@@ -63,6 +63,10 @@ header p{
     box-shadow:0 5px 20px rgba(0,0,0,.07);
 }
 
+.card h2{
+    margin:0 0 15px;
+}
+
 /* =========================
    INFO
 ========================= */
@@ -247,6 +251,11 @@ button:disabled{
     color:white;
 }
 
+.btn-purple{
+    background:#7c3aed;
+    color:white;
+}
+
 /* =========================
    PROGRESS
 ========================= */
@@ -332,6 +341,121 @@ textarea{
 textarea:focus{
     border-color:#2563eb;
     box-shadow:0 0 0 3px rgba(37,99,235,.1);
+}
+
+/* =========================
+   FITUR BAGI TEKS
+========================= */
+
+.split-textarea{
+    min-height:300px;
+    background:#fbfdff;
+}
+
+.split-controls{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:12px;
+}
+
+.split-controls select{
+    padding:12px 14px;
+    border:1px solid #d1d5db;
+    border-radius:11px;
+    background:white;
+    color:#1f2937;
+    font-size:14px;
+    font-weight:bold;
+    outline:none;
+    cursor:pointer;
+}
+
+.split-controls select:focus{
+    border-color:#2563eb;
+}
+
+.split-info{
+    margin-top:15px;
+    background:#eff6ff;
+    border:1px solid #bfdbfe;
+    border-radius:12px;
+    padding:13px 15px;
+    color:#1e40af;
+    line-height:1.6;
+}
+
+.split-results{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:15px;
+    margin-top:18px;
+}
+
+.split-part{
+    border:1px solid #dbeafe;
+    border-radius:15px;
+    background:#f8fbff;
+    overflow:hidden;
+}
+
+.split-part-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:13px 15px;
+    background:#eff6ff;
+    border-bottom:1px solid #dbeafe;
+}
+
+.split-part-title{
+    font-weight:bold;
+    color:#1d4ed8;
+}
+
+.split-part-meta{
+    font-size:12px;
+    color:#6b7280;
+    margin-top:3px;
+}
+
+.split-part-actions{
+    display:flex;
+    gap:5px;
+}
+
+.split-part-actions button{
+    padding:8px 10px;
+    font-size:12px;
+}
+
+.split-part textarea{
+    min-height:300px;
+    border:0;
+    border-radius:0;
+    background:white;
+    resize:vertical;
+}
+
+.split-part textarea:focus{
+    box-shadow:none;
+}
+
+.split-bottom-controls{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:15px;
+}
+
+.split-empty{
+    color:#9ca3af;
+    text-align:center;
+    padding:25px;
+    background:#f9fafb;
+    border-radius:12px;
+    border:1px dashed #d1d5db;
 }
 
 /* =========================
@@ -456,6 +580,14 @@ footer{
    MOBILE
 ========================= */
 
+@media(max-width:800px){
+
+    .split-results{
+        grid-template-columns:1fr;
+    }
+
+}
+
 @media(max-width:650px){
 
     header{
@@ -508,6 +640,37 @@ footer{
         width:100%;
         margin-bottom:7px;
     }
+
+    .split-controls{
+        display:block;
+    }
+
+    .split-controls select{
+        width:100%;
+        margin-bottom:7px;
+    }
+
+    .split-controls button{
+        width:100%;
+    }
+
+    .split-bottom-controls{
+        display:block;
+    }
+
+    .split-part-header{
+        align-items:flex-start;
+    }
+
+    .split-part-actions{
+        flex-wrap:wrap;
+    }
+
+    .split-part-actions button{
+        width:auto;
+        margin-bottom:0;
+    }
+
 }
 </style>
 </head>
@@ -652,6 +815,142 @@ footer{
             File <b>.PPT</b> lama belum didukung secara langsung oleh browser.
             Jika mempunyai file .PPT, simpan terlebih dahulu sebagai
             <b>.PPTX</b> menggunakan PowerPoint atau aplikasi presentasi lainnya.
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         FITUR BARU:
+         TEMPEL DAN BAGI TEKS
+    ========================== -->
+
+    <div class="card">
+
+        <h2>✂️ Bagi Teks Langsung</h2>
+
+        <div class="info">
+
+            <b>📝 Tempel teks panjang langsung di sini</b><br>
+
+            Fitur ini tidak membutuhkan file.
+            Tempel teks apa saja, lalu pilih ingin membaginya menjadi
+            <b>2 sampai 10 bagian</b>. Teks akan dibagi berdasarkan jumlah kata
+            dan sebisa mungkin mempertahankan baris serta paragraf.
+
+        </div>
+
+
+        <textarea
+            id="manualText"
+            class="split-textarea"
+            placeholder="Tempel teks panjang kamu di sini..."
+        ></textarea>
+
+
+        <div class="split-controls">
+
+            <select id="manualPartCount">
+
+                <option value="2" selected>
+                    2 Bagian
+                </option>
+
+                <option value="3">
+                    3 Bagian
+                </option>
+
+                <option value="4">
+                    4 Bagian
+                </option>
+
+                <option value="5">
+                    5 Bagian
+                </option>
+
+                <option value="6">
+                    6 Bagian
+                </option>
+
+                <option value="7">
+                    7 Bagian
+                </option>
+
+                <option value="8">
+                    8 Bagian
+                </option>
+
+                <option value="9">
+                    9 Bagian
+                </option>
+
+                <option value="10">
+                    10 Bagian
+                </option>
+
+            </select>
+
+
+            <button
+                id="manualSplitBtn"
+                class="btn-purple"
+            >
+                ✂️ Bagi Teks
+            </button>
+
+
+            <button
+                id="manualClearBtn"
+                class="btn-gray"
+            >
+                🗑 Bersihkan Teks
+            </button>
+
+        </div>
+
+
+        <div
+            id="splitInfo"
+            class="split-info"
+            style="display:none;"
+        ></div>
+
+
+        <div
+            id="splitResults"
+            class="split-results"
+        ></div>
+
+
+        <div
+            id="splitBottomControls"
+            class="split-bottom-controls"
+            style="display:none;"
+        >
+
+            <button
+                id="manualCopyAllBtn"
+                class="btn-success"
+            >
+                📋 Salin Semua Bagian
+            </button>
+
+
+            <button
+                id="manualMergeBtn"
+                class="btn-primary"
+            >
+                🔄 Gabungkan Bagian
+            </button>
+
+
+            <button
+                id="manualOriginalBtn"
+                class="btn-gray"
+            >
+                ↩️ Kembalikan Teks Asli
+            </button>
 
         </div>
 
@@ -969,6 +1268,41 @@ document.getElementById("clearSearchBtn");
 
 
 /* =====================================================
+   ELEMENTS FITUR BAGI TEKS
+===================================================== */
+
+const manualText =
+document.getElementById("manualText");
+
+const manualPartCount =
+document.getElementById("manualPartCount");
+
+const manualSplitBtn =
+document.getElementById("manualSplitBtn");
+
+const manualClearBtn =
+document.getElementById("manualClearBtn");
+
+const splitInfo =
+document.getElementById("splitInfo");
+
+const splitResults =
+document.getElementById("splitResults");
+
+const splitBottomControls =
+document.getElementById("splitBottomControls");
+
+const manualCopyAllBtn =
+document.getElementById("manualCopyAllBtn");
+
+const manualMergeBtn =
+document.getElementById("manualMergeBtn");
+
+const manualOriginalBtn =
+document.getElementById("manualOriginalBtn");
+
+
+/* =====================================================
    VARIABLES
 ===================================================== */
 
@@ -979,6 +1313,15 @@ let results = [];
 let stopRequested = false;
 
 let ocrWorker = null;
+
+
+/* =====================================================
+   VARIABLES FITUR BAGI TEKS
+===================================================== */
+
+let originalManualText = "";
+
+let manualParts = [];
 
 
 /* =====================================================
@@ -1201,11 +1544,6 @@ async function processFiles(){
     let pptxCount = 0;
 
 
-    /*
-       Tahap pertama:
-       menghitung jumlah halaman/slide
-    */
-
     progressText.innerHTML =
     `<span class="spinner"></span>Menghitung halaman dan slide...`;
 
@@ -1278,10 +1616,6 @@ async function processFiles(){
     totalPPTXSlides;
 
 
-    /*
-       Buat OCR worker hanya jika ada PDF.
-    */
-
     if(pdfCount > 0){
 
         progressText.innerHTML =
@@ -1304,10 +1638,6 @@ async function processFiles(){
 
     let ocrPages = 0;
 
-
-    /*
-       Proses semua file
-    */
 
     for(
         let fileIndex=0;
@@ -1364,10 +1694,6 @@ async function processFiles(){
 
     }
 
-
-    /*
-       Hentikan OCR worker
-    */
 
     if(ocrWorker){
 
@@ -1453,10 +1779,6 @@ async function processPDF(
         `📄 Membaca PDF: ${file.name} — halaman ${pageNumber}/${pdf.numPages}`;
 
 
-        /*
-           Ambil teks asli PDF
-        */
-
         const textContent =
         await page.getTextContent();
 
@@ -1467,11 +1789,6 @@ async function processPDF(
 
         let usedOCR = false;
 
-
-        /*
-           Jika teks terlalu sedikit,
-           gunakan OCR
-        */
 
         if(text.trim().length < 10){
 
@@ -1789,11 +2106,6 @@ function extractPPTXText(xml){
         );
 
 
-        /*
-           Ambil semua teks berdasarkan
-           paragraf PowerPoint.
-        */
-
         paragraphNodes.forEach(p=>{
 
             const nodes =
@@ -1822,11 +2134,6 @@ function extractPPTXText(xml){
 
         });
 
-
-        /*
-           Jika cara paragraf gagal,
-           gunakan semua text node.
-        */
 
         if(paragraphs.length === 0){
 
@@ -1945,10 +2252,6 @@ function addPageResult(data){
     "page";
 
 
-    /*
-       Header
-    */
-
     const header =
     document.createElement("div");
 
@@ -2024,10 +2327,6 @@ function addPageResult(data){
 
     header.appendChild(badge);
 
-
-    /*
-       Content
-    */
 
     const content =
     document.createElement("div");
@@ -2344,7 +2643,7 @@ downloadBtn.addEventListener(
 
 
 /* =====================================================
-   CLEAR
+   CLEAR FILE READER
 ===================================================== */
 
 clearBtn.addEventListener(
@@ -2427,6 +2726,745 @@ clearBtn.addEventListener(
 
     }
 );
+
+
+/* =====================================================
+   FITUR BARU:
+   BAGI TEKS LANGSUNG
+===================================================== */
+
+manualSplitBtn.addEventListener(
+    "click",
+    splitManualText
+);
+
+
+manualClearBtn.addEventListener(
+    "click",
+    clearManualText
+);
+
+
+manualCopyAllBtn.addEventListener(
+    "click",
+    copyAllManualParts
+);
+
+
+manualMergeBtn.addEventListener(
+    "click",
+    mergeManualParts
+);
+
+
+manualOriginalBtn.addEventListener(
+    "click",
+    restoreOriginalManualText
+);
+
+
+/* =====================================================
+   SPLIT MANUAL TEXT
+===================================================== */
+
+function splitManualText(){
+
+    const text =
+    manualText.value;
+
+
+    if(!text.trim()){
+
+        alert(
+            "Tempel teks terlebih dahulu."
+        );
+
+        manualText.focus();
+
+        return;
+
+    }
+
+
+    const partCount =
+    parseInt(
+        manualPartCount.value,
+        10
+    );
+
+
+    originalManualText =
+    text;
+
+
+    manualParts =
+    splitTextByWords(
+        text,
+        partCount
+    );
+
+
+    renderManualParts();
+
+}
+
+
+/* =====================================================
+   SPLIT BERDASARKAN KATA
+===================================================== */
+
+function splitTextByWords(
+    text,
+    parts
+){
+
+    const normalized =
+    String(text)
+        .replace(/\r\n/g,"\n")
+        .replace(/\r/g,"\n");
+
+
+    /*
+       Token terdiri dari:
+       - kata
+       - spasi
+       - newline
+       sehingga format teks tetap
+       dipertahankan sebisa mungkin.
+    */
+
+    const tokens =
+    normalized.match(
+        /\S+|\s+/g
+    ) || [];
+
+
+    const wordCount =
+    (normalized.match(/\S+/g) || [])
+        .length;
+
+
+    if(wordCount === 0){
+
+        return Array(parts).fill("");
+
+    }
+
+
+    const actualParts =
+    Math.min(parts,wordCount);
+
+
+    const base =
+    Math.floor(
+        wordCount / actualParts
+    );
+
+
+    const remainder =
+    wordCount % actualParts;
+
+
+    const targets = [];
+
+
+    for(
+        let i=0;
+        i<actualParts;
+        i++
+    ){
+
+        targets.push(
+            base +
+            (i < remainder ? 1 : 0)
+        );
+
+    }
+
+
+    const output = [];
+
+    let current = "";
+
+    let currentWords = 0;
+
+    let partIndex = 0;
+
+
+    for(
+        let i=0;
+        i<tokens.length;
+        i++
+    ){
+
+        const token =
+        tokens[i];
+
+
+        current += token;
+
+
+        if(/\S/.test(token)){
+
+            currentWords++;
+
+        }
+
+
+        if(
+            currentWords >=
+            targets[partIndex]
+        ){
+
+            /*
+               Jangan langsung memotong
+               di tengah rangkaian whitespace.
+            */
+
+            let j =
+            i + 1;
+
+
+            while(
+                j < tokens.length &&
+                /^\s+$/.test(tokens[j])
+            ){
+
+                /*
+                   Hanya ambil whitespace
+                   jika masih berada di akhir
+                   dan belum ada kata berikutnya.
+                */
+
+                break;
+
+            }
+
+
+            output.push(
+                current.trim()
+            );
+
+
+            current = "";
+
+            currentWords = 0;
+
+            partIndex++;
+
+
+            if(
+                partIndex >=
+                actualParts
+            ){
+
+                /*
+                   Masukkan sisa token
+                   ke bagian terakhir.
+                */
+
+                const remaining =
+                tokens
+                    .slice(i + 1)
+                    .join("")
+                    .trim();
+
+
+                if(remaining){
+
+                    output[
+                        output.length - 1
+                    ] +=
+                    "\n" +
+                    remaining;
+
+                }
+
+
+                break;
+
+            }
+
+        }
+
+    }
+
+
+    while(
+        output.length <
+        parts
+    ){
+
+        output.push("");
+
+    }
+
+
+    return output;
+
+}
+
+
+/* =====================================================
+   RENDER BAGIAN TEKS
+===================================================== */
+
+function renderManualParts(){
+
+    splitResults.innerHTML = "";
+
+
+    const totalParts =
+    manualParts.length;
+
+
+    const totalWords =
+    manualParts
+        .reduce(
+            (sum,text)=>{
+                return sum +
+                countWords(text);
+            },
+            0
+        );
+
+
+    const totalCharacters =
+    manualParts
+        .reduce(
+            (sum,text)=>{
+                return sum +
+                text.length;
+            },
+            0
+        );
+
+
+    splitInfo.style.display =
+    "block";
+
+
+    splitInfo.innerHTML =
+    `
+        <b>✅ Teks berhasil dibagi</b><br>
+        ${totalParts} bagian •
+        ${totalWords.toLocaleString("id-ID")} kata •
+        ${totalCharacters.toLocaleString("id-ID")} karakter
+    `;
+
+
+    manualParts.forEach(
+        (part,index)=>{
+
+            const box =
+            document.createElement("div");
+
+
+            box.className =
+            "split-part";
+
+
+            const header =
+            document.createElement("div");
+
+
+            header.className =
+            "split-part-header";
+
+
+            const titleArea =
+            document.createElement("div");
+
+
+            const title =
+            document.createElement("div");
+
+
+            title.className =
+            "split-part-title";
+
+
+            title.textContent =
+            `Bagian ${index + 1}`;
+
+
+            const meta =
+            document.createElement("div");
+
+
+            meta.className =
+            "split-part-meta";
+
+
+            meta.textContent =
+            `${countWords(part).toLocaleString("id-ID")} kata • ${part.length.toLocaleString("id-ID")} karakter`;
+
+
+            titleArea.appendChild(title);
+
+            titleArea.appendChild(meta);
+
+
+            const actions =
+            document.createElement("div");
+
+
+            actions.className =
+            "split-part-actions";
+
+
+            const copyPartBtn =
+            document.createElement("button");
+
+
+            copyPartBtn.className =
+            "btn-success";
+
+
+            copyPartBtn.textContent =
+            "📋 Salin";
+
+
+            copyPartBtn.addEventListener(
+                "click",
+                async()=>{
+
+                    await copyText(
+                        partTextarea.value
+                    );
+
+                    copyPartBtn.textContent =
+                    "✅ Tersalin";
+
+                    setTimeout(
+                        ()=>{
+                            copyPartBtn.textContent =
+                            "📋 Salin";
+                        },
+                        1200
+                    );
+
+                }
+            );
+
+
+            actions.appendChild(
+                copyPartBtn
+            );
+
+
+            header.appendChild(
+                titleArea
+            );
+
+            header.appendChild(
+                actions
+            );
+
+
+            const partTextarea =
+            document.createElement("textarea");
+
+
+            partTextarea.value =
+            part;
+
+
+            partTextarea.addEventListener(
+                "input",
+                ()=>{
+
+                    manualParts[index] =
+                    partTextarea.value;
+
+
+                    updateManualPartMeta(
+                        meta,
+                        partTextarea.value
+                    );
+
+                }
+            );
+
+
+            box.appendChild(header);
+
+            box.appendChild(
+                partTextarea
+            );
+
+
+            splitResults.appendChild(box);
+
+        }
+    );
+
+
+    splitBottomControls.style.display =
+    "flex";
+
+}
+
+
+/* =====================================================
+   UPDATE META BAGIAN
+===================================================== */
+
+function updateManualPartMeta(
+    element,
+    text
+){
+
+    element.textContent =
+    `${countWords(text).toLocaleString("id-ID")} kata • ${text.length.toLocaleString("id-ID")} karakter`;
+
+}
+
+
+/* =====================================================
+   COUNT WORDS
+===================================================== */
+
+function countWords(text){
+
+    const matches =
+    String(text || "")
+        .trim()
+        .match(/\S+/g);
+
+
+    return matches
+        ? matches.length
+        : 0;
+
+}
+
+
+/* =====================================================
+   COPY SEMUA BAGIAN
+===================================================== */
+
+async function copyAllManualParts(){
+
+    if(
+        manualParts.length === 0
+    ){
+
+        return;
+
+    }
+
+
+    const output =
+    manualParts
+        .map(
+            (part,index)=>{
+
+                return (
+                    "========== BAGIAN " +
+                    (index + 1) +
+                    " ==========\n\n" +
+                    part.trim()
+                );
+
+            }
+        )
+        .join(
+            "\n\n"
+        );
+
+
+    await copyText(output);
+
+
+    const oldText =
+    manualCopyAllBtn.textContent;
+
+
+    manualCopyAllBtn.textContent =
+    "✅ Semua Tersalin";
+
+
+    setTimeout(
+        ()=>{
+            manualCopyAllBtn.textContent =
+            oldText;
+        },
+        1500
+    );
+
+}
+
+
+/* =====================================================
+   MERGE BAGIAN
+===================================================== */
+
+function mergeManualParts(){
+
+    if(
+        manualParts.length === 0
+    ){
+
+        return;
+
+    }
+
+
+    const merged =
+    manualParts
+        .map(
+            part =>
+            part.trim()
+        )
+        .filter(Boolean)
+        .join("\n\n");
+
+
+    manualText.value =
+    merged;
+
+
+    const oldText =
+    manualMergeBtn.textContent;
+
+
+    manualMergeBtn.textContent =
+    "✅ Berhasil Digabung";
+
+
+    setTimeout(
+        ()=>{
+            manualMergeBtn.textContent =
+            oldText;
+        },
+        1500
+    );
+
+
+    manualText.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+}
+
+
+/* =====================================================
+   KEMBALIKAN TEKS ASLI
+===================================================== */
+
+function restoreOriginalManualText(){
+
+    if(!originalManualText){
+
+        return;
+
+    }
+
+
+    manualText.value =
+    originalManualText;
+
+
+    const oldText =
+    manualOriginalBtn.textContent;
+
+
+    manualOriginalBtn.textContent =
+    "✅ Teks Asli Dikembalikan";
+
+
+    setTimeout(
+        ()=>{
+            manualOriginalBtn.textContent =
+            oldText;
+        },
+        1500
+    );
+
+}
+
+
+/* =====================================================
+   CLEAR MANUAL TEXT
+===================================================== */
+
+function clearManualText(){
+
+    manualText.value = "";
+
+    originalManualText = "";
+
+    manualParts = [];
+
+
+    splitResults.innerHTML = "";
+
+
+    splitInfo.innerHTML = "";
+
+    splitInfo.style.display =
+    "none";
+
+
+    splitBottomControls.style.display =
+    "none";
+
+
+    manualText.focus();
+
+}
+
+
+/* =====================================================
+   COPY TEXT UNIVERSAL
+===================================================== */
+
+async function copyText(text){
+
+    try{
+
+        await navigator.clipboard.writeText(
+            text
+        );
+
+    }
+
+    catch(error){
+
+        const temporary =
+        document.createElement("textarea");
+
+
+        temporary.value =
+        text;
+
+
+        temporary.style.position =
+        "fixed";
+
+        temporary.style.opacity =
+        "0";
+
+
+        document.body.appendChild(
+            temporary
+        );
+
+
+        temporary.select();
+
+        document.execCommand(
+            "copy"
+        );
+
+
+        temporary.remove();
+
+    }
+
+}
 
 
 /* =====================================================
