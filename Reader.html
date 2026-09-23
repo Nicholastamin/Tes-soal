@@ -4,81 +4,222 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PDF Reader + OCR</title>
+<title>PDF + PowerPoint Reader + OCR</title>
 
 <style>
 *{
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     margin:0;
     font-family:Arial,Helvetica,sans-serif;
-    background:#f4f6f8;
-    color:#222;
+    background:#f4f7fb;
+    color:#1f2937;
 }
 
+/* =========================
+   HEADER
+========================= */
+
 header{
-    background:#111827;
+    background:#2563eb;
     color:white;
-    padding:20px;
+    padding:26px 20px;
     text-align:center;
+    box-shadow:0 3px 12px rgba(37,99,235,.2);
 }
 
 header h1{
     margin:0 0 8px;
-    font-size:25px;
+    font-size:28px;
 }
 
 header p{
     margin:0;
-    opacity:.8;
     font-size:14px;
+    opacity:.92;
 }
 
+/* =========================
+   CONTAINER
+========================= */
+
 .container{
-    max-width:1100px;
+    max-width:1150px;
     margin:auto;
     padding:20px;
 }
 
 .card{
     background:white;
-    border-radius:16px;
-    padding:20px;
+    border-radius:18px;
+    padding:22px;
     margin-bottom:20px;
-    box-shadow:0 4px 18px rgba(0,0,0,.08);
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
 }
 
+/* =========================
+   INFO
+========================= */
+
+.info{
+    background:#eff6ff;
+    border-left:5px solid #2563eb;
+    padding:16px;
+    border-radius:10px;
+    margin-bottom:18px;
+    line-height:1.6;
+}
+
+.warning{
+    background:#fff7ed;
+    border-left:5px solid #f97316;
+    padding:16px;
+    border-radius:10px;
+    margin-top:18px;
+    line-height:1.6;
+}
+
+.success-info{
+    background:#ecfdf5;
+    border-left:5px solid #059669;
+    padding:16px;
+    border-radius:10px;
+    margin-top:18px;
+    line-height:1.6;
+}
+
+/* =========================
+   UPLOAD
+========================= */
+
 .upload{
-    border:2px dashed #9ca3af;
-    border-radius:15px;
-    padding:35px 20px;
+    display:block;
+    border:3px dashed #93c5fd;
+    border-radius:18px;
+    padding:38px 20px;
     text-align:center;
     cursor:pointer;
+    background:#f8fbff;
+    transition:.2s;
 }
 
 .upload:hover{
-    background:#f9fafb;
+    background:#eff6ff;
+    border-color:#2563eb;
+}
+
+.upload-icon{
+    font-size:50px;
+    margin-bottom:10px;
+}
+
+.upload-title{
+    font-size:19px;
+    font-weight:bold;
+}
+
+.upload p{
+    color:#6b7280;
+    margin-bottom:0;
 }
 
 .upload input{
     display:none;
 }
 
-.upload-icon{
-    font-size:45px;
-    margin-bottom:10px;
+/* =========================
+   FILE LIST
+========================= */
+
+.file-list{
+    margin-top:18px;
+}
+
+.file-list-title{
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.file-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:13px 15px;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    margin-bottom:8px;
+    background:#fafafa;
+}
+
+.file-main{
+    min-width:0;
+}
+
+.file-name{
+    font-weight:bold;
+    word-break:break-word;
+}
+
+.file-meta{
+    font-size:12px;
+    color:#6b7280;
+    margin-top:4px;
+}
+
+.file-type{
+    flex:none;
+    padding:6px 9px;
+    border-radius:8px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.type-pdf{
+    background:#fee2e2;
+    color:#b91c1c;
+}
+
+.type-pptx{
+    background:#ffedd5;
+    color:#c2410c;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.controls{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:18px;
 }
 
 button{
     border:0;
-    border-radius:10px;
-    padding:11px 16px;
+    border-radius:11px;
+    padding:12px 17px;
     cursor:pointer;
     font-size:14px;
     font-weight:bold;
-    margin:4px;
+    transition:.15s;
+}
+
+button:hover:not(:disabled){
+    transform:translateY(-1px);
+    filter:brightness(.97);
+}
+
+button:disabled{
+    opacity:.5;
+    cursor:not-allowed;
 }
 
 .btn-primary{
@@ -101,28 +242,25 @@ button{
     color:#111827;
 }
 
-button:disabled{
-    opacity:.5;
-    cursor:not-allowed;
+.btn-orange{
+    background:#f97316;
+    color:white;
 }
 
-.controls{
-    display:flex;
-    flex-wrap:wrap;
-    gap:5px;
-    margin-top:15px;
-}
+/* =========================
+   PROGRESS
+========================= */
 
 .progress-box{
     display:none;
-    margin-top:20px;
+    margin-top:22px;
 }
 
 .progress{
     width:100%;
-    height:18px;
+    height:20px;
     background:#e5e7eb;
-    border-radius:20px;
+    border-radius:30px;
     overflow:hidden;
 }
 
@@ -134,118 +272,167 @@ button:disabled{
 }
 
 .progress-text{
-    margin-top:8px;
+    margin-top:10px;
     font-size:14px;
+    color:#4b5563;
 }
 
-.file-list{
-    margin-top:15px;
-}
-
-.file-item{
-    padding:12px;
-    border-bottom:1px solid #eee;
-}
-
-.file-item:last-child{
-    border-bottom:0;
-}
-
-.file-name{
-    font-weight:bold;
-}
-
-.status{
-    font-size:13px;
-    color:#6b7280;
-    margin-top:4px;
-}
+/* =========================
+   STATS
+========================= */
 
 .result{
     display:none;
 }
 
+.stats{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(150px,1fr));
+    gap:12px;
+    margin-top:15px;
+}
+
+.stat{
+    border:1px solid #e5e7eb;
+    background:#f9fafb;
+    border-radius:14px;
+    padding:16px;
+}
+
+.stat-number{
+    font-size:27px;
+    font-weight:bold;
+    color:#2563eb;
+}
+
+.stat-label{
+    font-size:13px;
+    color:#6b7280;
+    margin-top:3px;
+}
+
+/* =========================
+   TEXT
+========================= */
+
+textarea{
+    width:100%;
+    min-height:450px;
+    resize:vertical;
+    padding:16px;
+    border:1px solid #d1d5db;
+    border-radius:14px;
+    font-family:Arial,Helvetica,sans-serif;
+    line-height:1.6;
+    font-size:15px;
+    outline:none;
+}
+
+textarea:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,.1);
+}
+
+/* =========================
+   PAGE / SLIDE RESULT
+========================= */
+
 .page{
-    border:1px solid #ddd;
-    border-radius:12px;
-    margin-bottom:15px;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
     overflow:hidden;
+    margin-bottom:15px;
+    background:white;
 }
 
 .page-header{
     background:#f3f4f6;
-    padding:12px;
+    padding:13px 15px;
     font-weight:bold;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.page-header-left{
+    min-width:0;
+    word-break:break-word;
+}
+
+.badge{
+    flex:none;
+    padding:5px 9px;
+    border-radius:8px;
+    font-size:11px;
+}
+
+.badge-text{
+    background:#dbeafe;
+    color:#1d4ed8;
+}
+
+.badge-ocr{
+    background:#fef3c7;
+    color:#92400e;
+}
+
+.badge-slide{
+    background:#ffedd5;
+    color:#c2410c;
 }
 
 .page-content{
-    padding:15px;
+    padding:16px;
     white-space:pre-wrap;
-    line-height:1.6;
+    line-height:1.65;
     font-size:15px;
+    min-height:50px;
 }
 
-textarea{
-    width:100%;
-    min-height:400px;
-    resize:vertical;
-    padding:15px;
-    border:1px solid #d1d5db;
-    border-radius:12px;
-    font-family:Arial,sans-serif;
-    line-height:1.5;
+.empty-text{
+    color:#9ca3af;
+    font-style:italic;
 }
 
-.info{
-    background:#eff6ff;
-    border-left:5px solid #2563eb;
-    padding:15px;
-    border-radius:8px;
+/* =========================
+   SEARCH
+========================= */
+
+.search-box{
+    display:flex;
+    gap:8px;
     margin-bottom:15px;
-    line-height:1.5;
 }
 
-.warning{
-    background:#fff7ed;
-    border-left:5px solid #f97316;
-    padding:15px;
-    border-radius:8px;
-    margin-top:15px;
-    line-height:1.5;
-}
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-    gap:10px;
-    margin:15px 0;
-}
-
-.stat{
-    background:#f9fafb;
-    border:1px solid #eee;
-    padding:15px;
+.search-box input{
+    flex:1;
+    padding:12px 14px;
+    border:1px solid #d1d5db;
     border-radius:10px;
+    outline:none;
+    font-size:14px;
 }
 
-.stat-number{
-    font-size:24px;
-    font-weight:bold;
+.search-box input:focus{
+    border-color:#2563eb;
 }
 
-.stat-label{
-    color:#6b7280;
-    font-size:13px;
-}
+/* =========================
+   SPINNER
+========================= */
 
 .spinner{
     display:inline-block;
     width:15px;
     height:15px;
-    border:2px solid #ccc;
+    border:2px solid #d1d5db;
     border-top-color:#2563eb;
     border-radius:50%;
     animation:spin .8s linear infinite;
+    vertical-align:-3px;
+    margin-right:6px;
 }
 
 @keyframes spin{
@@ -254,33 +441,72 @@ textarea{
     }
 }
 
+/* =========================
+   FOOTER
+========================= */
+
 footer{
     text-align:center;
     color:#6b7280;
     font-size:13px;
-    padding:20px;
+    padding:25px;
 }
 
-@media(max-width:600px){
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:650px){
+
+    header{
+        padding:22px 15px;
+    }
+
+    header h1{
+        font-size:22px;
+    }
+
     .container{
         padding:12px;
     }
 
     .card{
         padding:15px;
+        border-radius:15px;
     }
 
-    header h1{
-        font-size:21px;
+    .upload{
+        padding:30px 15px;
     }
 
-    button{
-        width:100%;
-        margin:3px 0;
+    .upload-icon{
+        font-size:42px;
     }
 
     .controls{
         display:block;
+    }
+
+    button{
+        width:100%;
+        margin-bottom:7px;
+    }
+
+    .file-item{
+        align-items:flex-start;
+    }
+
+    .page-header{
+        align-items:flex-start;
+    }
+
+    .search-box{
+        display:block;
+    }
+
+    .search-box input{
+        width:100%;
+        margin-bottom:7px;
     }
 }
 </style>
@@ -289,39 +515,61 @@ footer{
 <body>
 
 <header>
-    <h1>📚 PDF Reader + OCR</h1>
-    <p>Baca teks PDF dan ubah tulisan dalam foto/scan menjadi teks</p>
+    <h1>📚 PDF + PowerPoint Reader</h1>
+    <p>Baca PDF, PPTX, dan gunakan OCR untuk dokumen hasil scan</p>
 </header>
 
+
 <div class="container">
+
+    <!-- =========================
+         UPLOAD CARD
+    ========================== -->
 
     <div class="card">
 
         <div class="info">
-            <b>💡 Cara kerja:</b><br>
-            Website akan mencoba mengambil teks asli dari PDF terlebih dahulu.
-            Jika halaman tidak mempunyai teks, halaman tersebut akan dirender sebagai
-            gambar dan diproses menggunakan OCR.
+
+            <b>💡 Cara kerja</b><br>
+
+            File <b>PDF</b> akan dibaca menggunakan PDF.js.
+            Jika PDF tidak memiliki teks, halaman akan diproses menggunakan
+            <b>OCR</b>.
+
+            <br><br>
+
+            File <b>PPTX</b> akan dibaca langsung dari struktur PowerPoint
+            dan teks pada setiap slide akan diambil secara otomatis.
+
         </div>
 
-        <label class="upload">
-            <div class="upload-icon">📄</div>
 
-            <b>Pilih PDF</b>
+        <label class="upload">
+
+            <div class="upload-icon">
+                📄📊
+            </div>
+
+            <div class="upload-title">
+                Pilih PDF atau PowerPoint
+            </div>
 
             <p>
-                Pilih satu atau beberapa PDF sekaligus
+                Bisa memilih satu atau banyak file sekaligus
             </p>
 
             <input
                 type="file"
-                id="pdfInput"
-                accept="application/pdf,.pdf"
+                id="fileInput"
+                accept=".pdf,application/pdf,.pptx,application/vnd.openxmlformats-officedocument.presentationml.presentation"
                 multiple
             >
+
         </label>
 
+
         <div id="fileList" class="file-list"></div>
+
 
         <div class="controls">
 
@@ -333,6 +581,7 @@ footer{
                 ▶ Mulai Membaca
             </button>
 
+
             <button
                 id="stopBtn"
                 class="btn-danger"
@@ -340,6 +589,7 @@ footer{
             >
                 ■ Berhenti
             </button>
+
 
             <button
                 id="copyBtn"
@@ -349,6 +599,7 @@ footer{
                 📋 Salin Semua
             </button>
 
+
             <button
                 id="downloadBtn"
                 class="btn-gray"
@@ -356,6 +607,7 @@ footer{
             >
                 💾 Download TXT
             </button>
+
 
             <button
                 id="clearBtn"
@@ -366,14 +618,21 @@ footer{
 
         </div>
 
-        <div id="progressBox" class="progress-box">
+
+        <div
+            id="progressBox"
+            class="progress-box"
+        >
 
             <div class="progress">
+
                 <div
                     id="progressBar"
                     class="progress-bar"
                 ></div>
+
             </div>
+
 
             <div
                 id="progressText"
@@ -384,16 +643,37 @@ footer{
 
         </div>
 
+
+        <div class="warning">
+
+            <b>⚠️ Catatan PowerPoint</b><br>
+
+            Versi ini membaca file <b>.PPTX</b>.
+            File <b>.PPT</b> lama belum didukung secara langsung oleh browser.
+            Jika mempunyai file .PPT, simpan terlebih dahulu sebagai
+            <b>.PPTX</b> menggunakan PowerPoint atau aplikasi presentasi lainnya.
+
+        </div>
+
     </div>
 
 
-    <div id="statsCard" class="card result">
+    <!-- =========================
+         STATISTICS
+    ========================== -->
+
+    <div
+        id="statsCard"
+        class="card result"
+    >
 
         <h2>📊 Statistik</h2>
+
 
         <div class="stats">
 
             <div class="stat">
+
                 <div
                     id="statFiles"
                     class="stat-number"
@@ -402,11 +682,46 @@ footer{
                 </div>
 
                 <div class="stat-label">
-                    PDF
+                    Total File
                 </div>
+
             </div>
 
+
             <div class="stat">
+
+                <div
+                    id="statPDF"
+                    class="stat-number"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    PDF
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div
+                    id="statPPTX"
+                    class="stat-number"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    PPTX
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
                 <div
                     id="statPages"
                     class="stat-number"
@@ -415,11 +730,30 @@ footer{
                 </div>
 
                 <div class="stat-label">
-                    Halaman
+                    Halaman PDF
                 </div>
+
             </div>
 
+
             <div class="stat">
+
+                <div
+                    id="statSlides"
+                    class="stat-number"
+                >
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Slide PPTX
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
                 <div
                     id="statOCR"
                     class="stat-number"
@@ -430,9 +764,12 @@ footer{
                 <div class="stat-label">
                     Halaman OCR
                 </div>
+
             </div>
 
+
             <div class="stat">
+
                 <div
                     id="statCharacters"
                     class="stat-number"
@@ -443,6 +780,7 @@ footer{
                 <div class="stat-label">
                     Karakter
                 </div>
+
             </div>
 
         </div>
@@ -450,21 +788,54 @@ footer{
     </div>
 
 
-    <div id="textCard" class="card result">
+    <!-- =========================
+         FULL TEXT
+    ========================== -->
 
-        <h2>📝 Hasil Teks</h2>
+    <div
+        id="textCard"
+        class="card result"
+    >
+
+        <h2>📝 Semua Teks</h2>
 
         <textarea
             id="allText"
-            placeholder="Hasil pembacaan PDF akan muncul di sini..."
+            placeholder="Hasil pembacaan akan muncul di sini..."
         ></textarea>
 
     </div>
 
 
-    <div id="pagesCard" class="card result">
+    <!-- =========================
+         PAGE RESULTS
+    ========================== -->
 
-        <h2>📑 Hasil Per Halaman</h2>
+    <div
+        id="pagesCard"
+        class="card result"
+    >
+
+        <h2>📑 Hasil Per Halaman / Slide</h2>
+
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="🔎 Cari teks..."
+            >
+
+            <button
+                id="clearSearchBtn"
+                class="btn-gray"
+            >
+                Reset Pencarian
+            </button>
+
+        </div>
+
 
         <div id="pagesResult"></div>
 
@@ -474,29 +845,58 @@ footer{
 
 
 <footer>
-    PDF Reader + OCR
+    PDF + PowerPoint Reader + OCR
 </footer>
 
 
-<!-- PDF.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs"
-        type="module"></script>
+<!-- =====================================================
+     LIBRARY PDF.JS
+===================================================== -->
 
-<!-- Tesseract.js -->
-<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs"
+    type="module"
+></script>
+
+
+<!-- =====================================================
+     LIBRARY TESSERACT OCR
+===================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"
+></script>
+
+
+<!-- =====================================================
+     LIBRARY JSZIP
+===================================================== -->
+
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
+></script>
 
 
 <script type="module">
 
+/* =====================================================
+   IMPORT PDF.JS
+===================================================== */
+
 import * as pdfjsLib
 from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs";
+
 
 pdfjsLib.GlobalWorkerOptions.workerSrc =
 "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs";
 
 
-const pdfInput =
-document.getElementById("pdfInput");
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const fileInput =
+document.getElementById("fileInput");
 
 const fileList =
 document.getElementById("fileList");
@@ -543,8 +943,17 @@ document.getElementById("pagesCard");
 const statFiles =
 document.getElementById("statFiles");
 
+const statPDF =
+document.getElementById("statPDF");
+
+const statPPTX =
+document.getElementById("statPPTX");
+
 const statPages =
 document.getElementById("statPages");
+
+const statSlides =
+document.getElementById("statSlides");
 
 const statOCR =
 document.getElementById("statOCR");
@@ -552,6 +961,16 @@ document.getElementById("statOCR");
 const statCharacters =
 document.getElementById("statCharacters");
 
+const searchInput =
+document.getElementById("searchInput");
+
+const clearSearchBtn =
+document.getElementById("clearSearchBtn");
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
 
 let selectedFiles = [];
 
@@ -562,14 +981,14 @@ let stopRequested = false;
 let ocrWorker = null;
 
 
-/* ============================
+/* =====================================================
    FILE SELECTION
-============================ */
+===================================================== */
 
-pdfInput.addEventListener("change", () => {
+fileInput.addEventListener("change", () => {
 
     selectedFiles =
-    Array.from(pdfInput.files);
+    Array.from(fileInput.files);
 
     fileList.innerHTML = "";
 
@@ -581,24 +1000,89 @@ pdfInput.addEventListener("change", () => {
     }
 
 
+    const title =
+    document.createElement("div");
+
+    title.className =
+    "file-list-title";
+
+    title.textContent =
+    `${selectedFiles.length} file dipilih`;
+
+    fileList.appendChild(title);
+
+
     selectedFiles.forEach((file,index)=>{
 
         const item =
         document.createElement("div");
 
-        item.className = "file-item";
+        item.className =
+        "file-item";
 
-        item.innerHTML = `
 
-            <div class="file-name">
-                📄 ${escapeHTML(file.name)}
-            </div>
+        const main =
+        document.createElement("div");
 
-            <div class="status">
-                ${(file.size / 1024 / 1024).toFixed(2)} MB
-            </div>
+        main.className =
+        "file-main";
 
-        `;
+
+        const name =
+        document.createElement("div");
+
+        name.className =
+        "file-name";
+
+        name.textContent =
+        `${index + 1}. ${file.name}`;
+
+
+        const meta =
+        document.createElement("div");
+
+        meta.className =
+        "file-meta";
+
+        meta.textContent =
+        formatFileSize(file.size);
+
+
+        main.appendChild(name);
+
+        main.appendChild(meta);
+
+
+        const type =
+        document.createElement("div");
+
+
+        const extension =
+        getExtension(file.name);
+
+
+        if(extension === "pdf"){
+
+            type.className =
+            "file-type type-pdf";
+
+            type.textContent =
+            "PDF";
+
+        }else{
+
+            type.className =
+            "file-type type-pptx";
+
+            type.textContent =
+            "PPTX";
+
+        }
+
+
+        item.appendChild(main);
+
+        item.appendChild(type);
 
         fileList.appendChild(item);
 
@@ -610,15 +1094,15 @@ pdfInput.addEventListener("change", () => {
 });
 
 
-/* ============================
+/* =====================================================
    START
-============================ */
+===================================================== */
 
 startBtn.addEventListener("click", async()=>{
 
     if(selectedFiles.length === 0){
 
-        alert("Pilih PDF terlebih dahulu.");
+        alert("Pilih file terlebih dahulu.");
 
         return;
     }
@@ -634,7 +1118,18 @@ startBtn.addEventListener("click", async()=>{
 
     downloadBtn.disabled = true;
 
-    progressBox.style.display = "block";
+
+    progressBox.style.display =
+    "block";
+
+
+    progressBar.style.width =
+    "0%";
+
+
+    progressText.textContent =
+    "Menyiapkan...";
+
 
     results = [];
 
@@ -642,23 +1137,30 @@ startBtn.addEventListener("click", async()=>{
 
     allText.value = "";
 
-    statsCard.style.display = "block";
+    searchInput.value = "";
 
-    textCard.style.display = "block";
 
-    pagesCard.style.display = "block";
+    statsCard.style.display =
+    "block";
+
+    textCard.style.display =
+    "block";
+
+    pagesCard.style.display =
+    "block";
 
 
     try{
 
-        await processPDFs();
+        await processFiles();
 
     }catch(error){
 
         console.error(error);
 
         progressText.textContent =
-        "Terjadi kesalahan: " + error.message;
+        "❌ Terjadi kesalahan: " +
+        error.message;
 
     }
 
@@ -670,50 +1172,92 @@ startBtn.addEventListener("click", async()=>{
 });
 
 
-/* ============================
+/* =====================================================
    STOP
-============================ */
+===================================================== */
 
 stopBtn.addEventListener("click",()=>{
 
     stopRequested = true;
 
     progressText.textContent =
-    "Menghentikan proses...";
+    "⏳ Menghentikan proses...";
 
 });
 
 
-/* ============================
-   PROCESS PDFS
-============================ */
+/* =====================================================
+   PROCESS ALL FILES
+===================================================== */
 
-async function processPDFs(){
+async function processFiles(){
 
-    let totalPages = 0;
+    let totalPDFPages = 0;
 
-    let processedPages = 0;
+    let totalPPTXSlides = 0;
 
-    let ocrPages = 0;
+    let pdfCount = 0;
+
+    let pptxCount = 0;
 
 
     /*
-       Hitung total halaman
+       Tahap pertama:
+       menghitung jumlah halaman/slide
     */
+
+    progressText.innerHTML =
+    `<span class="spinner"></span>Menghitung halaman dan slide...`;
+
 
     for(const file of selectedFiles){
 
-        if(stopRequested) return;
+        if(stopRequested)
+            return;
 
-        const buffer =
-        await file.arrayBuffer();
 
-        const pdf =
-        await pdfjsLib.getDocument({
-            data:buffer
-        }).promise;
+        const ext =
+        getExtension(file.name);
 
-        totalPages += pdf.numPages;
+
+        if(ext === "pdf"){
+
+            pdfCount++;
+
+
+            const buffer =
+            await file.arrayBuffer();
+
+
+            const pdf =
+            await pdfjsLib.getDocument({
+                data:buffer
+            }).promise;
+
+
+            totalPDFPages +=
+            pdf.numPages;
+
+        }
+
+
+        else if(ext === "pptx"){
+
+            pptxCount++;
+
+
+            const buffer =
+            await file.arrayBuffer();
+
+
+            const slideCount =
+            await countPPTXSlides(buffer);
+
+
+            totalPPTXSlides +=
+            slideCount;
+
+        }
 
     }
 
@@ -721,155 +1265,109 @@ async function processPDFs(){
     statFiles.textContent =
     selectedFiles.length;
 
+    statPDF.textContent =
+    pdfCount;
+
+    statPPTX.textContent =
+    pptxCount;
+
     statPages.textContent =
-    totalPages;
+    totalPDFPages;
+
+    statSlides.textContent =
+    totalPPTXSlides;
 
 
     /*
-       Buat OCR worker
+       Buat OCR worker hanya jika ada PDF.
     */
 
-    progressText.innerHTML =
-    `<span class="spinner"></span> Menyiapkan OCR...`;
+    if(pdfCount > 0){
+
+        progressText.innerHTML =
+        `<span class="spinner"></span>Menyiapkan OCR...`;
 
 
-    ocrWorker =
-    await Tesseract.createWorker(
-        "ind"
-    );
+        ocrWorker =
+        await Tesseract.createWorker(
+            "ind"
+        );
+
+    }
+
+
+    let processedUnits = 0;
+
+    const totalUnits =
+    totalPDFPages +
+    totalPPTXSlides;
+
+    let ocrPages = 0;
 
 
     /*
-       Proses setiap PDF
+       Proses semua file
     */
 
-    for(let fileIndex=0;
+    for(
+        let fileIndex=0;
         fileIndex<selectedFiles.length;
-        fileIndex++){
+        fileIndex++
+    ){
 
-        if(stopRequested) break;
+        if(stopRequested)
+            break;
 
 
         const file =
         selectedFiles[fileIndex];
 
 
-        progressText.textContent =
-        `Membuka ${file.name}...`;
+        const ext =
+        getExtension(file.name);
 
 
-        const buffer =
-        await file.arrayBuffer();
+        if(ext === "pdf"){
 
-
-        const pdf =
-        await pdfjsLib.getDocument({
-            data:buffer
-        }).promise;
-
-
-        for(let pageNumber=1;
-            pageNumber<=pdf.numPages;
-            pageNumber++){
-
-            if(stopRequested) break;
-
-
-            const page =
-            await pdf.getPage(pageNumber);
-
-
-            progressText.textContent =
-            `Membaca ${file.name} — halaman ${pageNumber}/${pdf.numPages}`;
-
-
-            /*
-               Coba ekstrak teks asli
-            */
-
-            const textContent =
-            await page.getTextContent();
-
-
-            let text =
-            extractText(textContent);
-
-
-            let usedOCR = false;
-
-
-            /*
-               Kalau teks kosong,
-               gunakan OCR
-            */
-
-            if(text.trim().length < 10){
-
-                usedOCR = true;
-
-                ocrPages++;
-
-                progressText.textContent =
-                `🔎 OCR ${file.name} — halaman ${pageNumber}/${pdf.numPages}`;
-
-
-                const image =
-                await renderPage(page);
-
-
-                const result =
-                await ocrWorker.recognize(image);
-
-
-                text =
-                result.data.text || "";
-
-            }
-
-
-            processedPages++;
-
-
-            results.push({
-
-                file:file.name,
-
-                page:pageNumber,
-
-                text:text,
-
-                ocr:usedOCR
-
-            });
-
-
-            addPageResult(
-
-                file.name,
-
-                pageNumber,
-
-                text,
-
-                usedOCR
-
-            );
-
-
-            updateProgress(
-
-                processedPages,
-
-                totalPages,
-
+            const processed =
+            await processPDF(
+                file,
+                processedUnits,
+                totalUnits,
                 ocrPages
-
             );
+
+
+            processedUnits =
+            processed.processedUnits;
+
+            ocrPages =
+            processed.ocrPages;
+
+        }
+
+
+        else if(ext === "pptx"){
+
+            const processed =
+            await processPPTX(
+                file,
+                processedUnits,
+                totalUnits
+            );
+
+
+            processedUnits =
+            processed.processedUnits;
 
         }
 
     }
 
+
+    /*
+       Hentikan OCR worker
+    */
 
     if(ocrWorker){
 
@@ -901,27 +1399,481 @@ async function processPDFs(){
     if(stopRequested){
 
         progressText.textContent =
-        `Proses dihentikan. ${processedPages}/${totalPages} halaman selesai.`;
+        `⏹️ Proses dihentikan. ${processedUnits}/${totalUnits} bagian selesai.`;
 
     }else{
 
+        progressBar.style.width =
+        "100%";
+
         progressText.textContent =
-        `✅ Selesai membaca ${processedPages} halaman.`;
+        `✅ Selesai membaca ${selectedFiles.length} file.`;
 
     }
 
 }
 
 
-/* ============================
-   EXTRACT TEXT
-============================ */
+/* =====================================================
+   PROCESS PDF
+===================================================== */
 
-function extractText(textContent){
+async function processPDF(
+    file,
+    processedUnits,
+    totalUnits,
+    ocrPages
+){
+
+    const buffer =
+    await file.arrayBuffer();
+
+
+    const pdf =
+    await pdfjsLib.getDocument({
+        data:buffer
+    }).promise;
+
+
+    for(
+        let pageNumber=1;
+        pageNumber<=pdf.numPages;
+        pageNumber++
+    ){
+
+        if(stopRequested)
+            break;
+
+
+        const page =
+        await pdf.getPage(pageNumber);
+
+
+        progressText.textContent =
+        `📄 Membaca PDF: ${file.name} — halaman ${pageNumber}/${pdf.numPages}`;
+
+
+        /*
+           Ambil teks asli PDF
+        */
+
+        const textContent =
+        await page.getTextContent();
+
+
+        let text =
+        extractPDFText(textContent);
+
+
+        let usedOCR = false;
+
+
+        /*
+           Jika teks terlalu sedikit,
+           gunakan OCR
+        */
+
+        if(text.trim().length < 10){
+
+            usedOCR = true;
+
+            ocrPages++;
+
+
+            progressText.innerHTML =
+            `<span class="spinner"></span>🔎 OCR: ${file.name} — halaman ${pageNumber}/${pdf.numPages}`;
+
+
+            if(!ocrWorker){
+
+                ocrWorker =
+                await Tesseract.createWorker(
+                    "ind"
+                );
+
+            }
+
+
+            const canvas =
+            await renderPDFPage(page);
+
+
+            const result =
+            await ocrWorker.recognize(canvas);
+
+
+            text =
+            result.data.text || "";
+
+        }
+
+
+        processedUnits++;
+
+
+        results.push({
+
+            type:"pdf",
+
+            file:file.name,
+
+            page:pageNumber,
+
+            text:text,
+
+            ocr:usedOCR
+
+        });
+
+
+        addPageResult({
+
+            type:"pdf",
+
+            file:file.name,
+
+            number:pageNumber,
+
+            text:text,
+
+            ocr:usedOCR
+
+        });
+
+
+        updateProgress(
+            processedUnits,
+            totalUnits,
+            ocrPages
+        );
+
+    }
+
+
+    return {
+
+        processedUnits:
+        processedUnits,
+
+        ocrPages:
+        ocrPages
+
+    };
+
+}
+
+
+/* =====================================================
+   PROCESS PPTX
+===================================================== */
+
+async function processPPTX(
+    file,
+    processedUnits,
+    totalUnits
+){
+
+    progressText.innerHTML =
+    `<span class="spinner"></span>📊 Membuka PowerPoint: ${file.name}`;
+
+
+    const buffer =
+    await file.arrayBuffer();
+
+
+    const slides =
+    await readPPTX(buffer);
+
+
+    for(
+        let i=0;
+        i<slides.length;
+        i++
+    ){
+
+        if(stopRequested)
+            break;
+
+
+        const slide =
+        slides[i];
+
+
+        const slideNumber =
+        i + 1;
+
+
+        progressText.textContent =
+        `📊 Membaca ${file.name} — slide ${slideNumber}/${slides.length}`;
+
+
+        const text =
+        slide.text || "";
+
+
+        processedUnits++;
+
+
+        results.push({
+
+            type:"pptx",
+
+            file:file.name,
+
+            page:slideNumber,
+
+            text:text,
+
+            ocr:false
+
+        });
+
+
+        addPageResult({
+
+            type:"pptx",
+
+            file:file.name,
+
+            number:slideNumber,
+
+            text:text,
+
+            ocr:false
+
+        });
+
+
+        updateProgress(
+            processedUnits,
+            totalUnits,
+            0
+        );
+
+    }
+
+
+    return {
+
+        processedUnits:
+        processedUnits
+
+    };
+
+}
+
+
+/* =====================================================
+   READ PPTX
+===================================================== */
+
+async function readPPTX(buffer){
+
+    const zip =
+    await JSZip.loadAsync(buffer);
+
+
+    const slideFiles =
+    Object.keys(zip.files)
+
+        .filter(path =>
+            /^ppt\/slides\/slide\d+\.xml$/i.test(path)
+        )
+
+        .sort((a,b)=>{
+
+            const na =
+            parseInt(
+                a.match(/slide(\d+)\.xml/i)[1]
+            );
+
+            const nb =
+            parseInt(
+                b.match(/slide(\d+)\.xml/i)[1]
+            );
+
+            return na - nb;
+
+        });
+
+
+    const slides = [];
+
+
+    for(const path of slideFiles){
+
+        const xml =
+        await zip.files[path].async("text");
+
+
+        const text =
+        extractPPTXText(xml);
+
+
+        slides.push({
+
+            path:path,
+
+            text:text
+
+        });
+
+    }
+
+
+    return slides;
+
+}
+
+
+/* =====================================================
+   COUNT PPTX SLIDES
+===================================================== */
+
+async function countPPTXSlides(buffer){
+
+    const zip =
+    await JSZip.loadAsync(buffer);
+
+
+    return Object.keys(zip.files)
+
+        .filter(path =>
+            /^ppt\/slides\/slide\d+\.xml$/i.test(path)
+        )
+
+        .length;
+
+}
+
+
+/* =====================================================
+   EXTRACT PPTX TEXT
+===================================================== */
+
+function extractPPTXText(xml){
+
+    try{
+
+        const parser =
+        new DOMParser();
+
+
+        const doc =
+        parser.parseFromString(
+            xml,
+            "application/xml"
+        );
+
+
+        const textNodes =
+        Array.from(
+            doc.getElementsByTagNameNS(
+                "*",
+                "t"
+            )
+        );
+
+
+        let paragraphs = [];
+
+        let currentParagraph = [];
+
+
+        const paragraphNodes =
+        Array.from(
+            doc.getElementsByTagNameNS(
+                "*",
+                "p"
+            )
+        );
+
+
+        /*
+           Ambil semua teks berdasarkan
+           paragraf PowerPoint.
+        */
+
+        paragraphNodes.forEach(p=>{
+
+            const nodes =
+            Array.from(
+                p.getElementsByTagNameNS(
+                    "*",
+                    "t"
+                )
+            );
+
+
+            const parts =
+            nodes.map(
+                node =>
+                node.textContent || ""
+            );
+
+
+            if(parts.length > 0){
+
+                paragraphs.push(
+                    parts.join("")
+                );
+
+            }
+
+        });
+
+
+        /*
+           Jika cara paragraf gagal,
+           gunakan semua text node.
+        */
+
+        if(paragraphs.length === 0){
+
+            paragraphs =
+            textNodes.map(
+                node =>
+                node.textContent || ""
+            );
+
+        }
+
+
+        return paragraphs
+
+            .map(cleanText)
+
+            .filter(Boolean)
+
+            .join("\n");
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Gagal membaca XML PPTX:",
+            error
+        );
+
+        return "";
+
+    }
+
+}
+
+
+/* =====================================================
+   EXTRACT PDF TEXT
+===================================================== */
+
+function extractPDFText(textContent){
 
     return textContent.items
 
-        .map(item => item.str)
+        .map(item =>
+            item.str || ""
+        )
 
         .join(" ")
 
@@ -932,13 +1884,15 @@ function extractText(textContent){
 }
 
 
-/* ============================
-   RENDER PDF PAGE
-============================ */
+/* =====================================================
+   RENDER PDF
+===================================================== */
 
-async function renderPage(page){
+async function renderPDFPage(page){
 
-    const scale = 2.0;
+    const scale =
+    2.0;
+
 
     const viewport =
     page.getViewport({
@@ -955,17 +1909,19 @@ async function renderPage(page){
 
 
     canvas.width =
-    viewport.width;
+    Math.ceil(viewport.width);
 
     canvas.height =
-    viewport.height;
+    Math.ceil(viewport.height);
 
 
     await page.render({
 
-        canvasContext:context,
+        canvasContext:
+        context,
 
-        viewport:viewport
+        viewport:
+        viewport
 
     }).promise;
 
@@ -975,66 +1931,147 @@ async function renderPage(page){
 }
 
 
-/* ============================
-   ADD PAGE RESULT
-============================ */
+/* =====================================================
+   ADD PAGE / SLIDE RESULT
+===================================================== */
 
-function addPageResult(
-    file,
-    page,
-    text,
-    ocr
-){
+function addPageResult(data){
 
     const div =
     document.createElement("div");
 
-    div.className = "page";
 
+    div.className =
+    "page";
+
+
+    /*
+       Header
+    */
 
     const header =
     document.createElement("div");
+
 
     header.className =
     "page-header";
 
 
-    header.innerHTML = `
+    const left =
+    document.createElement("div");
 
-        📄 ${escapeHTML(file)}
-        — Halaman ${page}
 
-        ${ocr
-            ? `<span style="float:right">🔎 OCR</span>`
-            : `<span style="float:right">📑 Teks</span>`
-        }
+    left.className =
+    "page-header-left";
 
-    `;
 
+    if(data.type === "pptx"){
+
+        left.textContent =
+        `📊 ${data.file} — Slide ${data.number}`;
+
+    }else{
+
+        left.textContent =
+        `📄 ${data.file} — Halaman ${data.number}`;
+
+    }
+
+
+    const badge =
+    document.createElement("span");
+
+
+    badge.className =
+    "badge";
+
+
+    if(data.type === "pptx"){
+
+        badge.classList.add(
+            "badge-slide"
+        );
+
+        badge.textContent =
+        "PPTX";
+
+    }
+
+    else if(data.ocr){
+
+        badge.classList.add(
+            "badge-ocr"
+        );
+
+        badge.textContent =
+        "OCR";
+
+    }
+
+    else{
+
+        badge.classList.add(
+            "badge-text"
+        );
+
+        badge.textContent =
+        "TEKS";
+
+    }
+
+
+    header.appendChild(left);
+
+    header.appendChild(badge);
+
+
+    /*
+       Content
+    */
 
     const content =
     document.createElement("div");
+
 
     content.className =
     "page-content";
 
 
-    content.textContent =
-    text || "[Tidak ada teks yang ditemukan]";
+    content.dataset.searchText =
+    (data.file + " " + data.text)
+    .toLowerCase();
+
+
+    if(data.text.trim()){
+
+        content.textContent =
+        data.text.trim();
+
+    }else{
+
+        content.textContent =
+        "[Tidak ada teks yang ditemukan]";
+
+        content.classList.add(
+            "empty-text"
+        );
+
+    }
 
 
     div.appendChild(header);
 
     div.appendChild(content);
 
+
     pagesResult.appendChild(div);
 
 }
 
 
-/* ============================
-   FULL TEXT
-============================ */
+/* =====================================================
+   BUILD FULL TEXT
+===================================================== */
 
 function buildFullText(){
 
@@ -1055,7 +2092,9 @@ function buildFullText(){
             "\n\n========================================\n";
 
             output +=
-            "FILE: " + item.file + "\n";
+            "FILE: " +
+            item.file +
+            "\n";
 
             output +=
             "========================================\n\n";
@@ -1063,18 +2102,40 @@ function buildFullText(){
         }
 
 
-        output +=
-        "\n--- Halaman " +
-        item.page +
-        (item.ocr ? " | OCR" : "") +
-        " ---\n\n";
+        if(item.type === "pptx"){
+
+            output +=
+            "\n--- Slide " +
+            item.page +
+            " ---\n\n";
+
+        }else{
+
+            output +=
+            "\n--- Halaman " +
+            item.page;
+
+
+            if(item.ocr){
+
+                output +=
+                " | OCR";
+
+            }
+
+
+            output +=
+            " ---\n\n";
+
+        }
 
 
         output +=
         item.text.trim();
 
 
-        output += "\n";
+        output +=
+        "\n";
 
     });
 
@@ -1085,9 +2146,9 @@ function buildFullText(){
 }
 
 
-/* ============================
-   PROGRESS
-============================ */
+/* =====================================================
+   UPDATE PROGRESS
+===================================================== */
 
 function updateProgress(
     current,
@@ -1108,151 +2169,332 @@ function updateProgress(
 
 
     progressText.textContent =
-    `Memproses ${current}/${total} halaman (${percent}%) — OCR: ${ocr}`;
+    `Memproses ${current}/${total} (${percent}%) — OCR: ${ocr}`;
 
 }
 
 
-/* ============================
-   COPY
-============================ */
+/* =====================================================
+   SEARCH
+===================================================== */
 
-copyBtn.addEventListener("click", async()=>{
+searchInput.addEventListener(
+    "input",
+    performSearch
+);
 
-    try{
 
-        await navigator.clipboard.writeText(
-            allText.value
-        );
+clearSearchBtn.addEventListener(
+    "click",
+    ()=>{
 
-        alert("✅ Semua teks berhasil disalin.");
+        searchInput.value = "";
 
-    }catch(error){
-
-        allText.select();
-
-        document.execCommand("copy");
-
-        alert("✅ Teks disalin.");
+        performSearch();
 
     }
+);
 
-});
+
+function performSearch(){
+
+    const query =
+    searchInput.value
+        .trim()
+        .toLowerCase();
 
 
-/* ============================
-   DOWNLOAD
-============================ */
-
-downloadBtn.addEventListener("click",()=>{
-
-    const blob =
-    new Blob(
-        [allText.value],
-        {
-            type:"text/plain;charset=utf-8"
-        }
+    const pages =
+    pagesResult.querySelectorAll(
+        ".page"
     );
 
 
-    const url =
-    URL.createObjectURL(blob);
+    pages.forEach(page=>{
+
+        const content =
+        page.querySelector(
+            ".page-content"
+        );
 
 
-    const a =
-    document.createElement("a");
+        const text =
+        content.dataset.searchText ||
+        "";
 
 
-    a.href = url;
+        if(
+            !query ||
+            text.includes(query)
+        ){
 
-    a.download =
-    "hasil-pembacaan-pdf.txt";
+            page.style.display =
+            "block";
+
+        }else{
+
+            page.style.display =
+            "none";
+
+        }
+
+    });
+
+}
 
 
-    document.body.appendChild(a);
+/* =====================================================
+   COPY
+===================================================== */
 
-    a.click();
+copyBtn.addEventListener(
+    "click",
+    async()=>{
 
-    a.remove();
-
-
-    URL.revokeObjectURL(url);
-
-});
+        if(!allText.value.trim())
+            return;
 
 
-/* ============================
+        try{
+
+            await navigator.clipboard.writeText(
+                allText.value
+            );
+
+
+            alert(
+                "✅ Semua teks berhasil disalin."
+            );
+
+        }
+
+        catch(error){
+
+            allText.select();
+
+            document.execCommand(
+                "copy"
+            );
+
+
+            alert(
+                "✅ Teks berhasil disalin."
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   DOWNLOAD TXT
+===================================================== */
+
+downloadBtn.addEventListener(
+    "click",
+    ()=>{
+
+        if(!allText.value.trim())
+            return;
+
+
+        const blob =
+        new Blob(
+
+            [allText.value],
+
+            {
+                type:
+                "text/plain;charset=utf-8"
+            }
+
+        );
+
+
+        const url =
+        URL.createObjectURL(blob);
+
+
+        const a =
+        document.createElement("a");
+
+
+        a.href =
+        url;
+
+
+        a.download =
+        "hasil-pembacaan.pdf-pptx.txt";
+
+
+        document.body.appendChild(a);
+
+
+        a.click();
+
+
+        a.remove();
+
+
+        URL.revokeObjectURL(url);
+
+    }
+);
+
+
+/* =====================================================
    CLEAR
-============================ */
+===================================================== */
 
-clearBtn.addEventListener("click",()=>{
+clearBtn.addEventListener(
+    "click",
+    ()=>{
 
-    selectedFiles = [];
+        selectedFiles = [];
 
-    results = [];
+        results = [];
 
-    stopRequested = false;
-
-
-    pdfInput.value = "";
-
-    fileList.innerHTML = "";
-
-    pagesResult.innerHTML = "";
-
-    allText.value = "";
+        stopRequested = false;
 
 
-    progressBar.style.width =
-    "0%";
+        fileInput.value = "";
+
+        fileList.innerHTML = "";
+
+        pagesResult.innerHTML = "";
+
+        allText.value = "";
+
+        searchInput.value = "";
 
 
-    progressText.textContent =
-    "Menunggu...";
+        progressBar.style.width =
+        "0%";
 
 
-    progressBox.style.display =
-    "none";
+        progressText.textContent =
+        "Menunggu...";
 
 
-    statsCard.style.display =
-    "none";
-
-    textCard.style.display =
-    "none";
-
-    pagesCard.style.display =
-    "none";
+        progressBox.style.display =
+        "none";
 
 
-    startBtn.disabled = true;
+        statsCard.style.display =
+        "none";
 
-    stopBtn.disabled = true;
+        textCard.style.display =
+        "none";
 
-    copyBtn.disabled = true;
-
-    downloadBtn.disabled = true;
-
-});
+        pagesCard.style.display =
+        "none";
 
 
-/* ============================
-   ESCAPE HTML
-============================ */
+        startBtn.disabled =
+        true;
 
-function escapeHTML(text){
+        stopBtn.disabled =
+        true;
 
-    return text
+        copyBtn.disabled =
+        true;
 
-        .replaceAll("&","&amp;")
+        downloadBtn.disabled =
+        true;
 
-        .replaceAll("<","&lt;")
 
-        .replaceAll(">","&gt;")
+        statFiles.textContent =
+        "0";
 
-        .replaceAll('"',"&quot;")
+        statPDF.textContent =
+        "0";
 
-        .replaceAll("'","&#039;");
+        statPPTX.textContent =
+        "0";
+
+        statPages.textContent =
+        "0";
+
+        statSlides.textContent =
+        "0";
+
+        statOCR.textContent =
+        "0";
+
+        statCharacters.textContent =
+        "0";
+
+    }
+);
+
+
+/* =====================================================
+   GET EXTENSION
+===================================================== */
+
+function getExtension(filename){
+
+    const parts =
+    filename
+        .toLowerCase()
+        .split(".");
+
+
+    return parts.length > 1
+        ? parts.pop()
+        : "";
+
+}
+
+
+/* =====================================================
+   FILE SIZE
+===================================================== */
+
+function formatFileSize(bytes){
+
+    if(bytes < 1024){
+
+        return bytes + " B";
+
+    }
+
+
+    if(bytes < 1024 * 1024){
+
+        return (
+            bytes / 1024
+        ).toFixed(1) +
+        " KB";
+
+    }
+
+
+    return (
+        bytes /
+        (1024 * 1024)
+    ).toFixed(2) +
+    " MB";
+
+}
+
+
+/* =====================================================
+   CLEAN TEXT
+===================================================== */
+
+function cleanText(text){
+
+    return String(text || "")
+
+        .replace(/\r/g,"")
+
+        .replace(/[ \t]+/g," ")
+
+        .replace(/\n{3,}/g,"\n\n")
+
+        .trim();
 
 }
 
