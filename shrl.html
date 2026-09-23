@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>STS Sejarah Lanjut XII - 25 Soal</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f7fb;
+    color:#1f2937;
+    line-height:1.6;
+}
+
+header{
+    background:linear-gradient(135deg,#1d4ed8,#2563eb,#3b82f6);
+    color:white;
+    padding:35px 20px;
+    text-align:center;
+    box-shadow:0 4px 15px rgba(0,0,0,.12);
+}
+
+header h1{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+header p{
+    font-size:15px;
+    opacity:.95;
+}
+
+.container{
+    width:min(1000px,94%);
+    margin:25px auto 50px;
+}
+
+.info-box{
+    background:white;
+    border-radius:16px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 4px 14px rgba(0,0,0,.08);
+}
+
+.info-box h2{
+    color:#1d4ed8;
+    margin-bottom:8px;
+}
+
+.info-box p{
+    margin:5px 0;
+}
+
+.progress-wrapper{
+    margin-top:15px;
+}
+
+.progress-text{
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.progress-bar{
+    width:100%;
+    height:12px;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress{
+    width:0%;
+    height:100%;
+    background:#2563eb;
+    transition:.3s;
+}
+
+.question{
+    background:white;
+    border-radius:16px;
+    padding:24px;
+    margin-bottom:18px;
+    box-shadow:0 4px 14px rgba(0,0,0,.07);
+    border:2px solid transparent;
+}
+
+.question-number{
+    display:inline-block;
+    background:#dbeafe;
+    color:#1d4ed8;
+    padding:5px 11px;
+    border-radius:20px;
+    font-weight:bold;
+    font-size:14px;
+    margin-bottom:12px;
+}
+
+.question h3{
+    font-size:17px;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+.option{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    padding:12px 14px;
+    margin:8px 0;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.2s;
+    background:#fff;
+}
+
+.option:hover{
+    border-color:#3b82f6;
+    background:#eff6ff;
+}
+
+.option input{
+    margin-top:5px;
+    accent-color:#2563eb;
+}
+
+.option span{
+    flex:1;
+}
+
+.correct{
+    border-color:#16a34a !important;
+    background:#f0fdf4 !important;
+}
+
+.wrong{
+    border-color:#dc2626 !important;
+    background:#fef2f2 !important;
+}
+
+.answer-info{
+    display:none;
+    margin-top:14px;
+    padding:13px 15px;
+    border-radius:10px;
+    background:#f8fafc;
+    border-left:4px solid #2563eb;
+}
+
+.answer-info strong{
+    color:#1d4ed8;
+}
+
+.result{
+    display:none;
+    background:white;
+    border-radius:18px;
+    padding:30px;
+    margin-top:25px;
+    text-align:center;
+    box-shadow:0 5px 18px rgba(0,0,0,.1);
+}
+
+.result h2{
+    color:#1d4ed8;
+    margin-bottom:10px;
+}
+
+.score{
+    font-size:52px;
+    font-weight:bold;
+    color:#2563eb;
+    margin:10px 0;
+}
+
+.result-message{
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin:20px 0;
+}
+
+.stat{
+    background:#f8fafc;
+    padding:15px;
+    border-radius:12px;
+}
+
+.stat strong{
+    display:block;
+    font-size:25px;
+    color:#2563eb;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+    border-radius:12px;
+    padding:14px 22px;
+    transition:.2s;
+}
+
+.btn-submit{
+    width:100%;
+    background:#2563eb;
+    color:white;
+    margin-top:10px;
+}
+
+.btn-submit:hover{
+    background:#1d4ed8;
+    transform:translateY(-1px);
+}
+
+.btn-reset{
+    background:#e5e7eb;
+    color:#111827;
+    margin-top:10px;
+}
+
+.btn-reset:hover{
+    background:#d1d5db;
+}
+
+.warning{
+    display:none;
+    margin-top:15px;
+    padding:12px;
+    background:#fff7ed;
+    color:#9a3412;
+    border-radius:10px;
+    text-align:center;
+    font-weight:bold;
+}
+
+footer{
+    text-align:center;
+    padding:25px;
+    color:#6b7280;
+    font-size:14px;
+}
+
+@media(max-width:600px){
+    header{
+        padding:27px 15px;
+    }
+
+    header h1{
+        font-size:24px;
+    }
+
+    .container{
+        width:94%;
+    }
+
+    .question{
+        padding:18px;
+    }
+
+    .question h3{
+        font-size:16px;
+    }
+
+    .option{
+        padding:11px;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .score{
+        font-size:44px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>STS Sejarah Lanjut Kelas XII</h1>
+    <p>Latihan 25 Soal Pilihan Ganda</p>
+</header>
+
+<div class="container">
+
+    <div class="info-box">
+        <h2>Petunjuk</h2>
+        <p>• Pilih satu jawaban yang paling tepat.</p>
+        <p>• Terdapat 25 soal dengan pilihan A–E.</p>
+        <p>• Nilai akan dihitung otomatis setelah menekan tombol <b>SELESAI & LIHAT NILAI</b>.</p>
+
+        <div class="progress-wrapper">
+            <div class="progress-text">
+                Terjawab: <span id="answered">0</span>/25
+            </div>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <form id="quizForm">
+
+        <!-- SOAL 1 -->
+        <div class="question">
+            <div class="question-number">Soal 1</div>
+            <h3>Persaingan kolonialisme dan industri di Eropa menjelang Perang Dunia I menyebabkan negara-negara Eropa berusaha memperluas pengaruhnya. Dampak utama kondisi tersebut adalah ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q1" value="A">
+                <span>A. Berkurangnya persaingan antarnegara</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="B">
+                <span>B. Meningkatnya ketegangan dan persaingan antarnegara</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="C">
+                <span>C. Berakhirnya imperialisme Eropa</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="D">
+                <span>D. Terbentuknya PBB</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="E">
+                <span>E. Menurunnya perkembangan industri</span>
+            </label>
+
+            <div class="answer-info" id="info1">
+                <strong>Jawaban: B</strong><br>
+                Persaingan kolonialisme dan industri meningkatkan perebutan wilayah, bahan mentah, pasar, dan pengaruh sehingga ketegangan antarnegara semakin besar.
+            </div>
+        </div>
+
+
+        <!-- SOAL 2 -->
+        <div class="question">
+            <div class="question-number">Soal 2</div>
+            <h3>Perlombaan senjata besar-besaran di Eropa sebelum Perang Dunia I disebut ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q2" value="A">
+                <span>A. Liberalisme</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="B">
+                <span>B. Imperialisme</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="C">
+                <span>C. Militerisme</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="D">
+                <span>D. Nasionalisme</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="E">
+                <span>E. Sosialisme</span>
+            </label>
+
+            <div class="answer-info" id="info2">
+                <strong>Jawaban: C</strong><br>
+                Perlombaan memperkuat angkatan bersenjata dan persenjataan merupakan bentuk militerisme.
+            </div>
+        </div>
+
+
+        <!-- SOAL 3 -->
+        <div class="question">
+            <div class="question-number">Soal 3</div>
+            <h3>Bagaimana hubungan Austria-Hongaria dengan Serbia sebelum Perang Dunia I?</h3>
+
+            <label class="option">
+                <input type="radio" name="q3" value="A">
+                <span>A. Sangat harmonis dan bekerja sama</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="B">
+                <span>B. Tidak memiliki hubungan politik</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="C">
+                <span>C. Tegang akibat nasionalisme Serbia di kawasan Balkan</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="D">
+                <span>D. Serbia berada di bawah kekuasaan Inggris</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="E">
+                <span>E. Austria-Hongaria membantu Serbia memperluas wilayah</span>
+            </label>
+
+            <div class="answer-info" id="info3">
+                <strong>Jawaban: C</strong><br>
+                Hubungan kedua negara tegang karena perkembangan nasionalisme Serbia dan persoalan politik di kawasan Balkan.
+            </div>
+        </div>
+
+
+        <!-- SOAL 4 -->
+        <div class="question">
+            <div class="question-number">Soal 4</div>
+            <h3>Politik kolonialisme dan imperialisme sebagai salah satu sebab umum Perang Dunia I terutama dipicu oleh keinginan negara-negara Eropa untuk ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q4" value="A">
+                <span>A. Menghapus sistem perdagangan</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="B">
+                <span>B. Mendapatkan wilayah jajahan, bahan mentah, dan pasar</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="C">
+                <span>C. Mengurangi jumlah industri</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="D">
+                <span>D. Mengembangkan demokrasi</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="E">
+                <span>E. Membentuk organisasi perdamaian</span>
+            </label>
+
+            <div class="answer-info" id="info4">
+                <strong>Jawaban: B</strong><br>
+                Negara-negara industri membutuhkan bahan mentah dan pasar sehingga berlomba mendapatkan wilayah jajahan.
+            </div>
+        </div>
+
+
+        <!-- SOAL 5 -->
+        <div class="question">
+            <div class="question-number">Soal 5</div>
+            <h3>Negara-negara yang termasuk dalam Triple Alliance adalah ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q5" value="A">
+                <span>A. Inggris, Prancis, Rusia</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="B">
+                <span>B. Jerman, Austria-Hongaria, Italia</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="C">
+                <span>C. Jerman, Inggris, Rusia</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="D">
+                <span>D. Prancis, Italia, Rusia</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="E">
+                <span>E. Inggris, Italia, Serbia</span>
+            </label>
+
+            <div class="answer-info" id="info5">
+                <strong>Jawaban: B</strong><br>
+                Triple Alliance terdiri atas Jerman, Austria-Hongaria, dan Italia.
+            </div>
+        </div>
+
+
+        <!-- SOAL 6 -->
+        <div class="question">
+            <div class="question-number">Soal 6</div>
+            <h3>Salah satu dampak Revolusi Rusia 1917 terhadap Perang Dunia I adalah ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q6" value="A">
+                <span>A. Rusia memperkuat serangannya terhadap Jerman</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="B">
+                <span>B. Rusia keluar dari perang</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="C">
+                <span>C. Rusia bergabung dengan Blok Sentral</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="D">
+                <span>D. Jerman menyerah kepada Rusia</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="E">
+                <span>E. Amerika Serikat keluar dari perang</span>
+            </label>
+
+            <div class="answer-info" id="info6">
+                <strong>Jawaban: B</strong><br>
+                Setelah Revolusi Rusia, pemerintahan Bolshevik menarik Rusia dari Perang Dunia I melalui Perjanjian Brest-Litovsk.
+            </div>
+        </div>
+
+
+        <!-- SOAL 7 -->
+        <div class="question">
+            <div class="question-number">Soal 7</div>
+            <h3>Kapal Lusitania ditenggelamkan, Jerman menerapkan perang kapal selam tak terbatas, dan Telegram Zimmerman terbongkar. Kesimpulan dari ketiga peristiwa tersebut adalah ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q7" value="A">
+                <span>A. Hubungan Jerman dan AS semakin membaik</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="B">
+                <span>B. AS semakin terdorong untuk masuk Perang Dunia I</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="C">
+                <span>C. Rusia kembali bergabung dalam perang</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="D">
+                <span>D. Inggris keluar dari perang</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="E">
+                <span>E. Jerman menghentikan seluruh serangan</span>
+            </label>
+
+            <div class="answer-info" id="info7">
+                <strong>Jawaban: B</strong><br>
+                Ketiga peristiwa tersebut memperburuk hubungan Jerman dengan Amerika Serikat dan menjadi faktor yang mendorong AS masuk perang.
+            </div>
+        </div>
+
+
+        <!-- SOAL 8 -->
+        <div class="question">
+            <div class="question-number">Soal 8</div>
+            <h3>Makna dari Telegram Zimmerman adalah ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q8" value="A">
+                <span>A. Jerman meminta Inggris menyerang Rusia</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q8" value="B">
+                <span>B. Jerman mengajak Meksiko menyerang Amerika Serikat</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q8" value="C">
+                <span>C. Amerika Serikat mengajak Meksiko menyerang Jerman</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q8" value="D">
+                <span>D. Rusia meminta bantuan Jerman</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q8" value="E">
+                <span>E. Inggris mengajak Meksiko bergabung dengan Sekutu</span>
+            </label>
+
+            <div class="answer-info" id="info8">
+                <strong>Jawaban: B</strong><br>
+                Telegram Zimmerman berisi tawaran Jerman kepada Meksiko untuk menyerang Amerika Serikat jika AS masuk perang melawan Jerman.
+            </div>
+        </div>
+
+
+        <!-- SOAL 9 -->
+        <div class="question">
+            <div class="question-number">Soal 9</div>
+            <h3>LBB dianggap gagal menjalankan fungsinya karena ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q9" value="A">
+                <span>A. Tidak memiliki anggota sama sekali</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q9" value="B">
+                <span>B. Tidak memiliki kekuatan efektif untuk menindak negara yang melanggar</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q9" value="C">
+                <span>C. Hanya mengurusi masalah ekonomi</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q9" value="D">
+                <span>D. Dipimpin oleh Jerman</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q9" value="E">
+                <span>E. Dibentuk setelah Perang Dunia II</span>
+            </label>
+
+            <div class="answer-info" id="info9">
+                <strong>Jawaban: B</strong><br>
+                LBB tidak mempunyai kekuatan penegakan yang efektif sehingga lemah ketika menghadapi negara-negara agresor.
+            </div>
+        </div>
+
+
+        <!-- SOAL 10 -->
+        <div class="question">
+            <div class="question-number">Soal 10</div>
+            <h3>Meningkatnya peran perempuan setelah Perang Dunia I terutama disebabkan oleh ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q10" value="A">
+                <span>A. Perempuan dilarang bekerja</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q10" value="B">
+                <span>B. Banyak laki-laki pergi atau gugur dalam perang sehingga perempuan mengisi lapangan pekerjaan</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q10" value="C">
+                <span>C. Perempuan menjadi tentara utama</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q10" value="D">
+                <span>D. Industri Eropa berhenti total</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q10" value="E">
+                <span>E. Semua negara memberikan hak politik secara langsung</span>
+            </label>
+
+            <div class="answer-info" id="info10">
+                <strong>Jawaban: B</strong><br>
+                Banyak laki-laki terlibat dalam perang sehingga perempuan mengambil lebih banyak peran dalam pekerjaan dan kehidupan publik.
+            </div>
+        </div>
+
+
+        <!-- SOAL 11 -->
+        <div class="question">
+            <div class="question-number">Soal 11</div>
+            <h3>Pada 1931 Jepang menduduki Manchuria, tetapi LBB tidak mampu bertindak tegas. Pelajaran yang dapat dipetik adalah ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q11" value="A">
+                <span>A. Organisasi internasional tidak diperlukan</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q11" value="B">
+                <span>B. Negara kecil tidak boleh menjadi anggota organisasi internasional</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q11" value="C">
+                <span>C. Organisasi internasional harus memiliki aturan dan kekuatan penegakan yang efektif</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q11" value="D">
+                <span>D. Negara harus memperluas wilayahnya</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q11" value="E">
+                <span>E. Perang merupakan cara terbaik menyelesaikan konflik</span>
+            </label>
+
+            <div class="answer-info" id="info11">
+                <strong>Jawaban: C</strong><br>
+                Kegagalan LBB menunjukkan pentingnya aturan dan mekanisme penegakan yang efektif dalam organisasi internasional.
+            </div>
+        </div>
+
+
+        <!-- SOAL 12 -->
+        <div class="question">
+            <div class="question-number">Soal 12</div>
+            <h3>Jika LBB tetap efektif dalam menjaga perdamaian dunia, kemungkinan yang terjadi adalah ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q12" value="A">
+                <span>A. Agresi negara-negara dapat lebih dibatasi</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q12" value="B">
+                <span>B. Semua negara langsung menjadi anggota LBB</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q12" value="C">
+                <span>C. Perang Dunia I terjadi kembali</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q12" value="D">
+                <span>D. Jepang semakin bebas melakukan ekspansi</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q12" value="E">
+                <span>E. LBB berubah menjadi Blok Sentral</span>
+            </label>
+
+            <div class="answer-info" id="info12">
+                <strong>Jawaban: A</strong><br>
+                LBB yang efektif secara hipotetis dapat membatasi tindakan agresif negara-negara yang melanggar perdamaian.
+            </div>
+        </div>
+
+
+        <!-- SOAL 13 -->
+        <div class="question">
+            <div class="question-number">Soal 13</div>
+            <h3>Tokoh yang menjadi pemimpin gerakan fasisme di Italia adalah ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q13" value="A">
+                <span>A. Adolf Hitler</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q13" value="B">
+                <span>B. Benito Mussolini</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q13" value="C">
+                <span>C. Joseph Stalin</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q13" value="D">
+                <span>D. Winston Churchill</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q13" value="E">
+                <span>E. Franklin D. Roosevelt</span>
+            </label>
+
+            <div class="answer-info" id="info13">
+                <strong>Jawaban: B</strong><br>
+                Benito Mussolini merupakan pemimpin fasisme Italia.
+            </div>
+        </div>
+
+
+        <!-- SOAL 14 -->
+        <div class="question">
+            <div class="question-number">Soal 14</div>
+            <h3>Militerisme Jepang berkembang pesat sebelum Perang Dunia II karena ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q14" value="A">
+                <span>A. Jepang tidak mengalami perkembangan industri</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q14" value="B">
+                <span>B. Jepang memiliki sumber daya alam yang sangat melimpah</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q14" value="C">
+                <span>C. Jepang mengalami industrialisasi tetapi kekurangan sumber daya alam</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q14" value="D">
+                <span>D. Jepang ingin membantu negara-negara Eropa</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q14" value="E">
+                <span>E. Jepang ingin bergabung dengan LBB</span>
+            </label>
+
+            <div class="answer-info" id="info14">
+                <strong>Jawaban: C</strong><br>
+                Jepang mengalami perkembangan industri dan membutuhkan sumber daya alam sehingga mendorong ekspansi wilayah.
+            </div>
+        </div>
+
+
+        <!-- SOAL 15 -->
+        <div class="question">
+            <div class="question-number">Soal 15</div>
+            <h3>Politik aliansi menjadi berbahaya karena ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q15" value="A">
+                <span>A. Membuat semua negara menjadi netral</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q15" value="B">
+                <span>B. Konflik satu negara dapat menyeret negara-negara sekutunya</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q15" value="C">
+                <span>C. Menghapus persenjataan</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q15" value="D">
+                <span>D. Menghentikan perang secara otomatis</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q15" value="E">
+                <span>E. Mengurangi ketegangan antarnegara</span>
+            </label>
+
+            <div class="answer-info" id="info15">
+                <strong>Jawaban: B</strong><br>
+                Sistem aliansi dapat membuat konflik lokal berkembang menjadi perang yang melibatkan banyak negara.
+            </div>
+        </div>
+
+
+        <!-- SOAL 16 -->
+        <div class="question">
+            <div class="question-number">Soal 16</div>
+            <h3>Ciri utama ultranasionalisme adalah ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q16" value="A">
+                <span>A. Menolak identitas nasional</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q16" value="B">
+                <span>B. Nasionalisme yang sangat ekstrem dan menganggap bangsa sendiri lebih unggul</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q16" value="C">
+                <span>C. Mengutamakan kerja sama internasional</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q16" value="D">
+                <span>D. Menghapus batas negara</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q16" value="E">
+                <span>E. Menolak kekuatan militer</span>
+            </label>
+
+            <div class="answer-info" id="info16">
+                <strong>Jawaban: B</strong><br>
+                Ultranasionalisme merupakan nasionalisme yang sangat ekstrem dan menempatkan kepentingan serta keunggulan bangsa secara berlebihan.
+            </div>
+        </div>
+
+
+        <!-- SOAL 17 -->
+        <div class="question">
+            <div class="question-number">Soal 17</div>
+            <h3>Strategi blitzkrieg yang digunakan Jerman dalam Perang Dunia II dicirikan dengan ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q17" value="A">
+                <span>A. Perang bertahan dalam jangka panjang</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q17" value="B">
+                <span>B. Serangan lambat menggunakan pasukan infanteri saja</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q17" value="C">
+                <span>C. Serangan cepat dan terkoordinasi menggunakan tank, pesawat, dan pasukan darat</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q17" value="D">
+                <span>D. Menghindari penggunaan kendaraan perang</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q17" value="E">
+                <span>E. Mengandalkan blokade laut saja</span>
+            </label>
+
+            <div class="answer-info" id="info17">
+                <strong>Jawaban: C</strong><br>
+                Blitzkrieg atau perang kilat menggunakan serangan cepat dan terkoordinasi dengan tank, pesawat, serta pasukan darat.
+            </div>
+        </div>
+
+
+        <!-- SOAL 18 -->
+        <div class="question">
+            <div class="question-number">Soal 18</div>
+            <h3>Dampak langsung serangan Jepang terhadap Pearl Harbor pada 7 Desember 1941 adalah ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q18" value="A">
+                <span>A. AS menyatakan perang terhadap Jepang</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q18" value="B">
+                <span>B. Jepang menyatakan perang terhadap Inggris</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q18" value="C">
+                <span>C. Jerman menyerah kepada Sekutu</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q18" value="D">
+                <span>D. Rusia keluar dari perang</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q18" value="E">
+                <span>E. Jepang menghentikan ekspansinya</span>
+            </label>
+
+            <div class="answer-info" id="info18">
+                <strong>Jawaban: A</strong><br>
+                Serangan Pearl Harbor mendorong Amerika Serikat menyatakan perang terhadap Jepang.
+            </div>
+        </div>
+
+
+        <!-- SOAL 19 -->
+        <div class="question">
+            <div class="question-number">Soal 19</div>
+            <h3>Istilah turning point dalam konteks Perang Dunia II berarti ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q19" value="A">
+                <span>A. Awal terbentuknya negara baru</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q19" value="B">
+                <span>B. Titik balik yang mengubah arah jalannya perang</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q19" value="C">
+                <span>C. Berakhirnya seluruh perang di dunia</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q19" value="D">
+                <span>D. Perjanjian perdamaian</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q19" value="E">
+                <span>E. Pembentukan LBB</span>
+            </label>
+
+            <div class="answer-info" id="info19">
+                <strong>Jawaban: B</strong><br>
+                Turning point berarti titik balik. Pertempuran Stalingrad merupakan salah satu contoh titik balik penting dalam Perang Dunia II.
+            </div>
+        </div>
+
+
+        <!-- SOAL 20 -->
+        <div class="question">
+            <div class="question-number">Soal 20</div>
+            <h3>Latar belakang utama Jepang melakukan ekspansi ke Asia Tenggara adalah ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q20" value="A">
+                <span>A. Asia Tenggara tidak memiliki sumber daya alam</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q20" value="B">
+                <span>B. Jepang membutuhkan sumber daya alam dan bahan mentah</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q20" value="C">
+                <span>C. Jepang ingin membantu Sekutu</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q20" value="D">
+                <span>D. Jepang ingin membubarkan kekaisarannya</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q20" value="E">
+                <span>E. Jepang ingin bergabung dengan LBB</span>
+            </label>
+
+            <div class="answer-info" id="info20">
+                <strong>Jawaban: B</strong><br>
+                Jepang membutuhkan sumber daya alam dan bahan mentah untuk mendukung industri dan perang.
+            </div>
+        </div>
+
+
+        <!-- SOAL 21 -->
+        <div class="question">
+            <div class="question-number">Soal 21</div>
+            <h3>Peristiwa yang menandai berakhirnya Perang Pasifik adalah ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q21" value="A">
+                <span>A. Jepang menyerang Pearl Harbor</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q21" value="B">
+                <span>B. Pertempuran Midway</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q21" value="C">
+                <span>C. Jepang menyerah kepada Sekutu</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q21" value="D">
+                <span>D. Jerman menyerang Polandia</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q21" value="E">
+                <span>E. Amerika Serikat memasuki perang</span>
+            </label>
+
+            <div class="answer-info" id="info21">
+                <strong>Jawaban: C</strong><br>
+                Jepang mengumumkan menyerah pada 15 Agustus 1945, sedangkan penyerahan resmi ditandatangani pada 2 September 1945.
+            </div>
+        </div>
+
+
+        <!-- SOAL 22 -->
+        <div class="question">
+            <div class="question-number">Soal 22</div>
+            <h3>Setelah Jepang menyerah kepada Sekutu, Indonesia mengambil kesempatan dengan ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q22" value="A">
+                <span>A. Membentuk LBB</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q22" value="B">
+                <span>B. Menyerahkan kekuasaan kepada Belanda</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q22" value="C">
+                <span>C. Memproklamasikan kemerdekaan pada 17 Agustus 1945</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q22" value="D">
+                <span>D. Bergabung dengan Jepang</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q22" value="E">
+                <span>E. Menyatakan perang kepada Amerika Serikat</span>
+            </label>
+
+            <div class="answer-info" id="info22">
+                <strong>Jawaban: C</strong><br>
+                Kekalahan Jepang menciptakan kekosongan kekuasaan yang dimanfaatkan Indonesia untuk memproklamasikan kemerdekaan pada 17 Agustus 1945.
+            </div>
+        </div>
+
+
+        <!-- SOAL 23 -->
+        <div class="question">
+            <div class="question-number">Soal 23</div>
+            <h3>Salah satu hasil Konferensi Potsdam adalah pembagian wilayah Jerman. Keputusan tersebut dilaksanakan dengan cara ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q23" value="A">
+                <span>A. Jerman dibagi menjadi dua wilayah</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q23" value="B">
+                <span>B. Jerman dibagi menjadi empat wilayah pendudukan</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q23" value="C">
+                <span>C. Jerman diberikan kepada Jepang</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q23" value="D">
+                <span>D. Jerman menjadi negara tanpa pemerintahan</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q23" value="E">
+                <span>E. Jerman dibagi menjadi sepuluh wilayah</span>
+            </label>
+
+            <div class="answer-info" id="info23">
+                <strong>Jawaban: B</strong><br>
+                Jerman dibagi menjadi empat zona pendudukan yang dikuasai Amerika Serikat, Inggris, Prancis, dan Uni Soviet.
+            </div>
+        </div>
+
+
+        <!-- SOAL 24 -->
+        <div class="question">
+            <div class="question-number">Soal 24</div>
+            <h3>Jika Jepang harus membayar ganti rugi perang setelah Perang Dunia II, dapat disimpulkan bahwa ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q24" value="A">
+                <span>A. Jepang dianggap tidak terlibat dalam perang</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q24" value="B">
+                <span>B. Jepang memiliki tanggung jawab atas kerugian akibat perang</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q24" value="C">
+                <span>C. Jepang menjadi pemimpin Sekutu</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q24" value="D">
+                <span>D. Jepang memperoleh seluruh wilayah Asia</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q24" value="E">
+                <span>E. Jepang dibebaskan dari seluruh tanggung jawab perang</span>
+            </label>
+
+            <div class="answer-info" id="info24">
+                <strong>Jawaban: B</strong><br>
+                Ganti rugi perang menunjukkan adanya tanggung jawab terhadap kerugian yang ditimbulkan akibat perang.
+            </div>
+        </div>
+
+
+        <!-- SOAL 25 -->
+        <div class="question">
+            <div class="question-number">Soal 25</div>
+            <h3>Blok Barat yang dipimpin Amerika Serikat setelah Perang Dunia II menganut ideologi ...</h3>
+
+            <label class="option">
+                <input type="radio" name="q25" value="A">
+                <span>A. Komunisme</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q25" value="B">
+                <span>B. Fasisme</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q25" value="C">
+                <span>C. Liberalisme/kapitalisme</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q25" value="D">
+                <span>D. Militarisme</span>
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q25" value="E">
+                <span>E. Nazisme</span>
+            </label>
+
+            <div class="answer-info" id="info25">
+                <strong>Jawaban: C</strong><br>
+                Blok Barat yang dipimpin Amerika Serikat dikaitkan dengan sistem liberalisme dan ekonomi kapitalisme.
+            </div>
+        </div>
+
+
+        <div class="warning" id="warning">
+            Masih ada soal yang belum dijawab. Silakan periksa kembali.
+        </div>
+
+        <button type="button" class="btn-submit" onclick="finishQuiz()">
+            SELESAI & LIHAT NILAI
+        </button>
+
+    </form>
+
+
+    <div class="result" id="result">
+
+        <h2>Hasil Latihan</h2>
+
+        <div class="score" id="score">0</div>
+
+        <div class="result-message" id="resultMessage">
+            -
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <strong id="correctCount">0</strong>
+                Benar
+            </div>
+
+            <div class="stat">
+                <strong id="wrongCount">0</strong>
+                Salah
+            </div>
+
+            <div class="stat">
+                <strong id="emptyCount">0</strong>
+                Kosong
+            </div>
+
+        </div>
+
+        <button class="btn-reset" onclick="resetQuiz()">
+            ULANGI LATIHAN
+        </button>
+
+    </div>
+
+</div>
+
+<footer>
+    Latihan STS Sejarah Lanjut Kelas XII
+</footer>
+
+
+<script>
+
+/* =========================================================
+   KUNCI JAWABAN
+========================================================= */
+
+const answerKey = {
+    q1:"B",
+    q2:"C",
+    q3:"C",
+    q4:"B",
+    q5:"B",
+    q6:"B",
+    q7:"B",
+    q8:"B",
+    q9:"B",
+    q10:"B",
+    q11:"C",
+    q12:"A",
+    q13:"B",
+    q14:"C",
+    q15:"B",
+    q16:"B",
+    q17:"C",
+    q18:"A",
+    q19:"B",
+    q20:"B",
+    q21:"C",
+    q22:"C",
+    q23:"B",
+    q24:"B",
+    q25:"C"
+};
+
+
+/* =========================================================
+   UPDATE PROGRESS
+========================================================= */
+
+const form = document.getElementById("quizForm");
+
+form.addEventListener("change", updateProgress);
+
+function updateProgress(){
+
+    let answered = 0;
+
+    for(let i = 1; i <= 25; i++){
+
+        const selected =
+            document.querySelector(
+                `input[name="q${i}"]:checked`
+            );
+
+        if(selected){
+            answered++;
+        }
+    }
+
+    document.getElementById("answered").textContent = answered;
+
+    const percentage = (answered / 25) * 100;
+
+    document.getElementById("progress").style.width =
+        percentage + "%";
+}
+
+
+/* =========================================================
+   SELESAI QUIZ
+========================================================= */
+
+function finishQuiz(){
+
+    let correct = 0;
+    let wrong = 0;
+    let empty = 0;
+
+    for(let i = 1; i <= 25; i++){
+
+        const questionName = "q" + i;
+
+        const selected =
+            document.querySelector(
+                `input[name="${questionName}"]:checked`
+            );
+
+        const questionBox =
+            document.querySelector(
+                `input[name="${questionName}"]`
+            ).closest(".question");
+
+        const options =
+            questionBox.querySelectorAll(".option");
+
+        const answerInfo =
+            document.getElementById("info" + i);
+
+        /* Bersihkan tampilan sebelumnya */
+        options.forEach(option => {
+            option.classList.remove("correct");
+            option.classList.remove("wrong");
+        });
+
+        if(!selected){
+
+            empty++;
+
+        }else{
+
+            if(selected.value === answerKey[questionName]){
+
+                correct++;
+
+                selected.closest(".option")
+                    .classList.add("correct");
+
+            }else{
+
+                wrong++;
+
+                selected.closest(".option")
+                    .classList.add("wrong");
+
+                options.forEach(option => {
+
+                    const input =
+                        option.querySelector("input");
+
+                    if(input.value === answerKey[questionName]){
+                        option.classList.add("correct");
+                    }
+
+                });
+
+            }
+        }
+
+        answerInfo.style.display = "block";
+    }
+
+
+    /* =====================================================
+       NILAI
+    ===================================================== */
+
+    const score = Math.round((correct / 25) * 100);
+
+    document.getElementById("score").textContent =
+        score;
+
+    document.getElementById("correctCount").textContent =
+        correct;
+
+    document.getElementById("wrongCount").textContent =
+        wrong;
+
+    document.getElementById("emptyCount").textContent =
+        empty;
+
+
+    /* =====================================================
+       PESAN HASIL
+    ===================================================== */
+
+    let message = "";
+
+    if(score >= 90){
+
+        message = "Sangat baik! Pemahaman materi kamu sangat kuat.";
+
+    }else if(score >= 80){
+
+        message = "Bagus! Kamu sudah memahami sebagian besar materi.";
+
+    }else if(score >= 70){
+
+        message = "Cukup baik. Pelajari kembali beberapa materi yang masih salah.";
+
+    }else if(score >= 60){
+
+        message = "Terus belajar. Coba ulangi soal dan baca kembali materi.";
+
+    }else{
+
+        message = "Jangan menyerah. Pelajari kembali materi lalu coba lagi.";
+
+    }
+
+    document.getElementById("resultMessage").textContent =
+        message;
+
+
+    document.getElementById("warning").style.display =
+        "none";
+
+    document.getElementById("result").style.display =
+        "block";
+
+
+    /* Scroll ke hasil */
+    document.getElementById("result").scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+function resetQuiz(){
+
+    form.reset();
+
+    document.getElementById("result").style.display =
+        "none";
+
+    document.getElementById("warning").style.display =
+        "none";
+
+    document.getElementById("answered").textContent =
+        "0";
+
+    document.getElementById("progress").style.width =
+        "0%";
+
+
+    document.querySelectorAll(".option").forEach(option => {
+
+        option.classList.remove("correct");
+        option.classList.remove("wrong");
+
+    });
+
+
+    document.querySelectorAll(".answer-info").forEach(info => {
+
+        info.style.display = "none";
+
+    });
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+</script>
+
+</body>
+</html>
