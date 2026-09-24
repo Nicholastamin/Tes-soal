@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis TIK Kelas X - 50 Soal Interaktif</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #2c3e50;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        h1 {
+            text-align: center;
+            color: #1a365d;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+        .section-header {
+            background-color: #2b6cb0;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .question-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1a202c;
+        }
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: #ffffff;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .option-label:hover {
+            background: #ebf8ff;
+            border-color: #3182ce;
+        }
+        .option-label input {
+            margin-right: 12px;
+            transform: scale(1.1);
+        }
+        .explanation {
+            display: none;
+            margin-top: 15px;
+            padding: 12px 15px;
+            background-color: #edf2f7;
+            border-left: 4px solid #3182ce;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #2d3748;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            background-color: #2b6cb0;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 30px;
+        }
+        .submit-btn:hover {
+            background-color: #2c5282;
+        }
+        #result-box {
+            display: none;
+            background: #f0fff4;
+            border: 2px solid #38a169;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        #score-display {
+            font-size: 42px;
+            font-weight: bold;
+            color: #276749;
+            margin: 10px 0;
+        }
+        .correct {
+            background-color: #c6f6d5 !important;
+            border-color: #38a169 !important;
+        }
+        .incorrect {
+            background-color: #fed7d7 !important;
+            border-color: #e53e3e !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Kuis Evaluasi TIK Interaktif</h1>
+    <p class="subtitle">Materi: OLE, Daftar Isi Otomatis, Mail Merge, & Sistem Komputer (50 Soal)</p>
+    
+    <form id="quiz-form">
+        <div id="quiz-container"></div>
+        <button type="button" class="submit-btn" onclick="calculateScore()">Selesai & Lihat Nilai Akhir</button>
+    </form>
+
+    <div id="result-box">
+        <h2>Hasil Evaluasi Anda</h2>
+        <p>Nilai Akhir:</p>
+        <div id="score-display">0 / 100</div>
+        <p id="score-details" style="font-size: 16px;"></p>
+    </div>
+</div>
+
+<script>
+const quizData = [
+    // A. Object Linking and Embedding (OLE)
+    { section: "A. Object Linking and Embedding (OLE)", q: "1. OLE merupakan singkatan dari ...", options: ["A. Object Line and Editing", "B. Online Linking Engine", "C. Object Linking and Embedding", "D. Open Link Editor", "E. Operating Link Extension"], answer: 2, exp: "OLE merupakan singkatan resmi dari Object Linking and Embedding." },
+    { q: "2. Fungsi utama OLE pada aplikasi Microsoft Office adalah ...", options: ["A. memungkinkan objek dari satu aplikasi disisipkan atau ditautkan ke aplikasi lain", "B. mempercepat koneksi internet", "C. melindungi dokumen dengan kata sandi", "D. mengubah format file menjadi PDF", "E. mengatur tata letak halaman secara otomatis"], answer: 0, exp: "OLE memungkinkan suatu objek disisipkan (embedded) atau ditautkan (linked) antar-aplikasi." },
+    { q: "3. Perbedaan mendasar antara linking dan embedding adalah ...", options: ["A. pada linking data tersimpan di dokumen tujuan, sedangkan pada embedding data tersimpan di file sumber", "B. linking dan embedding tidak memiliki perbedaan", "C. linking hanya untuk gambar, sedangkan embedding hanya untuk teks", "D. linking hanya dapat dilakukan di Word, sedangkan embedding hanya dapat dilakukan di Excel", "E. pada linking data tetap tersimpan di file sumber, sedangkan pada embedding data tersimpan di dokumen tujuan"], answer: 4, exp: "Pada linking data tersimpan di file sumber, sedangkan pada embedding data disalin ke dokumen tujuan." },
+    { q: "4. Sebuah tabel Excel disisipkan ke Word dengan cara embedding. Jika file Excel aslinya kemudian diubah, objek di dokumen Word akan ...", options: ["A. otomatis ikut berubah", "B. tidak berubah karena objek embedding adalah salinan yang berdiri sendiri", "C. terhapus", "D. berubah menjadi tautan", "E. menampilkan pesan kesalahan"], answer: 1, exp: "Objek embedding adalah salinan mandiri, sehingga perubahan file sumber tidak mempengaruhinya." },
+    { q: "5. Objek disisipkan dengan cara linking, lalu file sumbernya dipindahkan ke folder lain. Akibatnya ...", options: ["A. objek otomatis ikut pindah", "B. objek berubah menjadi gambar", "C. dokumen tujuan terhapus", "D. tautan terputus dan objek tidak dapat diperbarui", "E. objek tetap dapat diperbarui otomatis seperti semula"], answer: 3, exp: "Linking mengandalkan jalur (path) file. Jika dipindah, tautan akan terputus." },
+    { q: "6. Perintah untuk menyisipkan objek OLE pada Microsoft Word adalah ...", options: ["A. Insert > Object", "B. Home > Object", "C. References > Object", "D. Layout > Object", "E. View > Object"], answer: 0, exp: "Menu menyisipkan objek OLE berada di tab Insert > Object." },
+    { q: "7. Berikut ini yang merupakan contoh penerapan OLE adalah ...", options: ["A. mencetak dokumen melalui printer", "B. menyimpan dokumen ke flash disk", "C. menyisipkan grafik dari Microsoft Excel ke dalam dokumen Microsoft Word", "D. mengirim dokumen melalui e-mail", "E. memeriksa ejaan pada dokumen"], answer: 2, exp: "Menyisipkan grafik Excel ke Word merupakan contoh integrasi OLE." },
+    { q: "8. Keuntungan menggunakan metode linking adalah ...", options: ["A. objek tetap tampil walaupun file sumber dihapus", "B. objek tidak dapat diedit", "C. ukuran dokumen tujuan menjadi lebih besar", "D. objek tidak memerlukan file sumber sama sekali", "E. ukuran dokumen tujuan lebih kecil dan data dapat diperbarui otomatis mengikuti file sumber"], answer: 4, exp: "Linking membuat ukuran file utama tetap kecil dan data otomatis sinkron." },
+    { q: "9. Pada kotak dialog Object > tab Create from File, opsi yang harus dicentang agar objek berupa tautan (link) adalah ...", options: ["A. Display as icon", "B. Link to file", "C. Embed file", "D. Create new", "E. Lock aspect ratio"], answer: 1, exp: "Opsi 'Link to file' wajib dicentang untuk mengaktifkan metode linking." },
+    { q: "10. Kelemahan metode embedding dibandingkan linking adalah ...", options: ["A. objek tidak dapat dibuka di komputer lain", "B. data harus selalu terhubung ke file sumber", "C. objek tidak dapat diedit", "D. ukuran file dokumen tujuan menjadi lebih besar", "E. perubahan pada file sumber otomatis tampil di dokumen tujuan"], answer: 3, exp: "Karena menyimpan seluruh data objek, ukuran file dokumen tujuan membengkak." },
+
+    // B. Daftar Isi Otomatis
+    { section: "B. Daftar Isi Otomatis", q: "11. Fitur pembuatan daftar isi otomatis di Microsoft Word terdapat pada tab ...", options: ["A. Insert", "B. Review", "C. View", "D. Layout", "E. References"], answer: 4, exp: "Daftar isi otomatis (Table of Contents) diakses melalui tab References." },
+    { q: "12. Agar daftar isi otomatis dapat dibuat, judul bab dan subbab pada dokumen harus ...", options: ["A. dicetak tebal", "B. ditulis dengan huruf kapital", "C. diformat menggunakan style Heading (Heading 1, Heading 2, dst.)", "D. diberi garis bawah", "E. diberi warna huruf yang berbeda"], answer: 2, exp: "Word membaca hirarki daftar isi berdasarkan style Heading." },
+    { q: "13. Pada daftar isi otomatis, teks yang menggunakan style Heading 2 akan tampil sebagai ...", options: ["A. subbab tingkat kedua yang letaknya menjorok di bawah Heading 1", "B. judul utama dokumen", "C. catatan kaki", "D. nomor halaman", "E. teks isi paragraf biasa"], answer: 0, exp: "Heading 2 berfungsi sebagai subbab tingkat kedua." },
+    { q: "14. Setelah judul bab diubah, agar daftar isi menyesuaikan perubahan tersebut, langkah yang dilakukan adalah ...", options: ["A. menghapus daftar isi lalu mengetik ulang", "B. menyimpan dokumen dengan nama baru", "C. menutup dan membuka kembali Word", "D. mengeklik daftar isi lalu memilih Update Table (atau menekan F9)", "E. mengganti jenis huruf pada judul bab"], answer: 3, exp: "Memperbarui daftar isi dilakukan dengan klik Update Table / F9." },
+    { q: "15. Pilihan Update entire table pada kotak dialog Update Table of Contents digunakan untuk ...", options: ["A. hanya memperbarui nomor halaman", "B. memperbarui judul sekaligus nomor halaman", "C. menghapus seluruh daftar isi", "D. mengubah style Heading", "E. hanya menyimpan perubahan dokumen"], answer: 1, exp: "'Update entire table' memperbarui struktur teks judul dan nomor halaman." },
+    { q: "16. Titik-titik yang menghubungkan judul dengan nomor halaman pada daftar isi disebut ...", options: ["A. bullet", "B. border", "C. watermark", "D. header", "E. tab leader"], answer: 4, exp: "Garis/titik penghubung teks ke nomor halaman dinamakan Tab Leader." },
+    { q: "17. Untuk mengatur jumlah level heading yang tampil dan jenis tab leader pada daftar isi, dipilih menu ...", options: ["A. Insert > Header & Footer", "B. Layout > Breaks", "C. References > Table of Contents > Custom Table of Contents", "D. Home > Paragraph", "E. View > Navigation Pane"], answer: 2, exp: "Pengaturan mendalam daftar isi ada pada Custom Table of Contents." },
+    { q: "18. Keunggulan daftar isi otomatis dibandingkan daftar isi manual adalah ...", options: ["A. judul dan nomor halaman dapat menyesuaikan perubahan isi dokumen dengan mudah", "B. tampilannya tidak dapat diubah", "C. tidak membutuhkan style Heading", "D. hanya dapat dibuat pada dokumen satu halaman", "E. hanya dapat dicetak dan tidak dapat ditampilkan di layar"], answer: 0, exp: "Daftar isi otomatis cepat menyesuaikan perubahan posisi halaman." },
+    { q: "19. Agar teks tertentu masuk ke daftar isi tanpa menggunakan style Heading, dapat digunakan perintah ...", options: ["A. Insert Caption", "B. Insert Footnote", "C. Mark Citation", "D. Add Text pada grup Table of Contents", "E. Insert Endnote"], answer: 3, exp: "Fitur 'Add Text' menetapkan level teks agar langsung masuk daftar isi." },
+    { q: "20. Jika menekan tombol Ctrl sambil mengeklik salah satu entri pada daftar isi otomatis, maka ...", options: ["A. entri tersebut terhapus", "B. kursor berpindah ke halaman atau judul yang dituju", "C. seluruh daftar isi diperbarui", "D. dokumen tersimpan otomatis", "E. daftar isi berubah menjadi teks biasa"], answer: 1, exp: "Ctrl + Klik bertindak sebagai hyperlink menuju lokasi bab/subbab." },
+
+    // C. Mail Merge
+    { section: "C. Mail Merge", q: "21. Mail Merge adalah fitur untuk ...", options: ["A. menggabungkan beberapa file gambar menjadi satu", "B. membuat banyak dokumen dengan isi yang sama tetapi data penerima yang berbeda", "C. mengirim dokumen melalui internet", "D. mengubah dokumen Word menjadi presentasi", "E. mengunci dokumen agar tidak dapat diedit"], answer: 1, exp: "Mail Merge dipakai untuk pembuatan surat/dokumen massal." },
+    { q: "22. Dua komponen utama yang diperlukan dalam Mail Merge adalah ...", options: ["A. header dan footer", "B. gambar dan tabel", "C. heading dan daftar isi", "D. dokumen utama (main document) dan sumber data (data source)", "E. kertas dan printer"], answer: 3, exp: "Mail Merge butuh Dokumen Utama (Main Document) & Sumber Data (Data Source)." },
+    { q: "23. Fitur Mail Merge pada Microsoft Word dapat ditemukan pada tab ...", options: ["A. Mailings", "B. Home", "C. Insert", "D. Design", "E. References"], answer: 0, exp: "Peralatan Mail Merge berada di bawah tab Mailings." },
+    { q: "24. Berikut ini yang tidak dapat digunakan sebagai sumber data (data source) pada Mail Merge adalah ...", options: ["A. lembar kerja Microsoft Excel", "B. tabel pada dokumen Microsoft Word", "C. database Microsoft Access", "D. daftar kontak Microsoft Outlook", "E. file gambar berformat JPG"], answer: 4, exp: "File gambar (JPG) tidak berstruktur tabel/database sehingga tidak bisa jadi data source." },
+    { q: "25. Penanda posisi data yang akan diganti otomatis dengan isi sumber data, misalnya «Nama», disebut ...", options: ["A. bookmark", "B. hyperlink", "C. merge field", "D. footnote", "E. watermark"], answer: 2, exp: "Tanda penampung variabel data dinamakan Merge Field." },
+    { q: "26. Urutan langkah Mail Merge yang benar adalah ...", options: ["A. Insert Merge Field → Start Mail Merge → Finish & Merge → Select Recipients → Preview Results", "B. Select Recipients → Finish & Merge → Start Mail Merge → Preview Results → Insert Merge Field", "C. Finish & Merge → Preview Results → Insert Merge Field → Select Recipients → Start Mail Merge", "D. Start Mail Merge → Select Recipients → Insert Merge Field → Preview Results → Finish & Merge", "E. Select Recipients → Start Mail Merge → Preview Results → Insert Merge Field → Finish & Merge"], answer: 3, exp: "Urutan tepat: Start Mail Merge → Select Recipients → Insert Merge Field → Preview Results → Finish & Merge." },
+    { q: "27. Fungsi Preview Results pada Mail Merge adalah ...", options: ["A. mencetak seluruh dokumen", "B. melihat hasil penggabungan data sebelum dicetak atau digabungkan", "C. menghapus sumber data", "D. mengubah jenis dokumen", "E. menyimpan dokumen dalam format PDF"], answer: 1, exp: "Preview Results menampilkan contoh data asli pada dokumen." },
+    { q: "28. Pilihan Edit Individual Documents pada menu Finish & Merge akan menghasilkan ...", options: ["A. dokumen baru yang berisi seluruh hasil penggabungan dan masih dapat diedit", "B. file sumber data yang baru", "C. pesan e-mail otomatis", "D. dokumen kosong", "E. dokumen yang langsung dikirim ke printer tanpa dapat diedit"], answer: 0, exp: "Menghasilkan dokumen gabungan baru yang masih dapat disunting." },
+    { q: "29. Untuk membuat label nama atau amplop menggunakan Mail Merge, pilihan yang digunakan pada Start Mail Merge adalah ...", options: ["A. Letters", "B. Normal Word Document", "C. Directory", "D. E-mail Messages", "E. Labels atau Envelopes"], answer: 4, exp: "Label/Envelopes khusus mengatur tata letak cetak stiker atau amplop." },
+    { q: "30. Jika sumber data berupa lembar kerja Excel, baris pertama pada Excel sebaiknya berisi ...", options: ["A. data penerima pertama", "B. hasil perhitungan", "C. judul kolom (nama field) yang unik, karena akan menjadi nama merge field", "D. gambar logo", "E. judul dokumen yang akan dicetak"], answer: 2, exp: "Baris 1 Excel dibaca sebagai nama Merge Field oleh Word." },
+
+    // D. Sistem Komputer
+    { section: "D. Sistem Komputer (Hardware, Software, dan Jenis Komputer)", q: "31. Tiga komponen utama yang membentuk sistem komputer adalah ...", options: ["A. perangkat keras (hardware), perangkat lunak (software), dan pengguna (brainware)", "B. monitor, keyboard, dan mouse", "C. CPU, RAM, dan hard disk", "D. internet, e-mail, dan browser", "E. perangkat keras, perangkat lunak, dan jaringan"], answer: 0, exp: "Sistem komputer dibentuk dari Hardware, Software, dan Brainware." },
+    { q: "32. Manusia yang mengoperasikan, mengelola, dan memanfaatkan sistem komputer disebut ...", options: ["A. hardware", "B. software", "C. firmware", "D. malware", "E. brainware"], answer: 4, exp: "Unsur manusia pengendali sistem komputer disebut Brainware." },
+    { q: "33. Berikut ini yang termasuk perangkat masukan (input device) adalah ...", options: ["A. monitor", "B. printer", "C. scanner", "D. speaker", "E. proyektor (LCD projector)"], answer: 2, exp: "Scanner berfungsi memasukkan dokumen ke format digital." },
+    { q: "34. Perangkat keras yang berfungsi menghasilkan keluaran berupa cetakan (hardcopy) adalah ...", options: ["A. scanner", "B. printer", "C. keyboard", "D. webcam", "E. mouse"], answer: 1, exp: "Printer menghasilkan output fisik/cetakan kertas (hardcopy)." },
+    { q: "35. Bagian komputer yang bertugas memproses data dan menjalankan instruksi program, sering disebut 'otak komputer', adalah ...", options: ["A. RAM", "B. hard disk", "C. power supply", "D. CPU (Central Processing Unit)", "E. VGA card"], answer: 3, exp: "CPU merupakan pusat pemrosesan data (otak komputer)." },
+    { q: "36. Bagian CPU yang bertugas melakukan operasi perhitungan (aritmatika) dan perbandingan (logika) adalah ...", options: ["A. CU (Control Unit)", "B. register", "C. ALU (Arithmetic Logic Unit)", "D. bus", "E. motherboard"], answer: 2, exp: "ALU mengeksekusi operasi matematika dan perbandingan logika." },
+    { q: "37. Memori yang bersifat sementara sehingga seluruh isinya hilang ketika komputer dimatikan adalah ...", options: ["A. RAM (Random Access Memory)", "B. ROM (Read Only Memory)", "C. hard disk", "D. solid state drive (SSD)", "E. flash disk"], answer: 0, exp: "RAM bersifat sementara (volatile)." },
+    { q: "38. Memori yang bersifat tetap dan berisi program dasar untuk menghidupkan komputer (misalnya BIOS) adalah ...", options: ["A. RAM (Random Access Memory)", "B. cache memory", "C. memori virtual", "D. ROM (Read Only Memory)", "E. register"], answer: 3, exp: "ROM menyimpan program dasar (BIOS) secara permanen (non-volatile)." },
+    { q: "39. Berikut ini yang termasuk perangkat penyimpanan (storage) adalah ...", options: ["A. prosesor", "B. VGA card", "C. sound card", "D. motherboard", "E. solid state drive (SSD)"], answer: 4, exp: "SSD merupakan perangkat penyimpanan sekunder." },
+    { q: "40. Perangkat lunak yang mengatur dan mengendalikan seluruh sumber daya komputer serta menjadi penghubung antara pengguna dan perangkat keras disebut ...", options: ["A. perangkat lunak aplikasi", "B. sistem operasi", "C. program utilitas", "D. bahasa pemrograman", "E. peramban (browser)"], answer: 1, exp: "Sistem Operasi mengendalikan seluruh sumber daya perangkat keras/lunak." },
+    { q: "41. Berikut ini yang merupakan contoh sistem operasi adalah ...", options: ["A. Microsoft Excel", "B. Google Chrome", "C. Adobe Photoshop", "D. Linux", "E. Microsoft Access"], answer: 3, exp: "Linux adalah salah satu contoh Sistem Operasi." },
+    { q: "42. Microsoft Word termasuk jenis perangkat lunak ...", options: ["A. sistem operasi", "B. aplikasi (pengolah kata)", "C. bahasa pemrograman", "D. utilitas", "E. penerjemah bahasa (translator)"], answer: 1, exp: "MS Word termasuk Perangkat Lunak Aplikasi Pengolah Kata." },
+    { q: "43. Program yang membantu merawat dan mengoptimalkan kinerja komputer, misalnya antivirus dan disk defragmenter, termasuk perangkat lunak ...", options: ["A. aplikasi paket", "B. bahasa pemrograman", "C. permainan (game)", "D. firmware", "E. utilitas"], answer: 4, exp: "Program perawatan kinerja komputer dikategorikan sebagai Utilitas." },
+    { q: "44. Perangkat lunak yang menerjemahkan kode program bahasa tingkat tinggi ke dalam bahasa mesin, contohnya compiler dan interpreter, disebut ...", options: ["A. penerjemah bahasa (translator)", "B. driver", "C. program utilitas", "D. sistem operasi", "E. aplikasi paket"], answer: 0, exp: "Compiler & Interpreter tergolong Language Translator." },
+    { q: "45. Perangkat lunak yang tertanam secara permanen pada perangkat keras, misalnya BIOS pada chip ROM, disebut ...", options: ["A. freeware", "B. shareware", "C. firmware", "D. malware", "E. open source"], answer: 2, exp: "Software tertanam pada chip hardware disebut Firmware." },
+    { q: "46. Komputer dengan kecepatan dan kapasitas paling tinggi yang digunakan untuk perhitungan sangat kompleks, seperti prakiraan cuaca dan simulasi ilmiah, adalah ...", options: ["A. mainframe", "B. minikomputer", "C. mikrokomputer", "D. komputer analog", "E. superkomputer"], answer: 4, exp: "Superkomputer memproses sains/simulasi tingkat tinggi." },
+    { q: "47. Komputer berukuran besar yang dapat melayani ribuan pengguna sekaligus dan banyak digunakan bank atau perusahaan besar untuk memproses data transaksi adalah ...", options: ["A. mainframe", "B. superkomputer", "C. komputer hibrid", "D. mikrokomputer", "E. komputer tablet"], answer: 0, exp: "Mainframe digunakan untuk transaksi data terpusat skala besar." },
+    { q: "48. Komputer yang dirancang untuk digunakan oleh satu orang dalam satu waktu, misalnya PC desktop dan laptop, tergolong ...", options: ["A. superkomputer", "B. mainframe", "C. mikrokomputer", "D. minikomputer", "E. komputer analog"], answer: 2, exp: "PC desktop & laptop termasuk tipe Mikrokomputer." },
+    { q: "49. Komputer yang menggabungkan cara kerja komputer analog dan komputer digital, misalnya pada peralatan medis di rumah sakit, disebut komputer ...", options: ["A. analog", "B. hibrid", "C. digital", "D. tujuan khusus", "E. mikro"], answer: 1, exp: "Gabungan analog dan digital disebut Komputer Hibrid." },
+    { q: "50. Komputer yang dirancang hanya untuk menjalankan satu jenis tugas tertentu, misalnya pengendali mesin ATM atau lampu lalu lintas, disebut komputer ...", options: ["A. tujuan umum (general purpose)", "B. analog", "C. mainframe", "D. tujuan khusus (special purpose)", "E. mikrokomputer"], answer: 3, exp: "Komputer pengendali tugas spesifik dinamakan Special Purpose Computer." }
+];
+
+function renderQuiz() {
+    const container = document.getElementById('quiz-container');
+    quizData.forEach((item, index) => {
+        if (item.section) {
+            const secHeader = document.createElement('div');
+            secHeader.className = 'section-header';
+            secHeader.innerText = item.section;
+            container.appendChild(secHeader);
+        }
+
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.id = `q-card-${index}`;
+
+        const qTitle = document.createElement('div');
+        qTitle.className = 'question-text';
+        qTitle.innerText = item.q;
+        card.appendChild(qTitle);
+
+        const optionsGroup = document.createElement('div');
+        optionsGroup.className = 'options-group';
+
+        item.options.forEach((opt, optIndex) => {
+            const label = document.createElement('label');
+            label.className = 'option-label';
+            
+            const radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = `q${index}`;
+            radio.value = optIndex;
+
+            label.appendChild(radio);
+            label.appendChild(document.createTextNode(opt));
+            optionsGroup.appendChild(label);
+        });
+
+        card.appendChild(optionsGroup);
+
+        const expBox = document.createElement('div');
+        expBox.className = 'explanation';
+        expBox.id = `exp-${index}`;
+        expBox.innerHTML = `<strong>Pembahasan:</strong> ${item.exp}`;
+        card.appendChild(expBox);
+
+        container.appendChild(card);
+    });
+}
+
+function calculateScore() {
+    let score = 0;
+    let correctCount = 0;
+
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const card = document.getElementById(`q-card-${index}`);
+        const expBox = document.getElementById(`exp-${index}`);
+        
+        card.classList.remove('correct', 'incorrect');
+        expBox.style.display = 'block';
+
+        if (selected) {
+            const selectedVal = parseInt(selected.value);
+            if (selectedVal === item.answer) {
+                score += 2; // 50 soal * 2 = 100
+                correctCount++;
+                card.classList.add('correct');
+            } else {
+                card.classList.add('incorrect');
+            }
+        } else {
+            card.classList.add('incorrect');
+        }
+    });
+
+    const resultBox = document.getElementById('result-box');
+    const scoreDisplay = document.getElementById('score-display');
+    const scoreDetails = document.getElementById('score-details');
+
+    scoreDisplay.innerText = `${score} / 100`;
+    scoreDetails.innerText = `Anda berhasil menjawab benar ${correctCount} dari 50 soal.`;
+    resultBox.style.display = 'block';
+
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+    });
+}
+
+window.onload = renderQuiz;
+</script>
+
+</body>
+</html>
