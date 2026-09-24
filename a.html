@@ -1,0 +1,344 @@
+Berikut adalah format kuis interaktif HTML/JavaScript yang berisi seluruh 25 soal Agama Buddha sesuai dengan dokumen pada gambar.
+Fitur kuis ini meliputi pilihan ganda yang bisa diklik, penghitungan skor otomatis, penjelasan kunci jawaban, serta nilai akhir di bagian bawah.
+Cara Menggunakan:
+ * Simpan kode di bawah ini ke dalam sebuah berkas bernama kuis_agama.html.
+ * Buka berkas tersebut menggunakan peramban web (seperti Chrome, Edge, atau Safari) di komputer atau ponsel Anda.
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis Agama Buddha & Budi Pekerti - Kelas X</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            background: #fff;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+        }
+        .question-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .option-label:hover {
+            background: #eef6ff;
+            border-color: #3498db;
+        }
+        .option-label input {
+            margin-right: 12px;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            background-color: #27ae60;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 30px;
+        }
+        .submit-btn:hover {
+            background-color: #219150;
+        }
+        #result-box {
+            display: none;
+            background: #eef9f1;
+            border: 2px solid #27ae60;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 25px;
+        }
+        #score-display {
+            font-size: 36px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+        .correct {
+            background-color: #d4edda !important;
+            border-color: #28a745 !important;
+        }
+        .incorrect {
+            background-color: #f8d7da !important;
+            border-color: #dc3545 !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Kuis Penilaian Tengah Semester</h1>
+    <p class="subtitle">Mata Pelajaran: Pendidikan Agama Buddha & Budi Pekerti (Kelas X)</p>
+    
+    <form id="quiz-form">
+        <div id="quiz-container"></div>
+        <button type="button" class="submit-btn" onclick="calculateScore()">Selesai & Lihat Nilai</button>
+    </form>
+
+    <div id="result-box">
+        <h2>Hasil Penilaian</h2>
+        <p>Nilai Akhir Anda:</p>
+        <div id="score-display">0 / 100</div>
+        <p id="score-details" style="margin-top: 10px;"></p>
+    </div>
+</div>
+
+<script>
+const quizData = [
+    {
+        q: "1. Setiap saat bila terdapat kesempatan Bodhi Dharma selalu belajar ajaran agama Buddha, melalui ceramah, dengan membaca buku, atau melihat ceramah dari youtube, hal ini dilakukan untuk menambah pengetahuan sebagai dasar praktek Dhamma. Cara belajar Bodhi Dharma tersebut dalam kategori ....",
+        options: ["A. Pativedha", "B. Pariyatti", "C. Pattacara", "D. Pattipati", "E. Panattipatta"],
+        answer: 1
+    },
+    {
+        q: "2. Umat Buddha dalam merealisasi kebahagiaan dari Ajaran Sang Buddha tidaklah cukup hanya dengan belajar secara teori saja, namun harus mempraktikan Dhamma yang telah dipelajarinya, agar mempunyai pengalaman tentang isi dari Dhamma tersebut. Dalam Dhamma tahapan ini disebut ....",
+        options: ["A. Pattivedha", "B. Pariyatti", "C. Pattacara", "D. Pattipati", "E. Panattipata"],
+        answer: 3
+    },
+    {
+        q: "3. Terwujudnya pencapaian tingkat-tingkat kesucian yang merupakan perlindungan hakiki hasil dari belajar dan praktik Dhammma. Apakah sebutan tahapan tersebut ..",
+        options: ["A. Pariyatti", "B. Pattivedha", "C. Pattacara", "D. Pattipati", "E. Panattipata"],
+        answer: 1
+    },
+    {
+        q: "4. Keyakinan merupakan pondasi bagi setiap pemeluk agama dalam menjalankan kehidupan spiritual sesuai dengan agama yang dianutnya. Dalam kita Wija Dhamma terdapat berapa jenis keyakinan yang harus ditumbuh kembangkan dalam batin setiap umat Buddha.",
+        options: ["A. Eka saddha", "B. Tri Saddha", "C. Catur Saddha", "D. Dwi Saddha", "E. Panca Saddha"],
+        answer: 2
+    },
+    {
+        q: "5. Semua makhluk yang dalam kehidupannya dicurahkan untuk mengembangkan dan menyempurnakan sepuluh kebajikan dan bercita-cita ingin mencapai pencerahan menjadi Buddha dapat disebut ...",
+        options: ["A. Seorang dewa", "B. Para Arya", "C. Bodhisatva", "D. Seorang Buddha", "E. Para Arya"],
+        answer: 2
+    },
+    {
+        q: "6. Seorang Buddha, yang dalam pencapai pencerahannya dengan usaha sendiri, dengan mengandalkan pengembangan dan penyempurnaan dasa paramitta, dapat menunjukan jalan cara mencapai kearahatan dan menjadikan seseorang menjadi arahat disebut ....",
+        options: ["A. Buddha Rulai", "B. Savaka Buddha", "C. Arya Puggala", "D. Pacceka Buddha", "E. Samma Sambuddha"],
+        answer: 4
+    },
+    {
+        q: "7. Pada zaman kehidupan Buddha Gautama membabarkan terdapat peristiwa agung yang berkumpulnya 1250 Bhikkhu yang semuanya telah mencapai tingkat kesucian Arahat. Demikianlah 1250 Bhikkhu dinamakan ....",
+        options: ["A. Samutti Sangha", "B. Arya Puggala", "C. Sangha samaya", "D. Arya Sangha", "E. Puttu Jhana"],
+        answer: 3
+    },
+    {
+        q: "8. Perkumpulan para Bhikkhu yang lengkap sesuai dengan tugas pokok dan fungsi dapat disebut dengan Sangha. Sangha yang anggotanya belum mencapai tingkat-tingkat kesucian disebut ...",
+        options: ["A. Arya Sangha", "B. Arya Puggala", "C. Sangha Samaya", "D. Putthu Jhana", "E. Samutti Sangha"],
+        answer: 4
+    },
+    {
+        q: "9. Seorang Guru agama sedang menunjukan sebuah polpen, kemudian pulpen tersebut dibongkar dan dipisahkan bagian-bagiannya, tidak beberapa lama polpen tersebut dirangkai Kembali dan utuh seperti sedia kala. Hukum kesunyataan apakah yang hendak diterangkan oleh guru tersebut? ....",
+        options: ["A. Sabbe dukkha -citta", "B. Sabbe Sankhara Anicca", "C. Sabbe maya pada", "D. Sabbe Sankhara dukkha", "E. Sabbe Dhamma Anatta"],
+        answer: 1
+    },
+    {
+        q: "10. Seseorang setelah mengalami kehujanan dalam waktu semalam, badannya menjadi demam, panas dan dingin, rematiknya menjadi kabuh, dan kepalanya menjadi pusing. Namun demikian dia tetap tenang dalam menghadapi rasa sakitnya karena sudah tahu sebabnya. Penderitaan jenis apakah yang dialami orang itu? ...",
+        options: ["A. Cittasekkha dukkha", "B. Samisa dukkha", "C. Dukkha samudhaya", "D. Kayikkha dukkha", "E. Niramisa dukkha"],
+        answer: 3
+    },
+    {
+        q: "11. Pada umumnya kita menderita bila berpisah dengan orang yang dicitai, berkumpul dengan yang dibenci, tidak tercapai cita-cita sehingga timbul ratap tangis dan putus asa. Apakah nama penderitaaan tersebut diatas ....",
+        options: ["A. Cittasekkha dukkha", "B. Samisa dukkha", "C. Dukkha samudaya", "D. Kayikkha dukkha", "E. Niramisa dukkha"],
+        answer: 1
+    },
+    {
+        q: "12. Segala sesuatu dapat berubah, terdapat dua jenis perubahan pertama perubahan menuju arah yang positif dan yang kedua perubahan yang menuju arah negative. Hukum kesunyataan mejelas realita tersebut dalam hukum ...",
+        options: ["A. Sabbe dhamma Anatta", "B. Sabbe Sankhara Anicca", "C. Sabbe maya pada", "D. Sabbe Sankhara dukkha", "E. Sabbe dukkha -citta"],
+        answer: 1
+    },
+    {
+        q: "13. Seseorang mencapai tingkat kebuddhaan dengan cara mempelajari, memahami dan mempraktikan hingga mengalami penembusan, mendapat gelar Buddha, dan mampu membuat orang lain mencapai tingkat-tingkat kesucian dapat disebut ...",
+        options: ["A. Arya puggala", "B. Savaka Buddha", "C. Samma Sambuddha", "D. Pacceka Buddha", "E. Buddha Rulai"],
+        answer: 2
+    },
+    {
+        q: "14. Seseorang mencapai tingkat kebuddhaan dengan cara berjuang sendiri seperti sammasabuddha, dengan mempelajari, memahami, hingga menembusi ajaran yang telah ditemukan serta mendapat gelar seorang Buddha, tetapi tidak mampu membuat makhluk lain mencapai tingkat-tingkat kesucian, seperti yang dicapai dengan ajarannya Buddha jenis demikian disebut ...",
+        options: ["A. Sammasambuddha", "B. Savaka Buddha", "C. Arya Puggala", "D. Buddha Rulai", "E. Paccekkha Buddha"],
+        answer: 4
+    },
+    {
+        q: "15. Sang Buddha merupakan guru para dewa dan manusia dengan demikian Sang Buddha juga disebut guru agung para makhluk yang berada dalam alam semesta. Pernyataan ini dipertegas dalam paritta keluhuran Sang Buddha dalam Buddhanussati yang berbunyi ....",
+        options: ["A. Ahunneyo, Pahunneyo", "B. Supattipano bhagavato savaka sangho", "C. Anjali karaniyo", "D. Satta dewa manussanang buddho bhagawvati", "E. Anuttarang punya ketang"],
+        answer: 3
+    },
+    {
+        q: "16. Umat Buddha dalam belajar ajaran Sang Buddha bukan hanya teori saja melainkan harus membuktikannya sendiri. Hal ini sesuai dengan petikan kalimat dalam Dhammanussati yang berbunyi ...",
+        options: ["A. Buddho bhagawati", "B. Ehipassikho", "C. Anjali karaniyo", "D. Ahuneyo dan pahuneyo", "E. Anuttarang punyakettang"],
+        answer: 1
+    },
+    {
+        q: "17. Anuttarang punyakettang lokassati, merupakan petikan kalimat yang menyatakan keluhuran Sangha, Terdapat dalam paritta apakah petikan kalimat tersebut?",
+        options: ["A. Sanghanussati", "B. Dhammanussati", "C. Karaniyametta sutta", "D. Buddhanussati", "E. Ettavatta"],
+        answer: 0
+    },
+    {
+        q: "18. Umat Buddha dalam setiap puja bakti selain perdana, meditasi dan mendengarkan Dhamma juga melafalkan paritta suci sebagai ungkan syukur , penghormatan dan perlindungan. Paritta apakah yang dilafalkan umat Buddha untuk menyatakan berlindung kepada Sang Ti Ratana?",
+        options: ["A. Pubbabhaganamakara", "B. Karaniya metta sutta", "C. Saranagamana pattha", "D. Parabhava sutta", "E. Maggala sutta"],
+        answer: 2
+    },
+    {
+        q: "19. Setiap umat umat Buddha berkeyakinan, perlindungan hakiki adalah dapat mencapai tingkat-tingkat kesucian dalam belajar dan mempraktikan Dhamma. Berikut ini tahapan-tahapan pencapaian tingkat kesucian dari yang tersendah samapi yang tertinggi adalah....",
+        options: [
+            "A. Sotapana, sakadagami, anagami, arahanta",
+            "B. Sakadagami, anagami, arahanta, sotapana",
+            "C. Anagami, arahanta, sotapana, sakadagami",
+            "D. Arahanta, anagami, sakadagami, sotapana",
+            "E. Anagmai, arahanta, sotapana, sakadagami"
+        ],
+        answer: 0
+    },
+    {
+        q: "20. Dhamma adalah obat yang muncarab yang bisa digunakan untuk menyembuhkan segala jenis penyakit, sedangkan dokternya yang mampu mendiagnosa penyakit dan memberi obat yang tepat adalah Buddha, sedang sangha adalah orang yang telah sembuh. Pernyataan tersebut merupakan perumpamaan Buddha, Dhamma dan Sangha sebagai ....",
+        options: ["A. Ti Sarana", "B. Ti Musrika", "C. Ti Wijaya", "D. Ti Ratana", "E. Ti Sula"],
+        answer: 3
+    },
+    {
+        q: "21. Hukum tertib alam dalam ajaran Sang Buddha yang mengatur tentang perubahan musim, cuaca, suhu terjadinya hujan, pergerakkan tata surya yang dalam pengetahuan modern dipelajari dalam ilmu kimia dan fisika disebut dengan ...",
+        options: ["A. Bija Niyama", "B. Utu Niyama", "C. Dhamma Niyama", "D. Citta Niyama", "E. Kamma Niyama"],
+        answer: 1
+    },
+    {
+        q: "22. Hukum tertib alam dalam ajaran Sang Buddha yang mengatur tentang pertumbuhan dan perkembangbiakan, tumbuhan, makhluk hidupa dan manusia, yang dalam pengetahuan modern dipelajari dalam ilmu botani dan biologi disebut dengan...",
+        options: ["A. Bija Niyama", "B. Utu Niyama", "C. Dhamma Niyama", "D. Citta Niyama", "E. Kamma Niyama"],
+        answer: 0
+    },
+    {
+        q: "23. Hukum tertib alam dalam ajaran Sang Buddhayang mengatur tentang sebab dan akibat perbuatan melalui pikiran , ucapan dan perbuatan jasmani yang dilakukan oleh makhluk hidup dan manusia yang dalam pengetahuan moderndi kenal dengan hukum kausalitas disebut ...",
+        options: ["A. Bija Niyama", "B. Utu Niyama", "C. Kamma Niyama", "D. Dhamma Niyama", "E. Citta Niyama"],
+        answer: 2
+    },
+    {
+        q: "24. Hukum tertib alam alam dalam ajaran Sang Buddha yang mengatur tentang proses berpikir kehebatan pikiran bila dilatih, membaca pikiran orang lain, telepati, dll yang dalam pengetahuan modern dipelajari dalam ilmu Psikologi disebut ....",
+        options: ["A. Bija Niyama", "B. Utu Niyama", "C. Kamma Niyama", "D. Dhamma Niyama", "E. Citta Niyama"],
+        answer: 4
+    },
+    {
+        q: "25. Kejadian istimewa yang disebabkan oleh pencapaian luhur bodhisatwa Siddhartha Gautama hingga mencapai pencerahan menjadi Buddha hingga akhirnya parinibbana dipelajari dalam hukum tertib alam ...",
+        options: ["A. Dhamma Niyama", "B. Utu Niyama", "C. Kamma Niyama", "D. Bija Niyama", "E. Citta Niyama"],
+        answer: 0
+    }
+];
+
+function renderQuiz() {
+    const container = document.getElementById('quiz-container');
+    quizData.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.id = `q-card-${index}`;
+
+        const qTitle = document.createElement('div');
+        qTitle.className = 'question-text';
+        qTitle.innerText = item.q;
+        card.appendChild(qTitle);
+
+        const optionsGroup = document.createElement('div');
+        optionsGroup.className = 'options-group';
+
+        item.options.forEach((opt, optIndex) => {
+            const label = document.createElement('label');
+            label.className = 'option-label';
+            
+            const radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = `q${index}`;
+            radio.value = optIndex;
+
+            label.appendChild(radio);
+            label.appendChild(document.createTextNode(opt));
+            optionsGroup.appendChild(label);
+        });
+
+        card.appendChild(optionsGroup);
+        container.appendChild(card);
+    });
+}
+
+function calculateScore() {
+    let score = 0;
+    let correctCount = 0;
+
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const card = document.getElementById(`q-card-${index}`);
+        
+        // Reset styles
+        card.classList.remove('correct', 'incorrect');
+
+        if (selected) {
+            const selectedVal = parseInt(selected.value);
+            if (selectedVal === item.answer) {
+                score += 4; // Total 25 soal * 4 = 100
+                correctCount++;
+                card.classList.add('correct');
+            } else {
+                card.classList.add('incorrect');
+            }
+        } else {
+            card.classList.add('incorrect');
+        }
+    });
+
+    const resultBox = document.getElementById('result-box');
+    const scoreDisplay = document.getElementById('score-display');
+    const scoreDetails = document.getElementById('score-details');
+
+    scoreDisplay.innerText = `${score} / 100`;
+    scoreDetails.innerText = `Anda menjawab benar ${correctCount} dari 25 soal.`;
+    resultBox.style.display = 'block';
+
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+    });
+}
+
+window.onload = renderQuiz;
+</script>
+
+</body>
+</html>
