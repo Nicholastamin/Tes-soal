@@ -1,0 +1,1828 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff8ef">
+
+<title>Latihan Seni Budaya - Batik & Seni Rupa</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,Arial,Helvetica,sans-serif;
+}
+
+:root{
+    --bg:#fff8ef;
+    --card:#ffffff;
+    --text:#30251e;
+    --muted:#75675d;
+    --primary:#a85524;
+    --primary2:#d97732;
+    --soft:#fff0df;
+    --border:#ead9c7;
+    --correct:#2e8b57;
+    --wrong:#c0392b;
+    --shadow:0 12px 35px rgba(102,65,35,.10);
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(217,119,50,.12),transparent 28%),
+        radial-gradient(circle at 90% 20%,rgba(168,85,36,.10),transparent 30%),
+        linear-gradient(135deg,#fffaf4,#fff2e3);
+    color:var(--text);
+}
+
+header{
+    padding:22px 16px;
+    background:rgba(255,255,255,.88);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:50;
+}
+
+.header-inner{
+    max-width:1000px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-icon{
+    width:48px;
+    height:48px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    background:linear-gradient(135deg,#8f451f,#d97732);
+    color:white;
+    box-shadow:0 7px 18px rgba(168,85,36,.25);
+}
+
+.logo h1{
+    font-size:18px;
+    line-height:1.2;
+}
+
+.logo p{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:3px;
+}
+
+.progress-box{
+    min-width:145px;
+}
+
+.progress-text{
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+    color:var(--muted);
+    margin-bottom:6px;
+}
+
+.progress{
+    height:9px;
+    border-radius:20px;
+    background:#f0dfcd;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    border-radius:20px;
+    background:linear-gradient(90deg,#a85524,#e28a45);
+    transition:.3s;
+}
+
+main{
+    max-width:900px;
+    margin:0 auto;
+    padding:28px 15px 60px;
+}
+
+.hero{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:25px;
+    padding:28px;
+    box-shadow:var(--shadow);
+    margin-bottom:20px;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero:after{
+    content:"";
+    position:absolute;
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    background:rgba(217,119,50,.08);
+    right:-55px;
+    top:-65px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    padding:7px 12px;
+    border-radius:30px;
+    background:var(--soft);
+    color:var(--primary);
+    font-weight:700;
+    font-size:12px;
+    margin-bottom:12px;
+}
+
+.hero h2{
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.hero p{
+    color:var(--muted);
+    line-height:1.6;
+    font-size:14px;
+}
+
+.info-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-top:18px;
+}
+
+.info{
+    background:#fffaf5;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:9px 12px;
+    font-size:12px;
+    color:#624c3e;
+}
+
+.question-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:22px;
+    margin-bottom:16px;
+    box-shadow:0 7px 22px rgba(90,58,30,.07);
+    transition:.2s;
+}
+
+.question-card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 28px rgba(90,58,30,.10);
+}
+
+.question-number{
+    display:inline-flex;
+    width:35px;
+    height:35px;
+    border-radius:11px;
+    align-items:center;
+    justify-content:center;
+    background:var(--soft);
+    color:var(--primary);
+    font-weight:800;
+    font-size:13px;
+    margin-bottom:13px;
+}
+
+.question{
+    font-size:16px;
+    font-weight:700;
+    line-height:1.55;
+    margin-bottom:15px;
+}
+
+.options{
+    display:grid;
+    gap:9px;
+}
+
+.option{
+    position:relative;
+}
+
+.option input{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+}
+
+.option label{
+    display:flex;
+    align-items:flex-start;
+    gap:11px;
+    padding:13px 14px;
+    border:1px solid #eadfd5;
+    border-radius:14px;
+    background:#fffdfa;
+    cursor:pointer;
+    transition:.2s;
+    line-height:1.45;
+    font-size:14px;
+}
+
+.option label:hover{
+    border-color:#d79a6b;
+    background:#fff7ed;
+}
+
+.letter{
+    flex:0 0 28px;
+    width:28px;
+    height:28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:9px;
+    background:#f5eadf;
+    color:#795238;
+    font-weight:800;
+    font-size:12px;
+}
+
+.option input:checked + label{
+    border-color:var(--primary);
+    background:#fff0df;
+    box-shadow:0 0 0 2px rgba(168,85,36,.08);
+}
+
+.option input:checked + label .letter{
+    background:var(--primary);
+    color:white;
+}
+
+.submit-area{
+    text-align:center;
+    margin-top:25px;
+}
+
+.btn{
+    border:0;
+    border-radius:15px;
+    padding:14px 25px;
+    font-size:15px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.btn-primary{
+    color:white;
+    background:linear-gradient(135deg,#99481f,#d97732);
+    box-shadow:0 10px 25px rgba(168,85,36,.25);
+}
+
+.btn-primary:hover{
+    transform:translateY(-2px);
+}
+
+.btn-secondary{
+    background:white;
+    color:var(--primary);
+    border:1px solid var(--border);
+    margin-left:8px;
+}
+
+#result{
+    display:none;
+    margin-top:30px;
+}
+
+.result-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:25px;
+    padding:28px;
+    box-shadow:var(--shadow);
+    text-align:center;
+}
+
+.result-icon{
+    font-size:50px;
+    margin-bottom:10px;
+}
+
+.score{
+    font-size:48px;
+    font-weight:900;
+    color:var(--primary);
+}
+
+.score-label{
+    color:var(--muted);
+    margin-bottom:18px;
+}
+
+.score-message{
+    padding:13px;
+    background:var(--soft);
+    border-radius:14px;
+    margin-bottom:20px;
+    line-height:1.5;
+    font-size:14px;
+}
+
+.review{
+    text-align:left;
+    margin-top:25px;
+}
+
+.review h3{
+    margin-bottom:13px;
+}
+
+.review-item{
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:15px;
+    margin-bottom:10px;
+    background:#fffdfa;
+}
+
+.review-q{
+    font-weight:700;
+    line-height:1.5;
+    font-size:14px;
+    margin-bottom:9px;
+}
+
+.correct-answer{
+    color:var(--correct);
+    font-weight:700;
+    font-size:13px;
+}
+
+.user-answer{
+    font-size:13px;
+    margin-top:4px;
+}
+
+.explanation{
+    margin-top:8px;
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.5;
+    padding-top:8px;
+    border-top:1px dashed var(--border);
+}
+
+.correct-box{
+    border-left:5px solid var(--correct);
+}
+
+.wrong-box{
+    border-left:5px solid var(--wrong);
+}
+
+footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:12px;
+    padding:20px;
+}
+
+@media(max-width:600px){
+    header{
+        padding:13px 12px;
+    }
+
+    .header-inner{
+        align-items:center;
+    }
+
+    .logo-icon{
+        width:40px;
+        height:40px;
+        border-radius:12px;
+        font-size:21px;
+    }
+
+    .logo h1{
+        font-size:15px;
+    }
+
+    .logo p{
+        font-size:10px;
+    }
+
+    .progress-box{
+        min-width:110px;
+    }
+
+    main{
+        padding:18px 11px 45px;
+    }
+
+    .hero{
+        padding:21px;
+        border-radius:20px;
+    }
+
+    .hero h2{
+        font-size:23px;
+    }
+
+    .question-card{
+        padding:17px;
+        border-radius:18px;
+    }
+
+    .question{
+        font-size:15px;
+    }
+
+    .option label{
+        padding:11px;
+        font-size:13px;
+    }
+
+    .btn{
+        width:100%;
+        margin:5px 0;
+    }
+
+    .score{
+        font-size:42px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            <div class="logo-icon">🎨</div>
+            <div>
+                <h1>Seni Budaya</h1>
+                <p>Latihan Batik & Seni Rupa</p>
+            </div>
+        </div>
+
+        <div class="progress-box">
+            <div class="progress-text">
+                <span>Progress</span>
+                <span id="progressText">0/30</span>
+            </div>
+
+            <div class="progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<main>
+
+<section class="hero">
+
+    <div class="badge">📚 LATIHAN PILIHAN GANDA</div>
+
+    <h2>Batik & Seni Rupa</h2>
+
+    <p>
+        Uji pemahamanmu tentang sejarah batik, motif daerah,
+        teknik pembuatan batik, unsur seni rupa, fungsi seni,
+        serta filosofi berbagai motif batik Indonesia.
+    </p>
+
+    <div class="info-row">
+        <div class="info">📝 30 Soal</div>
+        <div class="info">🎯 Pilihan Ganda</div>
+        <div class="info">⚡ Nilai Otomatis</div>
+        <div class="info">💡 Pembahasan</div>
+    </div>
+
+</section>
+
+<form id="quizForm">
+
+<!-- SOAL 1 -->
+<div class="question-card">
+    <div class="question-number">01</div>
+    <div class="question">
+        Warna cokelat khas pada batik tradisional Jawa yang berasal dari bahan pewarna alami disebut warna ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q1" value="A" id="q1a">
+            <label for="q1a"><span class="letter">A</span>Indigo</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q1" value="B" id="q1b">
+            <label for="q1b"><span class="letter">B</span>Soga</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q1" value="C" id="q1c">
+            <label for="q1c"><span class="letter">C</span>Krem</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q1" value="D" id="q1d">
+            <label for="q1d"><span class="letter">D</span>Nila</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q1" value="E" id="q1e">
+            <label for="q1e"><span class="letter">E</span>Merah bata</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 2 -->
+<div class="question-card">
+    <div class="question-number">02</div>
+    <div class="question">
+        Seni rupa merupakan cabang seni yang menghasilkan karya yang dapat ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q2" value="A" id="q2a">
+            <label for="q2a"><span class="letter">A</span>Didengar dan dirasakan</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q2" value="B" id="q2b">
+            <label for="q2b"><span class="letter">B</span>Dilihat dan diraba</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q2" value="C" id="q2c">
+            <label for="q2c"><span class="letter">C</span>Didengar dan dilihat</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q2" value="D" id="q2d">
+            <label for="q2d"><span class="letter">D</span>Dirasakan melalui suara</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q2" value="E" id="q2e">
+            <label for="q2e"><span class="letter">E</span>Hanya dinikmati melalui gerakan</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 3 -->
+<div class="question-card">
+    <div class="question-number">03</div>
+    <div class="question">
+        Berdasarkan fungsinya, seni rupa dibedakan menjadi seni rupa ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q3" value="A" id="q3a">
+            <label for="q3a"><span class="letter">A</span>Tradisional dan modern</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q3" value="B" id="q3b">
+            <label for="q3b"><span class="letter">B</span>Murni dan terapan</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q3" value="C" id="q3c">
+            <label for="q3c"><span class="letter">C</span>Dua dimensi dan tradisional</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q3" value="D" id="q3d">
+            <label for="q3d"><span class="letter">D</span>Modern dan kontemporer</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q3" value="E" id="q3e">
+            <label for="q3e"><span class="letter">E</span>Klasik dan modern</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 4 -->
+<div class="question-card">
+    <div class="question-number">04</div>
+    <div class="question">
+        Perhatikan ciri berikut: menggunakan canting untuk membuat pola dengan malam, proses pengerjaan dilakukan secara manual, dan setiap motif dapat memiliki perbedaan kecil. Jenis batik tersebut berdasarkan teknik pembuatannya adalah ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q4" value="A" id="q4a">
+            <label for="q4a"><span class="letter">A</span>Batik cap</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q4" value="B" id="q4b">
+            <label for="q4b"><span class="letter">B</span>Batik printing</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q4" value="C" id="q4c">
+            <label for="q4c"><span class="letter">C</span>Batik tulis</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q4" value="D" id="q4d">
+            <label for="q4d"><span class="letter">D</span>Batik painting</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q4" value="E" id="q4e">
+            <label for="q4e"><span class="letter">E</span>Batik sablon</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 5 -->
+<div class="question-card">
+    <div class="question-number">05</div>
+    <div class="question">
+        Dalam proses pembuatan batik, fungsi utama malam adalah ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q5" value="A" id="q5a">
+            <label for="q5a"><span class="letter">A</span>Memberikan warna pada kain</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q5" value="B" id="q5b">
+            <label for="q5b"><span class="letter">B</span>Menghaluskan kain</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q5" value="C" id="q5c">
+            <label for="q5c"><span class="letter">C</span>Menutup bagian kain agar tidak terkena pewarna</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q5" value="D" id="q5d">
+            <label for="q5d"><span class="letter">D</span>Membuat kain menjadi lebih tebal</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q5" value="E" id="q5e">
+            <label for="q5e"><span class="letter">E</span>Menghilangkan warna kain</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 6 -->
+<div class="question-card">
+    <div class="question-number">06</div>
+    <div class="question">
+        Setelah proses pewarnaan selesai, malam yang menempel pada kain perlu dihilangkan. Proses tersebut disebut ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q6" value="A" id="q6a">
+            <label for="q6a"><span class="letter">A</span>Nglorod</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q6" value="B" id="q6b">
+            <label for="q6b"><span class="letter">B</span>Nyanting</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q6" value="C" id="q6c">
+            <label for="q6c"><span class="letter">C</span>Nembok</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q6" value="D" id="q6d">
+            <label for="q6d"><span class="letter">D</span>Nyelup</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q6" value="E" id="q6e">
+            <label for="q6e"><span class="letter">E</span>Mbironi</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 7 -->
+<div class="question-card">
+    <div class="question-number">07</div>
+    <div class="question">
+        Perhatikan ciri berikut: motif awan besar berwarna biru dengan bentuk bergelombang yang menjadi ciri khas batik dari Cirebon. Motif tersebut adalah ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q7" value="A" id="q7a">
+            <label for="q7a"><span class="letter">A</span>Parang</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q7" value="B" id="q7b">
+            <label for="q7b"><span class="letter">B</span>Kawung</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q7" value="C" id="q7c">
+            <label for="q7c"><span class="letter">C</span>Mega Mendung</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q7" value="D" id="q7d">
+            <label for="q7d"><span class="letter">D</span>Sidomukti</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q7" value="E" id="q7e">
+            <label for="q7e"><span class="letter">E</span>Tujuh Rupa</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 8 -->
+<div class="question-card">
+    <div class="question-number">08</div>
+    <div class="question">
+        Motif batik Parang secara umum memiliki ciri utama berupa ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q8" value="A" id="q8a">
+            <label for="q8a"><span class="letter">A</span>Bentuk awan</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q8" value="B" id="q8b">
+            <label for="q8b"><span class="letter">B</span>Susunan garis atau bentuk diagonal berulang</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q8" value="C" id="q8c">
+            <label for="q8c"><span class="letter">C</span>Bentuk bunga tujuh warna</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q8" value="D" id="q8d">
+            <label for="q8d"><span class="letter">D</span>Bentuk burung dan kupu-kupu</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q8" value="E" id="q8e">
+            <label for="q8e"><span class="letter">E</span>Bentuk lingkaran menyerupai buah</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 9 -->
+<div class="question-card">
+    <div class="question-number">09</div>
+    <div class="question">
+        Motif Kawung memiliki bentuk dasar yang menyerupai ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q9" value="A" id="q9a">
+            <label for="q9a"><span class="letter">A</span>Awan</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q9" value="B" id="q9b">
+            <label for="q9b"><span class="letter">B</span>Parang diagonal</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q9" value="C" id="q9c">
+            <label for="q9c"><span class="letter">C</span>Buah atau biji aren yang tersusun geometris</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q9" value="D" id="q9d">
+            <label for="q9d"><span class="letter">D</span>Bunga matahari</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q9" value="E" id="q9e">
+            <label for="q9e"><span class="letter">E</span>Gelombang air</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 10 -->
+<div class="question-card">
+    <div class="question-number">10</div>
+    <div class="question">
+        Motif batik Tujuh Rupa dikenal sebagai salah satu motif khas daerah ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q10" value="A" id="q10a">
+            <label for="q10a"><span class="letter">A</span>Pekalongan</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q10" value="B" id="q10b">
+            <label for="q10b"><span class="letter">B</span>Yogyakarta</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q10" value="C" id="q10c">
+            <label for="q10c"><span class="letter">C</span>Cirebon</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q10" value="D" id="q10d">
+            <label for="q10d"><span class="letter">D</span>Solo</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q10" value="E" id="q10e">
+            <label for="q10e"><span class="letter">E</span>Madura</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 11 -->
+<div class="question-card">
+    <div class="question-number">11</div>
+    <div class="question">
+        Karakteristik batik Pekalongan umumnya dikenal dengan ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q11" value="A" id="q11a">
+            <label for="q11a"><span class="letter">A</span>Warna yang selalu gelap dan motif geometris ketat</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q11" value="B" id="q11b">
+            <label for="q11b"><span class="letter">B</span>Motif yang banyak dipengaruhi budaya pesisir dan penggunaan warna yang beragam</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q11" value="C" id="q11c">
+            <label for="q11c"><span class="letter">C</span>Motif larangan keraton yang sangat terbatas</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q11" value="D" id="q11d">
+            <label for="q11d"><span class="letter">D</span>Motif yang hanya menggunakan warna cokelat</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q11" value="E" id="q11e">
+            <label for="q11e"><span class="letter">E</span>Tidak menggunakan unsur tumbuhan</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 12 -->
+<div class="question-card">
+    <div class="question-number">12</div>
+    <div class="question">
+        Batik Yogyakarta secara umum memiliki karakteristik ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q12" value="A" id="q12a">
+            <label for="q12a"><span class="letter">A</span>Warna-warna cerah tanpa aturan</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q12" value="B" id="q12b">
+            <label for="q12b"><span class="letter">B</span>Motif pesisir dengan dominasi gambar laut</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q12" value="C" id="q12c">
+            <label for="q12c"><span class="letter">C</span>Motif tradisional yang kuat dengan warna seperti soga, putih, dan hitam</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q12" value="D" id="q12d">
+            <label for="q12d"><span class="letter">D</span>Motif hanya berupa bunga</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q12" value="E" id="q12e">
+            <label for="q12e"><span class="letter">E</span>Tidak memiliki makna filosofis</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 13 -->
+<div class="question-card">
+    <div class="question-number">13</div>
+    <div class="question">
+        Batik painting berbeda dengan batik tradisional terutama dalam hal ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q13" value="A" id="q13a">
+            <label for="q13a"><span class="letter">A</span>Batik painting menggunakan kain, sedangkan batik tradisional tidak</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q13" value="B" id="q13b">
+            <label for="q13b"><span class="letter">B</span>Batik painting lebih menekankan kebebasan melukis menggunakan pewarna, sedangkan batik tradisional mengikuti teknik dan proses pembatikan tertentu</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q13" value="C" id="q13c">
+            <label for="q13c"><span class="letter">C</span>Batik painting tidak menggunakan warna</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q13" value="D" id="q13d">
+            <label for="q13d"><span class="letter">D</span>Batik tradisional selalu dibuat dengan mesin</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q13" value="E" id="q13e">
+            <label for="q13e"><span class="letter">E</span>Batik painting hanya menggunakan motif Parang</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 14 -->
+<div class="question-card">
+    <div class="question-number">14</div>
+    <div class="question">
+        Alat utama yang menjadi ciri khas dalam pembuatan batik tulis adalah ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q14" value="A" id="q14a">
+            <label for="q14a"><span class="letter">A</span>Kuas</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q14" value="B" id="q14b">
+            <label for="q14b"><span class="letter">B</span>Canting</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q14" value="C" id="q14c">
+            <label for="q14c"><span class="letter">C</span>Stempel</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q14" value="D" id="q14d">
+            <label for="q14d"><span class="letter">D</span>Palet</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q14" value="E" id="q14e">
+            <label for="q14e"><span class="letter">E</span>Pensil warna</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 15 -->
+<div class="question-card">
+    <div class="question-number">15</div>
+    <div class="question">
+        Perbedaan paling mendasar antara batik tulis dan batik cap berdasarkan proses pembuatannya adalah ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q15" value="A" id="q15a">
+            <label for="q15a"><span class="letter">A</span>Batik tulis menggunakan canting, sedangkan batik cap menggunakan alat cap</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q15" value="B" id="q15b">
+            <label for="q15b"><span class="letter">B</span>Batik tulis tidak menggunakan malam</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q15" value="C" id="q15c">
+            <label for="q15c"><span class="letter">C</span>Batik cap selalu lebih mahal</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q15" value="D" id="q15d">
+            <label for="q15d"><span class="letter">D</span>Batik tulis hanya memiliki satu warna</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q15" value="E" id="q15e">
+            <label for="q15e"><span class="letter">E</span>Batik cap tidak melalui proses pewarnaan</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 16 -->
+<div class="question-card">
+    <div class="question-number">16</div>
+    <div class="question">
+        Salah satu alasan batik tulis umumnya memiliki harga jual lebih tinggi adalah ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q16" value="A" id="q16a">
+            <label for="q16a"><span class="letter">A</span>Selalu menggunakan kain yang lebih tebal</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q16" value="B" id="q16b">
+            <label for="q16b"><span class="letter">B</span>Proses pembuatannya membutuhkan keterampilan dan waktu yang lebih lama</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q16" value="C" id="q16c">
+            <label for="q16c"><span class="letter">C</span>Hanya menggunakan warna hitam</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q16" value="D" id="q16d">
+            <label for="q16d"><span class="letter">D</span>Tidak membutuhkan tenaga manusia</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q16" value="E" id="q16e">
+            <label for="q16e"><span class="letter">E</span>Dibuat menggunakan mesin otomatis</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 17 -->
+<div class="question-card">
+    <div class="question-number">17</div>
+    <div class="question">
+        Pada masa perkembangan batik di lingkungan keraton, terdapat motif tertentu yang penggunaannya dibatasi bagi kalangan tertentu. Ketentuan tersebut dikenal sebagai ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q17" value="A" id="q17a">
+            <label for="q17a"><span class="letter">A</span>Batik pesisir</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q17" value="B" id="q17b">
+            <label for="q17b"><span class="letter">B</span>Batik larangan</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q17" value="C" id="q17c">
+            <label for="q17c"><span class="letter">C</span>Batik painting</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q17" value="D" id="q17d">
+            <label for="q17d"><span class="letter">D</span>Batik modern</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q17" value="E" id="q17e">
+            <label for="q17e"><span class="letter">E</span>Batik printing</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 18 -->
+<div class="question-card">
+    <div class="question-number">18</div>
+    <div class="question">
+        Batik larangan pada awal perkembangannya berkaitan erat dengan ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q18" value="A" id="q18a">
+            <label for="q18a"><span class="letter">A</span>Aturan penggunaan motif tertentu di lingkungan kerajaan atau keraton</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q18" value="B" id="q18b">
+            <label for="q18b"><span class="letter">B</span>Larangan menggunakan kain katun</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q18" value="C" id="q18c">
+            <label for="q18c"><span class="letter">C</span>Larangan menggunakan pewarna alami</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q18" value="D" id="q18d">
+            <label for="q18d"><span class="letter">D</span>Larangan membuat batik di luar negeri</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q18" value="E" id="q18e">
+            <label for="q18e"><span class="letter">E</span>Larangan menggunakan canting</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 19 -->
+<div class="question-card">
+    <div class="question-number">19</div>
+    <div class="question">
+        UNESCO mengakui batik Indonesia sebagai Warisan Budaya Takbenda pada ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q19" value="A" id="q19a">
+            <label for="q19a"><span class="letter">A</span>17 Agustus 1945</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q19" value="B" id="q19b">
+            <label for="q19b"><span class="letter">B</span>28 Oktober 1928</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q19" value="C" id="q19c">
+            <label for="q19c"><span class="letter">C</span>2 Oktober 2009</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q19" value="D" id="q19d">
+            <label for="q19d"><span class="letter">D</span>10 November 1945</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q19" value="E" id="q19e">
+            <label for="q19e"><span class="letter">E</span>21 April 2009</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 20 -->
+<div class="question-card">
+    <div class="question-number">20</div>
+    <div class="question">
+        Pengakuan UNESCO terhadap batik Indonesia mempertimbangkan bahwa batik merupakan ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q20" value="A" id="q20a">
+            <label for="q20a"><span class="letter">A</span>Produk industri modern semata</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q20" value="B" id="q20b">
+            <label for="q20b"><span class="letter">B</span>Warisan budaya yang memiliki nilai budaya, tradisi, keterampilan, dan makna bagi masyarakat</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q20" value="C" id="q20c">
+            <label for="q20c"><span class="letter">C</span>Produk yang hanya digunakan untuk pakaian resmi</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q20" value="D" id="q20d">
+            <label for="q20d"><span class="letter">D</span>Kain yang hanya dibuat di Pulau Jawa</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q20" value="E" id="q20e">
+            <label for="q20e"><span class="letter">E</span>Produk yang seluruhnya dibuat menggunakan mesin</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 21 -->
+<div class="question-card">
+    <div class="question-number">21</div>
+    <div class="question">
+        Teknik tradisional dalam seni batik pada dasarnya menggunakan ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q21" value="A" id="q21a">
+            <label for="q21a"><span class="letter">A</span>Malam sebagai perintang warna</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q21" value="B" id="q21b">
+            <label for="q21b"><span class="letter">B</span>Semen sebagai pewarna</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q21" value="C" id="q21c">
+            <label for="q21c"><span class="letter">C</span>Cat minyak sebagai bahan utama</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q21" value="D" id="q21d">
+            <label for="q21d"><span class="letter">D</span>Plastik sebagai bahan perintang</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q21" value="E" id="q21e">
+            <label for="q21e"><span class="letter">E</span>Kapur sebagai pengganti malam</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 22 -->
+<div class="question-card">
+    <div class="question-number">22</div>
+    <div class="question">
+        Dalam konteks fungsi seni rupa, karya yang digunakan untuk membantu seseorang memperoleh pengetahuan dan pembelajaran memiliki fungsi ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q22" value="A" id="q22a">
+            <label for="q22a"><span class="letter">A</span>Rekreasi</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q22" value="B" id="q22b">
+            <label for="q22b"><span class="letter">B</span>Edukasi</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q22" value="C" id="q22c">
+            <label for="q22c"><span class="letter">C</span>Komersial</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q22" value="D" id="q22d">
+            <label for="q22d"><span class="letter">D</span>Religi</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q22" value="E" id="q22e">
+            <label for="q22e"><span class="letter">E</span>Dekorasi</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 23 -->
+<div class="question-card">
+    <div class="question-number">23</div>
+    <div class="question">
+        Fungsi edukasi dalam seni rupa dapat diwujudkan melalui karya yang ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q23" value="A" id="q23a">
+            <label for="q23a"><span class="letter">A</span>Hanya digunakan sebagai pajangan</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q23" value="B" id="q23b">
+            <label for="q23b"><span class="letter">B</span>Membantu menyampaikan pengetahuan atau nilai pembelajaran</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q23" value="C" id="q23c">
+            <label for="q23c"><span class="letter">C</span>Hanya dibuat untuk dijual</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q23" value="D" id="q23d">
+            <label for="q23d"><span class="letter">D</span>Tidak memiliki pesan</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q23" value="E" id="q23e">
+            <label for="q23e"><span class="letter">E</span>Hanya digunakan untuk hiburan</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 24 -->
+<div class="question-card">
+    <div class="question-number">24</div>
+    <div class="question">
+        Perhatikan unsur-unsur berikut: (1) Titik, (2) Garis, (3) Warna, (4) Bidang. Unsur-unsur tersebut merupakan ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q24" value="A" id="q24a">
+            <label for="q24a"><span class="letter">A</span>Prinsip seni rupa</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q24" value="B" id="q24b">
+            <label for="q24b"><span class="letter">B</span>Unsur seni rupa</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q24" value="C" id="q24c">
+            <label for="q24c"><span class="letter">C</span>Teknik batik</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q24" value="D" id="q24d">
+            <label for="q24d"><span class="letter">D</span>Fungsi seni</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q24" value="E" id="q24e">
+            <label for="q24e"><span class="letter">E</span>Jenis seni pertunjukan</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 25 -->
+<div class="question-card">
+    <div class="question-number">25</div>
+    <div class="question">
+        Perubahan warna secara bertahap dari warna yang lebih terang menuju warna yang lebih gelap disebut ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q25" value="A" id="q25a">
+            <label for="q25a"><span class="letter">A</span>Kontras</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q25" value="B" id="q25b">
+            <label for="q25b"><span class="letter">B</span>Gradasi</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q25" value="C" id="q25c">
+            <label for="q25c"><span class="letter">C</span>Proporsi</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q25" value="D" id="q25d">
+            <label for="q25d"><span class="letter">D</span>Tekstur</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q25" value="E" id="q25e">
+            <label for="q25e"><span class="letter">E</span>Komposisi</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 26 -->
+<div class="question-card">
+    <div class="question-number">26</div>
+    <div class="question">
+        Motif batik Sidomukti memiliki filosofi yang berkaitan dengan ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q26" value="A" id="q26a">
+            <label for="q26a"><span class="letter">A</span>Kehancuran dan kesedihan</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q26" value="B" id="q26b">
+            <label for="q26b"><span class="letter">B</span>Harapan untuk memperoleh kehidupan yang penuh kemakmuran, kesejahteraan, dan kebahagiaan</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q26" value="C" id="q26c">
+            <label for="q26c"><span class="letter">C</span>Perlawanan terhadap kerajaan</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q26" value="D" id="q26d">
+            <label for="q26d"><span class="letter">D</span>Kehidupan di daerah pesisir</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q26" value="E" id="q26e">
+            <label for="q26e"><span class="letter">E</span>Perjalanan perdagangan antarnegara</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 27 -->
+<div class="question-card">
+    <div class="question-number">27</div>
+    <div class="question">
+        Pernyataan yang tepat mengenai karya seni rupa dua dimensi adalah ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q27" value="A" id="q27a">
+            <label for="q27a"><span class="letter">A</span>Memiliki panjang, lebar, dan tinggi</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q27" value="B" id="q27b">
+            <label for="q27b"><span class="letter">B</span>Hanya memiliki panjang dan lebar</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q27" value="C" id="q27c">
+            <label for="q27c"><span class="letter">C</span>Selalu dapat disentuh dari semua sisi</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q27" value="D" id="q27d">
+            <label for="q27d"><span class="letter">D</span>Selalu berbentuk patung</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q27" value="E" id="q27e">
+            <label for="q27e"><span class="letter">E</span>Tidak dapat dilihat</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 28 -->
+<div class="question-card">
+    <div class="question-number">28</div>
+    <div class="question">
+        Contoh karya seni rupa tiga dimensi adalah ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q28" value="A" id="q28a">
+            <label for="q28a"><span class="letter">A</span>Lukisan</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q28" value="B" id="q28b">
+            <label for="q28b"><span class="letter">B</span>Poster</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q28" value="C" id="q28c">
+            <label for="q28c"><span class="letter">C</span>Foto</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q28" value="D" id="q28d">
+            <label for="q28d"><span class="letter">D</span>Patung</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q28" value="E" id="q28e">
+            <label for="q28e"><span class="letter">E</span>Gambar batik pada kertas</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 29 -->
+<div class="question-card">
+    <div class="question-number">29</div>
+    <div class="question">
+        Perhatikan karakteristik berikut: dibuat dengan canting, pola ditorehkan menggunakan malam, dan pewarnaan dilakukan setelah bagian tertentu ditutup malam. Urutan tersebut menunjukkan teknik ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q29" value="A" id="q29a">
+            <label for="q29a"><span class="letter">A</span>Batik tulis</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q29" value="B" id="q29b">
+            <label for="q29b"><span class="letter">B</span>Batik printing</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q29" value="C" id="q29c">
+            <label for="q29c"><span class="letter">C</span>Batik cap</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q29" value="D" id="q29d">
+            <label for="q29d"><span class="letter">D</span>Kolase</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q29" value="E" id="q29e">
+            <label for="q29e"><span class="letter">E</span>Aquarel</label>
+        </div>
+    </div>
+</div>
+
+<!-- SOAL 30 -->
+<div class="question-card">
+    <div class="question-number">30</div>
+    <div class="question">
+        Sebuah soal menampilkan gambar kain dengan motif bunga, tumbuhan, dan berbagai unsur alam dengan warna yang beragam. Motif tersebut merupakan salah satu karakteristik batik pesisir yang terkenal dari Pekalongan. Motif yang paling mungkin ditunjukkan adalah ....
+    </div>
+
+    <div class="options">
+        <div class="option">
+            <input type="radio" name="q30" value="A" id="q30a">
+            <label for="q30a"><span class="letter">A</span>Tujuh Rupa</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q30" value="B" id="q30b">
+            <label for="q30b"><span class="letter">B</span>Parang</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q30" value="C" id="q30c">
+            <label for="q30c"><span class="letter">C</span>Kawung</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q30" value="D" id="q30d">
+            <label for="q30d"><span class="letter">D</span>Mega Mendung</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="q30" value="E" id="q30e">
+            <label for="q30e"><span class="letter">E</span>Sidomukti</label>
+        </div>
+    </div>
+</div>
+
+<div class="submit-area">
+    <button type="button" class="btn btn-primary" onclick="checkQuiz()">
+        ✅ Periksa Jawaban
+    </button>
+
+    <button type="button" class="btn btn-secondary" onclick="resetQuiz()">
+        🔄 Ulangi
+    </button>
+</div>
+
+</form>
+
+<section id="result">
+
+    <div class="result-card">
+
+        <div class="result-icon" id="resultIcon">🏆</div>
+
+        <div class="score" id="score">0/30</div>
+
+        <div class="score-label" id="scoreLabel">
+            Nilai: 0
+        </div>
+
+        <div class="score-message" id="scoreMessage"></div>
+
+        <div class="review">
+
+            <h3>📖 Pembahasan Jawaban</h3>
+
+            <div id="reviewList"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+    Latihan Seni Budaya • Batik & Seni Rupa
+</footer>
+
+<script>
+
+const answers = {
+    q1:"B",
+    q2:"B",
+    q3:"B",
+    q4:"C",
+    q5:"C",
+    q6:"A",
+    q7:"C",
+    q8:"B",
+    q9:"C",
+    q10:"A",
+    q11:"B",
+    q12:"C",
+    q13:"B",
+    q14:"B",
+    q15:"A",
+    q16:"B",
+    q17:"B",
+    q18:"A",
+    q19:"C",
+    q20:"B",
+    q21:"A",
+    q22:"B",
+    q23:"B",
+    q24:"B",
+    q25:"B",
+    q26:"B",
+    q27:"B",
+    q28:"D",
+    q29:"A",
+    q30:"A"
+};
+
+const explanations = {
+
+    q1:"Soga adalah sebutan untuk warna cokelat yang menjadi salah satu warna khas batik tradisional Jawa.",
+
+    q2:"Seni rupa berkaitan dengan karya yang dapat dinikmati terutama melalui indera penglihatan dan perabaan.",
+
+    q3:"Berdasarkan fungsi, seni rupa secara umum dibedakan menjadi seni rupa murni dan seni rupa terapan.",
+
+    q4:"Batik tulis dibuat secara manual menggunakan canting untuk menorehkan malam pada kain.",
+
+    q5:"Malam berfungsi sebagai perintang warna sehingga bagian kain yang tertutup malam tidak terkena pewarna.",
+
+    q6:"Nglorod adalah proses menghilangkan malam dari kain dengan cara meluruhkannya, umumnya menggunakan air panas.",
+
+    q7:"Mega Mendung merupakan motif khas Cirebon yang sangat dikenal dengan bentuk awan.",
+
+    q8:"Motif Parang memiliki susunan bentuk yang khas dengan arah diagonal dan pola yang berulang.",
+
+    q9:"Kawung terinspirasi dari bentuk buah atau biji aren yang disusun secara geometris.",
+
+    q10:"Batik Tujuh Rupa merupakan salah satu motif yang terkenal dari Pekalongan.",
+
+    q11:"Batik Pekalongan sebagai batik pesisir banyak menampilkan warna beragam dan pengaruh budaya dari berbagai lingkungan.",
+
+    q12:"Batik Yogyakarta memiliki karakter keraton yang kuat dengan motif tradisional dan warna khas seperti soga, putih, dan hitam.",
+
+    q13:"Batik painting lebih bebas dalam menuangkan gambar dan warna seperti kegiatan melukis, sedangkan batik tradisional mengikuti teknik pembatikan tertentu.",
+
+    q14:"Canting merupakan alat utama yang digunakan untuk menorehkan malam pada batik tulis.",
+
+    q15:"Batik tulis menggunakan canting untuk membuat pola, sedangkan batik cap menggunakan alat cap yang telah memiliki motif.",
+
+    q16:"Batik tulis membutuhkan waktu, ketelitian, dan keterampilan tangan yang tinggi sehingga proses produksinya relatif lebih lama.",
+
+    q17:"Batik larangan berkaitan dengan motif-motif tertentu yang penggunaannya dibatasi dalam lingkungan keraton.",
+
+    q18:"Pada lingkungan kerajaan atau keraton terdapat aturan mengenai penggunaan beberapa motif tertentu oleh kalangan tertentu.",
+
+    q19:"Tanggal 2 Oktober 2009 berkaitan dengan masuknya batik Indonesia dalam daftar Warisan Budaya Takbenda UNESCO.",
+
+    q20:"Pengakuan tersebut berkaitan dengan batik sebagai warisan budaya yang mencakup pengetahuan, keterampilan, tradisi, simbol, dan nilai budaya masyarakat.",
+
+    q21:"Teknik batik tradisional menggunakan malam sebagai bahan perintang warna.",
+
+    q22:"Fungsi edukasi berarti seni digunakan sebagai sarana pendidikan atau pembelajaran.",
+
+    q23:"Karya seni dengan fungsi edukasi dapat menyampaikan informasi, pengetahuan, pesan, atau nilai pembelajaran.",
+
+    q24:"Titik, garis, bidang, bentuk, warna, tekstur, dan ruang merupakan contoh unsur-unsur seni rupa.",
+
+    q25:"Gradasi adalah perubahan warna atau nilai secara bertahap, misalnya dari terang menuju gelap.",
+
+    q26:"Sidomukti berasal dari kata 'sido' yang bermakna jadi atau terlaksana dan 'mukti' yang berkaitan dengan kemakmuran atau kesejahteraan.",
+
+    q27:"Karya dua dimensi memiliki ukuran panjang dan lebar, tanpa volume tiga dimensi.",
+
+    q28:"Patung mempunyai panjang, lebar, dan tinggi sehingga termasuk karya seni rupa tiga dimensi.",
+
+    q29:"Penggunaan canting dan malam sebagai perintang warna merupakan karakteristik utama teknik batik tulis.",
+
+    q30:"Motif Tujuh Rupa dikenal sebagai salah satu motif Pekalongan yang banyak menampilkan unsur tumbuhan, bunga, dan alam dengan warna yang beragam."
+};
+
+const questionTexts = {
+
+    q1:"Warna cokelat khas pada batik tradisional Jawa yang berasal dari bahan pewarna alami disebut warna ....",
+
+    q2:"Seni rupa merupakan cabang seni yang menghasilkan karya yang dapat ....",
+
+    q3:"Berdasarkan fungsinya, seni rupa dibedakan menjadi seni rupa ....",
+
+    q4:"Jenis batik yang dibuat manual menggunakan canting dan malam disebut ....",
+
+    q5:"Dalam proses pembuatan batik, fungsi utama malam adalah ....",
+
+    q6:"Proses penghilangan malam setelah pewarnaan disebut ....",
+
+    q7:"Motif awan khas Cirebon disebut ....",
+
+    q8:"Ciri utama motif Parang adalah ....",
+
+    q9:"Bentuk dasar motif Kawung menyerupai ....",
+
+    q10:"Motif Tujuh Rupa berasal dari ....",
+
+    q11:"Karakteristik umum batik Pekalongan adalah ....",
+
+    q12:"Karakteristik umum batik Yogyakarta adalah ....",
+
+    q13:"Perbedaan utama batik painting dan batik tradisional adalah ....",
+
+    q14:"Alat utama pembuatan batik tulis adalah ....",
+
+    q15:"Perbedaan mendasar batik tulis dan batik cap adalah ....",
+
+    q16:"Salah satu alasan batik tulis memiliki harga jual lebih tinggi adalah ....",
+
+    q17:"Ketentuan pembatasan penggunaan motif tertentu di keraton disebut ....",
+
+    q18:"Batik larangan berkaitan erat dengan ....",
+
+    q19:"Batik Indonesia diakui UNESCO pada ....",
+
+    q20:"Pertimbangan pengakuan UNESCO terhadap batik adalah ....",
+
+    q21:"Teknik tradisional batik menggunakan ....",
+
+    q22:"Karya seni yang digunakan untuk pembelajaran memiliki fungsi ....",
+
+    q23:"Fungsi edukasi dalam seni rupa dapat diwujudkan melalui karya yang ....",
+
+    q24:"Titik, garis, warna, dan bidang merupakan ....",
+
+    q25:"Perubahan warna secara bertahap disebut ....",
+
+    q26:"Filosofi motif Sidomukti berkaitan dengan ....",
+
+    q27:"Ciri karya seni rupa dua dimensi adalah ....",
+
+    q28:"Contoh karya seni rupa tiga dimensi adalah ....",
+
+    q29:"Teknik menggunakan canting dan malam menunjukkan teknik ....",
+
+    q30:"Motif Pekalongan dengan bunga, tumbuhan, dan unsur alam adalah ...."
+};
+
+function updateProgress(){
+
+    let answered = 0;
+
+    for(let i=1;i<=30;i++){
+
+        const selected =
+            document.querySelector(
+                'input[name="q'+i+'"]:checked'
+            );
+
+        if(selected){
+            answered++;
+        }
+    }
+
+    const percent = (answered / 30) * 100;
+
+    document.getElementById("progressBar").style.width =
+        percent + "%";
+
+    document.getElementById("progressText").textContent =
+        answered + "/30";
+}
+
+document.querySelectorAll('input[type="radio"]').forEach(input=>{
+
+    input.addEventListener("change",updateProgress);
+
+});
+
+function checkQuiz(){
+
+    let score = 0;
+    let answered = 0;
+    let reviewHTML = "";
+
+    for(let i=1;i<=30;i++){
+
+        const name = "q"+i;
+
+        const selected =
+            document.querySelector(
+                'input[name="'+name+'"]:checked'
+            );
+
+        const userAnswer =
+            selected ? selected.value : "Tidak dijawab";
+
+        if(selected){
+            answered++;
+        }
+
+        const isCorrect =
+            userAnswer === answers[name];
+
+        if(isCorrect){
+            score++;
+        }
+
+        reviewHTML += `
+            <div class="review-item ${isCorrect ? "correct-box":"wrong-box"}">
+
+                <div class="review-q">
+                    ${i}. ${questionTexts[name]}
+                </div>
+
+                <div class="correct-answer">
+                    ✓ Jawaban benar: ${answers[name]}
+                </div>
+
+                <div class="user-answer">
+                    ${isCorrect
+                        ? "✓ Jawaban kamu: " + userAnswer
+                        : "✗ Jawaban kamu: " + userAnswer}
+                </div>
+
+                <div class="explanation">
+                    ${explanations[name]}
+                </div>
+
+            </div>
+        `;
+    }
+
+    const nilai = Math.round((score / 30) * 100);
+
+    document.getElementById("score").textContent =
+        score + "/30";
+
+    document.getElementById("scoreLabel").textContent =
+        "Nilai: " + nilai;
+
+    let message = "";
+
+    if(nilai >= 90){
+        message =
+            "🌟 Luar biasa! Pemahamanmu tentang batik dan seni rupa sangat baik.";
+        document.getElementById("resultIcon").textContent = "🏆";
+    }
+    else if(nilai >= 75){
+        message =
+            "👏 Bagus! Tinggal perkuat beberapa materi yang masih keliru.";
+        document.getElementById("resultIcon").textContent = "🎉";
+    }
+    else if(nilai >= 60){
+        message =
+            "💪 Sudah cukup baik. Pelajari kembali motif, teknik, dan sejarah batik.";
+        document.getElementById("resultIcon").textContent = "📚";
+    }
+    else{
+        message =
+            "🔥 Jangan menyerah! Baca kembali materi lalu coba latihan lagi.";
+        document.getElementById("resultIcon").textContent = "💪";
+    }
+
+    if(answered < 30){
+
+        message +=
+            "<br><br>⚠️ Kamu baru menjawab " +
+            answered +
+            " dari 30 soal.";
+
+    }
+
+    document.getElementById("scoreMessage").innerHTML =
+        message;
+
+    document.getElementById("reviewList").innerHTML =
+        reviewHTML;
+
+    document.getElementById("result").style.display =
+        "block";
+
+    document.getElementById("result").scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
+}
+
+function resetQuiz(){
+
+    document.getElementById("quizForm").reset();
+
+    document.getElementById("result").style.display =
+        "none";
+
+    document.getElementById("progressBar").style.width =
+        "0%";
+
+    document.getElementById("progressText").textContent =
+        "0/30";
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+updateProgress();
+
+</script>
+
+</body>
+</html>
