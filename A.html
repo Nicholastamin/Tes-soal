@@ -11,34 +11,35 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
     min-height:100vh;
     background:
-        radial-gradient(circle at top left,#fff4d6 0,#ffffff 35%),
-        radial-gradient(circle at bottom right,#e5f4ff 0,#ffffff 40%);
+        radial-gradient(circle at 0% 0%,#fff0cf 0%,transparent 35%),
+        radial-gradient(circle at 100% 100%,#dff4ff 0%,transparent 40%),
+        #ffffff;
     color:#263238;
     padding-bottom:50px;
 }
 
 header{
-    background:linear-gradient(135deg,#ff9f43,#ffcc70);
+    background:linear-gradient(135deg,#ff9f43,#ffd166);
     color:#4a2c00;
-    padding:35px 20px;
     text-align:center;
+    padding:35px 18px;
     box-shadow:0 8px 25px rgba(0,0,0,.12);
 }
 
 header h1{
-    font-size:clamp(24px,5vw,40px);
+    font-size:clamp(25px,6vw,42px);
     margin-bottom:10px;
 }
 
 header p{
     font-size:15px;
-    line-height:1.6;
+    line-height:1.7;
 }
 
 .container{
@@ -46,39 +47,99 @@ header p{
     margin:25px auto;
 }
 
+.info-card,
+.bottom-panel{
+    background:#fff;
+    border-radius:22px;
+    padding:23px;
+    box-shadow:0 8px 26px rgba(0,0,0,.08);
+    border:1px solid #eee;
+}
+
 .info-card{
-    background:#ffffff;
-    border-radius:20px;
-    padding:22px;
     margin-bottom:25px;
-    box-shadow:0 8px 25px rgba(0,0,0,.08);
-    border:1px solid #f0e5d0;
 }
 
 .info-card h2{
     color:#e67e22;
-    margin-bottom:12px;
+    margin-bottom:15px;
 }
 
 .info-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
     gap:10px;
 }
 
 .info-item{
     background:#fff8eb;
-    padding:12px;
+    padding:13px;
+    border-radius:13px;
+    line-height:1.5;
+}
+
+.action-bar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:18px;
+}
+
+button{
+    border:none;
+    border-radius:14px;
+    padding:14px 20px;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 7px 18px rgba(0,0,0,.12);
+}
+
+.shuffle-btn{
+    background:linear-gradient(135deg,#7c83fd,#9b8cff);
+    color:white;
+}
+
+.check-btn{
+    background:linear-gradient(135deg,#ff9f43,#ffd166);
+    color:#4a2c00;
+}
+
+.reset-btn{
+    background:#edf2f7;
+    color:#374151;
+}
+
+.warning{
+    background:#fff3cd;
+    border-left:5px solid #f0ad4e;
+    padding:13px;
+    border-radius:10px;
+    margin-top:15px;
+    line-height:1.6;
+}
+
+.shuffle-info{
+    margin-top:12px;
+    padding:11px 13px;
     border-radius:12px;
+    background:#eef0ff;
+    color:#4b50a5;
+    font-size:14px;
 }
 
 .question-card{
-    background:#ffffff;
+    background:#fff;
     border-radius:20px;
     padding:22px;
     margin-bottom:20px;
     box-shadow:0 7px 22px rgba(0,0,0,.07);
-    border:1px solid #eeeeee;
+    border:1px solid #eee;
     transition:.25s;
 }
 
@@ -90,11 +151,11 @@ header p{
 .question-number{
     display:inline-block;
     background:#ff9f43;
-    color:white;
-    padding:7px 12px;
+    color:#fff;
+    padding:7px 13px;
     border-radius:20px;
     font-weight:bold;
-    margin-bottom:14px;
+    margin-bottom:13px;
 }
 
 .question{
@@ -105,30 +166,56 @@ header p{
 }
 
 .option{
-    display:block;
-    margin:10px 0;
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
     padding:13px 15px;
+    margin:9px 0;
+    border:2px solid #e9ecef;
     border-radius:13px;
     background:#f8fafc;
-    border:2px solid #e9ecef;
     cursor:pointer;
-    transition:.2s;
     line-height:1.5;
+    transition:.2s;
 }
 
 .option:hover{
-    background:#fff5e6;
+    background:#fff5e5;
     border-color:#ffb55e;
 }
 
 .option input{
-    margin-right:10px;
+    margin-top:3px;
+    flex-shrink:0;
     transform:scale(1.15);
+}
+
+.option-letter{
+    min-width:27px;
+    height:27px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:#eef0ff;
+    color:#4b50a5;
+    font-weight:bold;
+    font-size:13px;
+    flex-shrink:0;
+}
+
+.option-text{
+    flex:1;
 }
 
 .option.correct{
     background:#e9f9ee;
-    border-color:#42b866;
+    border-color:#3dbb63;
+}
+
+.option.correct .option-letter{
+    background:#3dbb63;
+    color:#fff;
 }
 
 .option.wrong{
@@ -136,70 +223,49 @@ header p{
     border-color:#e05252;
 }
 
+.option.wrong .option-letter{
+    background:#e05252;
+    color:#fff;
+}
+
 .result{
     display:none;
-    margin-top:15px;
-    padding:13px;
+    margin-top:14px;
+    padding:12px 14px;
     border-radius:12px;
     font-weight:bold;
-    line-height:1.6;
+    line-height:1.5;
 }
 
 .result.show{
     display:block;
 }
 
-.result.correct-result{
+.correct-result{
     background:#e9f9ee;
     color:#176b31;
 }
 
-.result.wrong-result{
+.wrong-result{
     background:#fff0f0;
     color:#9c2424;
 }
 
 .bottom-panel{
-    background:#ffffff;
-    border-radius:22px;
-    padding:25px;
-    box-shadow:0 8px 28px rgba(0,0,0,.10);
-    text-align:center;
     margin-top:30px;
+    text-align:center;
 }
 
-button{
-    border:none;
-    border-radius:14px;
-    padding:15px 25px;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-    margin:6px;
-    transition:.2s;
-}
-
-#checkBtn{
-    background:linear-gradient(135deg,#ff9f43,#f6c453);
-    color:#4a2c00;
-}
-
-#resetBtn{
-    background:#edf2f7;
-    color:#374151;
-}
-
-button:hover{
-    transform:translateY(-2px);
-    box-shadow:0 7px 18px rgba(0,0,0,.12);
+.bottom-panel button{
+    margin:5px;
 }
 
 .score{
     display:none;
     margin-top:20px;
     padding:20px;
-    border-radius:17px;
     background:#fff8eb;
+    border-radius:17px;
 }
 
 .score.show{
@@ -207,15 +273,16 @@ button:hover{
 }
 
 .score-number{
-    font-size:38px;
+    font-size:44px;
     font-weight:bold;
     color:#e67e22;
+    margin:7px 0;
 }
 
 .progress{
     width:100%;
-    height:10px;
-    background:#eeeeee;
+    height:11px;
+    background:#e8e8e8;
     border-radius:20px;
     overflow:hidden;
     margin:15px 0;
@@ -223,42 +290,49 @@ button:hover{
 
 .progress-bar{
     height:100%;
-    width:0%;
+    width:0;
     background:linear-gradient(90deg,#ff9f43,#ffd166);
-    transition:.5s;
+    transition:.6s;
 }
 
 .answer-key{
-    margin-top:25px;
-    text-align:left;
-    background:#f8fafc;
-    padding:18px;
-    border-radius:15px;
-    line-height:1.9;
     display:none;
+    text-align:left;
+    margin-top:22px;
+    background:#f8fafc;
+    border-radius:15px;
+    padding:18px;
+    line-height:1.9;
 }
 
 .answer-key.show{
     display:block;
 }
 
-.warning{
-    background:#fff3cd;
-    border-left:5px solid #f0ad4e;
-    padding:13px;
-    border-radius:10px;
-    margin-top:12px;
-    line-height:1.6;
+.answer-key h3{
+    color:#e67e22;
+    margin-bottom:10px;
+}
+
+.key-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:5px 20px;
+}
+
+.key-item{
+    padding:4px 0;
 }
 
 footer{
     text-align:center;
-    margin-top:30px;
     color:#777;
     font-size:13px;
+    margin-top:30px;
 }
 
 @media(max-width:600px){
+
     header{
         padding:28px 15px;
     }
@@ -277,11 +351,24 @@ footer{
 
     .option{
         font-size:14px;
+        padding:12px;
     }
 
-    button{
+    .action-bar{
+        flex-direction:column;
+    }
+
+    .action-bar button{
+        width:100%;
+    }
+
+    .bottom-panel button{
         width:100%;
         margin:5px 0;
+    }
+
+    .key-grid{
+        grid-template-columns:1fr;
     }
 }
 </style>
@@ -291,6 +378,7 @@ footer{
 
 <header>
     <h1>PTS Pendidikan Agama Buddha</h1>
+
     <p>
         SMA Negeri 1 Tolitoli<br>
         Kelas XII / Semester I<br>
@@ -301,13 +389,10 @@ footer{
 <div class="container">
 
 <div class="info-card">
+
     <h2>📚 Informasi Ujian</h2>
 
     <div class="info-grid">
-        <div class="info-item">
-            <b>Satuan Pendidikan</b><br>
-            SMA Negeri 1 Tolitoli
-        </div>
 
         <div class="info-item">
             <b>Mata Pelajaran</b><br>
@@ -320,1060 +405,1665 @@ footer{
         </div>
 
         <div class="info-item">
-            <b>Jenis Tes</b><br>
-            Penilaian Tengah Semester
+            <b>Jumlah Soal</b><br>
+            25 Soal
         </div>
+
+        <div class="info-item">
+            <b>Bentuk Soal</b><br>
+            Pilihan Ganda
+        </div>
+
     </div>
 
     <div class="warning">
-        <b>Petunjuk:</b> Pilih satu jawaban yang menurutmu paling tepat untuk setiap soal.
+        <b>💡 Petunjuk:</b>
+        Pilih satu jawaban pada setiap soal.
+        Gunakan tombol <b>🔀 Acak Nomor & Pilihan</b>
+        untuk mengubah urutan soal sekaligus mengacak pilihan A–E.
     </div>
+
+    <div class="action-bar">
+
+        <button
+            class="shuffle-btn"
+            onclick="shuffleQuestions()">
+            🔀 Acak Nomor & Pilihan
+        </button>
+
+        <button
+            class="check-btn"
+            onclick="checkAnswers()">
+            ✓ Periksa Jawaban
+        </button>
+
+        <button
+            class="reset-btn"
+            onclick="resetQuiz()">
+            ↻ Ulangi
+        </button>
+
+    </div>
+
+    <div
+        class="shuffle-info"
+        id="shuffleInfo">
+        Susunan soal masih dalam urutan awal.
+    </div>
+
 </div>
 
-<form id="quizForm">
 
-<!-- 1 -->
-<div class="question-card">
-<span class="question-number">Soal 1</span>
+<div id="quiz">
 
-<div class="question">
-Alam kebahagiaan yang termasuk bagian dari Kamma Bhumi disebut ....
+
+<!-- ==================================================
+     SOAL 1
+     ================================================== -->
+
+<div class="question-card" data-id="1">
+
+    <span class="question-number">Soal 1</span>
+
+    <div class="question">
+        Alam kebahagiaan yang termasuk bagian dari Kamma Bhumi disebut ....
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q1" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Rupa Jhana</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q1" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Sugati</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q1" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Nevasanya</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q1" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Arupa Bhumi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q1" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Arupa Jhana</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<label class="option">
-<input type="radio" name="q1" value="A">
-A. Rupa Jhana
-</label>
 
-<label class="option">
-<input type="radio" name="q1" value="B">
-B. Sugati
-</label>
+<!-- ==================================================
+     SOAL 2
+     ================================================== -->
 
-<label class="option">
-<input type="radio" name="q1" value="C">
-C. Nevasanya
-</label>
+<div class="question-card" data-id="2">
 
-<label class="option">
-<input type="radio" name="q1" value="D">
-D. Arupa Bhumi
-</label>
+    <span class="question-number">Soal 2</span>
 
-<label class="option">
-<input type="radio" name="q1" value="E">
-E. Arupa Jhana
-</label>
+    <div class="question">
+        Setiap puja bakti bila dihadiri oleh para bhikkhu kita selalu memohon tuntunan Ti Sarana Pancasila. Apakah nama paritta yang digunakan tersebut?
+    </div>
 
-<div class="result" id="r1"></div>
+    <label class="option">
+        <input type="radio" name="q2" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Paritta Pancasila</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q2" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Paritta Pancasila dan Ti Sarana</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q2" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Dhammadesana Aradhana</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q2" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Paritta Ti Sarana</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q2" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Pancasila Aradhana</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<!-- 2 -->
-<div class="question-card">
-<span class="question-number">Soal 2</span>
 
-<div class="question">
-Setiap puja bakti bila dihadiri oleh para bhikkhu kita selalu memohon tuntunan Ti Sarana Pancasila. Apakah nama paritta yang digunakan tersebut?
+<!-- ==================================================
+     SOAL 3
+     ================================================== -->
+
+<div class="question-card" data-id="3">
+
+    <span class="question-number">Soal 3</span>
+
+    <div class="question">
+        Terdapat satu alam kehidupan yang dihuni oleh berbagai makhluk berkaki dua, berkaki empat, berkaki banyak serta hewan tanpa kaki. Apakah sebutan alam binatang tersebut?
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q3" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Alam Tavatimsa</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q3" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Alam Dugati</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q3" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Alam Peta</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q3" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Alam Sugati</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q3" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Alam Tiraccano</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<label class="option">
-<input type="radio" name="q2" value="A">
-A. Paritta Pancasila
-</label>
 
-<label class="option">
-<input type="radio" name="q2" value="B">
-B. Paritta Pancasila dan Ti Sarana
-</label>
+<!-- ==================================================
+     SOAL 4
+     ================================================== -->
 
-<label class="option">
-<input type="radio" name="q2" value="C">
-C. Dhammadesana Aradhana
-</label>
+<div class="question-card" data-id="4">
 
-<label class="option">
-<input type="radio" name="q2" value="D">
-D. Paritta Ti Sarana
-</label>
+    <span class="question-number">Soal 4</span>
 
-<label class="option">
-<input type="radio" name="q2" value="E">
-E. Pancasila Aradhana
-</label>
+    <div class="question">
+        Sang Buddha memenuhi permintaan makhluk Brahma untuk mengajarkan Dhamma kepada semesta sehingga Dhamma tetap lestari sampai masa sekarang. Sutta apakah yang menceritakan peristiwa bersejarah tersebut?
+    </div>
 
-<div class="result" id="r2"></div>
+    <label class="option">
+        <input type="radio" name="q4" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Manggala Sutta</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q4" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Ariyapariyesana Sutta</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q4" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Dhajagga Sutta</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q4" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Karaniyametta Sutta</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q4" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Brahmajala Sutta</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<!-- 3 -->
-<div class="question-card">
-<span class="question-number">Soal 3</span>
 
-<div class="question">
-Terdapat satu alam kehidupan yang dihuni oleh berbagai makhluk berkaki dua, berkaki empat, berkaki banyak serta hewan tanpa kaki. Apakah sebutan alam binatang tersebut?
+<!-- ==================================================
+     SOAL 5
+     ================================================== -->
+
+<div class="question-card" data-id="5">
+
+    <span class="question-number">Soal 5</span>
+
+    <div class="question">
+        Kita sebagai manusia selayaknya berbuat dan berperilaku yang mencerminkan pikiran yang luhur. Sebagai ciri khasnya yaitu malu berbuat jahat dan takut akan akibat dari perbuatan jahat. Sehingga kita layak disebut ....
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q5" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Manussa-Manussa</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q5" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Manussa-Peto</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q5" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Manussa-Buddho</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q5" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Manussa-Dewo</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q5" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Manussa-Tiraccano</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<label class="option">
-<input type="radio" name="q3" value="A">
-A. Alam Tavatimsa
-</label>
 
-<label class="option">
-<input type="radio" name="q3" value="B">
-B. Alam Dugati
-</label>
+<!-- ==================================================
+     SOAL 6
+     ================================================== -->
 
-<label class="option">
-<input type="radio" name="q3" value="C">
-C. Alam Peta
-</label>
+<div class="question-card" data-id="6">
 
-<label class="option">
-<input type="radio" name="q3" value="D">
-D. Alam Sugati
-</label>
+    <span class="question-number">Soal 6</span>
 
-<label class="option">
-<input type="radio" name="q3" value="E">
-E. Alam Tiraccano
-</label>
+    <div class="question">
+        Sesuai dengan corak kehidupan dijelaskan bahwa segala sesuatu yang terbentuk dikarenakan perpaduan atau gabungan dari berbagai unsur sebagai sebab dari penderitaan. Hukum apakah yang menjelaskan kondisi tersebut?
+    </div>
 
-<div class="result" id="r3"></div>
+    <label class="option">
+        <input type="radio" name="q6" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Sabbe Dhamma Anatta</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q6" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Sabbe Sankhara Anicca</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q6" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Bhijja Niyama</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q6" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Kamma Niyama</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q6" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Sabbe Sankhara Dukkha</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<!-- 4 -->
-<div class="question-card">
-<span class="question-number">Soal 4</span>
 
-<div class="question">
-Sang Buddha memenuhi permintaan makhluk Brahma untuk mengajarkan Dhamma kepada semesta sehingga Dhamma tetap lestari sampai masa sekarang. Sutta apakah yang menceritakan peristiwa bersejarah tersebut?
+<!-- ==================================================
+     SOAL 7
+     ================================================== -->
+
+<div class="question-card" data-id="7">
+
+    <span class="question-number">Soal 7</span>
+
+    <div class="question">
+        Terbagi menjadi berapa kelompok 31 alam kehidupan yang masih tercengkeram oleh samsara, dalam Buddhasasana?
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q7" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Metta, Vedana, Nama, Karuna, Sankhara</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q7" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Sankhara, Vinnyana, Vedana, Sannya, Rupa</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q7" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Metta, Karuna, Mudhita, Upekha</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q7" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Anicca, Dukkha, Anatta, Pannya</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q7" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Tejo, Vayo, Apo, Pathavi</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<label class="option">
-<input type="radio" name="q4" value="A">
-A. Manggala Sutta
-</label>
 
-<label class="option">
-<input type="radio" name="q4" value="B">
-B. Ariyapariyesana Sutta
-</label>
+<!-- ==================================================
+     SOAL 8
+     ================================================== -->
 
-<label class="option">
-<input type="radio" name="q4" value="C">
-C. Dhajagga Sutta
-</label>
+<div class="question-card" data-id="8">
 
-<label class="option">
-<input type="radio" name="q4" value="D">
-D. Karaniyametta Sutta
-</label>
+    <span class="question-number">Soal 8</span>
 
-<label class="option">
-<input type="radio" name="q4" value="E">
-E. Brahmajala Sutta
-</label>
+    <div class="question">
+        Pernyataan berikut ini yang benar tentang susunan 31 alam kehidupan terdapat dalam pilihan ....
+    </div>
 
-<div class="result" id="r4"></div>
+    <label class="option">
+        <input type="radio" name="q8" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Kamma Bhumi, Surga Bhumi, Dutiya Jhana Bhumi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q8" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Sugati Bhumi, Dugati Bhumi, Niraya Bhumi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q8" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Peta Bhumi, Asurya Bhumi, Manussa Bhumi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q8" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Kamma Bhumi, Rupa Bhumi, Arupa Bhumi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q8" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Rupa Bhumi, Tavatimsa Bhumi, Tusita Bhumi</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<!-- 5 -->
-<div class="question-card">
-<span class="question-number">Soal 5</span>
 
-<div class="question">
-Kita sebagai manusia selayaknya berbuat dan berperilaku yang mencerminkan pikiran yang luhur. Sebagai ciri khasnya yaitu malu berbuat jahat dan takut akan akibat dari perbuatan jahat. Sehingga kita layak disebut ....
+<!-- ==================================================
+     SOAL 9
+     ================================================== -->
+
+<div class="question-card" data-id="9">
+
+    <span class="question-number">Soal 9</span>
+
+    <div class="question">
+        Sang Buddha menjelaskan tentang alam semesta beserta sifat dan tata suryanya terangkum dalam kitab Tripitaka. Apakah nama kitab tersebut?
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q9" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Agannya Sutta</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q9" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Avatamsaka Sutta</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q9" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Cula Vibhanga Sutta</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q9" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Badekarata Sutta</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q9" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Dhammaniyama Sutta</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<label class="option">
-<input type="radio" name="q5" value="A">
-A. Manussa-Manussa
-</label>
 
-<label class="option">
-<input type="radio" name="q5" value="B">
-B. Manussa-Peto
-</label>
+<!-- ==================================================
+     SOAL 10
+     ================================================== -->
 
-<label class="option">
-<input type="radio" name="q5" value="C">
-C. Manussa-Buddho
-</label>
+<div class="question-card" data-id="10">
 
-<label class="option">
-<input type="radio" name="q5" value="D">
-D. Manussa-Dewo
-</label>
+    <span class="question-number">Soal 10</span>
 
-<label class="option">
-<input type="radio" name="q5" value="E">
-E. Manussa-Tiraccano
-</label>
+    <div class="question">
+        Pernyataan berikut ini yang paling benar mengenai kelompok rupa yaitu ....
+    </div>
 
-<div class="result" id="r5"></div>
+    <label class="option">
+        <input type="radio" name="q10" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Rupa terdiri dari empat belas bagian</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q10" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Badan jasmani terdiri dari materi rupa</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q10" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Bagian rupa: Vinyana, Tejo, Sankhara, Vayo</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q10" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Rupa terdiri dari: Tejo, Vayo, Apo, Pathavi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q10" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Batin dan jasmani merupakan bagian rupa</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<!-- 6 -->
-<div class="question-card">
-<span class="question-number">Soal 6</span>
 
-<div class="question">
-Sesuai dengan corak kehidupan dijelaskan bahwa segala sesuatu yang terbentuk dikarenakan perpaduan atau gabungan dari berbagai unsur sebagai sebab dari penderitaan. Hukum apakah yang menjelaskan kondisi tersebut?
+<!-- ==================================================
+     SOAL 11
+     ================================================== -->
+
+<div class="question-card" data-id="11">
+
+    <span class="question-number">Soal 11</span>
+
+    <div class="question">
+        Tiga puluh satu alam kehidupan terdapat alam yang dihuni oleh makhluk yang telah mencapai Arupa Jhana. Terbagi menjadi berapakah alam tersebut?
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q11" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Sebelas alam</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q11" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Dua puluh satu alam</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q11" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Empat alam</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q11" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Tujuh alam</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q11" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Sepuluh alam</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<label class="option">
-<input type="radio" name="q6" value="A">
-A. Sabbe Dhamma Anatta
-</label>
 
-<label class="option">
-<input type="radio" name="q6" value="B">
-B. Sabbe Sankhara Anicca
-</label>
+<!-- ==================================================
+     SOAL 12
+     ================================================== -->
 
-<label class="option">
-<input type="radio" name="q6" value="C">
-C. Bhijja Niyama
-</label>
+<div class="question-card" data-id="12">
 
-<label class="option">
-<input type="radio" name="q6" value="D">
-D. Kamma Niyama
-</label>
+    <span class="question-number">Soal 12</span>
 
-<label class="option">
-<input type="radio" name="q6" value="E">
-E. Sabbe Sankhara Dukkha
-</label>
+    <div class="question">
+        Buddhasasana menjelaskan bahwa manusia terdiri batin dan jasmani oleh karena itu tidak ada yang disebut inti atau roh yang kekal dalam diri manusia. Keadaan manusia yang sebenarnya ini dijelaskan dalam hukum Dhamma yang berbunyi ....
+    </div>
 
-<div class="result" id="r6"></div>
+    <label class="option">
+        <input type="radio" name="q12" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Sabbe Sankhara Dukkha</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q12" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Sabbe Dhamma Anatta</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q12" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Sabbe Satta Anatta</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q12" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Sabbe Sankhara Sukkah</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q12" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Sabbe Sankhara Anicca</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<!-- 7 -->
-<div class="question-card">
-<span class="question-number">Soal 7</span>
 
-<div class="question">
-Terbagi menjadi berapa kelompok 31 alam kehidupan yang masih tercengkeram oleh samsara, dalam Buddhasasana?
+<!-- ==================================================
+     SOAL 13
+     ================================================== -->
+
+<div class="question-card" data-id="13">
+
+    <span class="question-number">Soal 13</span>
+
+    <div class="question">
+        Perilaku Manussa yang sangat berbudi luhur seperti sifat-sifat Bodhisattva Pangeran Siddharta merupakan contoh dari jenis sifat ....
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q13" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Manussa Dewo</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q13" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Manussa Tiraccano</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q13" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Manussa Niraya</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q13" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Manussa Peto</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q13" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Manussa Asura</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<label class="option">
-<input type="radio" name="q7" value="A">
-A. Metta, Vedana, Nama, Karuna, Sankhara
-</label>
 
-<label class="option">
-<input type="radio" name="q7" value="B">
-B. Sankhara, Vinnyana, Vedana, Sannya, Rupa
-</label>
+<!-- ==================================================
+     SOAL 14
+     ================================================== -->
 
-<label class="option">
-<input type="radio" name="q7" value="C">
-C. Metta, Karuna, Mudhita, Upekha
-</label>
+<div class="question-card" data-id="14">
 
-<label class="option">
-<input type="radio" name="q7" value="D">
-D. Anicca, Dukkha, Anatta, Pannya
-</label>
+    <span class="question-number">Soal 14</span>
 
-<label class="option">
-<input type="radio" name="q7" value="E">
-E. Tejo, Vayo, Apo, Pathavi
-</label>
+    <div class="question">
+        Penjelasan tentang rentang umur manusia yaitu waktu yang dibutuhkan usia rata-rata manusia berumur 10 tahun lalu bertambah sampai masa usia yang lama sekali kemudian turun kembali pada usia rata-rata 10 tahun. Apakah istilah untuk menyebutkan waktu tersebut?
+    </div>
 
-<div class="result" id="r7"></div>
+    <label class="option">
+        <input type="radio" name="q14" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Antara Kappa</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q14" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Antara Kappa</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q14" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Lokuttara Kappa</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q14" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Kappa Bhumi</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q14" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Asankheya Kappa</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<!-- 8 -->
-<div class="question-card">
-<span class="question-number">Soal 8</span>
 
-<div class="question">
-Pernyataan berikut ini yang benar tentang susunan 31 alam kehidupan terdapat dalam pilihan ....
+<!-- ==================================================
+     SOAL 15
+     ================================================== -->
+
+<div class="question-card" data-id="15">
+
+    <span class="question-number">Soal 15</span>
+
+    <div class="question">
+        Terbagi berapa alam Rupa Bhumi dalam 31 alam kehidupan?
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q15" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Enam belas alam</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q15" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Delapan belas alam</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q15" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Dua puluh alam</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q15" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Tujuh belas alam</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q15" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Sembilan belas alam</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<label class="option">
-<input type="radio" name="q8" value="A">
-A. Kamma Bhumi, Surga Bhumi, Dutiya Jhana Bhumi
-</label>
 
-<label class="option">
-<input type="radio" name="q8" value="B">
-B. Sugati Bhumi, Dugati Bhumi, Niraya Bhumi
-</label>
+<!-- ==================================================
+     SOAL 16
+     ================================================== -->
 
-<label class="option">
-<input type="radio" name="q8" value="C">
-C. Peta Bhumi, Asurya Bhumi, Manussa Bhumi
-</label>
+<div class="question-card" data-id="16">
 
-<label class="option">
-<input type="radio" name="q8" value="D">
-D. Kamma Bhumi, Rupa Bhumi, Arupa Bhumi
-</label>
+    <span class="question-number">Soal 16</span>
 
-<label class="option">
-<input type="radio" name="q8" value="E">
-E. Rupa Bhumi, Tavatimsa Bhumi, Tusita Bhumi
-</label>
+    <div class="question">
+        Hukum kamma menjelaskan penyebab tumimbal lahir makhluk hidup dipengaruhi oleh jenis perbuatan di masa hidupnya. Apakah penyebab kelahiran kembali di alam Tiraccano?
+    </div>
 
-<div class="result" id="r8"></div>
+    <label class="option">
+        <input type="radio" name="q16" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Lobha</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q16" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Dosa</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q16" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Moha</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q16" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Irsia</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q16" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Tina Mida</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<!-- 9 -->
-<div class="question-card">
-<span class="question-number">Soal 9</span>
 
-<div class="question">
-Sang Buddha menjelaskan tentang alam semesta beserta sifat dan tata suryanya terangkum dalam kitab Tripitaka. Apakah nama kitab tersebut?
+<!-- ==================================================
+     SOAL 17
+     ================================================== -->
+
+<div class="question-card" data-id="17">
+
+    <span class="question-number">Soal 17</span>
+
+    <div class="question">
+        Alam Kamma Bhumi merupakan alam yang dihuni oleh semua makhluk yang masih dipenuhi berbagai macam nafsu. Terbagi menjadi berapa kelompok Kamma Bhumi tersebut?
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q17" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Rupa Jhana dan Arupa Jhana</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q17" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Tavatimsa dan Tusita</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q17" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Sugati dan Dugati</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q17" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Surga dan Neraka</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q17" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Purohita dan Dewa</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<label class="option">
-<input type="radio" name="q9" value="A">
-A. Agannya Sutta
-</label>
 
-<label class="option">
-<input type="radio" name="q9" value="B">
-B. Avatamsaka Sutta
-</label>
+<!-- ==================================================
+     SOAL 18
+     ================================================== -->
 
-<label class="option">
-<input type="radio" name="q9" value="C">
-C. Cula Vibhanga Sutta
-</label>
+<div class="question-card" data-id="18">
 
-<label class="option">
-<input type="radio" name="q9" value="D">
-D. Badekarata Sutta
-</label>
+    <span class="question-number">Soal 18</span>
 
-<label class="option">
-<input type="radio" name="q9" value="E">
-E. Dhammaniyama Sutta
-</label>
+    <div class="question">
+        Dharma, ajaran Sang Buddha menjelaskan dunia mikrokosmos terdiri dari lima agregat kelompok kehidupan. Apakah sebutan lima kelompok kehidupan yang selalu berubah dan tidak memiliki inti tersebut?
+    </div>
 
-<div class="result" id="r9"></div>
+    <label class="option">
+        <input type="radio" name="q18" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Panca Skhanda</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q18" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Panca Nivarana</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q18" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Panca Marga</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q18" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Panca Balla</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q18" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Panca Dhamma</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<!-- 10 -->
-<div class="question-card">
-<span class="question-number">Soal 10</span>
 
-<div class="question">
-Pernyataan berikut ini yang paling benar mengenai kelompok rupa yaitu ....
+<!-- ==================================================
+     SOAL 19
+     ================================================== -->
+
+<div class="question-card" data-id="19">
+
+    <span class="question-number">Soal 19</span>
+
+    <div class="question">
+        Bodhisattva Pangeran Siddharta, sebelum terlahir di dunia untuk menjadi Buddha dan menyebarkan Dhamma, berdiam di surga apakah Bodhisattva tersebut?
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q19" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Surga Nimanarati</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q19" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Surga Purohita</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q19" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Surga Tavatimsa</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q19" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Surga Para Brahma</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q19" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Surga Tusita</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<label class="option">
-<input type="radio" name="q10" value="A">
-A. Rupa terdiri dari empat belas bagian
-</label>
 
-<label class="option">
-<input type="radio" name="q10" value="B">
-B. Badan jasmani terdiri dari materi rupa
-</label>
+<!-- ==================================================
+     SOAL 20
+     ================================================== -->
 
-<label class="option">
-<input type="radio" name="q10" value="C">
-C. Bagian rupa: Vinyana, Tejo, Sankhara, Vayo
-</label>
+<div class="question-card" data-id="20">
 
-<label class="option">
-<input type="radio" name="q10" value="D">
-D. Rupa terdiri dari: Tejo, Vayo, Apo, Pathavi
-</label>
+    <span class="question-number">Soal 20</span>
 
-<label class="option">
-<input type="radio" name="q10" value="E">
-E. Batin dan jasmani merupakan bagian rupa
-</label>
+    <div class="question">
+        Perhitungan waktu atau masa yang dibutuhkan dalam peristiwa-peristiwa penting berkaitan dengan alam semesta beserta kejadiannya, dijelaskan oleh Sang Buddha terangkum dalam kitab Tripitaka. Kitab apakah yang menjelaskan permasalahan tersebut?
+    </div>
 
-<div class="result" id="r10"></div>
+    <label class="option">
+        <input type="radio" name="q20" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Parabava Sutta</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q20" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Dhammaniyama Sutta</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q20" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Karaniyametta Sutta</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q20" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Maha Vibhanga Sutta</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q20" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Cakkavatisihananda Sutta</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<!-- 11 -->
-<div class="question-card">
-<span class="question-number">Soal 11</span>
 
-<div class="question">
-Tiga puluh satu alam kehidupan terdapat alam yang dihuni oleh makhluk yang telah mencapai Arupa Jhana. Terbagi menjadi berapakah alam tersebut?
+<!-- ==================================================
+     SOAL 21
+     ================================================== -->
+
+<div class="question-card" data-id="21">
+
+    <span class="question-number">Soal 21</span>
+
+    <div class="question">
+        Siapakah nama makhluk alam Brahma, demi kepentingan alam semesta memohon kepada Sang Buddha berkenan mengajar Dhamma kepada para dewa dan manusia?
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q21" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Brahma Baratvaja</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q21" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Brahma Sahampati</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q21" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Brahma Nimanarati</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q21" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Brahma Candasiri</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q21" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Brahma Ekagatta</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<label class="option">
-<input type="radio" name="q11" value="A">
-A. Sebelas alam
-</label>
 
-<label class="option">
-<input type="radio" name="q11" value="B">
-B. Dua puluh satu alam
-</label>
+<!-- ==================================================
+     SOAL 22
+     ================================================== -->
 
-<label class="option">
-<input type="radio" name="q11" value="C">
-C. Empat alam
-</label>
+<div class="question-card" data-id="22">
 
-<label class="option">
-<input type="radio" name="q11" value="D">
-D. Tujuh alam
-</label>
+    <span class="question-number">Soal 22</span>
 
-<label class="option">
-<input type="radio" name="q11" value="E">
-E. Sepuluh alam
-</label>
+    <div class="question">
+        Merujuk pada kitab suci Parinibbana Sutta, berapakah rentang waktu yang dibutuhkan dalam satu Ayukappa dalam masa kehidupan Sang Buddha Gotama?
+    </div>
 
-<div class="result" id="r11"></div>
+    <label class="option">
+        <input type="radio" name="q22" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Antara 100 sampai 500 tahun</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q22" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Antara 500 sampai 100 tahun</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q22" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Antara 80 sampai 100 tahun</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q22" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Antara 10 sampai 100 tahun</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q22" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Antara 100 sampai 200 tahun</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<!-- 12 -->
-<div class="question-card">
-<span class="question-number">Soal 12</span>
 
-<div class="question">
-Buddhasasana menjelaskan bahwa manusia terdiri batin dan jasmani oleh karena itu tidak ada yang disebut inti atau roh yang kekal dalam diri manusia. Keadaan manusia yang sebenarnya ini dijelaskan dalam hukum Dhamma yang berbunyi ....
+<!-- ==================================================
+     SOAL 23
+     ================================================== -->
+
+<div class="question-card" data-id="23">
+
+    <span class="question-number">Soal 23</span>
+
+    <div class="question">
+        Alam-alam kehidupan yang dihuni oleh makhluk-makhluk yang tidak mendapat kesempatan merasakan kebahagiaan akibat dari buah perbuatan jahatnya disebut alam ....
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q23" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Sugati</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q23" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Manussa</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q23" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Tavatimsa</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q23" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Dugati</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q23" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Purohita</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<label class="option">
-<input type="radio" name="q12" value="A">
-A. Sabbe Sankhara Dukkha
-</label>
 
-<label class="option">
-<input type="radio" name="q12" value="B">
-B. Sabbe Dhamma Anatta
-</label>
+<!-- ==================================================
+     SOAL 24
+     ================================================== -->
 
-<label class="option">
-<input type="radio" name="q12" value="C">
-C. Sabbe Satta Anatta
-</label>
+<div class="question-card" data-id="24">
 
-<label class="option">
-<input type="radio" name="q12" value="D">
-D. Sabbe Sankhara Sukkah
-</label>
+    <span class="question-number">Soal 24</span>
 
-<label class="option">
-<input type="radio" name="q12" value="E">
-E. Sabbe Sankhara Anicca
-</label>
+    <div class="question">
+        Sifat-sifat luhur mencintai, menyayangi, rasa simpati dan ketenangan batin selayaknya dikembangkan oleh kita semua dalam kehidupan sehari-hari. Sifat-sifat luhur tersebut dalam Dhamma disebut ....
+    </div>
 
-<div class="result" id="r12"></div>
+    <label class="option">
+        <input type="radio" name="q24" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Catur Paramita</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q24" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Catur Daksila</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q24" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Catur Purisa</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q24" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Catur Mara</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q24" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Catur Brata</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<!-- 13 -->
-<div class="question-card">
-<span class="question-number">Soal 13</span>
 
-<div class="question">
-Perilaku Manussa yang sangat berbudi luhur seperti sifat-sifat Bodhisattva Pangeran Siddharta merupakan contoh dari jenis sifat ....
+<!-- ==================================================
+     SOAL 25
+     ================================================== -->
+
+<div class="question-card" data-id="25">
+
+    <span class="question-number">Soal 25</span>
+
+    <div class="question">
+        Agga Savaka merupakan siswa utama para Buddha. Begitu juga Sang Buddha Gotama dalam menyebarkan Dhamma dibantu oleh Agga Savaka. Siapakah nama Agga Savaka yang dimaksud?
+    </div>
+
+    <label class="option">
+        <input type="radio" name="q25" value="A">
+        <span class="option-letter">A</span>
+        <span class="option-text">Moggalana dan Mahanama</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q25" value="B">
+        <span class="option-letter">B</span>
+        <span class="option-text">Sariputta dan Moggalana</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q25" value="C">
+        <span class="option-letter">C</span>
+        <span class="option-text">Krisna dan Basudewa</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q25" value="D">
+        <span class="option-letter">D</span>
+        <span class="option-text">Sariputta dan Yasodara</span>
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q25" value="E">
+        <span class="option-letter">E</span>
+        <span class="option-text">Devadatta dan Rukmana</span>
+    </label>
+
+    <div class="result"></div>
+
 </div>
 
-<label class="option">
-<input type="radio" name="q13" value="A">
-A. Manussa Dewo
-</label>
-
-<label class="option">
-<input type="radio" name="q13" value="B">
-B. Manussa Tiraccano
-</label>
-
-<label class="option">
-<input type="radio" name="q13" value="C">
-C. Manussa Niraya
-</label>
-
-<label class="option">
-<input type="radio" name="q13" value="D">
-D. Manussa Peto
-</label>
-
-<label class="option">
-<input type="radio" name="q13" value="E">
-E. Manussa Asura
-</label>
-
-<div class="result" id="r13"></div>
 </div>
 
-<!-- 14 -->
-<div class="question-card">
-<span class="question-number">Soal 14</span>
 
-<div class="question">
-Penjelasan tentang rentang umur manusia yaitu waktu yang dibutuhkan usia rata-rata manusia berumur 10 tahun lalu bertambah sampai masa usia yang lama sekali kemudian turun kembali pada usia rata-rata 10 tahun. Apakah istilah untuk menyebutkan waktu tersebut?
-</div>
-
-<label class="option">
-<input type="radio" name="q14" value="A">
-A. Antara Kappa
-</label>
-
-<label class="option">
-<input type="radio" name="q14" value="B">
-B. Antara Kappa
-</label>
-
-<label class="option">
-<input type="radio" name="q14" value="C">
-C. Lokuttara Kappa
-</label>
-
-<label class="option">
-<input type="radio" name="q14" value="D">
-D. Kappa Bhumi
-</label>
-
-<label class="option">
-<input type="radio" name="q14" value="E">
-E. Asankheya Kappa
-</label>
-
-<div class="result" id="r14"></div>
-</div>
-
-<!-- 15 -->
-<div class="question-card">
-<span class="question-number">Soal 15</span>
-
-<div class="question">
-Terbagi berapa alam Rupa Bhumi dalam 31 alam kehidupan?
-</div>
-
-<label class="option">
-<input type="radio" name="q15" value="A">
-A. Enam belas alam
-</label>
-
-<label class="option">
-<input type="radio" name="q15" value="B">
-B. Delapan belas alam
-</label>
-
-<label class="option">
-<input type="radio" name="q15" value="C">
-C. Dua puluh alam
-</label>
-
-<label class="option">
-<input type="radio" name="q15" value="D">
-D. Tujuh belas alam
-</label>
-
-<label class="option">
-<input type="radio" name="q15" value="E">
-E. Sembilan belas alam
-</label>
-
-<div class="result" id="r15"></div>
-</div>
-
-<!-- 16 -->
-<div class="question-card">
-<span class="question-number">Soal 16</span>
-
-<div class="question">
-Hukum kamma menjelaskan penyebab tumimbal lahir makhluk hidup dipengaruhi oleh jenis perbuatan di masa hidupnya. Apakah penyebab kelahiran kembali di alam Tiraccano?
-</div>
-
-<label class="option">
-<input type="radio" name="q16" value="A">
-A. Lobha
-</label>
-
-<label class="option">
-<input type="radio" name="q16" value="B">
-B. Dosa
-</label>
-
-<label class="option">
-<input type="radio" name="q16" value="C">
-C. Moha
-</label>
-
-<label class="option">
-<input type="radio" name="q16" value="D">
-D. Irsia
-</label>
-
-<label class="option">
-<input type="radio" name="q16" value="E">
-E. Tina Mida
-</label>
-
-<div class="result" id="r16"></div>
-</div>
-
-<!-- 17 -->
-<div class="question-card">
-<span class="question-number">Soal 17</span>
-
-<div class="question">
-Alam Kamma Bhumi merupakan alam yang dihuni oleh semua makhluk yang masih dipenuhi berbagai macam nafsu. Terbagi menjadi berapa kelompok Kamma Bhumi tersebut?
-</div>
-
-<label class="option">
-<input type="radio" name="q17" value="A">
-A. Rupa Jhana dan Arupa Jhana
-</label>
-
-<label class="option">
-<input type="radio" name="q17" value="B">
-B. Tavatimsa dan Tusita
-</label>
-
-<label class="option">
-<input type="radio" name="q17" value="C">
-C. Sugati dan Dugati
-</label>
-
-<label class="option">
-<input type="radio" name="q17" value="D">
-D. Surga dan Neraka
-</label>
-
-<label class="option">
-<input type="radio" name="q17" value="E">
-E. Purohita dan Dewa
-</label>
-
-<div class="result" id="r17"></div>
-</div>
-
-<!-- 18 -->
-<div class="question-card">
-<span class="question-number">Soal 18</span>
-
-<div class="question">
-Dharma, ajaran Sang Buddha menjelaskan dunia mikrokosmos terdiri dari lima agregat kelompok kehidupan. Apakah sebutan lima kelompok kehidupan yang selalu berubah dan tidak memiliki inti tersebut?
-</div>
-
-<label class="option">
-<input type="radio" name="q18" value="A">
-A. Panca Skhanda
-</label>
-
-<label class="option">
-<input type="radio" name="q18" value="B">
-B. Panca Nivarana
-</label>
-
-<label class="option">
-<input type="radio" name="q18" value="C">
-C. Panca Marga
-</label>
-
-<label class="option">
-<input type="radio" name="q18" value="D">
-D. Panca Balla
-</label>
-
-<label class="option">
-<input type="radio" name="q18" value="E">
-E. Panca Dhamma
-</label>
-
-<div class="result" id="r18"></div>
-</div>
-
-<!-- 19 -->
-<div class="question-card">
-<span class="question-number">Soal 19</span>
-
-<div class="question">
-Bodhisattva Pangeran Siddharta, sebelum terlahir di dunia untuk menjadi Buddha dan menyebarkan Dhamma, berdiam di surga apakah Bodhisattva tersebut?
-</div>
-
-<label class="option">
-<input type="radio" name="q19" value="A">
-A. Surga Nimanarati
-</label>
-
-<label class="option">
-<input type="radio" name="q19" value="B">
-B. Surga Purohita
-</label>
-
-<label class="option">
-<input type="radio" name="q19" value="C">
-C. Surga Tavatimsa
-</label>
-
-<label class="option">
-<input type="radio" name="q19" value="D">
-D. Surga Para Brahma
-</label>
-
-<label class="option">
-<input type="radio" name="q19" value="E">
-E. Surga Tusita
-</label>
-
-<div class="result" id="r19"></div>
-</div>
-
-<!-- 20 -->
-<div class="question-card">
-<span class="question-number">Soal 20</span>
-
-<div class="question">
-Perhitungan waktu atau masa yang dibutuhkan dalam peristiwa-peristiwa penting berkaitan dengan alam semesta beserta kejadiannya, dijelaskan oleh Sang Buddha terangkum dalam kitab Tripitaka. Kitab apakah yang menjelaskan permasalahan tersebut?
-</div>
-
-<label class="option">
-<input type="radio" name="q20" value="A">
-A. Parabava Sutta
-</label>
-
-<label class="option">
-<input type="radio" name="q20" value="B">
-B. Dhammaniyama Sutta
-</label>
-
-<label class="option">
-<input type="radio" name="q20" value="C">
-C. Karaniyametta Sutta
-</label>
-
-<label class="option">
-<input type="radio" name="q20" value="D">
-D. Maha Vibhanga Sutta
-</label>
-
-<label class="option">
-<input type="radio" name="q20" value="E">
-E. Cakkavatisihananda Sutta
-</label>
-
-<div class="result" id="r20"></div>
-</div>
-
-<!-- 21 -->
-<div class="question-card">
-<span class="question-number">Soal 21</span>
-
-<div class="question">
-Siapakah nama makhluk alam Brahma, demi kepentingan alam semesta memohon kepada Sang Buddha berkenan mengajar Dhamma kepada para dewa dan manusia?
-</div>
-
-<label class="option">
-<input type="radio" name="q21" value="A">
-A. Brahma Baratvaja
-</label>
-
-<label class="option">
-<input type="radio" name="q21" value="B">
-B. Brahma Sahampati
-</label>
-
-<label class="option">
-<input type="radio" name="q21" value="C">
-C. Brahma Nimanarati
-</label>
-
-<label class="option">
-<input type="radio" name="q21" value="D">
-D. Brahma Candasiri
-</label>
-
-<label class="option">
-<input type="radio" name="q21" value="E">
-E. Brahma Ekagatta
-</label>
-
-<div class="result" id="r21"></div>
-</div>
-
-<!-- 22 -->
-<div class="question-card">
-<span class="question-number">Soal 22</span>
-
-<div class="question">
-Merujuk pada kitab suci Parinibbana Sutta, berapakah rentang waktu yang dibutuhkan dalam satu “Ayukappa” dalam masa kehidupan Sang Buddha Gotama?
-</div>
-
-<label class="option">
-<input type="radio" name="q22" value="A">
-A. Antara 100 sampai 500 tahun
-</label>
-
-<label class="option">
-<input type="radio" name="q22" value="B">
-B. Antara 500 sampai 100 tahun
-</label>
-
-<label class="option">
-<input type="radio" name="q22" value="C">
-C. Antara 80 sampai 100 tahun
-</label>
-
-<label class="option">
-<input type="radio" name="q22" value="D">
-D. Antara 10 sampai 100 tahun
-</label>
-
-<label class="option">
-<input type="radio" name="q22" value="E">
-E. Antara 100 sampai 200 tahun
-</label>
-
-<div class="result" id="r22"></div>
-</div>
-
-<!-- 23 -->
-<div class="question-card">
-<span class="question-number">Soal 23</span>
-
-<div class="question">
-Alam-alam kehidupan yang dihuni oleh makhluk-makhluk yang tidak mendapat kesempatan merasakan kebahagiaan akibat dari buah perbuatan jahatnya disebut alam ....
-</div>
-
-<label class="option">
-<input type="radio" name="q23" value="A">
-A. Sugati
-</label>
-
-<label class="option">
-<input type="radio" name="q23" value="B">
-B. Manussa
-</label>
-
-<label class="option">
-<input type="radio" name="q23" value="C">
-C. Tavatimsa
-</label>
-
-<label class="option">
-<input type="radio" name="q23" value="D">
-D. Dugati
-</label>
-
-<label class="option">
-<input type="radio" name="q23" value="E">
-E. Purohita
-</label>
-
-<div class="result" id="r23"></div>
-</div>
-
-<!-- 24 -->
-<div class="question-card">
-<span class="question-number">Soal 24</span>
-
-<div class="question">
-Sifat-sifat luhur mencintai, menyayangi, rasa simpati dan ketenangan batin selayaknya dikembangkan oleh kita semua dalam kehidupan sehari-hari. Sifat-sifat luhur tersebut dalam Dhamma disebut ....
-</div>
-
-<label class="option">
-<input type="radio" name="q24" value="A">
-A. Catur Paramita
-</label>
-
-<label class="option">
-<input type="radio" name="q24" value="B">
-B. Catur Daksila
-</label>
-
-<label class="option">
-<input type="radio" name="q24" value="C">
-C. Catur Purisa
-</label>
-
-<label class="option">
-<input type="radio" name="q24" value="D">
-D. Catur Mara
-</label>
-
-<label class="option">
-<input type="radio" name="q24" value="E">
-E. Catur Brata
-</label>
-
-<div class="result" id="r24"></div>
-</div>
-
-<!-- 25 -->
-<div class="question-card">
-<span class="question-number">Soal 25</span>
-
-<div class="question">
-Agga Savaka merupakan siswa utama para Buddha. Begitu juga Sang Buddha Gotama dalam menyebarkan Dhamma dibantu oleh Agga Savaka. Siapakah nama Agga Savaka yang dimaksud?
-</div>
-
-<label class="option">
-<input type="radio" name="q25" value="A">
-A. Moggalana dan Mahanama
-</label>
-
-<label class="option">
-<input type="radio" name="q25" value="B">
-B. Sariputta dan Moggalana
-</label>
-
-<label class="option">
-<input type="radio" name="q25" value="C">
-C. Krisna dan Basudewa
-</label>
-
-<label class="option">
-<input type="radio" name="q25" value="D">
-D. Sariputta dan Yasodara
-</label>
-
-<label class="option">
-<input type="radio" name="q25" value="E">
-E. Devadatta dan Rukmana
-</label>
-
-<div class="result" id="r25"></div>
-</div>
-
-</form>
+<!-- ==================================================
+     HASIL
+     ================================================== -->
 
 <div class="bottom-panel">
 
-<button id="checkBtn" onclick="checkAnswers()">
-✓ Periksa Jawaban
-</button>
+    <button
+        class="check-btn"
+        onclick="checkAnswers()">
+        ✓ Periksa Semua Jawaban
+    </button>
 
-<button id="resetBtn" onclick="resetQuiz()">
-↻ Ulangi
-</button>
+    <button
+        class="shuffle-btn"
+        onclick="shuffleQuestions()">
+        🔀 Acak Lagi
+    </button>
 
-<div class="score" id="scoreBox">
-    <div>Hasil Pengerjaan</div>
-    <div class="score-number" id="scoreNumber">0</div>
+    <button
+        class="reset-btn"
+        onclick="resetQuiz()">
+        ↻ Reset
+    </button>
 
-    <div class="progress">
-        <div class="progress-bar" id="progressBar"></div>
-    </div>
+    <div
+        class="score"
+        id="scoreBox">
 
-    <div id="scoreText"></div>
+        <div>HASIL PENGERJAAN</div>
 
-    <div class="answer-key" id="answerKey">
-        <h3>🔑 Kunci Jawaban</h3>
-
-        <p>
-        1. B — Sugati<br>
-        2. B — Paritta Pancasila dan Ti Sarana<br>
-        3. E — Alam Tiraccano<br>
-        4. B — Ariyapariyesana Sutta<br>
-        5. A — Manussa-Manussa<br>
-        6. E — Sabbe Sankhara Dukkha<br>
-        7. B — Sankhara, Vinnyana, Vedana, Sannya, Rupa<br>
-        8. D — Kamma Bhumi, Rupa Bhumi, Arupa Bhumi<br>
-        9. A — Agannya Sutta<br>
-        10. D — Tejo, Vayo, Apo, Pathavi<br>
-        11. C — Empat alam<br>
-        12. B — Sabbe Dhamma Anatta<br>
-        13. A — Manussa Dewo<br>
-        14. A/B — Antara Kappa<br>
-        15. A — Enam belas alam<br>
-        16. C — Moha<br>
-        17. C — Sugati dan Dugati<br>
-        18. A — Panca Skhanda<br>
-        19. E — Surga Tusita<br>
-        20. B — Dhammaniyama Sutta<br>
-        21. B — Brahma Sahampati<br>
-        22. C — Antara 80 sampai 100 tahun<br>
-        23. D — Dugati<br>
-        24. A — Catur Paramita<br>
-        25. B — Sariputta dan Moggalana
-        </p>
-
-        <div class="warning">
-            <b>Catatan:</b> Nomor 14 memiliki pilihan A dan B yang sama-sama bertuliskan “Antara Kappa”.
+        <div
+            class="score-number"
+            id="scoreNumber">
+            0
         </div>
+
+        <div id="scoreText"></div>
+
+        <div class="progress">
+            <div
+                class="progress-bar"
+                id="progressBar">
+            </div>
+        </div>
+
+        <div
+            class="answer-key"
+            id="answerKey">
+
+            <h3>🔑 Kunci Jawaban</h3>
+
+            <div class="key-grid">
+
+                <div class="key-item">1. <b>B</b> — Sugati</div>
+                <div class="key-item">2. <b>E</b> — Pancasila Aradhana</div>
+                <div class="key-item">3. <b>E</b> — Alam Tiraccano</div>
+                <div class="key-item">4. <b>B</b> — Ariyapariyesana Sutta</div>
+                <div class="key-item">5. <b>A</b> — Manussa-Manussa</div>
+                <div class="key-item">6. <b>E</b> — Sabbe Sankhara Dukkha</div>
+                <div class="key-item">7. <b>B</b> — Sankhara, Vinnyana, Vedana, Sannya, Rupa</div>
+                <div class="key-item">8. <b>D</b> — Kamma Bhumi, Rupa Bhumi, Arupa Bhumi</div>
+                <div class="key-item">9. <b>A</b> — Agannya Sutta</div>
+                <div class="key-item">10. <b>D</b> — Tejo, Vayo, Apo, Pathavi</div>
+                <div class="key-item">11. <b>C</b> — Empat alam</div>
+                <div class="key-item">12. <b>B</b> — Sabbe Dhamma Anatta</div>
+                <div class="key-item">13. <b>A</b> — Manussa Dewo</div>
+                <div class="key-item">14. <b>A/B</b> — Antara Kappa</div>
+                <div class="key-item">15. <b>A</b> — Enam belas alam</div>
+                <div class="key-item">16. <b>C</b> — Moha</div>
+                <div class="key-item">17. <b>C</b> — Sugati dan Dugati</div>
+                <div class="key-item">18. <b>A</b> — Panca Skhanda</div>
+                <div class="key-item">19. <b>E</b> — Surga Tusita</div>
+                <div class="key-item">20. <b>E</b> — Cakkavatisihananda Sutta</div>
+                <div class="key-item">21. <b>B</b> — Brahma Sahampati</div>
+                <div class="key-item">22. <b>C</b> — Antara 80 sampai 100 tahun</div>
+                <div class="key-item">23. <b>D</b> — Dugati</div>
+                <div class="key-item">24. <b>A</b> — Catur Paramita</div>
+                <div class="key-item">25. <b>B</b> — Sariputta dan Moggalana</div>
+
+            </div>
+
+            <div class="warning">
+                <b>Catatan No. 14:</b>
+                Pilihan A dan B sama-sama bertuliskan
+                “Antara Kappa”, sehingga keduanya dianggap benar.
+            </div>
+
+        </div>
+
     </div>
-</div>
 
 </div>
 
 <footer>
-PTS Pendidikan Agama Buddha • Kelas XII • SMA Negeri 1 Tolitoli
+    PTS Pendidikan Agama Buddha • Kelas XII • SMA Negeri 1 Tolitoli
 </footer>
+
 
 <script>
 
-const answers = {
-    q1:"B",
-    q2:"B",
-    q3:"E",
-    q4:"B",
-    q5:"A",
-    q6:"E",
-    q7:"B",
-    q8:"D",
-    q9:"A",
-    q10:"D",
-    q11:"C",
-    q12:"B",
-    q13:"A",
-    q14:"A",
-    q15:"A",
-    q16:"C",
-    q17:"C",
-    q18:"A",
-    q19:"E",
-    q20:"B",
-    q21:"B",
-    q22:"C",
-    q23:"D",
-    q24:"A",
-    q25:"B"
+/* =====================================================
+   KUNCI JAWABAN
+   ===================================================== */
+
+const answerKey = {
+
+    1:"B",
+    2:"E",
+    3:"E",
+    4:"B",
+    5:"A",
+    6:"E",
+    7:"B",
+    8:"D",
+    9:"A",
+    10:"D",
+    11:"C",
+    12:"B",
+    13:"A",
+
+    /*
+       Nomor 14 mempunyai dua pilihan
+       dengan jawaban yang sama.
+    */
+    14:["A","B"],
+
+    15:"A",
+    16:"C",
+    17:"C",
+    18:"A",
+    19:"E",
+    20:"E",
+    21:"B",
+    22:"C",
+    23:"D",
+    24:"A",
+    25:"B"
+
 };
 
-function checkAnswers(){
 
-    let score = 0;
-    let answered = 0;
+/* =====================================================
+   FUNGSI ACAK
+   ===================================================== */
 
-    for(let i=1;i<=25;i++){
+function shuffleArray(array){
 
-        const selected = document.querySelector(
-            `input[name="q${i}"]:checked`
+    for(
+        let i=array.length-1;
+        i>0;
+        i--
+    ){
+
+        const j =
+            Math.floor(
+                Math.random()*(i+1)
+            );
+
+        [
+            array[i],
+            array[j]
+        ] = [
+            array[j],
+            array[i]
+        ];
+
+    }
+
+    return array;
+}
+
+
+/* =====================================================
+   UPDATE HURUF PILIHAN
+   ===================================================== */
+
+function updateOptionLetters(card){
+
+    const options =
+        Array.from(
+            card.querySelectorAll(".option")
         );
 
-        const result = document.getElementById(`r${i}`);
+    const letters =
+        ["A","B","C","D","E"];
 
-        const options = document.querySelectorAll(
-            `input[name="q${i}"]`
+    options.forEach(
+        (option,index)=>{
+
+            const letter =
+                option.querySelector(
+                    ".option-letter"
+                );
+
+            if(letter){
+                letter.textContent =
+                    letters[index];
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   ACAK PILIHAN PADA SATU SOAL
+   ===================================================== */
+
+function shuffleOptions(card){
+
+    const options =
+        Array.from(
+            card.querySelectorAll(".option")
         );
 
-        options.forEach(input=>{
-            input.parentElement.classList.remove(
+    if(options.length === 0){
+        return;
+    }
+
+    shuffleArray(options);
+
+    options.forEach(option=>{
+        card.appendChild(option);
+    });
+
+    updateOptionLetters(card);
+
+}
+
+
+/* =====================================================
+   ACAK SOAL DAN PILIHAN
+   ===================================================== */
+
+function shuffleQuestions(){
+
+    const quiz =
+        document.getElementById("quiz");
+
+    const cards =
+        Array.from(
+            quiz.querySelectorAll(
+                ".question-card"
+            )
+        );
+
+    shuffleArray(cards);
+
+    cards.forEach(card=>{
+        quiz.appendChild(card);
+    });
+
+    cards.forEach(card=>{
+        shuffleOptions(card);
+    });
+
+
+    /*
+       Bersihkan hasil sebelumnya
+    */
+
+    document.querySelectorAll(".result")
+        .forEach(result=>{
+
+            result.className =
+                "result";
+
+            result.innerHTML="";
+
+        });
+
+
+    document.querySelectorAll(".option")
+        .forEach(option=>{
+
+            option.classList.remove(
                 "correct",
                 "wrong"
             );
+
         });
+
+
+    document.getElementById("scoreBox")
+        .classList.remove("show");
+
+
+    document.getElementById("answerKey")
+        .classList.remove("show");
+
+
+    document.getElementById("shuffleInfo")
+        .innerHTML =
+        "🔀 Urutan nomor dan pilihan jawaban berhasil diacak. " +
+        "Huruf A–E otomatis mengikuti posisi baru, " +
+        "sedangkan kunci tetap berdasarkan ID soal.";
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   CEK APAKAH JAWABAN BENAR
+   ===================================================== */
+
+function isCorrectAnswer(id,value){
+
+    const key =
+        answerKey[id];
+
+    if(Array.isArray(key)){
+
+        return key.includes(value);
+
+    }
+
+    return value === key;
+
+}
+
+
+/* =====================================================
+   TAMPILKAN KUNCI DALAM BENTUK HURUF
+   ===================================================== */
+
+function getKeyText(id){
+
+    const key =
+        answerKey[id];
+
+    if(Array.isArray(key)){
+
+        return key.join(" / ");
+
+    }
+
+    return key;
+
+}
+
+
+/* =====================================================
+   CEK JAWABAN
+   ===================================================== */
+
+function checkAnswers(){
+
+    let correct=0;
+    let answered=0;
+
+    const cards =
+        document.querySelectorAll(
+            ".question-card"
+        );
+
+
+    cards.forEach(card=>{
+
+        const id =
+            Number(
+                card.dataset.id
+            );
+
+        const selected =
+            card.querySelector(
+                `input[name="q${id}"]:checked`
+            );
+
+        const result =
+            card.querySelector(
+                ".result"
+            );
+
+        const options =
+            card.querySelectorAll(
+                ".option"
+            );
+
+
+        options.forEach(option=>{
+
+            option.classList.remove(
+                "correct",
+                "wrong"
+            );
+
+        });
+
 
         if(selected){
 
             answered++;
 
-            const selectedLabel =
-                selected.parentElement;
 
-            if(selected.value === answers[`q${i}`]){
+            if(
+                isCorrectAnswer(
+                    id,
+                    selected.value
+                )
+            ){
 
-                score++;
+                correct++;
 
-                selectedLabel.classList.add("correct");
+                selected
+                    .closest(".option")
+                    .classList.add(
+                        "correct"
+                    );
 
                 result.className =
                     "result show correct-result";
 
                 result.innerHTML =
                     "✓ Jawaban benar!";
+
             }
 
             else{
 
-                selectedLabel.classList.add("wrong");
+                selected
+                    .closest(".option")
+                    .classList.add(
+                        "wrong"
+                    );
 
                 result.className =
                     "result show wrong-result";
@@ -1381,8 +2071,10 @@ function checkAnswers(){
                 result.innerHTML =
                     "✗ Jawaban kurang tepat. " +
                     "Kunci: " +
-                    answers[`q${i}`];
+                    getKeyText(id);
+
             }
+
         }
 
         else{
@@ -1391,65 +2083,132 @@ function checkAnswers(){
                 "result show wrong-result";
 
             result.innerHTML =
-                "⚠ Belum dijawab. Kunci: " +
-                answers[`q${i}`];
+                "⚠ Belum dijawab. " +
+                "Kunci: " +
+                getKeyText(id);
+
         }
-    }
 
-    const percentage =
-        Math.round((score/25)*100);
-
-    document.getElementById("scoreNumber").textContent =
-        percentage;
-
-    document.getElementById("progressBar").style.width =
-        percentage + "%";
-
-    document.getElementById("scoreText").innerHTML =
-        `<b>${score} dari 25</b> jawaban benar.<br>
-        ${answered} soal telah kamu jawab.`;
-
-    document.getElementById("scoreBox")
-        .classList.add("show");
-
-    document.getElementById("answerKey")
-        .classList.add("show");
-
-    window.scrollTo({
-        top:document.body.scrollHeight,
-        behavior:"smooth"
     });
+
+
+    const score =
+        Math.round(
+            (correct / 25) * 100
+        );
+
+
+    document.getElementById(
+        "scoreNumber"
+    ).textContent =
+        score;
+
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        score + "%";
+
+
+    document.getElementById(
+        "scoreText"
+    ).innerHTML =
+        `
+        <b>${correct} dari 25</b> jawaban benar.<br>
+        ${answered} soal sudah dijawab.
+        `;
+
+
+    document.getElementById(
+        "scoreBox"
+    ).classList.add("show");
+
+
+    document.getElementById(
+        "answerKey"
+    ).classList.add("show");
+
+
+    document.getElementById(
+        "scoreBox"
+    ).scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
 }
+
+
+/* =====================================================
+   RESET
+   ===================================================== */
 
 function resetQuiz(){
 
-    document.getElementById("quizForm").reset();
+    document.querySelectorAll(
+        'input[type="radio"]'
+    ).forEach(input=>{
 
-    document.querySelectorAll(".option").forEach(option=>{
+        input.checked=false;
+
+    });
+
+
+    document.querySelectorAll(
+        ".option"
+    ).forEach(option=>{
+
         option.classList.remove(
             "correct",
             "wrong"
         );
+
     });
 
-    document.querySelectorAll(".result").forEach(result=>{
-        result.className="result";
+
+    document.querySelectorAll(
+        ".result"
+    ).forEach(result=>{
+
+        result.className =
+            "result";
+
         result.innerHTML="";
+
     });
 
-    document.getElementById("scoreBox")
-        .classList.remove("show");
 
-    document.getElementById("answerKey")
-        .classList.remove("show");
+    document.getElementById(
+        "scoreBox"
+    ).classList.remove(
+        "show"
+    );
 
-    document.getElementById("progressBar")
-        .style.width="0%";
+
+    document.getElementById(
+        "answerKey"
+    ).classList.remove(
+        "show"
+    );
+
+
+    document.getElementById(
+        "progressBar"
+    ).style.width="0";
+
+
+    document.getElementById(
+        "shuffleInfo"
+    ).innerHTML =
+        "Susunan soal tetap seperti susunan terakhir. " +
+        "Tekan 🔀 jika ingin mengacak lagi.";
+
 
     window.scrollTo({
         top:0,
         behavior:"smooth"
     });
+
 }
 
 </script>
