@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#f7f9ff">
+<title>KSR Kimia — Kimia Unsur & Sifat Keperiodikan</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:
+        radial-gradient(circle at top left,#e8f0ff 0,#f7f9ff 35%,#fff 75%);
+    color:#182033;
+    min-height:100vh;
+}
+
+header{
+    background:linear-gradient(135deg,#ffffff,#eef4ff);
+    border-bottom:1px solid #dfe7f5;
+    padding:22px 16px;
+    position:sticky;
+    top:0;
+    z-index:20;
+    box-shadow:0 4px 18px rgba(40,70,120,.08);
+}
+
+.header-inner{
+    max-width:1000px;
+    margin:auto;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 12px;
+    border-radius:999px;
+    background:#e5edff;
+    color:#315dc8;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+h1{
+    margin:0;
+    font-size:clamp(23px,5vw,36px);
+    line-height:1.15;
+}
+
+.subtitle{
+    margin:8px 0 0;
+    color:#667085;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.container{
+    width:min(1000px,calc(100% - 24px));
+    margin:22px auto 60px;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin-bottom:18px;
+}
+
+.info-card{
+    background:white;
+    border:1px solid #e2e8f2;
+    border-radius:16px;
+    padding:14px;
+    box-shadow:0 5px 18px rgba(35,55,95,.06);
+}
+
+.info-card small{
+    display:block;
+    color:#7b8497;
+    font-size:11px;
+    margin-bottom:5px;
+}
+
+.info-card strong{
+    font-size:17px;
+}
+
+.progress-box{
+    background:white;
+    padding:15px;
+    border:1px solid #e2e8f2;
+    border-radius:17px;
+    margin-bottom:18px;
+    box-shadow:0 5px 18px rgba(35,55,95,.06);
+}
+
+.progress-top{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:9px;
+}
+
+.progress{
+    height:10px;
+    background:#e9edf5;
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#4f7cff,#7c5cff);
+    border-radius:999px;
+    transition:.35s;
+}
+
+.question-card{
+    background:white;
+    border:1px solid #e1e7f1;
+    border-radius:22px;
+    padding:22px;
+    box-shadow:0 8px 28px rgba(30,50,90,.07);
+    margin-bottom:16px;
+    animation:fadeIn .25s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.question-number{
+    display:inline-flex;
+    align-items:center;
+    padding:7px 11px;
+    background:#eef3ff;
+    color:#4169d8;
+    border-radius:999px;
+    font-weight:bold;
+    font-size:12px;
+    margin-bottom:12px;
+}
+
+.question{
+    font-size:18px;
+    line-height:1.6;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+.options{
+    display:grid;
+    gap:10px;
+}
+
+.option{
+    border:2px solid #e4e8f0;
+    background:#fff;
+    border-radius:15px;
+    padding:13px 14px;
+    cursor:pointer;
+    transition:.18s;
+    display:flex;
+    gap:11px;
+    align-items:flex-start;
+    line-height:1.45;
+}
+
+.option:hover{
+    border-color:#8da7ff;
+    background:#f7f9ff;
+    transform:translateY(-1px);
+}
+
+.option.selected{
+    border-color:#5278ed;
+    background:#edf2ff;
+}
+
+.option.correct{
+    border-color:#35a36b;
+    background:#edfff5;
+}
+
+.option.wrong{
+    border-color:#e45c68;
+    background:#fff0f1;
+}
+
+.option-letter{
+    min-width:28px;
+    height:28px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f0f2f6;
+    border-radius:9px;
+    font-weight:bold;
+    color:#465066;
+}
+
+.option.selected .option-letter{
+    background:#5278ed;
+    color:white;
+}
+
+.option.correct .option-letter{
+    background:#35a36b;
+    color:white;
+}
+
+.option.wrong .option-letter{
+    background:#e45c68;
+    color:white;
+}
+
+.feedback{
+    display:none;
+    margin-top:17px;
+    border-radius:15px;
+    padding:15px;
+    line-height:1.55;
+    font-size:14px;
+}
+
+.feedback.show{
+    display:block;
+}
+
+.feedback.correct{
+    background:#edfff5;
+    border:1px solid #a7e3c5;
+}
+
+.feedback.wrong{
+    background:#fff1f2;
+    border:1px solid #f0b5bb;
+}
+
+.feedback strong{
+    display:block;
+    margin-bottom:5px;
+}
+
+.controls{
+    display:flex;
+    gap:10px;
+    justify-content:space-between;
+    margin-top:16px;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+    font-family:inherit;
+}
+
+.btn{
+    padding:12px 17px;
+    border-radius:13px;
+    font-weight:bold;
+    font-size:14px;
+    transition:.18s;
+}
+
+.btn:hover{
+    transform:translateY(-1px);
+}
+
+.btn-primary{
+    background:#5278ed;
+    color:white;
+}
+
+.btn-secondary{
+    background:#edf0f6;
+    color:#344054;
+}
+
+.btn-success{
+    background:#35a36b;
+    color:white;
+}
+
+.btn-danger{
+    background:#e45c68;
+    color:white;
+}
+
+.result{
+    display:none;
+    background:white;
+    border:1px solid #dfe6f2;
+    border-radius:24px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 10px 35px rgba(30,50,90,.09);
+    margin-bottom:18px;
+}
+
+.result.show{
+    display:block;
+    animation:fadeIn .3s ease;
+}
+
+.score-circle{
+    width:145px;
+    height:145px;
+    border-radius:50%;
+    margin:10px auto 18px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:#f0f4ff;
+    border:10px solid #dfe7ff;
+}
+
+.score-circle strong{
+    font-size:36px;
+    color:#4169d8;
+}
+
+.score-circle span{
+    font-size:12px;
+    color:#6d7585;
+}
+
+.result h2{
+    margin:5px 0;
+}
+
+.result p{
+    color:#667085;
+}
+
+.summary{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin:20px 0;
+}
+
+.summary-card{
+    background:#f8f9fc;
+    border-radius:15px;
+    padding:14px;
+}
+
+.summary-card strong{
+    display:block;
+    font-size:22px;
+    margin-bottom:4px;
+}
+
+.summary-card span{
+    color:#727b8c;
+    font-size:12px;
+}
+
+.all-questions{
+    display:none;
+}
+
+.all-questions.show{
+    display:block;
+}
+
+.jump-grid{
+    display:grid;
+    grid-template-columns:repeat(10,1fr);
+    gap:7px;
+    margin-top:15px;
+}
+
+.jump{
+    padding:8px 3px;
+    border-radius:9px;
+    border:1px solid #dce2ec;
+    background:white;
+    font-size:11px;
+    cursor:pointer;
+}
+
+.jump.answered{
+    background:#edf2ff;
+    border-color:#9bb1fa;
+}
+
+.jump.correct{
+    background:#eafff2;
+    border-color:#80d5a7;
+}
+
+.jump.wrong{
+    background:#fff0f1;
+    border-color:#efa2aa;
+}
+
+.explanation-list{
+    display:grid;
+    gap:12px;
+}
+
+.explanation-item{
+    border:1px solid #e1e6ef;
+    border-radius:15px;
+    padding:15px;
+    background:#fff;
+}
+
+.explanation-item .mini-title{
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.explanation-item p{
+    margin:0;
+    color:#596273;
+    line-height:1.55;
+    font-size:14px;
+}
+
+footer{
+    text-align:center;
+    color:#8a92a1;
+    font-size:12px;
+    padding:15px;
+}
+
+@media(max-width:700px){
+    header{
+        padding:16px 13px;
+    }
+
+    .container{
+        width:calc(100% - 18px);
+        margin-top:14px;
+    }
+
+    .info-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .question-card{
+        padding:17px;
+        border-radius:18px;
+    }
+
+    .question{
+        font-size:16px;
+    }
+
+    .option{
+        padding:12px;
+    }
+
+    .summary{
+        grid-template-columns:1fr;
+    }
+
+    .jump-grid{
+        grid-template-columns:repeat(5,1fr);
+    }
+
+    .controls{
+        flex-wrap:wrap;
+    }
+
+    .controls .btn{
+        flex:1;
+        min-width:120px;
+    }
+}
+
+@media(max-width:380px){
+    .info-grid{
+        gap:7px;
+    }
+
+    .info-card{
+        padding:11px;
+    }
+
+    .info-card strong{
+        font-size:15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+        <div class="badge">KSR KIMIA SMA • LATIHAN C3–C6</div>
+        <h1>Kimia Unsur & Sifat Keperiodikan</h1>
+        <p class="subtitle">
+            50 soal baru untuk latihan kompetisi. Kerjakan, cek jawaban,
+            lalu pelajari pembahasannya.
+        </p>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="info-grid">
+        <div class="info-card">
+            <small>Jumlah soal</small>
+            <strong>50</strong>
+        </div>
+        <div class="info-card">
+            <small>Skor maksimal</small>
+            <strong>100</strong>
+        </div>
+        <div class="info-card">
+            <small>Format</small>
+            <strong>Pilihan Ganda</strong>
+        </div>
+        <div class="info-card">
+            <small>Level</small>
+            <strong>C3–C6</strong>
+        </div>
+    </section>
+
+    <section class="progress-box">
+        <div class="progress-top">
+            <span id="progressText">Soal 1 dari 50</span>
+            <span id="answeredText">0/50 dijawab</span>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+    </section>
+
+    <section id="result" class="result">
+        <div class="score-circle">
+            <strong id="scoreValue">0</strong>
+            <span>SKOR</span>
+        </div>
+
+        <h2 id="resultTitle">Hasil Latihan</h2>
+        <p id="resultMessage"></p>
+
+        <div class="summary">
+            <div class="summary-card">
+                <strong id="correctCount">0</strong>
+                <span>Jawaban benar</span>
+            </div>
+            <div class="summary-card">
+                <strong id="wrongCount">0</strong>
+                <span>Jawaban salah</span>
+            </div>
+            <div class="summary-card">
+                <strong id="emptyCount">0</strong>
+                <span>Belum dijawab</span>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="showAllExplanations()">
+            Lihat Semua Pembahasan
+        </button>
+
+        <button class="btn btn-secondary" onclick="resetQuiz()">
+            Ulangi dari Awal
+        </button>
+    </section>
+
+    <section id="quiz"></section>
+
+    <section class="all-questions" id="allQuestions">
+        <div class="question-card">
+            <h2>📚 Pembahasan Lengkap</h2>
+            <div class="explanation-list" id="explanationList"></div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    Latihan KSR Kimia SMA • Kimia Unsur & Sifat Keperiodikan
+</footer>
+
+<script>
+
+const questions = [
+
+{
+q:"Suatu unsur memiliki konfigurasi elektron [Ne] 3s² 3p¹. Pernyataan yang paling tepat mengenai unsur tersebut adalah...",
+o:[
+"Termasuk golongan IA dan periode 3",
+"Termasuk golongan IIA dan periode 3",
+"Termasuk golongan IIIA dan periode 3",
+"Termasuk golongan IVA dan periode 3",
+"Termasuk golongan IIIA dan periode 2"
+],
+a:2,
+e:"Elektron valensi 3s²3p¹ berjumlah 3 sehingga termasuk golongan 13/IIIA. Kulit terbesar n=3 sehingga berada pada periode 3."
+},
+
+{
+q:"Diberikan unsur Na, Mg, Al, dan Si. Jika dibandingkan dalam satu periode, unsur yang memiliki jari-jari atom paling besar adalah...",
+o:["Na","Mg","Al","Si","Semua sama"],
+a:0,
+e:"Dalam satu periode, jari-jari atom cenderung mengecil dari kiri ke kanan karena muatan inti efektif meningkat."
+},
+
+{
+q:"Urutan jari-jari atom dari terbesar ke terkecil yang paling tepat adalah...",
+o:[
+"F > Cl > Br > I",
+"I > Br > Cl > F",
+"Cl > F > Br > I",
+"F > I > Br > Cl",
+"Br > I > Cl > F"
+],
+a:1,
+e:"Dalam satu golongan, semakin ke bawah jumlah kulit bertambah sehingga jari-jari atom semakin besar."
+},
+
+{
+q:"Manakah pasangan yang memiliki kecenderungan energi ionisasi pertama paling besar?",
+o:["Na dan K","Mg dan Ca","F dan Cl","Cs dan Rb","Al dan Ga"],
+a:2,
+e:"F dan Cl merupakan halogen di bagian atas sistem periodik. F memiliki energi ionisasi sangat tinggi; dibandingkan pilihan lain, pasangan ini berada pada daerah energi ionisasi tinggi."
+},
+
+{
+q:"Energi ionisasi Mg lebih besar daripada Al meskipun Al berada di sebelah kanan Mg. Penyebab utamanya adalah...",
+o:[
+"Al mempunyai lebih banyak neutron",
+"Elektron terakhir Al masuk ke orbital 3p yang lebih mudah dilepas",
+"Mg mempunyai lebih banyak kulit",
+"Al memiliki inti yang lebih kecil",
+"Mg merupakan gas mulia"
+],
+a:1,
+e:"Mg berakhir pada 3s² yang relatif stabil, sedangkan Al memiliki elektron terakhir pada 3p¹ yang energinya lebih tinggi dan lebih mudah dilepas."
+},
+
+{
+q:"Di antara unsur berikut, unsur yang paling mudah membentuk kation +1 adalah...",
+o:["Cl","O","Na","Mg","Al"],
+a:2,
+e:"Na memiliki satu elektron valensi dan relatif mudah melepaskannya untuk mencapai konfigurasi stabil seperti Ne."
+},
+
+{
+q:"Jika atom X membentuk X²⁻ dan atom Y membentuk Y⁺, sifat yang paling mungkin dimiliki X dan Y adalah...",
+o:[
+"X merupakan logam alkali dan Y halogen",
+"X merupakan halogen dan Y gas mulia",
+"X cenderung nonlogam sedangkan Y cenderung logam",
+"X dan Y pasti merupakan gas mulia",
+"X dan Y pasti berada dalam golongan yang sama"
+],
+a:2,
+e:"Atom yang menerima dua elektron umumnya merupakan nonlogam, sedangkan atom yang mudah melepas satu elektron umumnya bersifat logam."
+},
+
+{
+q:"Ion Na⁺, Mg²⁺, dan Al³⁺ bersifat isoelektronik. Ion dengan jari-jari paling kecil adalah...",
+o:["Na⁺","Mg²⁺","Al³⁺","Ketiganya sama","Tidak dapat ditentukan"],
+a:2,
+e:"Ketiganya memiliki jumlah elektron sama. Al³⁺ memiliki jumlah proton paling banyak sehingga tarikannya terhadap elektron paling kuat dan radius paling kecil."
+},
+
+{
+q:"Unsur X berada di golongan 17 periode 3. Identitas X adalah...",
+o:["F","Cl","Br","S","Ar"],
+a:1,
+e:"Golongan 17 periode 3 adalah klorin (Cl)."
+},
+
+{
+q:"Unsur Y berada di golongan 18 periode 3. Konfigurasi elektron Y yang benar adalah...",
+o:[
+"1s²2s²2p⁶3s²3p⁴",
+"1s²2s²2p⁶3s²3p⁵",
+"1s²2s²2p⁶3s²3p⁶",
+"1s²2s²2p⁶3s²",
+"1s²2s²2p⁶3s¹"
+],
+a:2,
+e:"Golongan 18 periode 3 adalah Ar dengan 18 elektron: [Ne]3s²3p⁶."
+},
+
+{
+q:"Manakah pernyataan yang benar mengenai keelektronegatifan?",
+o:[
+"Cenderung meningkat dari kanan ke kiri dalam satu periode",
+"Cenderung meningkat dari atas ke bawah",
+"Cenderung meningkat dari kiri ke kanan dan dari bawah ke atas",
+"Selalu sama untuk semua unsur",
+"Logam alkali memiliki keelektronegatifan tertinggi"
+],
+a:2,
+e:"Keelektronegatifan umumnya meningkat ke kanan dalam periode dan ke atas dalam golongan. Fluorin merupakan yang tertinggi."
+},
+
+{
+q:"Dibandingkan atom Cl, atom Na lebih mudah melepaskan elektron karena...",
+o:[
+"Na mempunyai jari-jari lebih besar dan energi ionisasi lebih rendah",
+"Na mempunyai jari-jari lebih kecil",
+"Cl merupakan logam",
+"Na memiliki tujuh elektron valensi",
+"Cl memiliki satu elektron valensi"
+],
+a:0,
+e:"Na berada lebih kiri dan memiliki satu elektron valensi yang relatif mudah dilepaskan. Energi ionisasinya lebih rendah daripada Cl."
+},
+
+{
+q:"Manakah perubahan berikut yang menunjukkan peningkatan karakter logam?",
+o:[
+"Na → Mg → Al",
+"Cl → S → P",
+"Li → Na → K",
+"K → Na → Li",
+"Ca → Mg → Be"
+],
+a:2,
+e:"Karakter logam meningkat ke bawah dalam satu golongan. Li < Na < K."
+},
+
+{
+q:"Reaktivitas logam alkali meningkat dari Li ke Cs terutama karena...",
+o:[
+"jumlah proton berkurang",
+"elektron valensi semakin dekat ke inti",
+"energi ionisasi semakin rendah",
+"keelektronegatifan semakin tinggi",
+"jumlah kulit semakin sedikit"
+],
+a:2,
+e:"Semakin ke bawah, jari-jari membesar dan elektron valensi semakin mudah dilepas sehingga energi ionisasi menurun."
+},
+
+{
+q:"Jika F₂, Cl₂, Br₂, dan I₂ dibandingkan sebagai oksidator, kecenderungan kekuatan oksidatornya adalah...",
+o:[
+"F₂ > Cl₂ > Br₂ > I₂",
+"I₂ > Br₂ > Cl₂ > F₂",
+"Cl₂ > F₂ > Br₂ > I₂",
+"Br₂ > I₂ > Cl₂ > F₂",
+"Semua sama"
+],
+a:0,
+e:"Kekuatan oksidator halogen secara umum menurun dari atas ke bawah golongan 17."
+},
+
+{
+q:"Larutan yang dapat digunakan untuk menunjukkan bahwa Cl₂ merupakan oksidator lebih kuat daripada Br₂ adalah...",
+o:[
+"Cl₂ + NaBr",
+"Br₂ + NaCl",
+"Cl₂ + NaCl",
+"I₂ + NaCl",
+"NaCl + NaBr"
+],
+a:0,
+e:"Cl₂ dapat mengoksidasi Br⁻ menjadi Br₂: Cl₂ + 2Br⁻ → 2Cl⁻ + Br₂."
+},
+
+{
+q:"Ketika logam alkali bereaksi dengan air, produk gas yang umumnya terbentuk adalah...",
+o:["O₂","Cl₂","H₂","N₂","CO₂"],
+a:2,
+e:"Contoh: 2Na + 2H₂O → 2NaOH + H₂."
+},
+
+{
+q:"Jika logam K dan Na dimasukkan ke air dalam kondisi yang sesuai, K cenderung bereaksi lebih cepat karena...",
+o:[
+"K memiliki energi ionisasi lebih rendah",
+"K merupakan nonlogam",
+"K memiliki tujuh elektron valensi",
+"K memiliki jari-jari lebih kecil",
+"Na tidak memiliki elektron valensi"
+],
+a:0,
+e:"K berada di bawah Na sehingga elektron valensinya lebih mudah dilepas dan energi ionisasinya lebih rendah."
+},
+
+{
+q:"Unsur yang paling mungkin membentuk oksida bersifat asam adalah...",
+o:["Na","Mg","Al","Si","K"],
+a:3,
+e:"Si merupakan metaloid/nonlogam relatif dan SiO₂ bersifat oksida asam, bereaksi dengan basa membentuk silikat."
+},
+
+{
+q:"Al₂O₃ disebut bersifat amfoter karena...",
+o:[
+"Hanya bereaksi dengan air",
+"Hanya bereaksi dengan asam",
+"Hanya bereaksi dengan basa",
+"Dapat bereaksi dengan asam maupun basa",
+"Selalu bersifat netral"
+],
+a:3,
+e:"Al₂O₃ dapat bereaksi dengan asam dan juga dengan basa kuat sehingga disebut amfoter."
+},
+
+{
+q:"Dalam periode 3, sifat oksida secara umum berubah dari...",
+o:[
+"asam → basa → netral",
+"basa → amfoter → asam",
+"amfoter → basa → asam",
+"netral → basa → asam",
+"asam → amfoter → basa"
+],
+a:1,
+e:"Dari Na₂O dan MgO yang bersifat basa, Al₂O₃ amfoter, lalu SiO₂, P₄O₁₀, dan oksida nonlogam lainnya cenderung asam."
+},
+
+{
+q:"Unsur periode 3 yang memiliki oksida dengan karakter amfoter adalah...",
+o:["Na","Mg","Al","P","Cl"],
+a:2,
+e:"Aluminium membentuk Al₂O₃ yang bersifat amfoter."
+},
+
+{
+q:"Manakah pasangan unsur yang keduanya merupakan gas pada suhu kamar?",
+o:["Na dan Cl","Cl dan Ar","S dan P","Si dan Cl","Mg dan Ar"],
+a:1,
+e:"Cl₂ dan Ar berwujud gas pada suhu kamar."
+},
+
+{
+q:"Bentuk molekul unsur halogen pada keadaan bebas adalah...",
+o:["X","X₂","X₃","X₄","X₈"],
+a:1,
+e:"Halogen seperti F₂, Cl₂, Br₂, dan I₂ merupakan molekul diatomik."
+},
+
+{
+q:"Meningkatnya titik didih Cl₂ → Br₂ → I₂ terutama berkaitan dengan...",
+o:[
+"menurunnya massa molekul",
+"meningkatnya gaya London",
+"menurunnya jumlah elektron",
+"menurunnya polarizabilitas",
+"berkurangnya ukuran atom"
+],
+a:1,
+e:"Semakin besar molekul halogen, jumlah elektron dan polarizabilitas meningkat sehingga gaya London semakin kuat."
+},
+
+{
+q:"Gas mulia memiliki reaktivitas rendah terutama karena...",
+o:[
+"tidak mempunyai inti",
+"kulit valensinya telah stabil",
+"selalu memiliki satu elektron valensi",
+"jari-jarinya selalu paling besar",
+"merupakan logam"
+],
+a:1,
+e:"Gas mulia memiliki konfigurasi kulit valensi penuh, sehingga cenderung tidak menerima atau melepaskan elektron."
+},
+
+{
+q:"Dibandingkan Ne, Xe lebih mudah membentuk senyawa karena...",
+o:[
+"Xe lebih ringan",
+"elektron valensi Xe lebih jauh dari inti dan lebih mudah dipengaruhi",
+"Xe tidak mempunyai elektron",
+"Ne merupakan logam",
+"Xe memiliki satu proton"
+],
+a:1,
+e:"Atom Xe berukuran lebih besar dan elektron valensinya lebih mudah dipolarisasi sehingga beberapa senyawa Xe dapat terbentuk."
+},
+
+{
+q:"Sifat radioaktif radon terutama disebabkan oleh...",
+o:[
+"tidak memiliki elektron",
+"inti atomnya tidak stabil",
+"merupakan logam alkali",
+"memiliki tujuh elektron valensi",
+"tidak memiliki neutron"
+],
+a:1,
+e:"Radioaktivitas berasal dari ketidakstabilan inti atom, bukan dari konfigurasi elektron."
+},
+
+{
+q:"Unsur transisi sering memiliki beberapa bilangan oksidasi karena...",
+o:[
+"orbital 3d dan 4s memiliki tingkat energi yang berdekatan",
+"semua elektronnya berada pada kulit pertama",
+"tidak memiliki elektron valensi",
+"hanya mempunyai satu orbital",
+"selalu memiliki konfigurasi gas mulia"
+],
+a:0,
+e:"Energi orbital ns dan (n−1)d pada unsur transisi relatif berdekatan sehingga elektron dari keduanya dapat terlibat dalam pembentukan ion."
+},
+
+{
+q:"Ion Cu²⁺ dalam banyak senyawanya berwarna, sedangkan ion Zn²⁺ umumnya tidak berwarna. Penjelasan yang tepat adalah...",
+o:[
+"Cu²⁺ memiliki konfigurasi d yang memungkinkan transisi elektronik tertentu, sedangkan Zn²⁺ memiliki d¹⁰",
+"Zn²⁺ selalu radioaktif",
+"Cu²⁺ tidak mempunyai elektron",
+"Zn²⁺ merupakan halogen",
+"Cu²⁺ tidak mempunyai orbital d"
+],
+a:0,
+e:"Cu²⁺ memiliki konfigurasi 3d⁹ sehingga dapat mengalami transisi elektronik yang berkontribusi pada warna. Zn²⁺ berkonfigurasi d¹⁰."
+},
+
+{
+q:"Salah satu penggunaan Cr dalam industri adalah...",
+o:[
+"bahan utama garam dapur",
+"pembuatan baja tahan karat",
+"pembuatan oksigen cair",
+"pengganti helium dalam balon",
+"pembuatan air murni"
+],
+a:1,
+e:"Kromium merupakan komponen penting dalam stainless steel karena membantu meningkatkan ketahanan terhadap korosi."
+},
+
+{
+q:"Manakah yang merupakan contoh pemanfaatan gas mulia?",
+o:[
+"Ar sebagai gas pelindung pengelasan",
+"Cl₂ sebagai bahan bakar",
+"F₂ sebagai pendingin utama",
+"Ne sebagai pupuk",
+"Kr sebagai bahan makanan"
+],
+a:0,
+e:"Argon bersifat inert sehingga dapat digunakan sebagai atmosfer pelindung dalam proses pengelasan."
+},
+
+{
+q:"Jika suatu unsur memiliki energi ionisasi rendah dan mudah melepaskan elektron, unsur tersebut kemungkinan berada di daerah...",
+o:[
+"kanan atas tabel periodik",
+"kiri bawah tabel periodik",
+"tengah atas saja",
+"golongan 18",
+"periode 1 golongan 18"
+],
+a:1,
+e:"Karakter logam meningkat ke kiri dan ke bawah. Unsur di kiri bawah cenderung memiliki energi ionisasi rendah."
+},
+
+{
+q:"Di antara Na, Mg, Si, dan Cl, unsur yang paling bersifat nonlogam adalah...",
+o:["Na","Mg","Si","Cl","Semua sama"],
+a:3,
+e:"Dalam periode 3, sifat nonlogam meningkat dari kiri ke kanan. Cl lebih nonlogam daripada Na, Mg, dan Si."
+},
+
+{
+q:"Suatu unsur X memiliki konfigurasi [Ar]4s¹. Prediksi yang paling tepat adalah...",
+o:[
+"X adalah K dan cenderung membentuk K⁺",
+"X adalah Ca dan cenderung membentuk Ca²⁺",
+"X adalah Cl dan cenderung membentuk Cl⁻",
+"X adalah Ar dan inert",
+"X adalah Mg dan cenderung membentuk Mg²⁺"
+],
+a:0,
+e:"[Ar]4s¹ merupakan konfigurasi K. Satu elektron 4s relatif mudah dilepaskan sehingga K membentuk K⁺."
+},
+
+{
+q:"Unsur dengan konfigurasi [Ne]3s²3p⁵ cenderung...",
+o:[
+"melepaskan lima elektron",
+"menerima satu elektron",
+"menerima dua elektron",
+"melepaskan satu elektron",
+"tidak bereaksi sama sekali"
+],
+a:1,
+e:"Konfigurasi 3p⁵ memiliki tujuh elektron valensi. Atom membutuhkan satu elektron untuk mencapai oktet sehingga cenderung membentuk ion −1."
+},
+
+{
+q:"Manakah pasangan yang merupakan ion isoelektronik?",
+o:[
+"Na⁺ dan Mg⁺",
+"Na⁺ dan Mg²⁺",
+"Na⁺ dan F⁻",
+"Cl⁻ dan K⁺",
+"B dan C saja"
+],
+a:4,
+e:"Na⁺ memiliki 10 elektron dan F⁻ memiliki 10 elektron. Cl⁻ dan K⁺ sama-sama memiliki 18 elektron. Jadi B tidak benar karena Mg²⁺ juga 10 elektron: Na⁺, Mg²⁺, dan F⁻ semuanya isoelektronik. Pilihan paling tepat adalah E karena memuat pasangan C dan D."
+},
+
+{
+q:"Jika dua unsur memiliki jumlah elektron sama setelah menjadi ion, faktor utama yang menentukan ukuran ion adalah...",
+o:[
+"warna ion",
+"jumlah proton dalam inti",
+"wujud unsur",
+"nama unsur",
+"titik leleh saja"
+],
+a:1,
+e:"Pada spesies isoelektronik, semakin besar jumlah proton, semakin kuat tarikan inti terhadap elektron sehingga radius semakin kecil."
+},
+
+{
+q:"Manakah perubahan yang menunjukkan jari-jari atom semakin besar?",
+o:[
+"Na → Mg",
+"Cl → S",
+"Li → K",
+"Mg → Si",
+"F → O"
+],
+a:2,
+e:"Li dan K berada dalam golongan yang sama. Ke bawah jumlah kulit bertambah sehingga radius K lebih besar."
+},
+
+{
+q:"Jika suatu unsur mempunyai afinitas elektron yang sangat menguntungkan dan energi ionisasi tinggi, unsur tersebut kemungkinan merupakan...",
+o:[
+"alkali",
+"alkali tanah",
+"halogen",
+"gas mulia",
+"logam transisi"
+],
+a:2,
+e:"Halogen memiliki kecenderungan kuat menerima satu elektron untuk mencapai konfigurasi stabil serta memiliki energi ionisasi tinggi."
+},
+
+{
+q:"Mengapa elektron pada atom dengan banyak kulit lebih mudah mengalami shielding?",
+o:[
+"Elektron dalam dapat mengurangi tarikan inti efektif yang dirasakan elektron valensi",
+"Jumlah proton menjadi nol",
+"Elektron valensi hilang",
+"Inti menjadi tidak bermuatan",
+"Semua elektron berubah menjadi neutron"
+],
+a:0,
+e:"Elektron-elektron kulit dalam memberikan efek penyarungan sehingga elektron valensi merasakan tarikan inti efektif yang lebih kecil."
+},
+
+{
+q:"Dalam satu periode, kenaikan muatan inti efektif terutama menyebabkan...",
+o:[
+"radius atom cenderung membesar",
+"radius atom cenderung mengecil",
+"jumlah kulit bertambah",
+"unsur berubah menjadi isotop",
+"semua unsur menjadi gas"
+],
+a:1,
+e:"Jumlah kulit utama tetap, tetapi jumlah proton meningkat sehingga tarikan terhadap elektron makin kuat dan radius cenderung mengecil."
+},
+
+{
+q:"Pasangan unsur yang paling mungkin mempunyai hubungan diagonal adalah...",
+o:[
+"Li dan Mg",
+"Na dan K",
+"F dan Cl",
+"Ne dan Ar",
+"Ca dan Sr"
+],
+a:0,
+e:"Li dan Mg menunjukkan hubungan diagonal karena beberapa sifat kimia mereka memiliki kemiripan akibat kombinasi ukuran ion, muatan, dan energi ionisasi."
+},
+
+{
+q:"Kemiripan diagonal Li dan Mg dapat terlihat dari kemampuan keduanya membentuk...",
+o:[
+"nitrida",
+"gas mulia",
+"halogen",
+"senyawa dengan He",
+"ion −1"
+],
+a:0,
+e:"Li₃N dan Mg₃N₂ merupakan contoh nitrida yang mendukung hubungan diagonal Li–Mg."
+},
+
+{
+q:"Mengapa aluminium tidak dapat diperoleh secara ekonomis dengan reduksi Al₂O₃ menggunakan karbon seperti pada beberapa oksida logam lain?",
+o:[
+"Al₂O₃ sangat stabil sehingga reduksi karbon tidak menguntungkan secara praktis",
+"Al tidak memiliki elektron",
+"Karbon adalah gas mulia",
+"Al₂O₃ merupakan asam kuat",
+"Karbon selalu berubah menjadi nitrogen"
+],
+a:0,
+e:"Aluminium memiliki afinitas terhadap oksigen yang tinggi dan Al₂O₃ sangat stabil. Industri menggunakan elektrolisis untuk memperoleh Al."
+},
+
+{
+q:"Untuk memperoleh logam Na dari NaCl, metode yang tepat adalah...",
+o:[
+"elektrolisis NaCl cair",
+"reaksi NaCl dengan air",
+"pemanasan NaCl dengan udara",
+"filtrasi larutan NaCl",
+"distilasi NaCl"
+],
+a:0,
+e:"Na merupakan logam sangat aktif. NaCl cair dielektrolisis sehingga Na⁺ direduksi menjadi Na pada katode."
+},
+
+{
+q:"Dalam elektrolisis NaCl cair, reaksi pada katode adalah...",
+o:[
+"Na → Na⁺ + e⁻",
+"Na⁺ + e⁻ → Na",
+"Cl₂ → 2Cl⁻",
+"2Cl⁻ → Cl₂ + 2e⁻",
+"H₂O → O₂ + H₂"
+],
+a:1,
+e:"Katode merupakan tempat reduksi. Ion Na⁺ menerima elektron: Na⁺ + e⁻ → Na."
+},
+
+{
+q:"Manakah pasangan yang menunjukkan kecenderungan karakter logam paling besar?",
+o:[
+"F dan O",
+"Cl dan S",
+"Cs dan Fr",
+"Ne dan Ar",
+"N dan O"
+],
+a:2,
+e:"Cs dan Fr berada sangat jauh di kiri bawah tabel periodik dan memiliki karakter logam sangat kuat."
+},
+
+{
+q:"Jika unsur A berada tepat di bawah unsur B dalam satu golongan, maka dibandingkan B, A umumnya memiliki...",
+o:[
+"jari-jari lebih kecil",
+"energi ionisasi lebih besar",
+"jumlah kulit lebih banyak",
+"karakter logam lebih rendah",
+"elektronegativitas lebih tinggi"
+],
+a:2,
+e:"Bergerak ke bawah golongan menambah jumlah kulit elektron sehingga radius membesar dan karakter logam meningkat."
+},
+
+{
+q:"Pernyataan yang paling tepat mengenai hubungan posisi unsur dan sifat kimianya adalah...",
+o:[
+"Posisi unsur dalam tabel periodik tidak berhubungan dengan sifatnya",
+"Sifat unsur berulang secara periodik akibat pengulangan konfigurasi elektron valensi",
+"Semua unsur dalam satu periode memiliki sifat sama",
+"Semua unsur dalam satu golongan mempunyai massa sama",
+"Nomor atom tidak memengaruhi konfigurasi elektron"
+],
+a:1,
+e:"Periodisitas sifat unsur muncul karena pola konfigurasi elektron valensi berulang ketika nomor atom meningkat."
+},
+
+{
+q:"Unsur A memiliki energi ionisasi rendah, sedangkan unsur B memiliki energi ionisasi sangat tinggi. Pernyataan yang paling mungkin adalah...",
+o:[
+"A lebih mudah membentuk kation dibanding B",
+"B lebih mudah membentuk kation dibanding A",
+"A pasti gas mulia",
+"B pasti logam alkali",
+"A dan B pasti isotop"
+],
+a:0,
+e:"Energi ionisasi rendah berarti elektron lebih mudah dilepas, sehingga A lebih mudah membentuk kation."
+},
+
+{
+q:"Dalam satu periode, kecenderungan oksida berubah dari basa menuju asam karena...",
+o:[
+"karakter logam berkurang dan karakter nonlogam meningkat",
+"jumlah neutron selalu berkurang",
+"semua atom menjadi lebih besar",
+"jumlah kulit bertambah",
+"energi ionisasi menurun terus"
+],
+a:0,
+e:"Dari kiri ke kanan karakter logam menurun dan karakter nonlogam meningkat, sehingga oksida berubah dari lebih basa menjadi lebih asam."
+},
+
+{
+q:"Unsur P berada di golongan 1 periode 3, sedangkan Q di golongan 17 periode 3. Pernyataan yang benar adalah...",
+o:[
+"P adalah Cl dan Q adalah Na",
+"P lebih nonlogam daripada Q",
+"P lebih mudah membentuk kation dan Q lebih mudah membentuk anion",
+"P dan Q memiliki elektron valensi sama",
+"P dan Q merupakan gas mulia"
+],
+a:2,
+e:"P adalah Na yang cenderung membentuk Na⁺, sedangkan Q adalah Cl yang cenderung membentuk Cl⁻."
+},
+
+{
+q:"Suatu unsur memiliki tiga kulit elektron dan tujuh elektron valensi. Unsur tersebut kemungkinan adalah...",
+o:["F","Cl","Br","O","S"],
+a:1,
+e:"Tiga kulit menunjukkan periode 3, sedangkan tujuh elektron valensi menunjukkan golongan 17. Unsurnya adalah Cl."
+},
+
+{
+q:"Manakah alasan yang paling tepat bahwa unsur periode 3 memiliki sifat yang berbeda walaupun jumlah kulit utamanya sama?",
+o:[
+"Jumlah proton dan elektron valensi berbeda",
+"Semua memiliki jumlah proton sama",
+"Semua memiliki massa sama",
+"Semua merupakan logam",
+"Semua memiliki konfigurasi identik"
+],
+a:0,
+e:"Dalam satu periode jumlah kulit utama sama, tetapi jumlah proton dan konfigurasi elektron valensi berubah sehingga sifat kimianya berubah secara periodik."
+},
+
+{
+q:"Jika suatu atom cenderung menerima satu elektron, perubahan yang terjadi pada ukuran spesies tersebut setelah menjadi anion umumnya adalah...",
+o:[
+"radius mengecil drastis",
+"radius membesar",
+"jumlah proton bertambah",
+"jumlah kulit pasti hilang",
+"atom berubah menjadi neutron"
+],
+a:1,
+e:"Penambahan elektron meningkatkan tolakan antarelektron sehingga ukuran anion umumnya lebih besar daripada atom netralnya."
+},
+
+{
+q:"Pernyataan yang paling tepat tentang hubungan energi ionisasi dan jari-jari atom adalah...",
+o:[
+"Semakin besar jari-jari, umumnya semakin mudah elektron valensi dilepas",
+"Semakin besar jari-jari, selalu semakin besar energi ionisasi",
+"Keduanya selalu meningkat ke arah yang sama",
+"Tidak ada hubungan sama sekali",
+"Jari-jari hanya dipengaruhi massa atom"
+],
+a:0,
+e:"Elektron valensi yang lebih jauh dari inti dan lebih terlindung umumnya lebih mudah dilepas sehingga energi ionisasi lebih rendah."
+}
+
+];
+
+let current = 0;
+let answers = Array(questions.length).fill(null);
+let checked = Array(questions.length).fill(false);
+
+const quiz = document.getElementById("quiz");
+const progressText = document.getElementById("progressText");
+const answeredText = document.getElementById("answeredText");
+const progressBar = document.getElementById("progressBar");
+
+function renderQuestion(){
+
+    const item = questions[current];
+    const selected = answers[current];
+
+    progressText.textContent = `Soal ${current + 1} dari ${questions.length}`;
+
+    const answered = answers.filter(x => x !== null).length;
+    answeredText.textContent = `${answered}/${questions.length} dijawab`;
+
+    progressBar.style.width = `${((current + 1) / questions.length) * 100}%`;
+
+    let html = `
+        <div class="question-card">
+            <div class="question-number">
+                SOAL ${current + 1}
+            </div>
+
+            <div class="question">
+                ${item.q}
+            </div>
+
+            <div class="options">
+    `;
+
+    item.o.forEach((option,index)=>{
+
+        let cls = "";
+
+        if(selected === index){
+            cls += " selected";
+        }
+
+        if(checked[current]){
+
+            if(index === item.a){
+                cls += " correct";
+            }
+
+            if(selected === index && selected !== item.a){
+                cls += " wrong";
+            }
+        }
+
+        html += `
+            <div
+                class="option ${cls}"
+                onclick="selectAnswer(${index})"
+            >
+                <div class="option-letter">
+                    ${String.fromCharCode(65 + index)}
+                </div>
+
+                <div>
+                    ${option}
+                </div>
+            </div>
+        `;
+    });
+
+    html += `</div>`;
+
+    if(checked[current]){
+
+        const correct = selected === item.a;
+
+        html += `
+            <div class="feedback ${correct ? "correct" : "wrong"} show">
+                <strong>
+                    ${correct ? "✓ Jawaban benar" : "✕ Jawaban belum tepat"}
+                </strong>
+
+                Jawaban yang benar:
+                <b>${String.fromCharCode(65 + item.a)}. ${item.o[item.a]}</b>
+
+                <br><br>
+
+                <b>Pembahasan:</b>
+                ${item.e}
+            </div>
+        `;
+    }
+
+    html += `
+        <div class="controls">
+
+            <button
+                class="btn btn-secondary"
+                onclick="previousQuestion()"
+                ${current === 0 ? "disabled" : ""}
+            >
+                ← Sebelumnya
+            </button>
+
+            <button
+                class="btn ${checked[current] ? "btn-success" : "btn-primary"}"
+                onclick="${checked[current] ? "nextQuestion()" : "checkAnswer()"}"
+            >
+                ${checked[current]
+                    ? (current === questions.length - 1
+                        ? "Lihat Hasil"
+                        : "Soal Berikutnya →")
+                    : "Cek Jawaban"}
+            </button>
+
+        </div>
+    `;
+
+    html += `
+        </div>
+    `;
+
+    quiz.innerHTML = html;
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+function selectAnswer(index){
+
+    if(checked[current]) return;
+
+    answers[current] = index;
+
+    renderQuestion();
+}
+
+function checkAnswer(){
+
+    if(answers[current] === null){
+        alert("Pilih salah satu jawaban terlebih dahulu.");
+        return;
+    }
+
+    checked[current] = true;
+
+    renderQuestion();
+}
+
+function nextQuestion(){
+
+    if(current < questions.length - 1){
+
+        current++;
+
+        renderQuestion();
+
+    }else{
+
+        showResult();
+
+    }
+}
+
+function previousQuestion(){
+
+    if(current > 0){
+
+        current--;
+
+        renderQuestion();
+
+    }
+}
+
+function calculateResult(){
+
+    let correct = 0;
+    let wrong = 0;
+    let empty = 0;
+
+    questions.forEach((item,index)=>{
+
+        if(answers[index] === null){
+
+            empty++;
+
+        }else if(answers[index] === item.a){
+
+            correct++;
+
+        }else{
+
+            wrong++;
+
+        }
+
+    });
+
+    return {
+        correct,
+        wrong,
+        empty,
+        score:correct * 2
+    };
+}
+
+function showResult(){
+
+    const result = calculateResult();
+
+    document.getElementById("result").classList.add("show");
+
+    document.getElementById("scoreValue").textContent = result.score;
+
+    document.getElementById("correctCount").textContent = result.correct;
+
+    document.getElementById("wrongCount").textContent = result.wrong;
+
+    document.getElementById("emptyCount").textContent = result.empty;
+
+    let title = "";
+
+    if(result.score >= 90){
+        title = "🔥 Sangat kuat!";
+    }else if(result.score >= 80){
+        title = "💪 Hasil sangat baik!";
+    }else if(result.score >= 70){
+        title = "📚 Sudah bagus!";
+    }else if(result.score >= 60){
+        title = "🧪 Terus latihan!";
+    }else{
+        title = "🚀 Jangan menyerah!";
+    }
+
+    document.getElementById("resultTitle").textContent = title;
+
+    document.getElementById("resultMessage").textContent =
+        `Kamu menjawab ${result.correct} dari ${questions.length} soal dengan benar.`;
+
+    document.getElementById("result").scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+function showAllExplanations(){
+
+    const box = document.getElementById("allQuestions");
+
+    box.classList.add("show");
+
+    const list = document.getElementById("explanationList");
+
+    list.innerHTML = questions.map((item,index)=>{
+
+        const answer = answers[index];
+
+        let status = "Belum dijawab";
+
+        if(answer !== null){
+
+            status = answer === item.a
+                ? "✓ Benar"
+                : "✕ Salah";
+
+        }
+
+        return `
+            <div class="explanation-item">
+
+                <div class="mini-title">
+                    Soal ${index + 1} — ${status}
+                </div>
+
+                <p>
+                    <b>${item.q}</b>
+                </p>
+
+                <p style="margin-top:8px">
+                    <b>Jawaban:</b>
+                    ${String.fromCharCode(65 + item.a)}.
+                    ${item.o[item.a]}
+                </p>
+
+                <p style="margin-top:8px">
+                    <b>Pembahasan:</b>
+                    ${item.e}
+                </p>
+
+            </div>
+        `;
+
+    }).join("");
+
+    box.scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+function resetQuiz(){
+
+    const yes = confirm(
+        "Yakin ingin mengulang latihan dari soal nomor 1?"
+    );
+
+    if(!yes) return;
+
+    current = 0;
+
+    answers = Array(questions.length).fill(null);
+
+    checked = Array(questions.length).fill(false);
+
+    document.getElementById("result").classList.remove("show");
+
+    document.getElementById("allQuestions").classList.remove("show");
+
+    renderQuestion();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+renderQuestion();
+
+</script>
+
+</body>
+</html>
