@@ -3,29 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>PDF + PowerPoint Reader + OCR</title>
-
+<title>PDF + PowerPoint + Word Reader + OCR</title>
 <style>
 *{
     box-sizing:border-box;
 }
-
 html{
     scroll-behavior:smooth;
 }
-
 body{
     margin:0;
     font-family:Arial,Helvetica,sans-serif;
     background:#f4f7fb;
     color:#1f2937;
 }
-
 /* =========================
    HEADER
 ========================= */
-
 header{
     background:#2563eb;
     color:white;
@@ -33,28 +27,23 @@ header{
     text-align:center;
     box-shadow:0 3px 12px rgba(37,99,235,.2);
 }
-
 header h1{
     margin:0 0 8px;
     font-size:28px;
 }
-
 header p{
     margin:0;
     font-size:14px;
     opacity:.92;
 }
-
 /* =========================
    CONTAINER
 ========================= */
-
 .container{
     max-width:1150px;
     margin:auto;
     padding:20px;
 }
-
 .card{
     background:white;
     border-radius:18px;
@@ -62,15 +51,12 @@ header p{
     margin-bottom:20px;
     box-shadow:0 5px 20px rgba(0,0,0,.07);
 }
-
 .card h2{
     margin:0 0 15px;
 }
-
 /* =========================
    INFO
 ========================= */
-
 .info{
     background:#eff6ff;
     border-left:5px solid #2563eb;
@@ -79,7 +65,6 @@ header p{
     margin-bottom:18px;
     line-height:1.6;
 }
-
 .warning{
     background:#fff7ed;
     border-left:5px solid #f97316;
@@ -88,7 +73,6 @@ header p{
     margin-top:18px;
     line-height:1.6;
 }
-
 .success-info{
     background:#ecfdf5;
     border-left:5px solid #059669;
@@ -97,11 +81,9 @@ header p{
     margin-top:18px;
     line-height:1.6;
 }
-
 /* =========================
    UPLOAD
 ========================= */
-
 .upload{
     display:block;
     border:3px dashed #93c5fd;
@@ -112,44 +94,35 @@ header p{
     background:#f8fbff;
     transition:.2s;
 }
-
 .upload:hover{
     background:#eff6ff;
     border-color:#2563eb;
 }
-
 .upload-icon{
     font-size:50px;
     margin-bottom:10px;
 }
-
 .upload-title{
     font-size:19px;
     font-weight:bold;
 }
-
 .upload p{
     color:#6b7280;
     margin-bottom:0;
 }
-
 .upload input{
     display:none;
 }
-
 /* =========================
    FILE LIST
 ========================= */
-
 .file-list{
     margin-top:18px;
 }
-
 .file-list-title{
     font-weight:bold;
     margin-bottom:8px;
 }
-
 .file-item{
     display:flex;
     align-items:center;
@@ -161,22 +134,18 @@ header p{
     margin-bottom:8px;
     background:#fafafa;
 }
-
 .file-main{
     min-width:0;
 }
-
 .file-name{
     font-weight:bold;
     word-break:break-word;
 }
-
 .file-meta{
     font-size:12px;
     color:#6b7280;
     margin-top:4px;
 }
-
 .file-type{
     flex:none;
     padding:6px 9px;
@@ -184,28 +153,27 @@ header p{
     font-size:12px;
     font-weight:bold;
 }
-
 .type-pdf{
     background:#fee2e2;
     color:#b91c1c;
 }
-
 .type-pptx{
     background:#ffedd5;
     color:#c2410c;
 }
-
+.type-docx{
+    background:#dbeafe;
+    color:#1d4ed8;
+}
 /* =========================
    BUTTON
 ========================= */
-
 .controls{
     display:flex;
     flex-wrap:wrap;
     gap:7px;
     margin-top:18px;
 }
-
 button{
     border:0;
     border-radius:11px;
@@ -215,56 +183,45 @@ button{
     font-weight:bold;
     transition:.15s;
 }
-
 button:hover:not(:disabled){
     transform:translateY(-1px);
     filter:brightness(.97);
 }
-
 button:disabled{
     opacity:.5;
     cursor:not-allowed;
 }
-
 .btn-primary{
     background:#2563eb;
     color:white;
 }
-
 .btn-success{
     background:#059669;
     color:white;
 }
-
 .btn-danger{
     background:#dc2626;
     color:white;
 }
-
 .btn-gray{
     background:#e5e7eb;
     color:#111827;
 }
-
 .btn-orange{
     background:#f97316;
     color:white;
 }
-
 .btn-purple{
     background:#7c3aed;
     color:white;
 }
-
 /* =========================
    PROGRESS
 ========================= */
-
 .progress-box{
     display:none;
     margin-top:22px;
 }
-
 .progress{
     width:100%;
     height:20px;
@@ -272,28 +229,23 @@ button:disabled{
     border-radius:30px;
     overflow:hidden;
 }
-
 .progress-bar{
     width:0%;
     height:100%;
     background:#2563eb;
     transition:.2s;
 }
-
 .progress-text{
     margin-top:10px;
     font-size:14px;
     color:#4b5563;
 }
-
 /* =========================
    STATS
 ========================= */
-
 .result{
     display:none;
 }
-
 .stats{
     display:grid;
     grid-template-columns:
@@ -301,30 +253,25 @@ button:disabled{
     gap:12px;
     margin-top:15px;
 }
-
 .stat{
     border:1px solid #e5e7eb;
     background:#f9fafb;
     border-radius:14px;
     padding:16px;
 }
-
 .stat-number{
     font-size:27px;
     font-weight:bold;
     color:#2563eb;
 }
-
 .stat-label{
     font-size:13px;
     color:#6b7280;
     margin-top:3px;
 }
-
 /* =========================
    TEXT
 ========================= */
-
 textarea{
     width:100%;
     min-height:450px;
@@ -337,28 +284,23 @@ textarea{
     font-size:15px;
     outline:none;
 }
-
 textarea:focus{
     border-color:#2563eb;
     box-shadow:0 0 0 3px rgba(37,99,235,.1);
 }
-
 /* =========================
    FITUR BAGI TEKS
 ========================= */
-
 .split-textarea{
     min-height:300px;
     background:#fbfdff;
 }
-
 .split-controls{
     display:flex;
     flex-wrap:wrap;
     gap:8px;
     margin-top:12px;
 }
-
 .split-controls select{
     padding:12px 14px;
     border:1px solid #d1d5db;
@@ -370,11 +312,9 @@ textarea:focus{
     outline:none;
     cursor:pointer;
 }
-
 .split-controls select:focus{
     border-color:#2563eb;
 }
-
 .split-info{
     margin-top:15px;
     background:#eff6ff;
@@ -384,21 +324,18 @@ textarea:focus{
     color:#1e40af;
     line-height:1.6;
 }
-
 .split-results{
     display:grid;
     grid-template-columns:repeat(2,minmax(0,1fr));
     gap:15px;
     margin-top:18px;
 }
-
 .split-part{
     border:1px solid #dbeafe;
     border-radius:15px;
     background:#f8fbff;
     overflow:hidden;
 }
-
 .split-part-header{
     display:flex;
     align-items:center;
@@ -408,28 +345,23 @@ textarea:focus{
     background:#eff6ff;
     border-bottom:1px solid #dbeafe;
 }
-
 .split-part-title{
     font-weight:bold;
     color:#1d4ed8;
 }
-
 .split-part-meta{
     font-size:12px;
     color:#6b7280;
     margin-top:3px;
 }
-
 .split-part-actions{
     display:flex;
     gap:5px;
 }
-
 .split-part-actions button{
     padding:8px 10px;
     font-size:12px;
 }
-
 .split-part textarea{
     min-height:300px;
     border:0;
@@ -437,18 +369,15 @@ textarea:focus{
     background:white;
     resize:vertical;
 }
-
 .split-part textarea:focus{
     box-shadow:none;
 }
-
 .split-bottom-controls{
     display:flex;
     flex-wrap:wrap;
     gap:8px;
     margin-top:15px;
 }
-
 .split-empty{
     color:#9ca3af;
     text-align:center;
@@ -457,11 +386,9 @@ textarea:focus{
     border-radius:12px;
     border:1px dashed #d1d5db;
 }
-
 /* =========================
-   PAGE / SLIDE RESULT
+   PAGE / SLIDE / WORD RESULT
 ========================= */
-
 .page{
     border:1px solid #e5e7eb;
     border-radius:14px;
@@ -469,7 +396,6 @@ textarea:focus{
     margin-bottom:15px;
     background:white;
 }
-
 .page-header{
     background:#f3f4f6;
     padding:13px 15px;
@@ -479,34 +405,32 @@ textarea:focus{
     justify-content:space-between;
     gap:10px;
 }
-
 .page-header-left{
     min-width:0;
     word-break:break-word;
 }
-
 .badge{
     flex:none;
     padding:5px 9px;
     border-radius:8px;
     font-size:11px;
 }
-
 .badge-text{
     background:#dbeafe;
     color:#1d4ed8;
 }
-
 .badge-ocr{
     background:#fef3c7;
     color:#92400e;
 }
-
 .badge-slide{
     background:#ffedd5;
     color:#c2410c;
 }
-
+.badge-word{
+    background:#dbeafe;
+    color:#1d4ed8;
+}
 .page-content{
     padding:16px;
     white-space:pre-wrap;
@@ -514,22 +438,18 @@ textarea:focus{
     font-size:15px;
     min-height:50px;
 }
-
 .empty-text{
     color:#9ca3af;
     font-style:italic;
 }
-
 /* =========================
    SEARCH
 ========================= */
-
 .search-box{
     display:flex;
     gap:8px;
     margin-bottom:15px;
 }
-
 .search-box input{
     flex:1;
     padding:12px 14px;
@@ -538,15 +458,12 @@ textarea:focus{
     outline:none;
     font-size:14px;
 }
-
 .search-box input:focus{
     border-color:#2563eb;
 }
-
 /* =========================
    SPINNER
 ========================= */
-
 .spinner{
     display:inline-block;
     width:15px;
@@ -558,1107 +475,682 @@ textarea:focus{
     vertical-align:-3px;
     margin-right:6px;
 }
-
 @keyframes spin{
     to{
         transform:rotate(360deg);
     }
 }
-
 /* =========================
    FOOTER
 ========================= */
-
 footer{
     text-align:center;
     color:#6b7280;
     font-size:13px;
     padding:25px;
 }
-
 /* =========================
    MOBILE
 ========================= */
-
 @media(max-width:800px){
-
     .split-results{
         grid-template-columns:1fr;
     }
-
 }
-
 @media(max-width:650px){
-
     header{
         padding:22px 15px;
     }
-
     header h1{
         font-size:22px;
     }
-
     .container{
         padding:12px;
     }
-
     .card{
         padding:15px;
         border-radius:15px;
     }
-
     .upload{
         padding:30px 15px;
     }
-
     .upload-icon{
         font-size:42px;
     }
-
     .controls{
         display:block;
     }
-
     button{
         width:100%;
         margin-bottom:7px;
     }
-
     .file-item{
         align-items:flex-start;
     }
-
     .page-header{
         align-items:flex-start;
     }
-
     .search-box{
         display:block;
     }
-
     .search-box input{
         width:100%;
         margin-bottom:7px;
     }
-
     .split-controls{
         display:block;
     }
-
     .split-controls select{
         width:100%;
         margin-bottom:7px;
     }
-
     .split-controls button{
         width:100%;
     }
-
     .split-bottom-controls{
         display:block;
     }
-
     .split-part-header{
         align-items:flex-start;
     }
-
     .split-part-actions{
         flex-wrap:wrap;
     }
-
     .split-part-actions button{
         width:auto;
         margin-bottom:0;
     }
-
 }
 </style>
 </head>
-
 <body>
-
 <header>
-    <h1>📚 PDF + PowerPoint Reader</h1>
-    <p>Baca PDF, PPTX, dan gunakan OCR untuk dokumen hasil scan</p>
+    <h1>📚 Document Reader</h1>
+    <p>PDF • PowerPoint • Word • OCR • Pembagi Teks</p>
 </header>
-
-
 <div class="container">
-
-    <!-- =========================
-         UPLOAD CARD
-    ========================== -->
-
-    <div class="card">
-
-        <div class="info">
-
-            <b>💡 Cara kerja</b><br>
-
-            File <b>PDF</b> akan dibaca menggunakan PDF.js.
-            Jika PDF tidak memiliki teks, halaman akan diproses menggunakan
-            <b>OCR</b>.
-
-            <br><br>
-
-            File <b>PPTX</b> akan dibaca langsung dari struktur PowerPoint
-            dan teks pada setiap slide akan diambil secara otomatis.
-
-        </div>
-
-
-        <label class="upload">
-
-            <div class="upload-icon">
-                📄📊
-            </div>
-
-            <div class="upload-title">
-                Pilih PDF atau PowerPoint
-            </div>
-
-            <p>
-                Bisa memilih satu atau banyak file sekaligus
-            </p>
-
-            <input
-                type="file"
-                id="fileInput"
-                accept=".pdf,application/pdf,.pptx,application/vnd.openxmlformats-officedocument.presentationml.presentation"
-                multiple
-            >
-
-        </label>
-
-
-        <div id="fileList" class="file-list"></div>
-
-
-        <div class="controls">
-
-            <button
-                id="startBtn"
-                class="btn-primary"
-                disabled
-            >
-                ▶ Mulai Membaca
-            </button>
-
-
-            <button
-                id="stopBtn"
-                class="btn-danger"
-                disabled
-            >
-                ■ Berhenti
-            </button>
-
-
-            <button
-                id="copyBtn"
-                class="btn-success"
-                disabled
-            >
-                📋 Salin Semua
-            </button>
-
-
-            <button
-                id="downloadBtn"
-                class="btn-gray"
-                disabled
-            >
-                💾 Download TXT
-            </button>
-
-
-            <button
-                id="clearBtn"
-                class="btn-gray"
-            >
-                🗑 Bersihkan
-            </button>
-
-        </div>
-
-
-        <div
-            id="progressBox"
-            class="progress-box"
-        >
-
-            <div class="progress">
-
-                <div
-                    id="progressBar"
-                    class="progress-bar"
-                ></div>
-
-            </div>
-
-
-            <div
-                id="progressText"
-                class="progress-text"
-            >
-                Menunggu...
-            </div>
-
-        </div>
-
-
-        <div class="warning">
-
-            <b>⚠️ Catatan PowerPoint</b><br>
-
-            Versi ini membaca file <b>.PPTX</b>.
-            File <b>.PPT</b> lama belum didukung secara langsung oleh browser.
-            Jika mempunyai file .PPT, simpan terlebih dahulu sebagai
-            <b>.PPTX</b> menggunakan PowerPoint atau aplikasi presentasi lainnya.
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         FITUR BARU:
-         TEMPEL DAN BAGI TEKS
-    ========================== -->
-
-    <div class="card">
-
-        <h2>✂️ Bagi Teks Langsung</h2>
-
-        <div class="info">
-
-            <b>📝 Tempel teks panjang langsung di sini</b><br>
-
-            Fitur ini tidak membutuhkan file.
-            Tempel teks apa saja, lalu pilih ingin membaginya menjadi
-            <b>2 sampai 10 bagian</b>. Teks akan dibagi berdasarkan jumlah kata
-            dan sebisa mungkin mempertahankan baris serta paragraf.
-
-        </div>
-
-
-        <textarea
-            id="manualText"
-            class="split-textarea"
-            placeholder="Tempel teks panjang kamu di sini..."
-        ></textarea>
-
-
-        <div class="split-controls">
-
-            <select id="manualPartCount">
-
-                <option value="2" selected>
-                    2 Bagian
-                </option>
-
-                <option value="3">
-                    3 Bagian
-                </option>
-
-                <option value="4">
-                    4 Bagian
-                </option>
-
-                <option value="5">
-                    5 Bagian
-                </option>
-
-                <option value="6">
-                    6 Bagian
-                </option>
-
-                <option value="7">
-                    7 Bagian
-                </option>
-
-                <option value="8">
-                    8 Bagian
-                </option>
-
-                <option value="9">
-                    9 Bagian
-                </option>
-
-                <option value="10">
-                    10 Bagian
-                </option>
-
-            </select>
-
-
-            <button
-                id="manualSplitBtn"
-                class="btn-purple"
-            >
-                ✂️ Bagi Teks
-            </button>
-
-
-            <button
-                id="manualClearBtn"
-                class="btn-gray"
-            >
-                🗑 Bersihkan Teks
-            </button>
-
-        </div>
-
-
-        <div
-            id="splitInfo"
-            class="split-info"
-            style="display:none;"
-        ></div>
-
-
-        <div
-            id="splitResults"
-            class="split-results"
-        ></div>
-
-
-        <div
-            id="splitBottomControls"
-            class="split-bottom-controls"
-            style="display:none;"
-        >
-
-            <button
-                id="manualCopyAllBtn"
-                class="btn-success"
-            >
-                📋 Salin Semua Bagian
-            </button>
-
-
-            <button
-                id="manualMergeBtn"
-                class="btn-primary"
-            >
-                🔄 Gabungkan Bagian
-            </button>
-
-
-            <button
-                id="manualOriginalBtn"
-                class="btn-gray"
-            >
-                ↩️ Kembalikan Teks Asli
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         STATISTICS
-    ========================== -->
-
-    <div
-        id="statsCard"
-        class="card result"
-    >
-
-        <h2>📊 Statistik</h2>
-
-
-        <div class="stats">
-
-            <div class="stat">
-
-                <div
-                    id="statFiles"
-                    class="stat-number"
-                >
-                    0
-                </div>
-
-                <div class="stat-label">
-                    Total File
-                </div>
-
-            </div>
-
-
-            <div class="stat">
-
-                <div
-                    id="statPDF"
-                    class="stat-number"
-                >
-                    0
-                </div>
-
-                <div class="stat-label">
-                    PDF
-                </div>
-
-            </div>
-
-
-            <div class="stat">
-
-                <div
-                    id="statPPTX"
-                    class="stat-number"
-                >
-                    0
-                </div>
-
-                <div class="stat-label">
-                    PPTX
-                </div>
-
-            </div>
-
-
-            <div class="stat">
-
-                <div
-                    id="statPages"
-                    class="stat-number"
-                >
-                    0
-                </div>
-
-                <div class="stat-label">
-                    Halaman PDF
-                </div>
-
-            </div>
-
-
-            <div class="stat">
-
-                <div
-                    id="statSlides"
-                    class="stat-number"
-                >
-                    0
-                </div>
-
-                <div class="stat-label">
-                    Slide PPTX
-                </div>
-
-            </div>
-
-
-            <div class="stat">
-
-                <div
-                    id="statOCR"
-                    class="stat-number"
-                >
-                    0
-                </div>
-
-                <div class="stat-label">
-                    Halaman OCR
-                </div>
-
-            </div>
-
-
-            <div class="stat">
-
-                <div
-                    id="statCharacters"
-                    class="stat-number"
-                >
-                    0
-                </div>
-
-                <div class="stat-label">
-                    Karakter
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         FULL TEXT
-    ========================== -->
-
-    <div
-        id="textCard"
-        class="card result"
-    >
-
-        <h2>📝 Semua Teks</h2>
-
-        <textarea
-            id="allText"
-            placeholder="Hasil pembacaan akan muncul di sini..."
-        ></textarea>
-
-    </div>
-
-
-    <!-- =========================
-         PAGE RESULTS
-    ========================== -->
-
-    <div
-        id="pagesCard"
-        class="card result"
-    >
-
-        <h2>📑 Hasil Per Halaman / Slide</h2>
-
-
-        <div class="search-box">
-
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="🔎 Cari teks..."
-            >
-
-            <button
-                id="clearSearchBtn"
-                class="btn-gray"
-            >
-                Reset Pencarian
-            </button>
-
-        </div>
-
-
-        <div id="pagesResult"></div>
-
-    </div>
-
-</div>
-
-
-<footer>
-    PDF + PowerPoint Reader + OCR
-</footer>
-
-
 <!-- =====================================================
-     LIBRARY PDF.JS
+     UPLOAD
 ===================================================== -->
-
+<div class="card">
+    <div class="info">
+        <b>💡 Cara kerja</b><br>
+        <b>PDF:</b> teks dibaca menggunakan PDF.js.
+        Jika PDF merupakan hasil scan dan tidak memiliki teks,
+        halaman tersebut otomatis diproses menggunakan
+        <b>OCR</b>.
+        <br><br>
+        <b>PowerPoint:</b> file <b>.PPTX</b> dibaca dari struktur
+        PowerPoint dan teks setiap slide diambil otomatis.
+        <br><br>
+        <b>Word:</b> file <b>.DOCX</b> dibaca menggunakan
+        Mammoth.js dan isi dokumen diubah menjadi teks.
+    </div>
+    <label class="upload">
+        <div class="upload-icon">
+            📄📊📝
+        </div>
+        <div class="upload-title">
+            Pilih PDF, PowerPoint, atau Word
+        </div>
+        <p>
+            Bisa memilih satu atau banyak file sekaligus
+        </p>
+        <input
+            type="file"
+            id="fileInput"
+            accept="
+                .pdf,
+                application/pdf,
+                .pptx,
+                application/vnd.openxmlformats-officedocument.presentationml.presentation,
+                .docx,
+                application/vnd.openxmlformats-officedocument.wordprocessingml.document
+            "
+            multiple
+        >
+    </label>
+    <div id="fileList" class="file-list"></div>
+    <div class="controls">
+        <button
+            id="startBtn"
+            class="btn-primary"
+            disabled
+        >
+            ▶ Mulai Membaca
+        </button>
+        <button
+            id="stopBtn"
+            class="btn-danger"
+            disabled
+        >
+            ■ Berhenti
+        </button>
+        <button
+            id="copyBtn"
+            class="btn-success"
+            disabled
+        >
+            📋 Salin Semua
+        </button>
+        <button
+            id="downloadBtn"
+            class="btn-gray"
+            disabled
+        >
+            💾 Download TXT
+        </button>
+        <button
+            id="clearBtn"
+            class="btn-gray"
+        >
+            🗑 Bersihkan
+        </button>
+    </div>
+    <div id="progressBox" class="progress-box">
+        <div class="progress">
+            <div
+                id="progressBar"
+                class="progress-bar"
+            ></div>
+        </div>
+        <div
+            id="progressText"
+            class="progress-text"
+        >
+            Menunggu...
+        </div>
+    </div>
+    <div class="warning">
+        <b>⚠️ Dukungan file</b><br>
+        ✅ PDF<br>
+        ✅ PDF hasil scan dengan OCR<br>
+        ✅ PowerPoint <b>.PPTX</b><br>
+        ✅ Microsoft Word <b>.DOCX</b><br>
+        ❌ PowerPoint lama <b>.PPT</b><br>
+        ❌ Word lama <b>.DOC</b>
+        <br><br>
+        Untuk file <b>.DOC</b> atau <b>.PPT</b> lama,
+        simpan terlebih dahulu sebagai <b>.DOCX</b> atau
+        <b>.PPTX</b>.
+    </div>
+</div>
+<!-- =====================================================
+     BAGI TEKS
+===================================================== -->
+<div class="card">
+    <h2>✂️ Bagi Teks Langsung</h2>
+    <div class="info">
+        <b>📝 Tempel teks panjang langsung di sini</b><br>
+        Fitur ini tidak membutuhkan file.
+        Tempel teks apa saja, lalu pilih ingin membaginya menjadi
+        <b>2 sampai 10 bagian</b>.
+    </div>
+    <textarea
+        id="manualText"
+        class="split-textarea"
+        placeholder="Tempel teks panjang kamu di sini..."
+    ></textarea>
+    <div class="split-controls">
+        <select id="manualPartCount">
+            <option value="2" selected>2 Bagian</option>
+            <option value="3">3 Bagian</option>
+            <option value="4">4 Bagian</option>
+            <option value="5">5 Bagian</option>
+            <option value="6">6 Bagian</option>
+            <option value="7">7 Bagian</option>
+            <option value="8">8 Bagian</option>
+            <option value="9">9 Bagian</option>
+            <option value="10">10 Bagian</option>
+        </select>
+        <button
+            id="manualSplitBtn"
+            class="btn-purple"
+        >
+            ✂️ Bagi Teks
+        </button>
+        <button
+            id="manualClearBtn"
+            class="btn-gray"
+        >
+            🗑 Bersihkan Teks
+        </button>
+    </div>
+    <div
+        id="splitInfo"
+        class="split-info"
+        style="display:none;"
+    ></div>
+    <div
+        id="splitResults"
+        class="split-results"
+    ></div>
+    <div
+        id="splitBottomControls"
+        class="split-bottom-controls"
+        style="display:none;"
+    >
+        <button
+            id="manualCopyAllBtn"
+            class="btn-success"
+        >
+            📋 Salin Semua Bagian
+        </button>
+        <button
+            id="manualMergeBtn"
+            class="btn-primary"
+        >
+            🔄 Gabungkan Bagian
+        </button>
+        <button
+            id="manualOriginalBtn"
+            class="btn-gray"
+        >
+            ↩️ Kembalikan Teks Asli
+        </button>
+    </div>
+</div>
+<!-- =====================================================
+     STATISTICS
+===================================================== -->
+<div
+    id="statsCard"
+    class="card result"
+>
+    <h2>📊 Statistik</h2>
+    <div class="stats">
+        <div class="stat">
+            <div id="statFiles" class="stat-number">0</div>
+            <div class="stat-label">Total File</div>
+        </div>
+        <div class="stat">
+            <div id="statPDF" class="stat-number">0</div>
+            <div class="stat-label">PDF</div>
+        </div>
+        <div class="stat">
+            <div id="statPPTX" class="stat-number">0</div>
+            <div class="stat-label">PPTX</div>
+        </div>
+        <div class="stat">
+            <div id="statDOCX" class="stat-number">0</div>
+            <div class="stat-label">Word</div>
+        </div>
+        <div class="stat">
+            <div id="statPages" class="stat-number">0</div>
+            <div class="stat-label">Halaman PDF</div>
+        </div>
+        <div class="stat">
+            <div id="statSlides" class="stat-number">0</div>
+            <div class="stat-label">Slide PPTX</div>
+        </div>
+        <div class="stat">
+            <div id="statOCR" class="stat-number">0</div>
+            <div class="stat-label">Halaman OCR</div>
+        </div>
+        <div class="stat">
+            <div id="statCharacters" class="stat-number">0</div>
+            <div class="stat-label">Karakter</div>
+        </div>
+    </div>
+</div>
+<!-- =====================================================
+     FULL TEXT
+===================================================== -->
+<div
+    id="textCard"
+    class="card result"
+>
+    <h2>📝 Semua Teks</h2>
+    <textarea
+        id="allText"
+        placeholder="Hasil pembacaan akan muncul di sini..."
+    ></textarea>
+</div>
+<!-- =====================================================
+     PAGE RESULTS
+===================================================== -->
+<div
+    id="pagesCard"
+    class="card result"
+>
+    <h2>📑 Hasil Per Halaman / Slide / Dokumen</h2>
+    <div class="search-box">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔎 Cari teks..."
+        >
+        <button
+            id="clearSearchBtn"
+            class="btn-gray"
+        >
+            Reset Pencarian
+        </button>
+    </div>
+    <div id="pagesResult"></div>
+</div>
+</div>
+<footer>
+    PDF + PowerPoint + Word Reader + OCR
+</footer>
+<!-- =====================================================
+     PDF.JS
+===================================================== -->
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs"
     type="module"
 ></script>
-
-
 <!-- =====================================================
-     LIBRARY TESSERACT OCR
+     TESSERACT OCR
 ===================================================== -->
-
 <script
     src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"
 ></script>
-
-
 <!-- =====================================================
-     LIBRARY JSZIP
+     JSZIP
 ===================================================== -->
-
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
 ></script>
-
-
+<!-- =====================================================
+     MAMMOTH DOCX
+===================================================== -->
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.8.0/mammoth.browser.min.js"
+></script>
 <script type="module">
-
 /* =====================================================
-   IMPORT PDF.JS
+   PDF.JS
 ===================================================== */
-
 import * as pdfjsLib
 from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs";
-
-
 pdfjsLib.GlobalWorkerOptions.workerSrc =
 "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs";
-
-
 /* =====================================================
    ELEMENTS
 ===================================================== */
-
 const fileInput =
 document.getElementById("fileInput");
-
 const fileList =
 document.getElementById("fileList");
-
 const startBtn =
 document.getElementById("startBtn");
-
 const stopBtn =
 document.getElementById("stopBtn");
-
 const copyBtn =
 document.getElementById("copyBtn");
-
 const downloadBtn =
 document.getElementById("downloadBtn");
-
 const clearBtn =
 document.getElementById("clearBtn");
-
 const progressBox =
 document.getElementById("progressBox");
-
 const progressBar =
 document.getElementById("progressBar");
-
 const progressText =
 document.getElementById("progressText");
-
 const allText =
 document.getElementById("allText");
-
 const pagesResult =
 document.getElementById("pagesResult");
-
 const statsCard =
 document.getElementById("statsCard");
-
 const textCard =
 document.getElementById("textCard");
-
 const pagesCard =
 document.getElementById("pagesCard");
-
 const statFiles =
 document.getElementById("statFiles");
-
 const statPDF =
 document.getElementById("statPDF");
-
 const statPPTX =
 document.getElementById("statPPTX");
-
+const statDOCX =
+document.getElementById("statDOCX");
 const statPages =
 document.getElementById("statPages");
-
 const statSlides =
 document.getElementById("statSlides");
-
 const statOCR =
 document.getElementById("statOCR");
-
 const statCharacters =
 document.getElementById("statCharacters");
-
 const searchInput =
 document.getElementById("searchInput");
-
 const clearSearchBtn =
 document.getElementById("clearSearchBtn");
-
-
 /* =====================================================
-   ELEMENTS FITUR BAGI TEKS
+   MANUAL TEXT
 ===================================================== */
-
 const manualText =
 document.getElementById("manualText");
-
 const manualPartCount =
 document.getElementById("manualPartCount");
-
 const manualSplitBtn =
 document.getElementById("manualSplitBtn");
-
 const manualClearBtn =
 document.getElementById("manualClearBtn");
-
 const splitInfo =
 document.getElementById("splitInfo");
-
 const splitResults =
 document.getElementById("splitResults");
-
 const splitBottomControls =
 document.getElementById("splitBottomControls");
-
 const manualCopyAllBtn =
 document.getElementById("manualCopyAllBtn");
-
 const manualMergeBtn =
 document.getElementById("manualMergeBtn");
-
 const manualOriginalBtn =
 document.getElementById("manualOriginalBtn");
-
-
 /* =====================================================
    VARIABLES
 ===================================================== */
-
 let selectedFiles = [];
-
 let results = [];
-
 let stopRequested = false;
-
 let ocrWorker = null;
-
-
-/* =====================================================
-   VARIABLES FITUR BAGI TEKS
-===================================================== */
-
 let originalManualText = "";
-
 let manualParts = [];
-
-
 /* =====================================================
    FILE SELECTION
 ===================================================== */
-
-fileInput.addEventListener("change", () => {
-
+fileInput.addEventListener("change",()=>{
     selectedFiles =
     Array.from(fileInput.files);
-
     fileList.innerHTML = "";
-
     if(selectedFiles.length === 0){
-
         startBtn.disabled = true;
-
         return;
     }
-
-
     const title =
     document.createElement("div");
-
     title.className =
     "file-list-title";
-
     title.textContent =
     `${selectedFiles.length} file dipilih`;
-
     fileList.appendChild(title);
-
-
     selectedFiles.forEach((file,index)=>{
-
         const item =
         document.createElement("div");
-
         item.className =
         "file-item";
-
-
         const main =
         document.createElement("div");
-
         main.className =
         "file-main";
-
-
         const name =
         document.createElement("div");
-
         name.className =
         "file-name";
-
         name.textContent =
         `${index + 1}. ${file.name}`;
-
-
         const meta =
         document.createElement("div");
-
         meta.className =
         "file-meta";
-
         meta.textContent =
         formatFileSize(file.size);
-
-
         main.appendChild(name);
-
         main.appendChild(meta);
-
-
         const type =
         document.createElement("div");
-
-
         const extension =
         getExtension(file.name);
-
-
         if(extension === "pdf"){
-
             type.className =
             "file-type type-pdf";
-
             type.textContent =
             "PDF";
-
-        }else{
-
+        }
+        else if(extension === "pptx"){
             type.className =
             "file-type type-pptx";
-
             type.textContent =
             "PPTX";
-
         }
-
-
+        else if(extension === "docx"){
+            type.className =
+            "file-type type-docx";
+            type.textContent =
+            "WORD";
+        }
+        else{
+            type.className =
+            "file-type";
+            type.textContent =
+            extension.toUpperCase();
+        }
         item.appendChild(main);
-
         item.appendChild(type);
-
         fileList.appendChild(item);
-
     });
-
-
     startBtn.disabled = false;
-
 });
-
-
 /* =====================================================
    START
 ===================================================== */
-
-startBtn.addEventListener("click", async()=>{
-
+startBtn.addEventListener("click",async()=>{
     if(selectedFiles.length === 0){
-
         alert("Pilih file terlebih dahulu.");
-
         return;
     }
-
-
     stopRequested = false;
-
     startBtn.disabled = true;
-
     stopBtn.disabled = false;
-
     copyBtn.disabled = true;
-
     downloadBtn.disabled = true;
-
-
     progressBox.style.display =
     "block";
-
-
     progressBar.style.width =
     "0%";
-
-
     progressText.textContent =
     "Menyiapkan...";
-
-
     results = [];
-
     pagesResult.innerHTML = "";
-
     allText.value = "";
-
     searchInput.value = "";
-
-
     statsCard.style.display =
     "block";
-
     textCard.style.display =
     "block";
-
     pagesCard.style.display =
     "block";
-
-
     try{
-
         await processFiles();
-
-    }catch(error){
-
+    }
+    catch(error){
         console.error(error);
-
         progressText.textContent =
         "❌ Terjadi kesalahan: " +
         error.message;
-
     }
-
-
     startBtn.disabled = false;
-
     stopBtn.disabled = true;
-
 });
-
-
 /* =====================================================
    STOP
 ===================================================== */
-
 stopBtn.addEventListener("click",()=>{
-
     stopRequested = true;
-
     progressText.textContent =
     "⏳ Menghentikan proses...";
-
 });
-
-
 /* =====================================================
-   PROCESS ALL FILES
+   PROCESS FILES
 ===================================================== */
-
 async function processFiles(){
-
     let totalPDFPages = 0;
-
     let totalPPTXSlides = 0;
-
+    let totalDOCXFiles = 0;
     let pdfCount = 0;
-
     let pptxCount = 0;
-
-
+    let docxCount = 0;
     progressText.innerHTML =
-    `<span class="spinner"></span>Menghitung halaman dan slide...`;
-
-
+    `<span class="spinner"></span>Menghitung halaman, slide, dan dokumen...`;
     for(const file of selectedFiles){
-
         if(stopRequested)
             return;
-
-
         const ext =
         getExtension(file.name);
-
-
         if(ext === "pdf"){
-
             pdfCount++;
-
-
             const buffer =
             await file.arrayBuffer();
-
-
             const pdf =
             await pdfjsLib.getDocument({
                 data:buffer
             }).promise;
-
-
             totalPDFPages +=
             pdf.numPages;
-
         }
-
-
         else if(ext === "pptx"){
-
             pptxCount++;
-
-
             const buffer =
             await file.arrayBuffer();
-
-
-            const slideCount =
-            await countPPTXSlides(buffer);
-
-
             totalPPTXSlides +=
-            slideCount;
-
+            await countPPTXSlides(buffer);
         }
-
+        else if(ext === "docx"){
+            docxCount++;
+            totalDOCXFiles++;
+        }
     }
-
-
     statFiles.textContent =
     selectedFiles.length;
-
     statPDF.textContent =
     pdfCount;
-
     statPPTX.textContent =
     pptxCount;
-
+    statDOCX.textContent =
+    docxCount;
     statPages.textContent =
     totalPDFPages;
-
     statSlides.textContent =
     totalPPTXSlides;
-
-
     if(pdfCount > 0){
-
         progressText.innerHTML =
         `<span class="spinner"></span>Menyiapkan OCR...`;
-
-
         ocrWorker =
-        await Tesseract.createWorker(
-            "ind"
-        );
-
+        await Tesseract.createWorker("ind");
     }
-
-
     let processedUnits = 0;
-
     const totalUnits =
     totalPDFPages +
-    totalPPTXSlides;
-
+    totalPPTXSlides +
+    totalDOCXFiles;
     let ocrPages = 0;
-
-
     for(
         let fileIndex=0;
         fileIndex<selectedFiles.length;
         fileIndex++
     ){
-
         if(stopRequested)
             break;
-
-
         const file =
         selectedFiles[fileIndex];
-
-
         const ext =
         getExtension(file.name);
-
-
         if(ext === "pdf"){
-
             const processed =
             await processPDF(
                 file,
@@ -1666,423 +1158,335 @@ async function processFiles(){
                 totalUnits,
                 ocrPages
             );
-
-
             processedUnits =
             processed.processedUnits;
-
             ocrPages =
             processed.ocrPages;
-
         }
-
-
         else if(ext === "pptx"){
-
             const processed =
             await processPPTX(
                 file,
                 processedUnits,
                 totalUnits
             );
-
-
             processedUnits =
             processed.processedUnits;
-
         }
-
+        else if(ext === "docx"){
+            const processed =
+            await processDOCX(
+                file,
+                processedUnits,
+                totalUnits
+            );
+            processedUnits =
+            processed.processedUnits;
+        }
     }
-
-
     if(ocrWorker){
-
         await ocrWorker.terminate();
-
         ocrWorker = null;
-
     }
-
-
     buildFullText();
-
-
     statOCR.textContent =
     ocrPages;
-
-
     statCharacters.textContent =
     allText.value.length;
-
-
     copyBtn.disabled =
     allText.value.trim().length === 0;
-
     downloadBtn.disabled =
     allText.value.trim().length === 0;
-
-
     if(stopRequested){
-
         progressText.textContent =
         `⏹️ Proses dihentikan. ${processedUnits}/${totalUnits} bagian selesai.`;
-
-    }else{
-
+    }
+    else{
         progressBar.style.width =
         "100%";
-
         progressText.textContent =
         `✅ Selesai membaca ${selectedFiles.length} file.`;
-
     }
-
 }
-
-
 /* =====================================================
    PROCESS PDF
 ===================================================== */
-
 async function processPDF(
     file,
     processedUnits,
     totalUnits,
     ocrPages
 ){
-
     const buffer =
     await file.arrayBuffer();
-
-
     const pdf =
     await pdfjsLib.getDocument({
         data:buffer
     }).promise;
-
-
     for(
         let pageNumber=1;
         pageNumber<=pdf.numPages;
         pageNumber++
     ){
-
         if(stopRequested)
             break;
-
-
         const page =
         await pdf.getPage(pageNumber);
-
-
         progressText.textContent =
         `📄 Membaca PDF: ${file.name} — halaman ${pageNumber}/${pdf.numPages}`;
-
-
         const textContent =
         await page.getTextContent();
-
-
         let text =
         extractPDFText(textContent);
-
-
         let usedOCR = false;
-
-
         if(text.trim().length < 10){
-
             usedOCR = true;
-
             ocrPages++;
-
-
             progressText.innerHTML =
             `<span class="spinner"></span>🔎 OCR: ${file.name} — halaman ${pageNumber}/${pdf.numPages}`;
-
-
             if(!ocrWorker){
-
                 ocrWorker =
-                await Tesseract.createWorker(
-                    "ind"
-                );
-
+                await Tesseract.createWorker("ind");
             }
-
-
             const canvas =
             await renderPDFPage(page);
-
-
             const result =
             await ocrWorker.recognize(canvas);
-
-
             text =
             result.data.text || "";
-
         }
-
-
         processedUnits++;
-
-
         results.push({
-
             type:"pdf",
-
             file:file.name,
-
             page:pageNumber,
-
             text:text,
-
             ocr:usedOCR
-
         });
-
-
         addPageResult({
-
             type:"pdf",
-
             file:file.name,
-
             number:pageNumber,
-
             text:text,
-
             ocr:usedOCR
-
         });
-
-
         updateProgress(
             processedUnits,
             totalUnits,
             ocrPages
         );
-
     }
-
-
     return {
-
         processedUnits:
         processedUnits,
-
         ocrPages:
         ocrPages
-
     };
-
 }
-
-
 /* =====================================================
    PROCESS PPTX
 ===================================================== */
-
 async function processPPTX(
     file,
     processedUnits,
     totalUnits
 ){
-
     progressText.innerHTML =
     `<span class="spinner"></span>📊 Membuka PowerPoint: ${file.name}`;
-
-
     const buffer =
     await file.arrayBuffer();
-
-
     const slides =
     await readPPTX(buffer);
-
-
     for(
         let i=0;
         i<slides.length;
         i++
     ){
-
         if(stopRequested)
             break;
-
-
         const slide =
         slides[i];
-
-
         const slideNumber =
         i + 1;
-
-
         progressText.textContent =
         `📊 Membaca ${file.name} — slide ${slideNumber}/${slides.length}`;
-
-
         const text =
         slide.text || "";
-
-
         processedUnits++;
-
-
         results.push({
-
             type:"pptx",
-
             file:file.name,
-
             page:slideNumber,
-
             text:text,
-
             ocr:false
-
         });
-
-
         addPageResult({
-
             type:"pptx",
-
             file:file.name,
-
             number:slideNumber,
-
             text:text,
-
             ocr:false
-
         });
-
-
         updateProgress(
             processedUnits,
             totalUnits,
             0
         );
-
     }
-
-
     return {
-
         processedUnits:
         processedUnits
-
     };
-
 }
-
-
+/* =====================================================
+   PROCESS DOCX
+===================================================== */
+async function processDOCX(
+    file,
+    processedUnits,
+    totalUnits
+){
+    progressText.innerHTML =
+    `<span class="spinner"></span>📝 Membaca Word: ${file.name}`;
+    const buffer =
+    await file.arrayBuffer();
+    let text = "";
+    try{
+        if(
+            typeof mammoth ===
+            "undefined"
+        ){
+            throw new Error(
+                "Library Word belum berhasil dimuat."
+            );
+        }
+        const result =
+        await mammoth.convertToHtml({
+            arrayBuffer:
+            buffer
+        });
+        const html =
+        result.value || "";
+        const temporary =
+        document.createElement("div");
+        temporary.innerHTML =
+        html;
+        /*
+           innerText lebih baik untuk
+           mempertahankan pemisahan paragraf
+           dibanding textContent.
+        */
+        text =
+        temporary.innerText ||
+        temporary.textContent ||
+        "";
+        text =
+        cleanText(text);
+    }
+    catch(error){
+        console.error(
+            "Gagal membaca DOCX:",
+            error
+        );
+        text =
+        "❌ Gagal membaca file Word: " +
+        error.message;
+    }
+    if(stopRequested){
+        return {
+            processedUnits:
+            processedUnits
+        };
+    }
+    processedUnits++;
+    results.push({
+        type:"docx",
+        file:file.name,
+        page:1,
+        text:text,
+        ocr:false
+    });
+    addPageResult({
+        type:"docx",
+        file:file.name,
+        number:1,
+        text:text,
+        ocr:false
+    });
+    updateProgress(
+        processedUnits,
+        totalUnits,
+        0
+    );
+    return {
+        processedUnits:
+        processedUnits
+    };
+}
 /* =====================================================
    READ PPTX
 ===================================================== */
-
 async function readPPTX(buffer){
-
     const zip =
     await JSZip.loadAsync(buffer);
-
-
     const slideFiles =
     Object.keys(zip.files)
-
         .filter(path =>
             /^ppt\/slides\/slide\d+\.xml$/i.test(path)
         )
-
         .sort((a,b)=>{
-
             const na =
             parseInt(
-                a.match(/slide(\d+)\.xml/i)[1]
+                a.match(
+                    /slide(\d+)\.xml/i
+                )[1]
             );
-
             const nb =
             parseInt(
-                b.match(/slide(\d+)\.xml/i)[1]
+                b.match(
+                    /slide(\d+)\.xml/i
+                )[1]
             );
-
             return na - nb;
-
         });
-
-
     const slides = [];
-
-
     for(const path of slideFiles){
-
         const xml =
-        await zip.files[path].async("text");
-
-
+        await zip.files[path]
+        .async("text");
         const text =
         extractPPTXText(xml);
-
-
         slides.push({
-
             path:path,
-
             text:text
-
         });
-
     }
-
-
     return slides;
-
 }
-
-
 /* =====================================================
-   COUNT PPTX SLIDES
+   COUNT PPTX
 ===================================================== */
-
 async function countPPTXSlides(buffer){
-
     const zip =
     await JSZip.loadAsync(buffer);
-
-
     return Object.keys(zip.files)
-
         .filter(path =>
             /^ppt\/slides\/slide\d+\.xml$/i.test(path)
         )
-
         .length;
-
 }
-
-
 /* =====================================================
    EXTRACT PPTX TEXT
 ===================================================== */
-
 function extractPPTXText(xml){
-
     try{
-
         const parser =
         new DOMParser();
-
-
         const doc =
         parser.parseFromString(
             xml,
             "application/xml"
         );
-
-
         const textNodes =
         Array.from(
             doc.getElementsByTagNameNS(
@@ -2090,13 +1494,7 @@ function extractPPTXText(xml){
                 "t"
             )
         );
-
-
         let paragraphs = [];
-
-        let currentParagraph = [];
-
-
         const paragraphNodes =
         Array.from(
             doc.getElementsByTagNameNS(
@@ -2104,10 +1502,7 @@ function extractPPTXText(xml){
                 "p"
             )
         );
-
-
         paragraphNodes.forEach(p=>{
-
             const nodes =
             Array.from(
                 p.getElementsByTagNameNS(
@@ -2115,935 +1510,545 @@ function extractPPTXText(xml){
                     "t"
                 )
             );
-
-
             const parts =
             nodes.map(
                 node =>
                 node.textContent || ""
             );
-
-
             if(parts.length > 0){
-
                 paragraphs.push(
                     parts.join("")
                 );
-
             }
-
         });
-
-
         if(paragraphs.length === 0){
-
             paragraphs =
             textNodes.map(
                 node =>
                 node.textContent || ""
             );
-
         }
-
-
         return paragraphs
-
             .map(cleanText)
-
             .filter(Boolean)
-
             .join("\n");
-
     }
-
     catch(error){
-
         console.error(
             "Gagal membaca XML PPTX:",
             error
         );
-
         return "";
-
     }
-
 }
-
-
 /* =====================================================
    EXTRACT PDF TEXT
 ===================================================== */
-
 function extractPDFText(textContent){
-
     return textContent.items
-
         .map(item =>
             item.str || ""
         )
-
         .join(" ")
-
         .replace(/[ \t]+/g," ")
-
         .trim();
-
 }
-
-
 /* =====================================================
    RENDER PDF
 ===================================================== */
-
 async function renderPDFPage(page){
-
     const scale =
     2.0;
-
-
     const viewport =
     page.getViewport({
         scale:scale
     });
-
-
     const canvas =
     document.createElement("canvas");
-
-
     const context =
     canvas.getContext("2d");
-
-
     canvas.width =
     Math.ceil(viewport.width);
-
     canvas.height =
     Math.ceil(viewport.height);
-
-
     await page.render({
-
         canvasContext:
         context,
-
         viewport:
         viewport
-
     }).promise;
-
-
     return canvas;
-
 }
-
-
 /* =====================================================
-   ADD PAGE / SLIDE RESULT
+   ADD PAGE RESULT
 ===================================================== */
-
 function addPageResult(data){
-
     const div =
     document.createElement("div");
-
-
     div.className =
     "page";
-
-
     const header =
     document.createElement("div");
-
-
     header.className =
     "page-header";
-
-
     const left =
     document.createElement("div");
-
-
     left.className =
     "page-header-left";
-
-
     if(data.type === "pptx"){
-
         left.textContent =
         `📊 ${data.file} — Slide ${data.number}`;
-
-    }else{
-
+    }
+    else if(data.type === "docx"){
+        left.textContent =
+        `📝 ${data.file} — Dokumen Word`;
+    }
+    else{
         left.textContent =
         `📄 ${data.file} — Halaman ${data.number}`;
-
     }
-
-
     const badge =
     document.createElement("span");
-
-
     badge.className =
     "badge";
-
-
     if(data.type === "pptx"){
-
         badge.classList.add(
             "badge-slide"
         );
-
         badge.textContent =
         "PPTX";
-
     }
-
+    else if(data.type === "docx"){
+        badge.classList.add(
+            "badge-word"
+        );
+        badge.textContent =
+        "WORD";
+    }
     else if(data.ocr){
-
         badge.classList.add(
             "badge-ocr"
         );
-
         badge.textContent =
         "OCR";
-
     }
-
     else{
-
         badge.classList.add(
             "badge-text"
         );
-
         badge.textContent =
         "TEKS";
-
     }
-
-
     header.appendChild(left);
-
     header.appendChild(badge);
-
-
     const content =
     document.createElement("div");
-
-
     content.className =
     "page-content";
-
-
     content.dataset.searchText =
-    (data.file + " " + data.text)
-    .toLowerCase();
-
-
+    (
+        data.file +
+        " " +
+        data.text
+    ).toLowerCase();
     if(data.text.trim()){
-
         content.textContent =
         data.text.trim();
-
-    }else{
-
+    }
+    else{
         content.textContent =
         "[Tidak ada teks yang ditemukan]";
-
         content.classList.add(
             "empty-text"
         );
-
     }
-
-
     div.appendChild(header);
-
     div.appendChild(content);
-
-
     pagesResult.appendChild(div);
-
 }
-
-
 /* =====================================================
    BUILD FULL TEXT
 ===================================================== */
-
 function buildFullText(){
-
     let output = "";
-
     let currentFile = "";
-
-
     results.forEach(item=>{
-
         if(item.file !== currentFile){
-
             currentFile =
             item.file;
-
-
             output +=
             "\n\n========================================\n";
-
             output +=
             "FILE: " +
             item.file +
             "\n";
-
             output +=
             "========================================\n\n";
-
         }
-
-
         if(item.type === "pptx"){
-
             output +=
             "\n--- Slide " +
             item.page +
             " ---\n\n";
-
-        }else{
-
+        }
+        else if(item.type === "docx"){
+            output +=
+            "\n--- Dokumen Word ---\n\n";
+        }
+        else{
             output +=
             "\n--- Halaman " +
             item.page;
-
-
             if(item.ocr){
-
                 output +=
                 " | OCR";
-
             }
-
-
             output +=
             " ---\n\n";
-
         }
-
-
         output +=
         item.text.trim();
-
-
         output +=
         "\n";
-
     });
-
-
     allText.value =
     output.trim();
-
 }
-
-
 /* =====================================================
-   UPDATE PROGRESS
+   PROGRESS
 ===================================================== */
-
 function updateProgress(
     current,
     total,
     ocr
 ){
-
     const percent =
     total === 0
         ? 0
         : Math.round(
             current / total * 100
         );
-
-
     progressBar.style.width =
     percent + "%";
-
-
     progressText.textContent =
     `Memproses ${current}/${total} (${percent}%) — OCR: ${ocr}`;
-
 }
-
-
 /* =====================================================
    SEARCH
 ===================================================== */
-
 searchInput.addEventListener(
     "input",
     performSearch
 );
-
-
 clearSearchBtn.addEventListener(
     "click",
     ()=>{
-
         searchInput.value = "";
-
         performSearch();
-
     }
 );
-
-
 function performSearch(){
-
     const query =
     searchInput.value
         .trim()
         .toLowerCase();
-
-
     const pages =
     pagesResult.querySelectorAll(
         ".page"
     );
-
-
     pages.forEach(page=>{
-
         const content =
         page.querySelector(
             ".page-content"
         );
-
-
         const text =
         content.dataset.searchText ||
         "";
-
-
-        if(
-            !query ||
-            text.includes(query)
-        ){
-
-            page.style.display =
-            "block";
-
-        }else{
-
-            page.style.display =
-            "none";
-
-        }
-
+        page.style.display =
+        !query ||
+        text.includes(query)
+            ? "block"
+            : "none";
     });
-
 }
-
-
 /* =====================================================
    COPY
 ===================================================== */
-
 copyBtn.addEventListener(
     "click",
     async()=>{
-
         if(!allText.value.trim())
             return;
-
-
-        try{
-
-            await navigator.clipboard.writeText(
-                allText.value
-            );
-
-
-            alert(
-                "✅ Semua teks berhasil disalin."
-            );
-
-        }
-
-        catch(error){
-
-            allText.select();
-
-            document.execCommand(
-                "copy"
-            );
-
-
-            alert(
-                "✅ Teks berhasil disalin."
-            );
-
-        }
-
+        await copyText(
+            allText.value
+        );
+        alert(
+            "✅ Semua teks berhasil disalin."
+        );
     }
 );
-
-
 /* =====================================================
-   DOWNLOAD TXT
+   DOWNLOAD
 ===================================================== */
-
 downloadBtn.addEventListener(
     "click",
     ()=>{
-
         if(!allText.value.trim())
             return;
-
-
         const blob =
         new Blob(
-
             [allText.value],
-
             {
                 type:
                 "text/plain;charset=utf-8"
             }
-
         );
-
-
         const url =
         URL.createObjectURL(blob);
-
-
         const a =
         document.createElement("a");
-
-
         a.href =
         url;
-
-
         a.download =
-        "hasil-pembacaan.pdf-pptx.txt";
-
-
+        "hasil-pembacaan-dokumen.txt";
         document.body.appendChild(a);
-
-
         a.click();
-
-
         a.remove();
-
-
         URL.revokeObjectURL(url);
-
     }
 );
-
-
 /* =====================================================
    CLEAR FILE READER
 ===================================================== */
-
 clearBtn.addEventListener(
     "click",
     ()=>{
-
         selectedFiles = [];
-
         results = [];
-
         stopRequested = false;
-
-
+        if(ocrWorker){
+            ocrWorker.terminate();
+            ocrWorker = null;
+        }
         fileInput.value = "";
-
         fileList.innerHTML = "";
-
         pagesResult.innerHTML = "";
-
         allText.value = "";
-
         searchInput.value = "";
-
-
         progressBar.style.width =
         "0%";
-
-
         progressText.textContent =
         "Menunggu...";
-
-
         progressBox.style.display =
         "none";
-
-
         statsCard.style.display =
         "none";
-
         textCard.style.display =
         "none";
-
         pagesCard.style.display =
         "none";
-
-
         startBtn.disabled =
         true;
-
         stopBtn.disabled =
         true;
-
         copyBtn.disabled =
         true;
-
         downloadBtn.disabled =
         true;
-
-
         statFiles.textContent =
         "0";
-
         statPDF.textContent =
         "0";
-
         statPPTX.textContent =
         "0";
-
+        statDOCX.textContent =
+        "0";
         statPages.textContent =
         "0";
-
         statSlides.textContent =
         "0";
-
         statOCR.textContent =
         "0";
-
         statCharacters.textContent =
         "0";
-
     }
 );
-
-
 /* =====================================================
-   FITUR BARU:
-   BAGI TEKS LANGSUNG
+   MANUAL TEXT EVENTS
 ===================================================== */
-
 manualSplitBtn.addEventListener(
     "click",
     splitManualText
 );
-
-
 manualClearBtn.addEventListener(
     "click",
     clearManualText
 );
-
-
 manualCopyAllBtn.addEventListener(
     "click",
     copyAllManualParts
 );
-
-
 manualMergeBtn.addEventListener(
     "click",
     mergeManualParts
 );
-
-
 manualOriginalBtn.addEventListener(
     "click",
     restoreOriginalManualText
 );
-
-
 /* =====================================================
    SPLIT MANUAL TEXT
 ===================================================== */
-
 function splitManualText(){
-
     const text =
     manualText.value;
-
-
     if(!text.trim()){
-
         alert(
             "Tempel teks terlebih dahulu."
         );
-
         manualText.focus();
-
         return;
-
     }
-
-
     const partCount =
     parseInt(
         manualPartCount.value,
         10
     );
-
-
     originalManualText =
     text;
-
-
     manualParts =
     splitTextByWords(
         text,
         partCount
     );
-
-
     renderManualParts();
-
 }
-
-
 /* =====================================================
-   SPLIT BERDASARKAN KATA
+   SPLIT TEXT
 ===================================================== */
-
 function splitTextByWords(
     text,
     parts
 ){
-
     const normalized =
     String(text)
         .replace(/\r\n/g,"\n")
         .replace(/\r/g,"\n");
-
-
-    /*
-       Token terdiri dari:
-       - kata
-       - spasi
-       - newline
-       sehingga format teks tetap
-       dipertahankan sebisa mungkin.
-    */
-
     const tokens =
     normalized.match(
         /\S+|\s+/g
     ) || [];
-
-
     const wordCount =
-    (normalized.match(/\S+/g) || [])
-        .length;
-
-
+    (
+        normalized.match(
+            /\S+/g
+        ) || []
+    ).length;
     if(wordCount === 0){
-
         return Array(parts).fill("");
-
     }
-
-
     const actualParts =
-    Math.min(parts,wordCount);
-
-
+    Math.min(
+        parts,
+        wordCount
+    );
     const base =
     Math.floor(
-        wordCount / actualParts
+        wordCount /
+        actualParts
     );
-
-
     const remainder =
-    wordCount % actualParts;
-
-
+    wordCount %
+    actualParts;
     const targets = [];
-
-
     for(
         let i=0;
         i<actualParts;
         i++
     ){
-
         targets.push(
             base +
-            (i < remainder ? 1 : 0)
+            (
+                i < remainder
+                ? 1
+                : 0
+            )
         );
-
     }
-
-
     const output = [];
-
     let current = "";
-
     let currentWords = 0;
-
     let partIndex = 0;
-
-
     for(
         let i=0;
         i<tokens.length;
         i++
     ){
-
         const token =
         tokens[i];
-
-
         current += token;
-
-
         if(/\S/.test(token)){
-
             currentWords++;
-
         }
-
-
         if(
             currentWords >=
             targets[partIndex]
         ){
-
-            /*
-               Jangan langsung memotong
-               di tengah rangkaian whitespace.
-            */
-
-            let j =
-            i + 1;
-
-
-            while(
-                j < tokens.length &&
-                /^\s+$/.test(tokens[j])
-            ){
-
-                /*
-                   Hanya ambil whitespace
-                   jika masih berada di akhir
-                   dan belum ada kata berikutnya.
-                */
-
-                break;
-
-            }
-
-
             output.push(
                 current.trim()
             );
-
-
             current = "";
-
             currentWords = 0;
-
             partIndex++;
-
-
             if(
                 partIndex >=
                 actualParts
             ){
-
-                /*
-                   Masukkan sisa token
-                   ke bagian terakhir.
-                */
-
                 const remaining =
                 tokens
                     .slice(i + 1)
                     .join("")
                     .trim();
-
-
                 if(remaining){
-
                     output[
                         output.length - 1
                     ] +=
                     "\n" +
                     remaining;
-
                 }
-
-
                 break;
-
             }
-
         }
-
     }
-
-
     while(
         output.length <
         parts
     ){
-
         output.push("");
-
     }
-
-
     return output;
-
 }
-
-
 /* =====================================================
-   RENDER BAGIAN TEKS
+   RENDER MANUAL PARTS
 ===================================================== */
-
 function renderManualParts(){
-
     splitResults.innerHTML = "";
-
-
     const totalParts =
     manualParts.length;
-
-
     const totalWords =
-    manualParts
-        .reduce(
-            (sum,text)=>{
-                return sum +
-                countWords(text);
-            },
-            0
-        );
-
-
+    manualParts.reduce(
+        (sum,text)=>
+        sum + countWords(text),
+        0
+    );
     const totalCharacters =
-    manualParts
-        .reduce(
-            (sum,text)=>{
-                return sum +
-                text.length;
-            },
-            0
-        );
-
-
+    manualParts.reduce(
+        (sum,text)=>
+        sum + text.length,
+        0
+    );
     splitInfo.style.display =
     "block";
-
-
     splitInfo.innerHTML =
     `
         <b>✅ Teks berhasil dibagi</b><br>
@@ -3051,91 +2056,63 @@ function renderManualParts(){
         ${totalWords.toLocaleString("id-ID")} kata •
         ${totalCharacters.toLocaleString("id-ID")} karakter
     `;
-
-
     manualParts.forEach(
         (part,index)=>{
-
             const box =
             document.createElement("div");
-
-
             box.className =
             "split-part";
-
-
             const header =
             document.createElement("div");
-
-
             header.className =
             "split-part-header";
-
-
             const titleArea =
             document.createElement("div");
-
-
             const title =
             document.createElement("div");
-
-
             title.className =
             "split-part-title";
-
-
             title.textContent =
             `Bagian ${index + 1}`;
-
-
             const meta =
             document.createElement("div");
-
-
             meta.className =
             "split-part-meta";
-
-
             meta.textContent =
             `${countWords(part).toLocaleString("id-ID")} kata • ${part.length.toLocaleString("id-ID")} karakter`;
-
-
             titleArea.appendChild(title);
-
             titleArea.appendChild(meta);
-
-
             const actions =
             document.createElement("div");
-
-
             actions.className =
             "split-part-actions";
-
-
             const copyPartBtn =
             document.createElement("button");
-
-
             copyPartBtn.className =
             "btn-success";
-
-
             copyPartBtn.textContent =
             "📋 Salin";
-
-
+            actions.appendChild(
+                copyPartBtn
+            );
+            header.appendChild(
+                titleArea
+            );
+            header.appendChild(
+                actions
+            );
+            const partTextarea =
+            document.createElement("textarea");
+            partTextarea.value =
+            part;
             copyPartBtn.addEventListener(
                 "click",
                 async()=>{
-
                     await copyText(
                         partTextarea.value
                     );
-
                     copyPartBtn.textContent =
                     "✅ Tersalin";
-
                     setTimeout(
                         ()=>{
                             copyPartBtn.textContent =
@@ -3143,148 +2120,78 @@ function renderManualParts(){
                         },
                         1200
                     );
-
                 }
             );
-
-
-            actions.appendChild(
-                copyPartBtn
-            );
-
-
-            header.appendChild(
-                titleArea
-            );
-
-            header.appendChild(
-                actions
-            );
-
-
-            const partTextarea =
-            document.createElement("textarea");
-
-
-            partTextarea.value =
-            part;
-
-
             partTextarea.addEventListener(
                 "input",
                 ()=>{
-
                     manualParts[index] =
                     partTextarea.value;
-
-
                     updateManualPartMeta(
                         meta,
                         partTextarea.value
                     );
-
                 }
             );
-
-
             box.appendChild(header);
-
             box.appendChild(
                 partTextarea
             );
-
-
             splitResults.appendChild(box);
-
         }
     );
-
-
     splitBottomControls.style.display =
     "flex";
-
 }
-
-
 /* =====================================================
-   UPDATE META BAGIAN
+   UPDATE META
 ===================================================== */
-
 function updateManualPartMeta(
     element,
     text
 ){
-
     element.textContent =
     `${countWords(text).toLocaleString("id-ID")} kata • ${text.length.toLocaleString("id-ID")} karakter`;
-
 }
-
-
 /* =====================================================
    COUNT WORDS
 ===================================================== */
-
 function countWords(text){
-
     const matches =
     String(text || "")
         .trim()
         .match(/\S+/g);
-
-
     return matches
         ? matches.length
         : 0;
-
 }
-
-
 /* =====================================================
-   COPY SEMUA BAGIAN
+   COPY ALL PARTS
 ===================================================== */
-
 async function copyAllManualParts(){
-
     if(
         manualParts.length === 0
     ){
-
         return;
-
     }
-
-
     const output =
     manualParts
         .map(
             (part,index)=>{
-
                 return (
                     "========== BAGIAN " +
                     (index + 1) +
                     " ==========\n\n" +
                     part.trim()
                 );
-
             }
         )
-        .join(
-            "\n\n"
-        );
-
-
+        .join("\n\n");
     await copyText(output);
-
-
     const oldText =
     manualCopyAllBtn.textContent;
-
-
     manualCopyAllBtn.textContent =
     "✅ Semua Tersalin";
-
-
     setTimeout(
         ()=>{
             manualCopyAllBtn.textContent =
@@ -3292,25 +2199,16 @@ async function copyAllManualParts(){
         },
         1500
     );
-
 }
-
-
 /* =====================================================
-   MERGE BAGIAN
+   MERGE
 ===================================================== */
-
 function mergeManualParts(){
-
     if(
         manualParts.length === 0
     ){
-
         return;
-
     }
-
-
     const merged =
     manualParts
         .map(
@@ -3319,20 +2217,12 @@ function mergeManualParts(){
         )
         .filter(Boolean)
         .join("\n\n");
-
-
     manualText.value =
     merged;
-
-
     const oldText =
     manualMergeBtn.textContent;
-
-
     manualMergeBtn.textContent =
     "✅ Berhasil Digabung";
-
-
     setTimeout(
         ()=>{
             manualMergeBtn.textContent =
@@ -3340,41 +2230,24 @@ function mergeManualParts(){
         },
         1500
     );
-
-
     manualText.scrollIntoView({
         behavior:"smooth",
         block:"center"
     });
-
 }
-
-
 /* =====================================================
-   KEMBALIKAN TEKS ASLI
+   RESTORE ORIGINAL
 ===================================================== */
-
 function restoreOriginalManualText(){
-
     if(!originalManualText){
-
         return;
-
     }
-
-
     manualText.value =
     originalManualText;
-
-
     const oldText =
     manualOriginalBtn.textContent;
-
-
     manualOriginalBtn.textContent =
     "✅ Teks Asli Dikembalikan";
-
-
     setTimeout(
         ()=>{
             manualOriginalBtn.textContent =
@@ -3382,161 +2255,91 @@ function restoreOriginalManualText(){
         },
         1500
     );
-
 }
-
-
 /* =====================================================
-   CLEAR MANUAL TEXT
+   CLEAR MANUAL
 ===================================================== */
-
 function clearManualText(){
-
     manualText.value = "";
-
     originalManualText = "";
-
     manualParts = [];
-
-
     splitResults.innerHTML = "";
-
-
     splitInfo.innerHTML = "";
-
     splitInfo.style.display =
     "none";
-
-
     splitBottomControls.style.display =
     "none";
-
-
     manualText.focus();
-
 }
-
-
 /* =====================================================
-   COPY TEXT UNIVERSAL
+   COPY UNIVERSAL
 ===================================================== */
-
 async function copyText(text){
-
     try{
-
         await navigator.clipboard.writeText(
             text
         );
-
     }
-
     catch(error){
-
         const temporary =
         document.createElement("textarea");
-
-
         temporary.value =
         text;
-
-
         temporary.style.position =
         "fixed";
-
         temporary.style.opacity =
         "0";
-
-
         document.body.appendChild(
             temporary
         );
-
-
         temporary.select();
-
         document.execCommand(
             "copy"
         );
-
-
         temporary.remove();
-
     }
-
 }
-
-
 /* =====================================================
    GET EXTENSION
 ===================================================== */
-
 function getExtension(filename){
-
     const parts =
     filename
         .toLowerCase()
         .split(".");
-
-
     return parts.length > 1
         ? parts.pop()
         : "";
-
 }
-
-
 /* =====================================================
    FILE SIZE
 ===================================================== */
-
 function formatFileSize(bytes){
-
     if(bytes < 1024){
-
         return bytes + " B";
-
     }
-
-
     if(bytes < 1024 * 1024){
-
         return (
             bytes / 1024
         ).toFixed(1) +
         " KB";
-
     }
-
-
     return (
         bytes /
         (1024 * 1024)
     ).toFixed(2) +
     " MB";
-
 }
-
-
 /* =====================================================
    CLEAN TEXT
 ===================================================== */
-
 function cleanText(text){
-
     return String(text || "")
-
         .replace(/\r/g,"")
-
         .replace(/[ \t]+/g," ")
-
         .replace(/\n{3,}/g,"\n\n")
-
         .trim();
-
 }
-
 </script>
-
 </body>
 </html>
